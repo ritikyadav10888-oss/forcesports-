@@ -186,7 +186,7 @@ const HomePage = () => {
                     <h2 className="text-3xl md:text-5xl font-black tracking-tight uppercase mb-16">The Force Sports Family</h2>
 
                     <div className="flex flex-wrap gap-12 md:gap-24 items-center justify-center opacity-70">
-                        {['Shatak', 'Jabraat', 'SportX'].map((brand, idx) => (
+                        {['Elite', 'Pro', 'Vanguard'].map((brand, idx) => (
                             <motion.div
                                 key={idx}
                                 initial={{ opacity: 0, y: 10 }}
