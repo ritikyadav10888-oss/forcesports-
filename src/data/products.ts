@@ -21,7 +21,7 @@ export interface Product {
 export const PRODUCTS: Product[] = [
     // Brands
     {
-        id: 'jabraat-tn-5111',
+        id: 'force-tn-5111',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Cricket',
@@ -71,7 +71,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-tn-5112',
+        id: 'force-tn-5112',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Cricket',
@@ -121,7 +121,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-pro-kit',
+        id: 'force-pro-kit',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Football',
@@ -144,7 +144,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-aero-tee',
+        id: 'force-aero-tee',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Other',
@@ -167,7 +167,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'pro-flow-cap',
+        id: 'force-pro-flow-cap',
         brand: 'Force',
         category: 'Caps',
         sport: 'Cricket',
@@ -184,7 +184,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'pickleball-performance-cap',
+        id: 'force-pickleball-performance-cap',
         brand: 'Force',
         category: 'Caps',
         sport: 'Pickleball',
@@ -201,7 +201,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'tennis-court-pro-cap',
+        id: 'force-tennis-court-pro-cap',
         brand: 'Force',
         category: 'Caps',
         sport: 'Tennis',
@@ -218,7 +218,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'cricket-elite-white-cap',
+        id: 'force-cricket-elite-white-cap',
         brand: 'Force',
         category: 'Caps',
         sport: 'Cricket',
@@ -235,7 +235,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-compression-tee',
+        id: 'force-compression-tee',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Kabaddi',
@@ -253,7 +253,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'sportx-stealth-joggers',
+        id: 'force-stealth-joggers',
         brand: 'Force',
         category: 'Track Pants',
         sport: 'Other',
@@ -270,7 +270,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'shatak-flex-shorts',
+        id: 'force-flex-shorts',
         brand: 'Force',
         category: 'Shorts',
         sport: 'Volleyball',
@@ -287,7 +287,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-element-jacket',
+        id: 'force-element-jacket',
         brand: 'Force',
         category: 'Jackets',
         sport: 'Other',
@@ -304,7 +304,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'sportx-apex-duffel',
+        id: 'force-apex-duffel',
         brand: 'Force',
         category: 'Bags',
         sport: 'Other',
@@ -460,7 +460,7 @@ export const PRODUCTS: Product[] = [
         specs: { 'Material': 'Reinforced Mesh', 'Usage': 'Officiating' }
     },
     {
-        id: 'jabraat-elite-001',
+        id: 'force-elite-001',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Cricket',
@@ -486,7 +486,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-002',
+        id: 'force-elite-002',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Football',
@@ -512,7 +512,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-003',
+        id: 'force-elite-003',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Badminton',
@@ -538,7 +538,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-004',
+        id: 'force-elite-004',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Kabaddi',
@@ -564,7 +564,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-005',
+        id: 'force-elite-005',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Tennis',
@@ -590,7 +590,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-006',
+        id: 'force-elite-006',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Pickleball',
@@ -616,7 +616,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-007',
+        id: 'force-elite-007',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Cricket',
@@ -642,7 +642,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-008',
+        id: 'force-elite-008',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Football',
@@ -668,7 +668,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-009',
+        id: 'force-elite-009',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Badminton',
@@ -694,7 +694,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-010',
+        id: 'force-elite-010',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Kabaddi',
@@ -720,7 +720,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-011',
+        id: 'force-elite-011',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Tennis',
@@ -746,7 +746,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-012',
+        id: 'force-elite-012',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Pickleball',
@@ -772,7 +772,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-013',
+        id: 'force-elite-013',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Cricket',
@@ -798,7 +798,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-014',
+        id: 'force-elite-014',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Football',
@@ -824,7 +824,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-015',
+        id: 'force-elite-015',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Badminton',
@@ -850,7 +850,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-016',
+        id: 'force-elite-016',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Kabaddi',
@@ -876,7 +876,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-017',
+        id: 'force-elite-017',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Tennis',
@@ -902,7 +902,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-018',
+        id: 'force-elite-018',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Pickleball',
@@ -928,7 +928,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-019',
+        id: 'force-elite-019',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Cricket',
@@ -954,7 +954,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-020',
+        id: 'force-elite-020',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Football',
@@ -980,7 +980,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-021',
+        id: 'force-elite-021',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Badminton',
@@ -1006,7 +1006,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-022',
+        id: 'force-elite-022',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Kabaddi',
@@ -1032,7 +1032,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-023',
+        id: 'force-elite-023',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Tennis',
@@ -1058,7 +1058,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-024',
+        id: 'force-elite-024',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Pickleball',
@@ -1084,7 +1084,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-025',
+        id: 'force-elite-025',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Cricket',
@@ -1110,7 +1110,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-026',
+        id: 'force-elite-026',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Football',
@@ -1136,7 +1136,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-027',
+        id: 'force-elite-027',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Badminton',
@@ -1162,7 +1162,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-028',
+        id: 'force-elite-028',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Kabaddi',
@@ -1188,7 +1188,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-029',
+        id: 'force-elite-029',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Tennis',
@@ -1214,7 +1214,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-030',
+        id: 'force-elite-030',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Pickleball',
@@ -1240,7 +1240,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-031',
+        id: 'force-elite-031',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Cricket',
@@ -1266,7 +1266,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-032',
+        id: 'force-elite-032',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Football',
@@ -1292,7 +1292,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-033',
+        id: 'force-elite-033',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Badminton',
@@ -1318,7 +1318,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-034',
+        id: 'force-elite-034',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Kabaddi',
@@ -1344,7 +1344,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-035',
+        id: 'force-elite-035',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Tennis',
@@ -1370,7 +1370,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-036',
+        id: 'force-elite-036',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Pickleball',
@@ -1396,7 +1396,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-037',
+        id: 'force-elite-037',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Cricket',
@@ -1422,7 +1422,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-038',
+        id: 'force-elite-038',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Football',
@@ -1448,7 +1448,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-039',
+        id: 'force-elite-039',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Badminton',
@@ -1474,7 +1474,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-040',
+        id: 'force-elite-040',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Kabaddi',
@@ -1500,7 +1500,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-041',
+        id: 'force-elite-041',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Tennis',
@@ -1526,7 +1526,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-042',
+        id: 'force-elite-042',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Pickleball',
@@ -1552,7 +1552,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-043',
+        id: 'force-elite-043',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Cricket',
@@ -1578,7 +1578,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-044',
+        id: 'force-elite-044',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Football',
@@ -1604,7 +1604,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-045',
+        id: 'force-elite-045',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Badminton',
@@ -1630,7 +1630,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-046',
+        id: 'force-elite-046',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Kabaddi',
@@ -1656,7 +1656,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-047',
+        id: 'force-elite-047',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Tennis',
@@ -1682,7 +1682,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-048',
+        id: 'force-elite-048',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Pickleball',
@@ -1708,7 +1708,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-049',
+        id: 'force-elite-049',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Cricket',
@@ -1734,7 +1734,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-050',
+        id: 'force-elite-050',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Football',
@@ -1760,7 +1760,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-051',
+        id: 'force-elite-051',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Badminton',
@@ -1786,7 +1786,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-052',
+        id: 'force-elite-052',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Kabaddi',
@@ -1812,7 +1812,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-053',
+        id: 'force-elite-053',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Tennis',
@@ -1838,7 +1838,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-054',
+        id: 'force-elite-054',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Pickleball',
@@ -1864,7 +1864,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-055',
+        id: 'force-elite-055',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Cricket',
@@ -1890,7 +1890,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-056',
+        id: 'force-elite-056',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Football',
@@ -1916,7 +1916,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-057',
+        id: 'force-elite-057',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Badminton',
@@ -1942,7 +1942,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-058',
+        id: 'force-elite-058',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Kabaddi',
@@ -1968,7 +1968,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-059',
+        id: 'force-elite-059',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Tennis',
@@ -1994,7 +1994,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-060',
+        id: 'force-elite-060',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Pickleball',
@@ -2020,7 +2020,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-061',
+        id: 'force-elite-061',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Cricket',
@@ -2046,7 +2046,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-062',
+        id: 'force-elite-062',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Football',
@@ -2072,7 +2072,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-063',
+        id: 'force-elite-063',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Badminton',
@@ -2098,7 +2098,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'jabraat-elite-064',
+        id: 'force-elite-064',
         brand: 'Force',
         category: 'T-Shirts',
         sport: 'Kabaddi',
@@ -2126,8 +2126,8 @@ export const PRODUCTS: Product[] = [
     // New Caps Collection
     // New Caps Collection - Color Specific
     {
-        id: 'shatak-pro-cap-red',
-        brand: 'Shatak',
+        id: 'force-pro-cap-red',
+        brand: 'Force',
         category: 'Caps',
         sport: 'All',
         productCode: '#CP-RED',
@@ -2139,8 +2139,8 @@ export const PRODUCTS: Product[] = [
         specs: { 'Color': 'Crimson Red', 'Material': 'Performance Poly' }
     },
     {
-        id: 'jabraat-pro-cap-blue',
-        brand: 'Jabraat',
+        id: 'force-pro-cap-blue',
+        brand: 'Force',
         category: 'Caps',
         sport: 'All',
         productCode: '#CP-BLUE',
@@ -2152,8 +2152,8 @@ export const PRODUCTS: Product[] = [
         specs: { 'Color': 'Royal Blue', 'Material': 'Micro-Fiber Poly' }
     },
     {
-        id: 'sportx-stealth-cap-black',
-        brand: 'SportX',
+        id: 'force-stealth-cap-black',
+        brand: 'Force',
         category: 'Caps',
         sport: 'All',
         productCode: '#CP-BLACK',
@@ -2165,8 +2165,8 @@ export const PRODUCTS: Product[] = [
         specs: { 'Color': 'Carbon Black', 'Material': 'Durable Ripstop' }
     },
     {
-        id: 'shatak-pro-cap-white',
-        brand: 'Shatak',
+        id: 'force-pro-cap-white',
+        brand: 'Force',
         category: 'Caps',
         sport: 'All',
         productCode: '#CP-WHITE',
@@ -2178,8 +2178,8 @@ export const PRODUCTS: Product[] = [
         specs: { 'Color': 'Arctic White', 'Material': 'Technical Mesh' }
     },
     {
-        id: 'jabraat-elite-cap-navy',
-        brand: 'Jabraat',
+        id: 'force-elite-cap-navy',
+        brand: 'Force',
         category: 'Caps',
         sport: 'All',
         productCode: '#CP-NAVY',
@@ -2191,8 +2191,8 @@ export const PRODUCTS: Product[] = [
         specs: { 'Color': 'Midnight Navy', 'Material': 'Heavy-Duty Twill' }
     },
     {
-        id: 'sportx-aero-cap-grey',
-        brand: 'SportX',
+        id: 'force-aero-cap-grey',
+        brand: 'Force',
         category: 'Caps',
         sport: 'All',
         productCode: '#CP-GREY',
@@ -2204,8 +2204,8 @@ export const PRODUCTS: Product[] = [
         specs: { 'Color': 'Heather Grey', 'Material': 'Melange Tech Fabric' }
     },
     {
-        id: 'jabraat-pro-cap-orange',
-        brand: 'Jabraat',
+        id: 'force-pro-cap-orange',
+        brand: 'Force',
         category: 'Caps',
         sport: 'All',
         productCode: '#CP-ORANGE',
@@ -2217,8 +2217,8 @@ export const PRODUCTS: Product[] = [
         specs: { 'Color': 'Blaze Orange', 'Material': 'Performance Poly' }
     },
     {
-        id: 'shatak-pro-cap-green',
-        brand: 'Shatak',
+        id: 'force-pro-cap-green',
+        brand: 'Force',
         category: 'Caps',
         sport: 'All',
         productCode: '#CP-GREEN',
@@ -2230,8 +2230,8 @@ export const PRODUCTS: Product[] = [
         specs: { 'Color': 'Forest Green', 'Material': 'Premium Twill' }
     },
     {
-        id: 'sportx-elite-cap-yellow',
-        brand: 'SportX',
+        id: 'force-elite-cap-yellow',
+        brand: 'Force',
         category: 'Caps',
         sport: 'All',
         productCode: '#CP-YELLOW',
@@ -2243,8 +2243,8 @@ export const PRODUCTS: Product[] = [
         specs: { 'Color': 'Electric Yellow', 'Material': 'Technical Mesh' }
     },
     {
-        id: 'jabraat-elite-cap-maroon',
-        brand: 'Jabraat',
+        id: 'force-elite-cap-maroon',
+        brand: 'Force',
         category: 'Caps',
         sport: 'All',
         productCode: '#CP-MAROON',
@@ -2256,8 +2256,8 @@ export const PRODUCTS: Product[] = [
         specs: { 'Color': 'Deep Maroon', 'Material': 'High-Density Poly-Twill' }
     },
     {
-        id: 'shatak-pro-cap-purple',
-        brand: 'Shatak',
+        id: 'force-pro-cap-purple',
+        brand: 'Force',
         category: 'Caps',
         sport: 'All',
         productCode: '#CP-PURPLE',
@@ -2269,8 +2269,8 @@ export const PRODUCTS: Product[] = [
         specs: { 'Color': 'Royal Purple', 'Material': 'Technical Poly' }
     },
     {
-        id: 'sportx-aero-cap-teal',
-        brand: 'SportX',
+        id: 'force-aero-cap-teal',
+        brand: 'Force',
         category: 'Caps',
         sport: 'All',
         productCode: '#CP-TEAL',
@@ -2281,6 +2281,83 @@ export const PRODUCTS: Product[] = [
         features: ['Technical mesh', 'Ultra-lightweight', 'Reflective branding'],
         specs: { 'Color': 'Dynamic Teal', 'Material': 'Aero-Mesh Poly' }
     },
-
+    {
+        id: 'force-pro-mesh-black',
+        brand: 'Force',
+        category: 'Caps',
+        sport: 'All',
+        productCode: '#CP-MESH-BLK',
+        title: 'Pro Mesh Cap - Stealth Black',
+        description: 'Premium mesh-back cap for maximum ventilation and style.',
+        longDescription: 'The Pro Mesh Cap features a high-density foam front and breathable mesh back. Perfect for long training sessions in the sun.',
+        image: '/caps/black-cap.png',
+        features: ['Mesh back', 'Padded front', 'Snapback closure'],
+        specs: { 'Color': 'Stealth Black', 'Material': 'Poly-Mesh Mix' }
+    },
+    {
+        id: 'force-pro-mesh-white',
+        brand: 'Force',
+        category: 'Caps',
+        sport: 'All',
+        productCode: '#CP-MESH-WHT',
+        title: 'Pro Mesh Cap - Arctic White',
+        description: 'Clean arctic white mesh cap with a crisp, professional finish.',
+        longDescription: 'Stay cool and look sharp with the Arctic White Pro Mesh Cap. Designed for coaches and players alike.',
+        image: '/caps/white-cap.png',
+        features: ['Reflective logo', 'Breathable mesh', 'Adjustable fit'],
+        specs: { 'Color': 'Arctic White', 'Material': 'Breathable Poly' }
+    },
+    {
+        id: 'force-pro-mesh-red',
+        brand: 'Force',
+        category: 'Caps',
+        sport: 'All',
+        productCode: '#CP-MESH-RED',
+        title: 'Pro Mesh Cap - Racing Red',
+        description: 'Energetic racing red cap with technical mesh back panels.',
+        longDescription: 'The Racing Red Pro Mesh Cap is built for speed and durability. High-impact color with elite-level comfort.',
+        image: '/caps/red-cap.png',
+        features: ['High-visibility red', 'Ventilated back', 'Stay-dry sweatband'],
+        specs: { 'Color': 'Racing Red', 'Material': 'Technical Mesh' }
+    },
+    {
+        id: 'force-pro-mesh-blue',
+        brand: 'Force',
+        category: 'Caps',
+        sport: 'All',
+        productCode: '#CP-MESH-BLU',
+        title: 'Pro Mesh Cap - Electric Blue',
+        description: 'Vibrant electric blue cap with structured front and mesh back.',
+        longDescription: 'Command attention on the field with the Electric Blue Pro Mesh Cap. Engineered for durability and maximum airflow.',
+        image: '/caps/blue-cap.png',
+        features: ['Structured crown', 'Airflow mesh', 'Premium stitching'],
+        specs: { 'Color': 'Electric Blue', 'Material': 'High-Performance Synth' }
+    },
+    {
+        id: 'force-vanguard-cap-navy',
+        brand: 'Force',
+        category: 'Caps',
+        sport: 'All',
+        productCode: '#CP-VANG-NVY',
+        title: 'Vanguard Cap - Navy Elite',
+        description: 'Low-profile navy cap with a tactical sports design.',
+        longDescription: 'The Vanguard series represents the cutting edge of sports headwear. Low-profile design with high-performance fabric.',
+        image: '/caps/navy-cap.png',
+        features: ['Low profile', 'Tactical design', 'Moisture-wicking'],
+        specs: { 'Color': 'Navy Blue', 'Material': 'Ripstop Poly' }
+    },
+    {
+        id: 'force-vanguard-cap-charcoal',
+        brand: 'Force',
+        category: 'Caps',
+        sport: 'All',
+        productCode: '#CP-VANG-CHR',
+        title: 'Vanguard Cap - Charcoal Grey',
+        description: 'Sleek charcoal grey cap with a minimalist technical aesthetic.',
+        longDescription: 'Focused performance meets minimalist design. The Charcoal Vanguard cap is lightweight and exceptionally durable.',
+        image: '/caps/grey-cap.png',
+        features: ['Minimalist aesthetic', 'Lightweight build', 'Quick-dry fabric'],
+        specs: { 'Color': 'Charcoal Grey', 'Material': 'Poly-Elastane Blend' }
+    }
 ];
 

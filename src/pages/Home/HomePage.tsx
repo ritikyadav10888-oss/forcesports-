@@ -5,7 +5,7 @@ import {
     Building2, Trophy, Building, Landmark,
     Factory, ShoppingCart, CarFront, Bike,
     Signal, Palette, ShieldCheck,
-    Globe2,
+    Globe2, BookOpen
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { PRODUCTS } from '../../data/products';
@@ -97,15 +97,23 @@ const HomePage = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.8 }}
+                        className="flex flex-col sm:flex-row gap-5 items-center justify-center mt-4"
                     >
                         <Link
                             to="/products"
                             className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-white text-slate-900 font-black uppercase tracking-widest text-sm rounded-full overflow-hidden transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(255,255,255,0.3)]"
                         >
                             <span className="relative z-10 flex items-center gap-2">
-                                Explore Collections <ChevronRight strokeWidth={3} className="group-hover:translate-x-1 transition-transform" />
+                                Explore Products <ChevronRight size={18} strokeWidth={3} className="group-hover:translate-x-1 transition-transform" />
                             </span>
                             <div className="absolute inset-0 bg-cyan-400 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out" />
+                        </Link>
+
+                        <Link
+                            to="/catalog"
+                            className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-slate-800/50 backdrop-blur-sm border border-white/10 text-white font-black uppercase tracking-widest text-sm rounded-full overflow-hidden transition-all hover:scale-105 hover:bg-slate-700/50"
+                        >
+                            <BookOpen size={18} /> View Digital Catalog
                         </Link>
                     </motion.div>
                 </div>

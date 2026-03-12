@@ -8,6 +8,7 @@ import AboutPage from './pages/About/AboutPage';
 import InquiryPage from './pages/Inquiry/InquiryPage';
 import ManufacturingPage from './pages/Manufacturing/ManufacturingPage';
 import ProductDetailPage from './pages/Products/ProductDetailPage';
+import CatalogPage from './pages/Catalog/CatalogPage';
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
                     <Route path="/products" element={<ProductPage />} />
                     <Route path="/products/:productId" element={<ProductDetailPage />} />
                     <Route path="/uniforms" element={<UniformsPage />} />
+                    <Route path="/catalog" element={<CatalogPage />} />
                     <Route path="/about" element={<AboutPage />} />
                     <Route path="/manufacturing" element={<ManufacturingPage />} />
                     <Route path="/inquiry" element={<InquiryPage />} />
