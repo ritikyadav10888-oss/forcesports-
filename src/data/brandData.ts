@@ -19,10 +19,12 @@ export const BRAND_DETAILS = {
         }
     ],
     contacts: {
-        phone: "+91 98200 12345",
+        phone: "+91 99301 55224",
         alternatePhone: "+91 22 1234 5678",
-        email: "info@forcesports.in",
-        inquiryEmail: "info@forcesports.in"
+        whatsapp: "+91 99301 55224",
+        whatsappLink: "https://wa.me/919930155224?text=Hello%20Force%20Sports,%20I'm%20interested%20in%20discussing%20a%20bulk%20booking...",
+        email: "info@forcesportsindia.com",
+        inquiryEmail: "sales@forcesportsindia.com"
     },
     social: {
         instagram: "https://www.instagram.com/forcesports_india?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",

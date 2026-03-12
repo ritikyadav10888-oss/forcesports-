@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Filter, Check, Briefcase, Activity } from 'lucide-react';
+import { Filter, Check, Briefcase, Activity, MessageCircle } from 'lucide-react';
+import { BRAND_DETAILS } from '../../data/brandData';
 
 const UniformCategories = ['School', 'Quick Delivery Services', 'Corporate Staff', 'Fast Food Staff', 'Industrial'] as const;
 
@@ -278,9 +279,19 @@ const UniformsPage = () => {
                                 <p className="text-cyan-100 text-[10px] font-bold uppercase tracking-wider leading-relaxed mb-6 relative z-10 opacity-80">
                                     Get specialized quotes for bulk staff and school uniform orders.
                                 </p>
-                                <Link to="/inquiry" className="inline-block px-6 py-3 bg-white text-cyan-600 rounded-xl text-[9px] font-black uppercase tracking-widest relative z-10 hover:scale-105 transition-transform">
-                                    Inquire Now
-                                </Link>
+                                <div className="flex flex-col gap-3">
+                                    <Link to="/inquiry" className="inline-block px-6 py-3 bg-white text-cyan-600 rounded-xl text-[9px] font-black uppercase tracking-widest relative z-10 hover:scale-105 transition-transform text-center">
+                                        Email Inquiry
+                                    </Link>
+                                    <a 
+                                        href={BRAND_DETAILS.contacts.whatsappLink} 
+                                        target="_blank" 
+                                        rel="noopener noreferrer" 
+                                        className="inline-block px-6 py-3 bg-[#25D366] text-white rounded-xl text-[9px] font-black uppercase tracking-widest relative z-10 hover:bg-[#128C7E] transition-all text-center flex items-center justify-center gap-2"
+                                    >
+                                        <MessageCircle size={14} /> WhatsApp Booking
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </aside>

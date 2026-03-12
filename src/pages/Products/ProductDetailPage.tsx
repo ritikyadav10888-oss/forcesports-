@@ -1,13 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ChevronRight, Shield, Zap, Target, Award, CheckCircle2 } from 'lucide-react';
+import { ArrowLeft, ChevronRight, Zap, CheckCircle2 } from 'lucide-react';
 import { PRODUCTS } from '../../data/products';
 
 const ProductDetailPage = () => {
     const { productId } = useParams();
     const navigate = useNavigate();
     const product = PRODUCTS.find(p => p.id === productId);
+
+    const images = product ? [
+        ...(product.gallery ?? [product.image]),
+        ...(product.imageBack ? [product.imageBack] : [])
+    ] : [];
+
+    const [activeImageIndex, setActiveImageIndex] = useState(0);
+    const [prevProductId, setPrevProductId] = useState(productId);
+
+    if (productId !== prevProductId) {
+        setPrevProductId(productId);
+        setActiveImageIndex(0);
+    }
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -24,16 +37,7 @@ const ProductDetailPage = () => {
         );
     }
 
-    const icons = [Shield, Zap, Target, Award];
-    const images = [
-        ...(product.gallery ?? [product.image]),
-        ...(product.imageBack ? [product.imageBack] : [])
-    ];
-    const [activeImage, setActiveImage] = useState(images[0]);
-
-    useEffect(() => {
-        setActiveImage((product.gallery ?? [product.image])[0]);
-    }, [productId]);
+    const activeImage = images[activeImageIndex] || product.image;
 
     return (
         <div className="bg-white pt-20">
@@ -64,8 +68,8 @@ const ProductDetailPage = () => {
                                 {images.map((img, idx) => (
                                     <button
                                         key={idx}
-                                        onClick={() => setActiveImage(img)}
-                                        className={`flex-1 rounded-2xl overflow-hidden aspect-square border-2 transition-all p-2 bg-slate-50 ${activeImage === img ? 'border-cyan-500 shadow-lg shadow-cyan-100' : 'border-transparent opacity-60 hover:opacity-100'
+                                        onClick={() => setActiveImageIndex(idx)}
+                                        className={`flex-1 rounded-2xl overflow-hidden aspect-square border-2 transition-all p-2 bg-slate-50 ${activeImageIndex === idx ? 'border-cyan-500 shadow-lg shadow-cyan-100' : 'border-transparent opacity-60 hover:opacity-100'
                                             }`}
                                     >
                                         <img src={img} alt={`View ${idx + 1}`} className="w-full h-full object-contain" />
@@ -81,9 +85,6 @@ const ProductDetailPage = () => {
                         animate={{ opacity: 1, x: 0 }}
                     >
                         <div className="flex items-center gap-3 mb-4">
-                            <span className="px-3 py-1 bg-slate-900 text-white font-black uppercase tracking-widest text-[10px] rounded-full">
-                                {product.brand}
-                            </span>
                             <span className="px-3 py-1 bg-cyan-100 text-cyan-700 font-black uppercase tracking-widest text-[10px] rounded-full">
                                 {product.category}
                             </span>
@@ -159,34 +160,34 @@ const ProductDetailPage = () => {
                                     <h2 className="text-3xl font-black uppercase tracking-tighter text-slate-900">Size Charts</h2>
                                 </div>
                                 <div className="space-y-8">
-                                    {Object.entries(product.sizeCharts).map(([key, chart], idx) => (
-                                        <div key={idx} className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm">
-                                            <div className="px-8 py-4 bg-slate-900 flex justify-between items-center">
-                                                <h4 className="text-white font-black uppercase tracking-widest text-[10px]">{chart.label}</h4>
-                                                <span className="text-slate-400 text-[10px] font-bold">IN INCHES</span>
-                                            </div>
-                                            <div className="overflow-x-auto">
-                                                <table className="w-full text-left">
-                                                    <thead>
-                                                        <tr className="border-b border-slate-100 bg-slate-50">
-                                                            {Object.keys(chart.values[0]).map((header, hIdx) => (
-                                                                <th key={hIdx} className="px-8 py-4 text-[10px] font-black uppercase tracking-widest text-slate-400">{header}</th>
-                                                            ))}
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        {chart.values.map((row, rIdx) => (
-                                                            <tr key={rIdx} className="border-b border-slate-50 last:border-0 hover:bg-slate-50 transition-colors">
-                                                                {Object.values(row).map((val, vIdx) => (
-                                                                    <td key={vIdx} className="px-8 py-4 text-xs font-bold text-slate-700 uppercase tracking-tight">{val}</td>
-                                                                ))}
-                                                            </tr>
-                                                        ))}
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    ))}
+                                                    {Object.entries(product.sizeCharts).map(([, chart]: [string, any], idx) => (
+                                                        <div key={idx} className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm">
+                                                            <div className="px-8 py-4 bg-slate-900 flex justify-between items-center">
+                                                                <h4 className="text-white font-black uppercase tracking-widest text-[10px]">{chart.label}</h4>
+                                                                <span className="text-slate-400 text-[10px] font-bold">IN INCHES</span>
+                                                            </div>
+                                                            <div className="overflow-x-auto">
+                                                                <table className="w-full text-left">
+                                                                    <thead>
+                                                                        <tr className="border-b border-slate-100 bg-slate-50">
+                                                                            {Object.keys(chart.values[0]).map((header, hIdx) => (
+                                                                                <th key={hIdx} className="px-8 py-4 text-[10px] font-black uppercase tracking-widest text-slate-400">{header}</th>
+                                                                            ))}
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        {chart.values.map((row: any, rIdx: number) => (
+                                                                            <tr key={rIdx} className="border-b border-slate-50 last:border-0 hover:bg-slate-50 transition-colors">
+                                                                                {Object.values(row).map((val: any, vIdx) => (
+                                                                                    <td key={vIdx} className="px-8 py-4 text-xs font-bold text-slate-700 uppercase tracking-tight">{val}</td>
+                                                                                ))}
+                                                                            </tr>
+                                                                        ))}
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    ))}
                                 </div>
                             </div>
                         )}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, MessageCircle } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 import { BRAND_DETAILS } from '../../data/brandData';
 
@@ -28,7 +28,14 @@ const InquiryPage = () => {
                                 </div>
                                 <div>
                                     <h4 className="text-xs font-bold text-slate-400 uppercase mb-2 tracking-widest">Address</h4>
-                                    <p className="text-sm font-medium leading-relaxed">{BRAND_DETAILS.addresses[0].text}</p>
+                                    <a 
+                                        href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(BRAND_DETAILS.addresses[0].text)}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-sm font-medium leading-relaxed hover:text-cyan-400 transition-colors"
+                                    >
+                                        {BRAND_DETAILS.addresses[0].text}
+                                    </a>
                                 </div>
                             </div>
                             <div className="flex items-start gap-4">
@@ -37,7 +44,22 @@ const InquiryPage = () => {
                                 </div>
                                 <div>
                                     <h4 className="text-xs font-bold text-slate-400 uppercase mb-2 tracking-widest">Call Us</h4>
-                                    <p className="text-sm font-medium leading-relaxed">{BRAND_DETAILS.contacts.phone}</p>
+                                    <a href={`tel:${BRAND_DETAILS.contacts.phone.replace(/\s+/g, '')}`} className="text-sm font-medium leading-relaxed hover:text-cyan-400 transition-colors">
+                                        {BRAND_DETAILS.contacts.phone}
+                                    </a>
+                                </div>
+                            </div>
+                            <div className="flex items-start gap-4">
+                                <div className="w-10 h-10 rounded-xl bg-green-500/20 flex items-center justify-center text-green-400">
+                                    <MessageCircle size={24} />
+                                </div>
+                                <div className="flex-1">
+                                    <h4 className="text-xs font-bold text-slate-400 uppercase mb-2 tracking-widest">WhatsApp Inquiry</h4>
+                                    <div className="space-y-1">
+                                        <a href={BRAND_DETAILS.contacts.whatsappLink} target="_blank" rel="noopener noreferrer" className="block text-sm font-bold leading-relaxed text-green-400 hover:text-green-300 transition-colors">
+                                            {BRAND_DETAILS.contacts.whatsapp}
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                             <div className="flex items-start gap-4">
@@ -46,7 +68,9 @@ const InquiryPage = () => {
                                 </div>
                                 <div>
                                     <h4 className="text-xs font-bold text-slate-400 uppercase mb-2 tracking-widest">Email</h4>
-                                    <p className="text-sm font-bold leading-relaxed">{BRAND_DETAILS.contacts.email}</p>
+                                    <a href={`mailto:${BRAND_DETAILS.contacts.email}`} className="text-sm font-bold leading-relaxed hover:text-cyan-400 transition-colors">
+                                        {BRAND_DETAILS.contacts.email}
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -80,14 +104,6 @@ const InquiryPage = () => {
                             </div>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div className="space-y-2">
-                                    <label className="text-xs font-black uppercase tracking-widest text-slate-400">Target Brand</label>
-                                    <select aria-label="Target Brand" className="w-full p-4 bg-slate-50 rounded-2xl border-none focus:ring-2 focus:ring-cyan-400 outline-none transition-all appearance-none cursor-pointer">
-                                        <option>Shatak</option>
-                                        <option>Jabraat</option>
-                                        <option>SportX</option>
-                                    </select>
-                                </div>
                                 <div className="space-y-2">
                                     <label className="text-xs font-black uppercase tracking-widest text-slate-400">Quantity</label>
                                     <input type="number" className="w-full p-4 bg-slate-50 rounded-2xl border-none focus:ring-2 focus:ring-cyan-400 outline-none transition-all" placeholder="E.g. 50" />

@@ -1,7 +1,7 @@
 export interface Product {
     id: string;
     title: string;
-    brand?: 'Shatak' | 'Jabraat' | 'SportX';
+    brand?: string;
     category: 'T-Shirts' | 'Track Pants' | 'Shorts' | 'Jackets' | 'Bags' | 'Caps';
     sport?: 'Badminton' | 'Cricket' | 'Football' | 'Volleyball' | 'Kabaddi' | 'Pickleball' | 'Tennis' | 'Other' | 'All';
     usageType?: 'T20' | 'Practice' | 'Travel' | 'Coaches' | 'Officials' | 'General';
@@ -22,7 +22,7 @@ export const PRODUCTS: Product[] = [
     // Shatak Brands
     {
         id: 'jabraat-tn-5111',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Cricket',
         usageType: 'T20',
@@ -72,7 +72,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-tn-5112',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Cricket',
         usageType: 'Practice',
@@ -122,7 +122,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-pro-kit',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Football',
         productCode: '#JB 101',
@@ -145,7 +145,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-aero-tee',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Other',
         productCode: '#SX 500',
@@ -166,10 +166,26 @@ export const PRODUCTS: Product[] = [
             'Weight': 'Featherlight 120 GSM'
         }
     },
-
+    {
+        id: 'shatak-pro-flow-cap',
+        brand: 'Force',
+        category: 'Caps',
+        sport: 'Cricket',
+        productCode: '#CP 701',
+        title: 'Shatak Pro-Flow Cap',
+        description: 'Advanced moisture-wicking sports cap for maximum performance.',
+        longDescription: 'The Shatak Pro-Flow Cap features a multi-panel construction with laser-cut ventilation for superior breathability. The moisture-wicking sweatband keeps you dry, while the adjustable strap ensures a perfect fit for any head size.',
+        image: 'https://images.unsplash.com/photo-1556822272-b41eeb89d9eb?w=800&q=80',
+        features: ['Laser-Cut Ventilation', 'Moisture-Wicking Sweatband', 'Adjustable Fit', 'Durable Fabric'],
+        specs: {
+            'Material': 'Performance Polyester Mesh',
+            'Fit': 'Adjustable One-Size',
+            'Tech': 'Aero-Vent'
+        }
+    },
     {
         id: 'jabraat-compression-tee',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Kabaddi',
         productCode: '#JB 202',
@@ -187,7 +203,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'sportx-stealth-joggers',
-        brand: 'SportX',
+        brand: 'Force',
         category: 'Track Pants',
         sport: 'Other',
         productCode: '#SX 808',
@@ -204,7 +220,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'shatak-flex-shorts',
-        brand: 'Shatak',
+        brand: 'Force',
         category: 'Shorts',
         sport: 'Volleyball',
         productCode: '#SH 303',
@@ -221,7 +237,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-element-jacket',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'Jackets',
         sport: 'Other',
         productCode: '#JK 909',
@@ -238,7 +254,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'sportx-apex-duffel',
-        brand: 'SportX',
+        brand: 'Force',
         category: 'Bags',
         sport: 'Other',
         productCode: '#BG 404',
@@ -255,7 +271,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'force-travel-polo',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Other',
         usageType: 'Travel',
@@ -270,7 +286,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'force-coach-tee',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Other',
         usageType: 'Coaches',
@@ -285,7 +301,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'force-official-shirt',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Other',
         usageType: 'Officials',
@@ -300,7 +316,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'force-activity-t20',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Other',
         usageType: 'T20',
@@ -315,7 +331,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'force-activity-practice',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Other',
         usageType: 'Practice',
@@ -331,7 +347,7 @@ export const PRODUCTS: Product[] = [
     // Badminton Variants
     {
         id: 'force-badminton-pro',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Badminton',
         usageType: 'Practice',
@@ -347,7 +363,7 @@ export const PRODUCTS: Product[] = [
     // Football Variants
     {
         id: 'force-football-travel',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Football',
         usageType: 'Travel',
@@ -363,7 +379,7 @@ export const PRODUCTS: Product[] = [
     // Volleyball Variants
     {
         id: 'force-volleyball-coach',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Volleyball',
         usageType: 'Coaches',
@@ -379,7 +395,7 @@ export const PRODUCTS: Product[] = [
     // Kabaddi Variants
     {
         id: 'force-kabaddi-official',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Kabaddi',
         usageType: 'Officials',
@@ -394,7 +410,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-001',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Cricket',
         usageType: 'Practice',
@@ -420,7 +436,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-002',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Football',
         usageType: 'Travel',
@@ -446,7 +462,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-003',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Badminton',
         usageType: 'Coaches',
@@ -472,7 +488,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-004',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Kabaddi',
         usageType: 'Officials',
@@ -498,7 +514,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-005',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Tennis',
         usageType: 'General',
@@ -524,7 +540,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-006',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Pickleball',
         usageType: 'Practice',
@@ -550,7 +566,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-007',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Cricket',
         usageType: 'Travel',
@@ -576,7 +592,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-008',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Football',
         usageType: 'Coaches',
@@ -602,7 +618,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-009',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Badminton',
         usageType: 'Officials',
@@ -628,7 +644,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-010',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Kabaddi',
         usageType: 'General',
@@ -654,7 +670,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-011',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Tennis',
         usageType: 'Practice',
@@ -680,7 +696,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-012',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Pickleball',
         usageType: 'Travel',
@@ -706,7 +722,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-013',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Cricket',
         usageType: 'Coaches',
@@ -732,7 +748,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-014',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Football',
         usageType: 'Officials',
@@ -758,7 +774,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-015',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Badminton',
         usageType: 'General',
@@ -784,7 +800,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-016',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Kabaddi',
         usageType: 'Practice',
@@ -810,7 +826,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-017',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Tennis',
         usageType: 'Travel',
@@ -836,7 +852,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-018',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Pickleball',
         usageType: 'Coaches',
@@ -862,7 +878,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-019',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Cricket',
         usageType: 'Officials',
@@ -888,7 +904,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-020',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Football',
         usageType: 'General',
@@ -914,7 +930,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-021',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Badminton',
         usageType: 'Practice',
@@ -940,7 +956,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-022',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Kabaddi',
         usageType: 'Travel',
@@ -966,7 +982,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-023',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Tennis',
         usageType: 'Coaches',
@@ -992,7 +1008,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-024',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Pickleball',
         usageType: 'Officials',
@@ -1018,7 +1034,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-025',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Cricket',
         usageType: 'General',
@@ -1044,7 +1060,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-026',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Football',
         usageType: 'Practice',
@@ -1070,7 +1086,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-027',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Badminton',
         usageType: 'Travel',
@@ -1096,7 +1112,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-028',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Kabaddi',
         usageType: 'Coaches',
@@ -1122,7 +1138,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-029',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Tennis',
         usageType: 'Officials',
@@ -1148,7 +1164,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-030',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Pickleball',
         usageType: 'General',
@@ -1174,7 +1190,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-031',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Cricket',
         usageType: 'Practice',
@@ -1200,7 +1216,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-032',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Football',
         usageType: 'Travel',
@@ -1226,7 +1242,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-033',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Badminton',
         usageType: 'Coaches',
@@ -1252,7 +1268,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-034',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Kabaddi',
         usageType: 'Officials',
@@ -1278,7 +1294,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-035',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Tennis',
         usageType: 'General',
@@ -1304,7 +1320,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-036',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Pickleball',
         usageType: 'Practice',
@@ -1330,7 +1346,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-037',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Cricket',
         usageType: 'Travel',
@@ -1356,7 +1372,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-038',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Football',
         usageType: 'Coaches',
@@ -1382,7 +1398,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-039',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Badminton',
         usageType: 'Officials',
@@ -1408,7 +1424,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-040',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Kabaddi',
         usageType: 'General',
@@ -1434,7 +1450,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-041',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Tennis',
         usageType: 'Practice',
@@ -1460,7 +1476,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-042',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Pickleball',
         usageType: 'Travel',
@@ -1486,7 +1502,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-043',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Cricket',
         usageType: 'Coaches',
@@ -1512,7 +1528,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-044',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Football',
         usageType: 'Officials',
@@ -1538,7 +1554,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-045',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Badminton',
         usageType: 'General',
@@ -1564,7 +1580,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-046',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Kabaddi',
         usageType: 'Practice',
@@ -1590,7 +1606,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-047',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Tennis',
         usageType: 'Travel',
@@ -1616,7 +1632,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-048',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Pickleball',
         usageType: 'Coaches',
@@ -1642,7 +1658,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-049',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Cricket',
         usageType: 'Officials',
@@ -1668,7 +1684,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-050',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Football',
         usageType: 'General',
@@ -1694,7 +1710,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-051',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Badminton',
         usageType: 'Practice',
@@ -1720,7 +1736,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-052',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Kabaddi',
         usageType: 'Travel',
@@ -1746,7 +1762,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-053',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Tennis',
         usageType: 'Coaches',
@@ -1772,7 +1788,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-054',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Pickleball',
         usageType: 'Officials',
@@ -1798,7 +1814,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-055',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Cricket',
         usageType: 'General',
@@ -1824,7 +1840,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-056',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Football',
         usageType: 'Practice',
@@ -1850,7 +1866,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-057',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Badminton',
         usageType: 'Travel',
@@ -1876,7 +1892,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-058',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Kabaddi',
         usageType: 'Coaches',
@@ -1902,7 +1918,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-059',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Tennis',
         usageType: 'Officials',
@@ -1928,7 +1944,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-060',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Pickleball',
         usageType: 'General',
@@ -1954,7 +1970,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-061',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Cricket',
         usageType: 'Practice',
@@ -1980,7 +1996,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-062',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Football',
         usageType: 'Travel',
@@ -2006,7 +2022,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-063',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Badminton',
         usageType: 'Coaches',
@@ -2032,7 +2048,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'jabraat-elite-064',
-        brand: 'Jabraat',
+        brand: 'Force',
         category: 'T-Shirts',
         sport: 'Kabaddi',
         usageType: 'Officials',

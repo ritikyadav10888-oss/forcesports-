@@ -32,16 +32,27 @@ const Footer = () => {
                         <h3 className="text-sm font-bold uppercase tracking-widest mb-6 text-cyan-400">Contact</h3>
                         <ul className="space-y-4 text-slate-400">
                             <li className="flex items-start gap-3">
-                                <MapPin size={18} className="mt-1 flex-shrink-0" />
-                                <span>{BRAND_DETAILS.addresses[0].text}</span>
+                                <MapPin size={18} className="mt-1 flex-shrink-0 text-cyan-400" />
+                                <a 
+                                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(BRAND_DETAILS.addresses[0].text)}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="hover:text-white transition-colors"
+                                >
+                                    {BRAND_DETAILS.addresses[0].text}
+                                </a>
                             </li>
                             <li className="flex items-center gap-3">
-                                <Phone size={18} className="flex-shrink-0" />
-                                <span>{BRAND_DETAILS.contacts.phone}</span>
+                                <Phone size={18} className="flex-shrink-0 text-cyan-400" />
+                                <a href={`tel:${BRAND_DETAILS.contacts.phone.replace(/\s+/g, '')}`} className="hover:text-white transition-colors">
+                                    {BRAND_DETAILS.contacts.phone}
+                                </a>
                             </li>
                             <li className="flex items-center gap-3">
-                                <Mail size={18} className="flex-shrink-0" />
-                                <span>{BRAND_DETAILS.contacts.email}</span>
+                                <Mail size={18} className="flex-shrink-0 text-cyan-400" />
+                                <a href={`mailto:${BRAND_DETAILS.contacts.email}`} className="hover:text-white transition-colors">
+                                    {BRAND_DETAILS.contacts.email}
+                                </a>
                             </li>
                         </ul>
                     </div>

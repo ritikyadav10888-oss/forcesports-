@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PRODUCTS, Product } from '../../data/products';
 import { Link } from 'react-router-dom';
-import { Filter, X, Check, Shirt, Briefcase as Bag, Layers, Wind, Disc as Cap, Activity, Trophy } from 'lucide-react';
+import { Filter, X, Check, Activity } from 'lucide-react';
 
-const Brands = Array.from(new Set(PRODUCTS.map(p => p.brand).filter(Boolean))) as string[];
 const Categories = ['T-Shirts', 'Track Pants', 'Shorts', 'Jackets', 'Bags', 'Caps'] as const;
 const Sports = ['Badminton', 'Cricket', 'Football', 'Volleyball', 'Kabaddi', 'Pickleball', 'Tennis'] as const;
 const UsageTypes = ['T20', 'Practice', 'Travel', 'Coaches', 'Officials'] as const;
@@ -12,7 +11,6 @@ const UsageTypes = ['T20', 'Practice', 'Travel', 'Coaches', 'Officials'] as cons
 const ProductPage = () => {
     const [isMobileFiltersOpen, setIsMobileFiltersOpen] = useState(false);
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-    const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
     const [selectedSports, setSelectedSports] = useState<string[]>([]);
     const [selectedUsages, setSelectedUsages] = useState<string[]>([]);
     const [customizingProduct, setCustomizingProduct] = useState<Product | null>(null);
@@ -20,10 +18,9 @@ const ProductPage = () => {
 
     const filteredProducts = PRODUCTS.filter(p => {
         const categoryMatch = selectedCategories.length === 0 || selectedCategories.includes(p.category);
-        const brandMatch = selectedBrands.length === 0 || (p.brand && selectedBrands.includes(p.brand));
         const sportMatch = selectedSports.length === 0 || (p.sport && selectedSports.includes(p.sport));
         const usageMatch = selectedUsages.length === 0 || (p.usageType && selectedUsages.includes(p.usageType));
-        return categoryMatch && brandMatch && sportMatch && usageMatch;
+        return categoryMatch && sportMatch && usageMatch;
     });
 
     const handleCustomizationSubmit = () => {
@@ -104,32 +101,6 @@ const ProductPage = () => {
                                     </div>
                                 </div>
 
-                                {/* Brands Filter */}
-                                <div className="mb-8">
-                                    <h4 className="text-[10px] font-black text-slate-800 uppercase tracking-widest mb-4">Brands</h4>
-                                    <div className="space-y-3">
-                                        {Brands.map(brand => (
-                                            <label key={brand} className="flex items-center gap-3 cursor-pointer group">
-                                                <input 
-                                                    type="checkbox" 
-                                                    className="hidden" 
-                                                    checked={selectedBrands.includes(brand)}
-                                                    onChange={() => {
-                                                        setSelectedBrands(prev => 
-                                                            prev.includes(brand) ? prev.filter(b => b !== brand) : [...prev, brand]
-                                                        );
-                                                    }}
-                                                />
-                                                <div className={`w-4 h-4 rounded border flex items-center justify-center transition-all ${selectedBrands.includes(brand) ? 'bg-cyan-600 border-cyan-600' : 'bg-white border-slate-300 group-hover:border-cyan-400'}`}>
-                                                    {selectedBrands.includes(brand) && <Check size={10} className="text-white" />}
-                                                </div>
-                                                <span className={`text-[10px] uppercase font-black tracking-widest transition-colors ${selectedBrands.includes(brand) ? 'text-slate-900' : 'text-slate-500 group-hover:text-slate-800'}`}>
-                                                    {brand}
-                                                </span>
-                                            </label>
-                                        ))}
-                                    </div>
-                                </div>
 
                                 {/* Sports Filter (with Subcategories) */}
                                 <div className="mb-8">
@@ -240,9 +211,7 @@ const ProductPage = () => {
                                                 />
                                             )}
                                             <div className="absolute top-6 left-6 flex flex-col gap-2">
-                                                <div className="bg-slate-900/90 backdrop-blur px-3 py-1 rounded-full text-[9px] font-black text-white uppercase tracking-widest">
-                                                    {product.brand}
-                                                </div>
+                                                {/* Brand badge removed */}
                                                 <div className="flex gap-2">
                                                     {product.sport && !['Other', 'Activity', 'General', 'All'].includes(product.sport) && (
                                                         <div className="bg-cyan-500 text-white px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest shadow-xl shadow-cyan-900/20">

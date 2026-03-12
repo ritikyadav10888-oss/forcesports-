@@ -2,11 +2,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import {
     ChevronRight, Shield, Zap, Sparkles, Truck,
-    Building2, Trophy, Building, Landmark, BadgePercent,
-    Wallet, Factory, Shirt, ShoppingCart, CarFront, Bike,
-    Timer, Play, Package, Signal, Palette, ShieldCheck,
-    Users, Footprints, Boxes, Globe2, MoveRight,
-    Briefcase, Flame, Star, Heart, Home, TrainFront
+    Building2, Trophy, Building, Landmark,
+    Factory, ShoppingCart, CarFront, Bike,
+    Signal, Palette, ShieldCheck,
+    Globe2,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { PRODUCTS } from '../../data/products';
