@@ -104,7 +104,7 @@ const InquiryPage = () => {
                                 ></textarea>
                             </div>
 
-                            <button type="button" className="w-full py-5 bg-slate-900 text-white font-black uppercase tracking-widest rounded-2xl hover:bg-cyan-600 hover:shadow-2xl hover:shadow-cyan-100 transition-all flex items-center justify-center gap-3 active:scale-95 group">
+                            <button type="button" className="w-full py-5 bg-slate-900 text-white font-bold uppercase tracking-widest rounded-xl hover:bg-cyan-600 hover:shadow-2xl hover:shadow-cyan-100 transition-all flex items-center justify-center gap-3 active:scale-95 group">
                                 Submit Inquiry <Send size={20} className="group-hover:translate-x-1 transition-transform" />
                             </button>
                         </form>

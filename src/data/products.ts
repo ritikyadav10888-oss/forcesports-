@@ -166,23 +166,7 @@ export const PRODUCTS: Product[] = [
             'Weight': 'Featherlight 120 GSM'
         }
     },
-    {
-        id: 'shatak-pro-flow-cap',
-        brand: 'Shatak',
-        category: 'Caps',
-        sport: 'Cricket',
-        productCode: '#CP 701',
-        title: 'Shatak Pro-Flow Cap',
-        description: 'Advanced moisture-wicking sports cap for maximum performance.',
-        longDescription: 'The Shatak Pro-Flow Cap features a multi-panel construction with laser-cut ventilation for superior breathability. The moisture-wicking sweatband keeps you dry, while the adjustable strap ensures a perfect fit for any head size.',
-        image: 'https://images.unsplash.com/photo-1556822272-b41eeb89d9eb?w=800&q=80',
-        features: ['Laser-Cut Ventilation', 'Moisture-Wicking Sweatband', 'Adjustable Fit', 'Durable Fabric'],
-        specs: {
-            'Material': 'Performance Polyester Mesh',
-            'Fit': 'Adjustable One-Size',
-            'Tech': 'Aero-Vent'
-        }
-    },
+
     {
         id: 'jabraat-compression-tee',
         brand: 'Jabraat',
@@ -2071,5 +2055,165 @@ export const PRODUCTS: Product[] = [
             'Weight': '160 GSM',
             'Origin': 'Made in India'
         }
-    }
+    },
+    // New Caps Collection
+    // New Caps Collection - Color Specific
+    {
+        id: 'shatak-pro-cap-red',
+        brand: 'Shatak',
+        category: 'Caps',
+        sport: 'All',
+        productCode: '#CP-RED',
+        title: 'Shatak Pro Cap - Crimson Red',
+        description: 'Vibrant crimson red performance cap with moisture-wicking technology.',
+        longDescription: 'The Shatak Pro Cap in Crimson Red is a high-impact accessory for any athlete. Built with breathable performance polyester and a reinforced brim, it stays comfortable even during peak activity.',
+        image: '/caps/red-cap.png',
+        features: ['Breathable mesh', 'Adjustable slider', 'Reinforced brim'],
+        specs: { 'Color': 'Crimson Red', 'Material': 'Performance Poly' }
+    },
+    {
+        id: 'jabraat-pro-cap-blue',
+        brand: 'Jabraat',
+        category: 'Caps',
+        sport: 'All',
+        productCode: '#CP-BLUE',
+        title: 'Jabraat Pro Cap - Royal Blue',
+        description: 'Elite royal blue athletic cap designed for maximum focus.',
+        longDescription: 'The Jabraat Pro Cap in Royal Blue offers a professional look with top-tier athletic performance. Featuring a stay-dry inner headband and lightweight construction.',
+        image: '/caps/blue-cap.png',
+        features: ['Stay-dry headband', '6-panel construction', 'Curved visor'],
+        specs: { 'Color': 'Royal Blue', 'Material': 'Micro-Fiber Poly' }
+    },
+    {
+        id: 'sportx-stealth-cap-black',
+        brand: 'SportX',
+        category: 'Caps',
+        sport: 'All',
+        productCode: '#CP-BLACK',
+        title: 'SportX Stealth Cap - Carbon Black',
+        description: 'Matte carbon black cap with a sleek, aerodynamic profile.',
+        longDescription: 'The SportX Stealth Cap is for the athlete who demands a low-profile, high-performance aesthetic. Made with durable ripstop fabric and laser-fused seams.',
+        image: '/caps/black-cap.png',
+        features: ['Matte finish', 'Laser-fused seams', 'Reflective detail'],
+        specs: { 'Color': 'Carbon Black', 'Material': 'Durable Ripstop' }
+    },
+    {
+        id: 'shatak-pro-cap-white',
+        brand: 'Shatak',
+        category: 'Caps',
+        sport: 'All',
+        productCode: '#CP-WHITE',
+        title: 'Shatak Pro Cap - Arctic White',
+        description: 'Clean arctic white cap with superior heat-reflective cooling.',
+        longDescription: 'Ideal for outdoor play, the Shatak Arctic White cap reflects heat while the technical mesh crown allows for massive airflow to keep your head cool.',
+        image: '/caps/white-cap.png',
+        features: ['Heat-reflective', 'Max airflow mesh', 'Soft touch'],
+        specs: { 'Color': 'Arctic White', 'Material': 'Technical Mesh' }
+    },
+    {
+        id: 'jabraat-elite-cap-navy',
+        brand: 'Jabraat',
+        category: 'Caps',
+        sport: 'All',
+        productCode: '#CP-NAVY',
+        title: 'Jabraat Elite Cap - Midnight Navy',
+        description: 'Professional midnight navy cap with a premium structured fit.',
+        longDescription: 'The Jabraat Elite Cap in Midnight Navy is the standard for team coaches and staff. It maintains its shape and color through intense sun exposure and heavy use.',
+        image: '/caps/navy-cap.png',
+        features: ['UV resistance', 'Structured crown', 'Premium feel'],
+        specs: { 'Color': 'Midnight Navy', 'Material': 'Heavy-Duty Twill' }
+    },
+    {
+        id: 'sportx-aero-cap-grey',
+        brand: 'SportX',
+        category: 'Caps',
+        sport: 'All',
+        productCode: '#CP-GREY',
+        title: 'SportX Aero Cap - Heather Grey',
+        description: 'Modern heather grey melange cap with ultra-light flex-fit.',
+        longDescription: 'The SportX Aero Cap in Heather Grey combines lifestyle aesthetics with professional sports utility. The melange fabric is treated for quick-dry performance.',
+        image: '/caps/grey-cap.png',
+        features: ['Melange texture', 'Quick-dry treatment', 'Flex-fit band'],
+        specs: { 'Color': 'Heather Grey', 'Material': 'Melange Tech Fabric' }
+    },
+    {
+        id: 'jabraat-pro-cap-orange',
+        brand: 'Jabraat',
+        category: 'Caps',
+        sport: 'All',
+        productCode: '#CP-ORANGE',
+        title: 'Jabraat Pro Cap - Blaze Orange',
+        description: 'Vibrant blaze orange athletic cap for high visibility.',
+        longDescription: 'Stay visible and focused with the Blaze Orange Pro Cap. Engineered for high-intensity training with maximum breathability.',
+        image: '/caps/orange-cap.png',
+        features: ['High visibility', 'Breathable knit', 'Adjustable strap'],
+        specs: { 'Color': 'Blaze Orange', 'Material': 'Performance Poly' }
+    },
+    {
+        id: 'shatak-pro-cap-green',
+        brand: 'Shatak',
+        category: 'Caps',
+        sport: 'All',
+        productCode: '#CP-GREEN',
+        title: 'Shatak Pro Cap - Forest Green',
+        description: 'Professional forest green cap with a classic athletic look.',
+        longDescription: 'The Forest Green Pro Cap offers a deep, professional aesthetic suitable for both on-field play and casual wear.',
+        image: '/caps/green-cap.png',
+        features: ['Classic 6-panel', 'Reinforced seams', 'Stay-dry tech'],
+        specs: { 'Color': 'Forest Green', 'Material': 'Premium Twill' }
+    },
+    {
+        id: 'sportx-elite-cap-yellow',
+        brand: 'SportX',
+        category: 'Caps',
+        sport: 'All',
+        productCode: '#CP-YELLOW',
+        title: 'SportX Elite Cap - Electric Yellow',
+        description: 'Daring electric yellow cap for the modern athlete.',
+        longDescription: 'Stand out from the crowd with the Electric Yellow Elite Cap. Lightweight, moisture-wicking and ultra-durable.',
+        image: '/caps/yellow-cap.png',
+        features: ['Ultra-lightweight', 'Moisture-wicking', 'Modern fit'],
+        specs: { 'Color': 'Electric Yellow', 'Material': 'Technical Mesh' }
+    },
+    {
+        id: 'jabraat-elite-cap-maroon',
+        brand: 'Jabraat',
+        category: 'Caps',
+        sport: 'All',
+        productCode: '#CP-MAROON',
+        title: 'Jabraat Elite Cap - Deep Maroon',
+        description: 'Premium deep maroon cap with a professional structured fit.',
+        longDescription: 'The Deep Maroon Elite Cap provides a sophisticated team aesthetic. Built to last with high-density fabric.',
+        image: '/caps/maroon-cap.png',
+        features: ['Structured crown', 'Durable fabric', 'Adjustable buckle'],
+        specs: { 'Color': 'Deep Maroon', 'Material': 'High-Density Poly-Twill' }
+    },
+    {
+        id: 'shatak-pro-cap-purple',
+        brand: 'Shatak',
+        category: 'Caps',
+        sport: 'All',
+        productCode: '#CP-PURPLE',
+        title: 'Shatak Pro Cap - Royal Purple',
+        description: 'Deep royal purple athletic cap with a premium aesthetic.',
+        longDescription: 'The Shatak Royal Purple cap is designed for teams looking for a unique, standout identity. Features a soft-touch finish and excellent moisture management.',
+        image: '/caps/purple-cap.png',
+        features: ['Soft-touch finish', 'Moisture-wicking', 'Adjustable strap'],
+        specs: { 'Color': 'Royal Purple', 'Material': 'Technical Poly' }
+    },
+    {
+        id: 'sportx-aero-cap-teal',
+        brand: 'SportX',
+        category: 'Caps',
+        sport: 'All',
+        productCode: '#CP-TEAL',
+        title: 'SportX Aero Cap - Dynamic Teal',
+        description: 'Modern teal athletic cap with technical mesh ventilation.',
+        longDescription: 'The SportX Dynamic Teal cap uses advanced fabric tech to maximize airflow while providing a striking modern look.',
+        image: '/caps/teal-cap.png',
+        features: ['Technical mesh', 'Ultra-lightweight', 'Reflective branding'],
+        specs: { 'Color': 'Dynamic Teal', 'Material': 'Aero-Mesh Poly' }
+    },
+
 ];
+

@@ -6,16 +6,16 @@ import { Link } from 'react-router-dom';
 
 const AboutPage = () => {
     return (
-        <div className="bg-white pt-20">
+        <div className="bg-white">
             {/* Hero Section */}
-            <section className="relative h-[60vh] flex items-center justify-center overflow-hidden bg-slate-900">
+            <section className="relative h-[70vh] flex items-center justify-center overflow-hidden bg-slate-900 pt-20">
                 <div className="absolute inset-0 z-0">
                     <img
-                        src="https://images.unsplash.com/photo-1556740734-7f95626903fb?w=1600&q=80"
-                        alt="Manufacturing Excellence"
-                        className="w-full h-full object-cover opacity-30"
+                        src="/about-hero.png"
+                        alt="Force Sports Manufacturing"
+                        className="w-full h-full object-cover opacity-40"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-slate-900/80" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent" />
                 </div>
 
                 <div className="relative z-10 text-center px-6">
@@ -71,10 +71,9 @@ const AboutPage = () => {
                         viewport={{ once: true }}
                         className="relative"
                     >
-                        <div className="absolute -inset-4 bg-cyan-500/10 rounded-[2rem] blur-2xl" />
-                        <div className="relative bg-slate-900 rounded-[2rem] p-12 overflow-hidden">
-                            <h3 className="text-2xl font-black mb-8 text-white uppercase">Our Heritage</h3>
-                            <p className="text-slate-400 leading-relaxed mb-8">
+                        <div className="relative bg-slate-900 rounded-3xl p-12 overflow-hidden shadow-2xl">
+                            <h3 className="text-2xl font-black mb-8 text-white uppercase tracking-tight">Our Heritage</h3>
+                            <p className="text-slate-400 leading-relaxed mb-6">
                                 Founded in 2007 by Mr. Anand Sanghai, Force Sports began as a vision to bridge the gap between premium quality and accessible sportswear in India.
                             </p>
                             <p className="text-slate-400 leading-relaxed">
@@ -85,7 +84,7 @@ const AboutPage = () => {
                                     <Shield className="text-cyan-400" size={24} />
                                 </div>
                                 <div>
-                                    <span className="block text-white font-bold uppercase tracking-widest text-xs">Proprietor</span>
+                                    <span className="block text-white font-bold uppercase tracking-widest text-[10px]">Proprietor</span>
                                     <span className="text-slate-400 text-sm">{BRAND_DETAILS.proprietor}</span>
                                 </div>
                             </div>
@@ -95,7 +94,7 @@ const AboutPage = () => {
             </section>
 
             {/* Why Alpha Section */}
-            <section className="bg-slate-50 py-32">
+            <section className="bg-slate-50 py-24">
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="text-center mb-20">
                         <h2 className="text-4xl font-black uppercase tracking-tighter mb-4">What Sets Us Alpha?</h2>
@@ -183,57 +182,41 @@ const AboutPage = () => {
                             className="relative"
                         >
                             <img
-                                src="https://images.unsplash.com/photo-1558444479-c84824d4858e?w=800&q=80"
-                                alt="Production Line"
-                                className="rounded-[2.5rem] grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-700"
+                                src="/manufacturing-detail.png"
+                                alt="Production Detail"
+                                className="rounded-3xl shadow-2xl"
                             />
-                            <div className="absolute inset-0 border-2 border-cyan-500/30 rounded-[2.5rem] translate-x-4 translate-y-4 -z-10" />
                         </motion.div>
                     </div>
                 </div>
             </section>
 
-            {/* Product Ecosystem Preview */}
-            <section className="py-32">
-                <div className="max-w-7xl mx-auto px-6">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-                        <div>
-                            <h2 className="text-4xl font-black mb-8 uppercase tracking-tighter">Our Product Ecosystem</h2>
-                            <div className="space-y-6">
-                                <div className="p-6 bg-slate-50 rounded-2xl border-l-4 border-slate-900 hover:border-cyan-500 transition-all cursor-default group">
-                                    <h4 className="text-lg font-black mb-2 uppercase group-hover:text-cyan-600 transition-colors">Shatak</h4>
-                                    <p className="text-slate-500 text-sm">Premium activewear, Softy polos, and performance athletic apparel.</p>
-                                </div>
-                                <div className="p-6 bg-slate-50 rounded-2xl border-l-4 border-slate-900 hover:border-cyan-500 transition-all cursor-default group">
-                                    <h4 className="text-lg font-black mb-2 uppercase group-hover:text-cyan-600 transition-colors">Jabraat</h4>
-                                    <p className="text-slate-500 text-sm">Pro performance team kits and high-intensity, heavy-duty sporting gear.</p>
-                                </div>
-                                <div className="p-6 bg-slate-50 rounded-2xl border-l-4 border-slate-900 hover:border-cyan-500 transition-all cursor-default group">
-                                    <h4 className="text-lg font-black mb-2 uppercase group-hover:text-cyan-600 transition-colors">SportX</h4>
-                                    <p className="text-slate-500 text-sm">Ultralight training tees, compression wear, and everyday athletic essentials.</p>
-                                </div>
-                            </div>
+            <section className="py-24 bg-slate-50">
+                <div className="max-w-4xl mx-auto px-6 text-center">
+                    <h2 className="text-4xl font-black mb-16 uppercase tracking-tighter">Our Product Ecosystem</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div className="p-8 bg-white rounded-3xl shadow-sm border border-slate-100 hover:border-cyan-500 transition-all group">
+                            <h4 className="text-xl font-black mb-4 uppercase group-hover:text-cyan-600 transition-colors tracking-tight">Shatak</h4>
+                            <p className="text-slate-500 text-xs leading-relaxed font-bold uppercase tracking-widest opacity-60">Activewear & Polos</p>
                         </div>
-                        <div className="grid grid-cols-2 gap-4">
-                            <div className="space-y-4 pt-12">
-                                <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=400&q=80" alt="Apparel" className="rounded-2xl w-full aspect-[3/4] object-cover" />
-                                <img src="https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=400&q=80" alt="Apparel" className="rounded-2xl w-full aspect-square object-cover" />
-                            </div>
-                            <div className="space-y-4">
-                                <img src="https://images.unsplash.com/photo-1551958219-acbc608c6377?w=400&q=80" alt="Apparel" className="rounded-2xl w-full aspect-square object-cover" />
-                                <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=400&q=80" alt="Apparel" className="rounded-2xl w-full aspect-[3/4] object-cover" />
-                            </div>
+                        <div className="p-8 bg-white rounded-3xl shadow-sm border border-slate-100 hover:border-cyan-500 transition-all group">
+                            <h4 className="text-xl font-black mb-4 uppercase group-hover:text-cyan-600 transition-colors tracking-tight">Jabraat</h4>
+                            <p className="text-slate-500 text-xs leading-relaxed font-bold uppercase tracking-widest opacity-60">Pro Team Kits</p>
+                        </div>
+                        <div className="p-8 bg-white rounded-3xl shadow-sm border border-slate-100 hover:border-cyan-500 transition-all group">
+                            <h4 className="text-xl font-black mb-4 uppercase group-hover:text-cyan-600 transition-colors tracking-tight">SportX</h4>
+                            <p className="text-slate-500 text-xs leading-relaxed font-bold uppercase tracking-widest opacity-60">Training Essentials</p>
                         </div>
                     </div>
                 </div>
             </section>
 
             {/* Commitment CTA */}
-            <section className="bg-slate-900 py-32 relative overflow-hidden text-center">
+            <section className="bg-slate-900 pt-24 pb-16 relative overflow-hidden text-center">
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-500 via-white to-amber-500" />
                 <div className="relative z-10 max-w-3xl mx-auto px-6">
                     <h2 className="text-4xl font-black text-white mb-8 uppercase tracking-tighter">Our Commitment</h2>
-                    <p className="text-slate-400 text-xl leading-relaxed mb-12">
+                    <p className="text-slate-400 text-lg leading-relaxed mb-10">
                         At Force Sports & Wears India, we combine traditional craftsmanship with modern technology to deliver <span className="text-white font-bold">"The Force"</span> behind your performance. Every athlete deserves to feel like a pro.
                     </p>
                     <Link

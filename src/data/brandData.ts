@@ -21,12 +21,12 @@ export const BRAND_DETAILS = {
     contacts: {
         phone: "+91 98200 12345",
         alternatePhone: "+91 22 1234 5678",
-        email: "info@forcesportsindia.com",
-        inquiryEmail: "sales@forcesportsindia.com"
+        email: "info@forcesports.in",
+        inquiryEmail: "info@forcesports.in"
     },
     social: {
-        instagram: "https://instagram.com/forcesports",
-        facebook: "https://facebook.com/forcesports"
+        instagram: "https://www.instagram.com/forcesports_india?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        facebook: "https://www.facebook.com/ForceSportsandWearsIndia/"
     },
     manufacturing: {
         type: "Vertically Integrated powerhouse",

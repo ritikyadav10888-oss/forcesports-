@@ -213,7 +213,7 @@ const UniformsPage = () => {
                 <motion.h1
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter relative z-10"
+                    className="text-5xl md:text-6xl font-black text-white uppercase tracking-tighter relative z-10"
                 >
                     Professional <span className="text-cyan-500">Uniforms</span>
                 </motion.h1>
@@ -296,7 +296,7 @@ const UniformsPage = () => {
                                         initial={{ opacity: 0, scale: 0.9 }}
                                         animate={{ opacity: 1, scale: 1 }}
                                         exit={{ opacity: 0, scale: 0.9 }}
-                                        className="bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-slate-200 transition-all border border-slate-100 group flex flex-col h-full"
+                                        className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-slate-200 transition-all border border-slate-100 group flex flex-col h-full"
                                     >
                                         <div className="h-72 bg-slate-100 overflow-hidden relative">
                                             <img
@@ -319,7 +319,7 @@ const UniformsPage = () => {
                                             <div className="mt-auto">
                                                 <Link
                                                     to="/inquiry"
-                                                    className="w-full block py-4 bg-slate-50 text-slate-900 text-[10px] font-black uppercase tracking-widest rounded-2xl hover:bg-cyan-600 hover:text-white transition-all border border-slate-100 text-center"
+                                                    className="w-full block py-4 bg-slate-50 text-slate-900 text-xs font-bold uppercase tracking-widest rounded-xl hover:bg-cyan-600 hover:text-white transition-all border border-slate-100 text-center"
                                                 >
                                                     Inquire for Bulk
                                                 </Link>

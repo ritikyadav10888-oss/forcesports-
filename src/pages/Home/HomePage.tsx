@@ -51,7 +51,7 @@ const HomePage = () => {
     return (
         <div className="overflow-x-hidden">
             {/* Single High-Impact Hero Section */}
-            <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-900">
+            <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-900 pt-20">
                 {/* Background Video/Image */}
                 <div className="absolute inset-0 z-0">
                     <img
@@ -71,7 +71,7 @@ const HomePage = () => {
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
                     >
-                        <span className="inline-block py-1 px-3 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 font-bold tracking-[0.2em] uppercase text-xs md:text-sm mb-6 shadow-[0_0_15px_rgba(6,182,212,0.2)]">
+                        <span className="inline-block py-1 px-3 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 font-bold tracking-[0.2em] uppercase text-xs md:text-sm mb-6">
                             Fueling Champions Since 2007
                         </span>
                     </motion.div>
@@ -80,9 +80,9 @@ const HomePage = () => {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                        className="text-6xl md:text-8xl lg:text-[10rem] font-black text-white tracking-tighter mb-6 uppercase leading-[0.85] drop-shadow-2xl"
+                        className="text-6xl md:text-7xl lg:text-8xl font-black text-white tracking-tighter mb-6 uppercase leading-none"
                     >
-                        FORCE <br /> SPORTS
+                        FORCE SPORTS
                     </motion.h1>
 
                     <motion.p

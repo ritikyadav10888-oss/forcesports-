@@ -46,7 +46,7 @@ const ProductPage = () => {
                 <motion.h1
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter relative z-10"
+                    className="text-5xl md:text-6xl font-black text-white uppercase tracking-tighter relative z-10"
                 >
                     Gear Up <span className="text-cyan-500">Pro</span>
                 </motion.h1>
@@ -223,7 +223,7 @@ const ProductPage = () => {
                                         initial={{ opacity: 0, scale: 0.9 }}
                                         animate={{ opacity: 1, scale: 1 }}
                                         exit={{ opacity: 0, scale: 0.9 }}
-                                        className="bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-slate-200 transition-all border border-slate-100 group flex flex-col h-full"
+                                        className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-slate-200 transition-all border border-slate-100 group flex flex-col h-full"
                                     >
                                         <div className="h-72 bg-slate-100 overflow-hidden relative p-8">
                                             <img
@@ -267,13 +267,13 @@ const ProductPage = () => {
                                             <div className="grid grid-cols-2 gap-4">
                                                 <button
                                                     onClick={() => setCustomizingProduct(product)}
-                                                    className="py-4 bg-cyan-600 text-white text-[10px] font-black uppercase tracking-widest rounded-2xl hover:bg-slate-900 transition-all"
+                                                    className="py-4 bg-cyan-600 text-white text-xs font-bold uppercase tracking-widest rounded-xl hover:bg-slate-900 transition-all"
                                                 >
                                                     Customize
                                                 </button>
                                                 <Link
                                                     to={`/products/${product.id}`}
-                                                    className="py-4 bg-slate-50 text-slate-900 text-[10px] font-black uppercase tracking-widest rounded-2xl hover:bg-slate-200 transition-all border border-slate-100 text-center flex items-center justify-center"
+                                                    className="py-4 bg-slate-50 text-slate-900 text-xs font-bold uppercase tracking-widest rounded-xl hover:bg-slate-200 transition-all border border-slate-100 text-center flex items-center justify-center"
                                                 >
                                                     View
                                                 </Link>
