@@ -167,7 +167,7 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'shatak-pro-flow-cap',
+        id: 'pro-flow-cap',
         brand: 'Force',
         category: 'Caps',
         sport: 'Cricket',
@@ -181,6 +181,57 @@ export const PRODUCTS: Product[] = [
             'Material': 'Performance Polyester Mesh',
             'Fit': 'Adjustable One-Size',
             'Tech': 'Aero-Vent'
+        }
+    },
+    {
+        id: 'pickleball-performance-cap',
+        brand: 'Force',
+        category: 'Caps',
+        sport: 'Pickleball',
+        productCode: '#CP 801',
+        title: 'Pickleball Performance Cap',
+        description: 'Lightweight, ultra-breathable cap designed for the speed of Pickleball.',
+        longDescription: 'Engineered for the court, the Pickleball Performance Cap features advanced cooling technology and a non-glare undervisor to keep your focus on the ball. The quick-dry fabric ensures comfort during high-intensity rallies.',
+        image: '/caps/yellow-cap.png',
+        features: ['Non-Glare Undervisor', 'Cooling Tech', 'Quick-Dry Fabric', 'Featherlight'],
+        specs: {
+            'Material': '90% Poly, 10% Spandex',
+            'Fit': 'Athletic Low-Profile',
+            'Usage': 'Pickleball / Outdoor Sports'
+        }
+    },
+    {
+        id: 'tennis-court-pro-cap',
+        brand: 'Force',
+        category: 'Caps',
+        sport: 'Tennis',
+        productCode: '#CP 901',
+        title: 'Tennis Court Pro Cap',
+        description: 'Professional-grade tennis cap with superior moisture management.',
+        longDescription: 'The Tennis Court Pro Cap is built for champions. With a curved brim and structured front panels, it maintains its shape even after heavy use. The integrated sweatband pulls moisture away from the brow to keep your vision clear.',
+        image: '/caps/blue-cap.png',
+        features: ['Structured Profile', 'Moisture-Wicking Brow Band', 'Breathable Mesh Panels', 'UV Protection'],
+        specs: {
+            'Material': 'Performance Twill',
+            'Fit': 'Structured Classic',
+            'Protection': 'UPF 50+'
+        }
+    },
+    {
+        id: 'cricket-elite-white-cap',
+        brand: 'Force',
+        category: 'Caps',
+        sport: 'Cricket',
+        productCode: '#CP 702',
+        title: 'Cricket Elite White Cap',
+        description: 'Classic white cricket cap for professional matches and long days on the field.',
+        longDescription: 'The Cricket Elite White Cap combines traditional aesthetics with modern performance. Designed for day-long comfort under the sun, it features maximum UV protection and a wide brim to reduce glare.',
+        image: '/caps/white-cap.png',
+        features: ['Wide Glare-Reduction Brim', 'Max UV Protection', 'Traditional Match Design', 'Premium Breathable Poly'],
+        specs: {
+            'Material': 'High-Density Breathable Poly',
+            'Fit': 'Full Coverage',
+            'Usage': 'Test / Match Cricket'
         }
     },
     {
