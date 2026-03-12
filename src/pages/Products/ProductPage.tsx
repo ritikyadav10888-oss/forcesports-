@@ -4,25 +4,26 @@ import { PRODUCTS, Product } from '../../data/products';
 import { Link } from 'react-router-dom';
 import { Filter, X, Check, Shirt, Briefcase as Bag, Layers, Wind, Disc as Cap, Activity, Trophy } from 'lucide-react';
 
-const Brands = ['All', 'Shatak', 'Jabraat', 'SportX'] as const;
-const Categories = ['All', 'T-Shirts', 'Track Pants', 'Shorts', 'Jackets', 'Bags'] as const;
-const Sports = ['All', 'Badminton', 'Cricket', 'Football', 'Volleyball', 'Kabaddi', 'Activity'] as const;
-const UsageTypes = ['All', 'T20', 'Practice', 'Travel', 'Coaches', 'Officials'] as const;
+const Brands = Array.from(new Set(PRODUCTS.map(p => p.brand).filter(Boolean))) as string[];
+const Categories = ['T-Shirts', 'Track Pants', 'Shorts', 'Jackets', 'Bags', 'Caps'] as const;
+const Sports = ['Badminton', 'Cricket', 'Football', 'Volleyball', 'Kabaddi', 'Pickleball', 'Tennis'] as const;
+const UsageTypes = ['T20', 'Practice', 'Travel', 'Coaches', 'Officials'] as const;
 
 const ProductPage = () => {
-    const [selectedBrand, setSelectedBrand] = useState<typeof Brands[number]>('All');
-    const [selectedCategory, setSelectedCategory] = useState<typeof Categories[number]>('All');
-    const [selectedSport, setSelectedSport] = useState<typeof Sports[number]>('All');
-    const [selectedUsage, setSelectedUsage] = useState<typeof UsageTypes[number]>('All');
+    const [isMobileFiltersOpen, setIsMobileFiltersOpen] = useState(false);
+    const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+    const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
+    const [selectedSports, setSelectedSports] = useState<string[]>([]);
+    const [selectedUsages, setSelectedUsages] = useState<string[]>([]);
     const [customizingProduct, setCustomizingProduct] = useState<Product | null>(null);
     const [customization, setCustomization] = useState({ logo: '', size: 'Medium', placement: 'Front' });
 
     const filteredProducts = PRODUCTS.filter(p => {
-        const brandMatch = selectedBrand === 'All' || p.brand === selectedBrand;
-        const categoryMatch = selectedCategory === 'All' || p.category === selectedCategory;
-        const sportMatch = selectedSport === 'All' || p.sport === selectedSport;
-        const usageMatch = selectedUsage === 'All' || p.usageType === selectedUsage;
-        return brandMatch && categoryMatch && sportMatch && usageMatch;
+        const categoryMatch = selectedCategories.length === 0 || selectedCategories.includes(p.category);
+        const brandMatch = selectedBrands.length === 0 || (p.brand && selectedBrands.includes(p.brand));
+        const sportMatch = selectedSports.length === 0 || (p.sport && selectedSports.includes(p.sport));
+        const usageMatch = selectedUsages.length === 0 || (p.usageType && selectedUsages.includes(p.usageType));
+        return categoryMatch && brandMatch && sportMatch && usageMatch;
     });
 
     const handleCustomizationSubmit = () => {
@@ -58,80 +59,141 @@ const ProductPage = () => {
                 <div className="flex flex-col lg:flex-row gap-12">
                     {/* Left Sidebar - Product Categories */}
                     <aside className="w-full lg:w-72 flex-shrink-0">
-                        <div className="sticky top-32 space-y-8">
+                        <div className="lg:hidden mb-6 flex items-center justify-between bg-white p-4 rounded-2xl border border-slate-100 shadow-sm">
+                            <h3 className="text-[11px] font-black text-slate-900 uppercase tracking-widest flex items-center gap-2">
+                                <Filter size={16} className="text-cyan-600" /> Filter Products
+                            </h3>
+                            <button 
+                                onClick={() => setIsMobileFiltersOpen(!isMobileFiltersOpen)}
+                                className="px-4 py-2 bg-slate-100 text-slate-600 rounded-lg text-[9px] font-black uppercase tracking-widest"
+                            >
+                                {isMobileFiltersOpen ? 'Hide' : 'Show'}
+                            </button>
+                        </div>
+
+                        <div className={`sticky top-32 space-y-8 ${isMobileFiltersOpen ? 'block' : 'hidden lg:block'}`}>
                             <div>
                                 <h3 className="text-[11px] font-black text-slate-400 uppercase tracking-widest mb-6 flex items-center gap-2">
-                                    <Filter size={14} className="text-cyan-600" /> Categories
+                                    <Filter size={14} className="text-cyan-600" /> Filters
                                 </h3>
-                                <div className="space-y-2">
-                                    {Categories.map(cat => (
-                                        <div key={cat} className="space-y-2">
-                                            <button
-                                                onClick={() => {
-                                                    setSelectedCategory(cat);
-                                                    if (cat !== 'T-Shirts') {
-                                                        setSelectedUsage('All');
-                                                        setSelectedSport('All');
-                                                    }
-                                                }}
-                                                className={`w-full flex items-center justify-between px-6 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all ${selectedCategory === cat
-                                                    ? 'bg-slate-900 text-white shadow-xl shadow-slate-900/20'
-                                                    : 'bg-white text-slate-500 hover:text-slate-900 border border-slate-100 shadow-sm'
-                                                    }`}
-                                            >
-                                                {cat}
-                                                {selectedCategory === cat && <Check size={14} className="text-cyan-400" />}
-                                            </button>
 
-                                            {/* Step 1: Sport Selection Tree for T-Shirts */}
-                                            {cat === 'T-Shirts' && selectedCategory === 'T-Shirts' && (
-                                                <motion.div
-                                                    initial={{ opacity: 0, height: 0 }}
-                                                    animate={{ opacity: 1, height: 'auto' }}
-                                                    className="pl-6 space-y-4 mt-2"
-                                                >
-                                                    {Sports.filter(s => s !== 'All').map(sport => (
-                                                        <div key={sport} className="space-y-1">
-                                                            <button
-                                                                onClick={() => {
-                                                                    setSelectedSport(sport);
-                                                                    setSelectedUsage('All');
-                                                                }}
-                                                                className={`w-full flex items-center gap-2 text-left px-4 py-2 rounded-xl text-[9px] font-black uppercase tracking-widest transition-all ${selectedSport === sport
-                                                                    ? 'text-cyan-600 bg-cyan-50 border-l-2 border-cyan-600'
-                                                                    : 'text-slate-400 hover:text-slate-600'
-                                                                    }`}
-                                                            >
-                                                                {selectedSport === sport ? '●' : '○'} {sport}
-                                                            </button>
+                                {/* Categories Filter */}
+                                <div className="mb-8">
+                                    <h4 className="text-[10px] font-black text-slate-800 uppercase tracking-widest mb-4">Categories</h4>
+                                    <div className="space-y-3">
+                                        {Categories.map(cat => (
+                                            <label key={cat} className="flex items-center gap-3 cursor-pointer group">
+                                                <input 
+                                                    type="checkbox" 
+                                                    className="hidden" 
+                                                    checked={selectedCategories.includes(cat)}
+                                                    onChange={() => {
+                                                        setSelectedCategories(prev => 
+                                                            prev.includes(cat) ? prev.filter(c => c !== cat) : [...prev, cat]
+                                                        );
+                                                    }}
+                                                />
+                                                <div className={`w-4 h-4 rounded border flex items-center justify-center transition-all ${selectedCategories.includes(cat) ? 'bg-cyan-600 border-cyan-600' : 'bg-white border-slate-300 group-hover:border-cyan-400'}`}>
+                                                    {selectedCategories.includes(cat) && <Check size={10} className="text-white" />}
+                                                </div>
+                                                <span className={`text-[10px] uppercase font-black tracking-widest transition-colors ${selectedCategories.includes(cat) ? 'text-slate-900' : 'text-slate-500 group-hover:text-slate-800'}`}>
+                                                    {cat}
+                                                </span>
+                                            </label>
+                                        ))}
+                                    </div>
+                                </div>
 
-                                                            {/* Step 2: Activity Selection (Artifacts) for Selected Sport */}
-                                                            {selectedSport === sport && (
-                                                                <motion.div
-                                                                    initial={{ opacity: 0, x: -10 }}
-                                                                    animate={{ opacity: 1, x: 0 }}
-                                                                    className="pl-4 space-y-1 border-l border-slate-100 ml-2"
-                                                                >
-                                                                    {UsageTypes.map(usage => (
-                                                                        <button
-                                                                            key={usage}
-                                                                            onClick={() => setSelectedUsage(usage)}
-                                                                            className={`w-full text-left px-3 py-2 rounded-lg text-[8px] font-black uppercase tracking-widest transition-all ${selectedUsage === usage
-                                                                                ? 'text-slate-900 bg-slate-100'
-                                                                                : 'text-slate-400 hover:text-slate-500'
-                                                                                }`}
-                                                                        >
-                                                                            ▸ {usage}
-                                                                        </button>
-                                                                    ))}
-                                                                </motion.div>
-                                                            )}
-                                                        </div>
-                                                    ))}
-                                                </motion.div>
-                                            )}
-                                        </div>
-                                    ))}
+                                {/* Brands Filter */}
+                                <div className="mb-8">
+                                    <h4 className="text-[10px] font-black text-slate-800 uppercase tracking-widest mb-4">Brands</h4>
+                                    <div className="space-y-3">
+                                        {Brands.map(brand => (
+                                            <label key={brand} className="flex items-center gap-3 cursor-pointer group">
+                                                <input 
+                                                    type="checkbox" 
+                                                    className="hidden" 
+                                                    checked={selectedBrands.includes(brand)}
+                                                    onChange={() => {
+                                                        setSelectedBrands(prev => 
+                                                            prev.includes(brand) ? prev.filter(b => b !== brand) : [...prev, brand]
+                                                        );
+                                                    }}
+                                                />
+                                                <div className={`w-4 h-4 rounded border flex items-center justify-center transition-all ${selectedBrands.includes(brand) ? 'bg-cyan-600 border-cyan-600' : 'bg-white border-slate-300 group-hover:border-cyan-400'}`}>
+                                                    {selectedBrands.includes(brand) && <Check size={10} className="text-white" />}
+                                                </div>
+                                                <span className={`text-[10px] uppercase font-black tracking-widest transition-colors ${selectedBrands.includes(brand) ? 'text-slate-900' : 'text-slate-500 group-hover:text-slate-800'}`}>
+                                                    {brand}
+                                                </span>
+                                            </label>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                {/* Sports Filter (with Subcategories) */}
+                                <div className="mb-8">
+                                    <h4 className="text-[10px] font-black text-slate-800 uppercase tracking-widest mb-4">Sports</h4>
+                                    <div className="space-y-4">
+                                        {Sports.map(sport => (
+                                            <div key={sport}>
+                                                <label className="flex items-center gap-3 cursor-pointer group">
+                                                    <input 
+                                                        type="checkbox" 
+                                                        className="hidden" 
+                                                        checked={selectedSports.includes(sport)}
+                                                        onChange={() => {
+                                                            setSelectedSports(prev => 
+                                                                prev.includes(sport) ? prev.filter(s => s !== sport) : [...prev, sport]
+                                                            );
+                                                        }}
+                                                    />
+                                                    <div className={`w-4 h-4 rounded border flex items-center justify-center transition-all ${selectedSports.includes(sport) ? 'bg-cyan-600 border-cyan-600' : 'bg-white border-slate-300 group-hover:border-cyan-400'}`}>
+                                                        {selectedSports.includes(sport) && <Check size={10} className="text-white" />}
+                                                    </div>
+                                                    <span className={`text-[10px] uppercase font-black tracking-widest transition-colors ${selectedSports.includes(sport) ? 'text-slate-900' : 'text-slate-500 group-hover:text-slate-800'}`}>
+                                                        {sport}
+                                                    </span>
+                                                </label>
+                                                
+                                                {/* Subcategories visible when Sport is selected */}
+                                                <AnimatePresence>
+                                                    {selectedSports.includes(sport) && (
+                                                        <motion.div 
+                                                            initial={{ opacity: 0, height: 0 }}
+                                                            animate={{ opacity: 1, height: 'auto' }}
+                                                            exit={{ opacity: 0, height: 0 }}
+                                                            className="mt-3 ml-7 space-y-3 border-l-2 border-slate-100 pl-4 overflow-hidden"
+                                                        >
+                                                            {UsageTypes.filter(usage => {
+                                                                if (usage === 'T20' && sport !== 'Cricket') return false;
+                                                                return true;
+                                                            }).map(usage => (
+                                                                <label key={`${sport}-${usage}`} className="flex items-center gap-2 cursor-pointer group">
+                                                                    <input 
+                                                                        type="checkbox" 
+                                                                        className="hidden" 
+                                                                        checked={selectedUsages.includes(usage)}
+                                                                        onChange={() => {
+                                                                            setSelectedUsages(prev => 
+                                                                                prev.includes(usage) ? prev.filter(u => u !== usage) : [...prev, usage]
+                                                                            );
+                                                                        }}
+                                                                    />
+                                                                    <div className={`w-3 h-3 rounded-[3px] border flex items-center justify-center transition-all ${selectedUsages.includes(usage) ? 'bg-cyan-600 border-cyan-600' : 'bg-white border-slate-300 group-hover:border-cyan-400'}`}>
+                                                                        {selectedUsages.includes(usage) && <Check size={8} className="text-white" />}
+                                                                    </div>
+                                                                    <span className={`text-[9px] uppercase font-black tracking-widest transition-colors ${selectedUsages.includes(usage) ? 'text-slate-900' : 'text-slate-400 group-hover:text-slate-600'}`}>
+                                                                        {usage}
+                                                                    </span>
+                                                                </label>
+                                                            ))}
+                                                        </motion.div>
+                                                    )}
+                                                </AnimatePresence>
+                                            </div>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
 
@@ -153,31 +215,40 @@ const ProductPage = () => {
 
 
                         {/* Grid */}
-                        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-                            <AnimatePresence mode='popLayout'>
+                        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+                            <AnimatePresence>
                                 {filteredProducts.map(product => (
                                     <motion.div
                                         key={product.id}
-                                        layout
                                         initial={{ opacity: 0, scale: 0.9 }}
                                         animate={{ opacity: 1, scale: 1 }}
                                         exit={{ opacity: 0, scale: 0.9 }}
                                         className="bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-slate-200 transition-all border border-slate-100 group flex flex-col h-full"
                                     >
-                                        <div className="h-72 bg-slate-100 overflow-hidden relative">
+                                        <div className="h-72 bg-slate-100 overflow-hidden relative p-8">
                                             <img
                                                 src={product.image}
                                                 alt={product.title}
-                                                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                                className={`w-full h-full object-contain transition-all duration-700 
+                                                    ${product.imageBack ? 'group-hover:opacity-0 group-hover:scale-110' : 'group-hover:scale-110'}`}
                                             />
+                                            {product.imageBack && (
+                                                <img 
+                                                    src={product.imageBack} 
+                                                    alt={`${product.title} - Back View`}
+                                                    className="absolute inset-0 w-full h-full object-contain p-8 opacity-0 group-hover:opacity-100 transition-all duration-700 scale-110 group-hover:scale-100"
+                                                />
+                                            )}
                                             <div className="absolute top-6 left-6 flex flex-col gap-2">
                                                 <div className="bg-slate-900/90 backdrop-blur px-3 py-1 rounded-full text-[9px] font-black text-white uppercase tracking-widest">
                                                     {product.brand}
                                                 </div>
                                                 <div className="flex gap-2">
-                                                    <div className="bg-cyan-500 text-white px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest shadow-xl shadow-cyan-900/20">
-                                                        {product.sport || 'General'}
-                                                    </div>
+                                                    {product.sport && !['Other', 'Activity', 'General', 'All'].includes(product.sport) && (
+                                                        <div className="bg-cyan-500 text-white px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest shadow-xl shadow-cyan-900/20">
+                                                            {product.sport}
+                                                        </div>
+                                                    )}
                                                     {product.usageType && product.usageType !== 'General' && (
                                                         <div className="bg-white/90 backdrop-blur text-slate-900 px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest shadow-sm">
                                                             {product.usageType}
@@ -211,7 +282,7 @@ const ProductPage = () => {
                                     </motion.div>
                                 ))}
                             </AnimatePresence>
-                        </motion.div>
+                        </div>
 
                         {filteredProducts.length === 0 && (
                             <div className="text-center py-32 bg-white rounded-[3rem] border border-dashed border-slate-200">
@@ -221,13 +292,7 @@ const ProductPage = () => {
                                         animate={{ opacity: 1, scale: 1 }}
                                     >
                                         <Activity size={48} className="mx-auto text-slate-200 mb-6" />
-                                        <p className="text-slate-400 font-black uppercase tracking-widest text-xs mb-6">No matches found in this configuration</p>
-                                        <button
-                                            onClick={() => { setSelectedBrand('All'); setSelectedCategory('All'); setSelectedSport('All'); setSelectedUsage('All'); }}
-                                            className="px-8 py-3 bg-slate-900 text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-cyan-600 transition-all"
-                                        >
-                                            Reset Filters
-                                        </button>
+                                        <p className="text-slate-400 font-black uppercase tracking-widest text-xs">No matches found in this configuration</p>
                                     </motion.div>
                                 </AnimatePresence>
                             </div>
@@ -261,9 +326,13 @@ const ProductPage = () => {
                                 <X size={20} />
                             </button>
 
-                            <div className="w-full md:w-1/2 bg-slate-100 flex items-center justify-center p-12">
+                             <div className="w-full md:w-1/2 bg-slate-50 flex items-center justify-center p-12">
                                 <div className="relative group">
-                                    <img src={customizingProduct.image} alt={customizingProduct.title} className="w-full max-w-xs object-cover rounded-3xl" />
+                                    <img 
+                                        src={customization.placement === 'Back' && customizingProduct.imageBack ? customizingProduct.imageBack : customizingProduct.image} 
+                                        alt={customizingProduct.title} 
+                                        className="w-full max-w-xs object-contain rounded-3xl" 
+                                    />
                                     {/* Placeholder for Logo placement debug */}
                                     <div className={`absolute border-2 border-cyan-500 border-dashed rounded-lg flex items-center justify-center bg-cyan-500/10 transition-all
                                         ${customization.placement === 'Front' ? 'top-1/4 left-1/4 w-16 h-16' :

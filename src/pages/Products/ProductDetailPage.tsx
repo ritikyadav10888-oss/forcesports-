@@ -25,7 +25,10 @@ const ProductDetailPage = () => {
     }
 
     const icons = [Shield, Zap, Target, Award];
-    const images = product.gallery ?? [product.image];
+    const images = [
+        ...(product.gallery ?? [product.image]),
+        ...(product.imageBack ? [product.imageBack] : [])
+    ];
     const [activeImage, setActiveImage] = useState(images[0]);
 
     useEffect(() => {
@@ -53,8 +56,8 @@ const ProductDetailPage = () => {
                         animate={{ opacity: 1, x: 0 }}
                         className="sticky top-32"
                     >
-                        <div className="relative rounded-[2.5rem] overflow-hidden bg-slate-100 aspect-square shadow-2xl">
-                            <img src={activeImage} alt={product.title} className="w-full h-full object-cover" />
+                        <div className="relative rounded-[2.5rem] overflow-hidden bg-white aspect-square shadow-2xl p-12 border border-slate-100">
+                             <img src={activeImage} alt={product.title} className="w-full h-full object-contain" />
                         </div>
                         {images.length > 1 && (
                             <div className="flex gap-3 mt-4">
@@ -62,10 +65,10 @@ const ProductDetailPage = () => {
                                     <button
                                         key={idx}
                                         onClick={() => setActiveImage(img)}
-                                        className={`flex-1 rounded-2xl overflow-hidden aspect-square border-2 transition-all ${activeImage === img ? 'border-cyan-500 shadow-lg shadow-cyan-100' : 'border-transparent opacity-60 hover:opacity-100'
+                                        className={`flex-1 rounded-2xl overflow-hidden aspect-square border-2 transition-all p-2 bg-slate-50 ${activeImage === img ? 'border-cyan-500 shadow-lg shadow-cyan-100' : 'border-transparent opacity-60 hover:opacity-100'
                                             }`}
                                     >
-                                        <img src={img} alt={`View ${idx + 1}`} className="w-full h-full object-cover" />
+                                        <img src={img} alt={`View ${idx + 1}`} className="w-full h-full object-contain" />
                                     </button>
                                 ))}
                             </div>
@@ -108,19 +111,7 @@ const ProductDetailPage = () => {
                             ))}
                         </div>
 
-                        {product.availableColors && (
-                            <div className="mb-10">
-                                <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-4 block">Available Options</span>
-                                <div className="flex flex-wrap gap-3">
-                                    {product.availableColors.map((color, idx) => (
-                                        <div key={idx} className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-xl border border-slate-100">
-                                            <div className="w-3 h-3 rounded-full bg-slate-300" />
-                                            <span className="text-[10px] font-bold text-slate-600 uppercase tracking-tight">{color.code}-{color.name}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        )}
+
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <button

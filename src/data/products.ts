@@ -3,34 +3,35 @@ export interface Product {
     title: string;
     brand?: 'Shatak' | 'Jabraat' | 'SportX';
     category: 'T-Shirts' | 'Track Pants' | 'Shorts' | 'Jackets' | 'Bags' | 'Caps';
-    sport?: 'Badminton' | 'Cricket' | 'Football' | 'Volleyball' | 'Kabaddi' | 'Activity' | 'All';
+    sport?: 'Badminton' | 'Cricket' | 'Football' | 'Volleyball' | 'Kabaddi' | 'Pickleball' | 'Tennis' | 'Other' | 'All';
     usageType?: 'T20' | 'Practice' | 'Travel' | 'Coaches' | 'Officials' | 'General';
     productCode?: string;
     description: string;
     longDescription: string;
     image: string;
+    imageBack?: string;
     gallery?: string[];
     features: string[];
     specs: Record<string, string>;
     customizationOptions?: string[];
-    availableColors?: { name: string; hex?: string; code: string }[];
+
     sizeCharts?: Record<string, { label: string; values: Record<string, string>[] }>;
 }
 
 export const PRODUCTS: Product[] = [
     // Shatak Brands
     {
-        id: 'shatak-tn-5111',
-        brand: 'Shatak',
+        id: 'jabraat-tn-5111',
+        brand: 'Jabraat',
         category: 'T-Shirts',
         sport: 'Cricket',
         usageType: 'T20',
         productCode: '#TN 5111',
-        title: 'Shatak T20 Pro Polo',
+        title: 'Jabraat T20 Pro Polo',
         description: 'Elite "Softy" fabric polo available in 8 vibrant dual-tone colors.',
-        longDescription: 'The Shatak #TN 5111 is a pinnacle of activewear engineering. Featuring our proprietary "Softy" fabric type, this polo is crafted with an interlock knit that provides unparalleled comfort while allowing completely free movement. Integrated moisture-wicking technology ensures you stay dry and sweat-free even during the most intense athletic sessions.',
-        image: '/shatak-5111-front.jpg',
-        gallery: ['/shatak-5111-front.jpg', '/shatak-5111-back.jpg'],
+        longDescription: 'The Jabraat #TN 5111 is a pinnacle of activewear engineering. Featuring our proprietary "Softy" fabric type, this polo is crafted with an interlock knit that provides unparalleled comfort while allowing completely free movement. Integrated moisture-wicking technology ensures you stay dry and sweat-free even during the most intense athletic sessions.',
+        image: '/T-shirts/11.png',
+        imageBack: '/T-shirts/11 back.png',
         features: [
             'Proprietary "Softy" Fabric Type',
             'Interlock Knit for Free Movement',
@@ -46,16 +47,7 @@ export const PRODUCTS: Product[] = [
             'Usage': 'Multipurpose Athletic / Lifestyle',
             'Origin': 'Proudly Made in India'
         },
-        availableColors: [
-            { name: 'Red', code: 'A' },
-            { name: 'Turquoise', code: 'B' },
-            { name: 'Gold Yellow', code: 'C' },
-            { name: 'Sky Blue', code: 'D' },
-            { name: 'Lemon', code: 'E' },
-            { name: 'Parrot', code: 'F' },
-            { name: 'India', code: 'G' },
-            { name: 'Orange', code: 'H' }
-        ],
+        
         sizeCharts: {
             tshirt: {
                 label: 'T-Shirt Sizes (In Inches)',
@@ -79,16 +71,17 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'shatak-tn-5112',
-        brand: 'Shatak',
+        id: 'jabraat-tn-5112',
+        brand: 'Jabraat',
         category: 'T-Shirts',
         sport: 'Cricket',
         usageType: 'Practice',
         productCode: '#TN 5112',
-        title: 'Shatak Training Practice Tee',
+        title: 'Jabraat Training Practice Tee',
         description: 'Dynamic "Speed-Stream" design in premium Softy fabric.',
-        longDescription: 'The Shatak #TN 5112 "Speed-Stream" series combines aggressive aesthetic lines with our signature performance. The specialized gradient-stripe pattern is sublimated using high-definition tech that won\'t crack or fade. Like the 5111, it utilizes our interlock "Softy" fabric for maximum comfort and moisture management.',
-        image: 'https://images.unsplash.com/photo-1574015974293-817f0efebb1a?w=800&q=80', // Placeholder
+        longDescription: 'The Jabraat #TN 5112 "Speed-Stream" series combines aggressive aesthetic lines with our signature performance. The specialized gradient-stripe pattern is sublimated using high-definition tech that won\'t crack or fade. Like the 5111, it utilizes our interlock "Softy" fabric for maximum comfort and moisture management.',
+        image: '/T-shirts/12.png',
+        imageBack: '/T-shirts/12 backed.png', // Placeholder
         features: [
             'High-Definition "Speed-Stream" Sublimation',
             'Proprietary "Softy" Fabric Type',
@@ -104,16 +97,7 @@ export const PRODUCTS: Product[] = [
             'Design': 'Linear Streamline Gradient',
             'Origin': 'Proudly Made in India'
         },
-        availableColors: [
-            { name: 'Red', code: 'A' },
-            { name: 'Turquoise', code: 'B' },
-            { name: 'Gold Yellow', code: 'C' },
-            { name: 'Sky Blue', code: 'D' },
-            { name: 'Lemon', code: 'E' },
-            { name: 'Parrot', code: 'F' },
-            { name: 'India', code: 'G' },
-            { name: 'Orange', code: 'H' }
-        ],
+        
         sizeCharts: {
             tshirt: {
                 label: 'T-Shirt Sizes (In Inches)',
@@ -145,7 +129,8 @@ export const PRODUCTS: Product[] = [
         title: 'Jabraat Pro Performance Kit',
         description: 'Elite performance gear tailored for high intensity sports.',
         longDescription: 'The Jabraat Pro Performance Kit is designed to withstand the toughest conditions. Using reinforced stitching and advanced hyper-wicking materials, this kit provides durability without compromising on flexibility or breathability.',
-        image: 'https://images.unsplash.com/photo-1544601284-cd9744c68270?w=800&q=80',
+        image: '/T-shirts/13.png',
+        imageBack: '/T-shirts/13 backed.png',
         features: [
             'Hyper-Wicking Technology',
             'Reinforced Stress Points',
@@ -159,15 +144,16 @@ export const PRODUCTS: Product[] = [
         }
     },
     {
-        id: 'sportx-aero-tee',
-        brand: 'SportX',
+        id: 'jabraat-aero-tee',
+        brand: 'Jabraat',
         category: 'T-Shirts',
-        sport: 'Activity',
+        sport: 'Other',
         productCode: '#SX 500',
-        title: 'SportX Aero Training Tee',
+        title: 'Jabraat Aero Training Tee',
         description: 'Ultra-lightweight aerodynamic training apparel.',
-        longDescription: 'Engineered for speed and agility, the SportX Aero Training Tee is practically weightless. With strategic laser-cut ventilation zones, it offers supreme airflow for endurance athletes who demand the very best.',
-        image: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=800&q=80',
+        longDescription: 'Engineered for speed and agility, the Jabraat Aero Training Tee is practically weightless. With strategic laser-cut ventilation zones, it offers supreme airflow for endurance athletes who demand the very best.',
+        image: '/T-shirts/1.png',
+        imageBack: '/T-shirts/2.png',
         features: [
             'Ultra-Lightweight Material',
             'Laser-Cut Ventilation',
@@ -189,7 +175,7 @@ export const PRODUCTS: Product[] = [
         title: 'Shatak Pro-Flow Cap',
         description: 'Advanced moisture-wicking sports cap for maximum performance.',
         longDescription: 'The Shatak Pro-Flow Cap features a multi-panel construction with laser-cut ventilation for superior breathability. The moisture-wicking sweatband keeps you dry, while the adjustable strap ensures a perfect fit for any head size.',
-        image: '/cap-pro-flow.png',
+        image: 'https://images.unsplash.com/photo-1556822272-b41eeb89d9eb?w=800&q=80',
         features: ['Laser-Cut Ventilation', 'Moisture-Wicking Sweatband', 'Adjustable Fit', 'Durable Fabric'],
         specs: {
             'Material': 'Performance Polyester Mesh',
@@ -206,7 +192,8 @@ export const PRODUCTS: Product[] = [
         title: 'Jabraat Elite Compression Tee',
         description: 'Second-skin compression for muscle support and improved recovery.',
         longDescription: 'The Jabraat Elite Compression Tee provides targeted muscle support, reducing fatigue and accelerating recovery. The 4-way stretch fabric allows for unrestricted movement, while flat-lock seams prevent chafing.',
-        image: '/tshirt-compression.png',
+        image: '/T-shirts/3.png',
+        imageBack: '/T-shirts/4.png',
         features: ['4-Way Stretch', 'Flat-lock Seams', 'Muscle Support', 'Breathable Panels'],
         specs: {
             'Material': '85% Nylon, 15% Spandex',
@@ -218,12 +205,12 @@ export const PRODUCTS: Product[] = [
         id: 'sportx-stealth-joggers',
         brand: 'SportX',
         category: 'Track Pants',
-        sport: 'Activity',
+        sport: 'Other',
         productCode: '#SX 808',
         title: 'SportX Stealth Tech Joggers',
         description: 'Tapered athletic joggers designed for style and mobility.',
         longDescription: 'The SportX Stealth Tech Joggers combine a modern tapered fit with technical fabrics. Featuring zippered pockets for secure storage and an elasticated waistband with drawcord for a custom fit.',
-        image: '/trackpant-stealth.png',
+        image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&q=80',
         features: ['Zippered Pockets', 'Tapered Fit', 'Tech-Fleece Fabric', 'Drawcord Waist'],
         specs: {
             'Material': 'Polyester/Cotton Blend',
@@ -240,7 +227,7 @@ export const PRODUCTS: Product[] = [
         title: 'Shatak Flex Training Shorts',
         description: 'Lightweight and durable training shorts for all-day comfort.',
         longDescription: 'Engineered for variety, the Shatak Flex Training Shorts are perfect for the gym, turf, or casual wear. The reinforced stitching ensures longevity, while the side slits allow for maximum range of motion.',
-        image: '/short-flex.png',
+        image: 'https://images.unsplash.com/photo-1542280756-74b2f55e73ef?w=800&q=80',
         features: ['Lightweight Fabric', 'Side Slits', 'Reinforced Stitching', 'Elastic Waist'],
         specs: {
             'Material': '100% Performance Poly',
@@ -252,12 +239,12 @@ export const PRODUCTS: Product[] = [
         id: 'jabraat-element-jacket',
         brand: 'Jabraat',
         category: 'Jackets',
-        sport: 'Activity',
+        sport: 'Other',
         productCode: '#JK 909',
         title: 'Jabraat Element Windbreaker',
         description: 'Water-resistant and windproof jacket for outdoor athletes.',
         longDescription: 'The Jabraat Element Windbreaker is your go-to for unpredictable weather. It features a lightweight, water-resistant shell and a mesh lining for breathability. The packable design makes it easy to carry anywhere.',
-        image: '/jacket-element.png',
+        image: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=800&q=80',
         features: ['Water-Resistant', 'Windproof', 'Packable Design', 'Reflective Accents'],
         specs: {
             'Material': 'Micro-Ripstop Poly',
@@ -269,12 +256,12 @@ export const PRODUCTS: Product[] = [
         id: 'sportx-apex-duffel',
         brand: 'SportX',
         category: 'Bags',
-        sport: 'Activity',
+        sport: 'Other',
         productCode: '#BG 404',
         title: 'SportX Apex Pro Duffel',
         description: 'Premium sports bag with dedicated compartments for any gear.',
         longDescription: 'The SportX Apex Pro Duffel is designed for the serious athlete. It features a ventilated shoe compartment, padded shoulder strap, and multiple internal pockets for organized storage of your essentials.',
-        image: '/bag-apex.png',
+        image: 'https://images.unsplash.com/photo-1553481187-be93c21490a9?w=800&q=80',
         features: ['Ventilated Shoe Pocket', 'Padded Straps', 'Heavy-Duty Fabric', '50L Capacity'],
         specs: {
             'Material': 'Matt Finish 900D Poly',
@@ -284,29 +271,31 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 'force-travel-polo',
-        brand: 'SportX',
+        brand: 'Jabraat',
         category: 'T-Shirts',
-        sport: 'Activity',
+        sport: 'Other',
         usageType: 'Travel',
         productCode: '#TR 900',
         title: 'Elite Travel Team Polo',
         description: 'Premium travel apparel for teams and staff.',
         longDescription: 'The Elite Travel Team Polo is designed for comfort during transit. Made with breathable, wrinkle-resistant fabric to keep you looking sharp from the airport to the hotel.',
-        image: 'https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=800&q=80',
+        image: '/T-shirts/5.png',
+        imageBack: '/T-shirts/6.png',
         features: ['Wrinkle-Resistant', 'Soft Touch Fabric', 'Breathable', 'Staff Standard Fit'],
         specs: { 'Material': 'Cotton/Poly Blend', 'Usage': 'Travel / Casual' }
     },
     {
         id: 'force-coach-tee',
-        brand: 'Shatak',
+        brand: 'Jabraat',
         category: 'T-Shirts',
-        sport: 'Activity',
+        sport: 'Other',
         usageType: 'Coaches',
         productCode: '#CH 101',
-        title: 'Shatak Coach Performance Tee',
+        title: 'Jabraat Coach Performance Tee',
         description: 'Dedicated apparel for coaching staff.',
         longDescription: 'High-visibility and professional design for coaches on the field. Features extra ventilation and a professional aesthetic.',
-        image: 'https://images.unsplash.com/photo-1519315901367-f34ff9154487?w=800&q=80',
+        image: '/T-shirts/22.png',
+        imageBack: '/T-shirts/23.png',
         features: ['Extra Ventilation', 'Professional Look', 'Anti-Odor', 'UV Protection'],
         specs: { 'Material': '100% Performance Poly', 'Usage': 'Coaching' }
     },
@@ -314,56 +303,60 @@ export const PRODUCTS: Product[] = [
         id: 'force-official-shirt',
         brand: 'Jabraat',
         category: 'T-Shirts',
-        sport: 'Activity',
+        sport: 'Other',
         usageType: 'Officials',
         productCode: '#OF 202',
         title: 'Jabraat Official Referee Shirt',
         description: 'Pro-grade officials and referee apparel.',
         longDescription: 'Designed for officials who need to stay cool and focused. Features specific pocket placements and a streamlined athletic cut.',
-        image: 'https://images.unsplash.com/photo-1493723843671-1d655e7d7722?w=800&q=80',
+        image: '/T-shirts/24.png',
+        imageBack: '/T-shirts/25.png',
         features: ['Dual Pocket Setup', 'Quick Dry', 'Streamlined Fit', 'Durable Stitching'],
         specs: { 'Material': 'Structured Micro-Mesh', 'Usage': 'Officiating' }
     },
     {
         id: 'force-activity-t20',
-        brand: 'SportX',
+        brand: 'Jabraat',
         category: 'T-Shirts',
-        sport: 'Activity',
+        sport: 'Other',
         usageType: 'T20',
         productCode: '#ACT-T20',
-        title: 'SportX Activity T20 Jersey',
+        title: 'Jabraat Activity T20 Jersey',
         description: 'Lightweight jersey for fast-paced T20 activity.',
         longDescription: 'Engineered for high-intensity T20 sessions, this jersey offers maximum breathability and a modern athletic fit.',
-        image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&q=80',
+        image: '/T-shirts/26.png',
+        imageBack: '/T-shirts/27.png',
         features: ['Breathable Mesh', 'Quick-Dry', 'Athletic Fit'],
         specs: { 'Material': 'Aero-Poly', 'Usage': 'T20 Practice' }
     },
     {
         id: 'force-activity-practice',
-        brand: 'Shatak',
+        brand: 'Jabraat',
         category: 'T-Shirts',
-        sport: 'Activity',
+        sport: 'Other',
         usageType: 'Practice',
         productCode: '#ACT-PRAC',
-        title: 'Shatak Everyday Practice Tee',
+        title: 'Jabraat Everyday Practice Tee',
         description: 'Durable training tee for daily practice sessions.',
-        longDescription: 'The Shatak Everyday Practice Tee is built to withstand repeated washes and intense training while maintaining its shape and comfort.',
-        image: 'https://images.unsplash.com/photo-1517438984742-1262db08379e?w=800&q=80',
+        longDescription: 'The Jabraat Everyday Practice Tee is built to withstand repeated washes and intense training while maintaining its shape and comfort.',
+        image: '/T-shirts/28.png',
+        imageBack: '/T-shirts/29.png',
         features: ['Durable Stitching', 'Comfort Fit', 'Soft Touch'],
         specs: { 'Material': 'Performance Cotton-Poly', 'Usage': 'Practice' }
     },
     // Badminton Variants
     {
         id: 'force-badminton-pro',
-        brand: 'Shatak',
+        brand: 'Jabraat',
         category: 'T-Shirts',
         sport: 'Badminton',
         usageType: 'Practice',
         productCode: '#BD-501',
-        title: 'Shatak Smash-Pro Tee',
+        title: 'Jabraat Smash-Pro Tee',
         description: 'Ultra-flexible T-shirt for rapid badminton movements.',
         longDescription: 'Featuring side-ventilation and a darted back for maximum overhead reach, the Smash-Pro is built for the badminton court.',
-        image: 'https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?w=800&q=80',
+        image: '/T-shirts/30.png',
+        imageBack: '/T-shirts/31.png',
         features: ['Racket-Reach Shoulders', 'Cool-Mesh Back', 'Anti-Static'],
         specs: { 'Material': 'Pro-Flex Poly', 'Usage': 'Tournament Practice' }
     },
@@ -378,22 +371,24 @@ export const PRODUCTS: Product[] = [
         title: 'Jabraat Pitch-Side Travel Polo',
         description: 'Elegant travel polo for football teams.',
         longDescription: 'Crafted with premium cotton-rich fabric, this polo keeps the squad looking cohesive and professional during tours.',
-        image: 'https://images.unsplash.com/photo-1543351611-58f69d7c1781?w=800&q=80',
+        image: '/T-shirts/32.png',
+        imageBack: '/T-shirts/33.png',
         features: ['Embroidered Crest Space', 'Cohesive Design', 'Comfort Rib'],
         specs: { 'Material': 'Cotton/Poly Pique', 'Usage': 'Team Travel' }
     },
     // Volleyball Variants
     {
         id: 'force-volleyball-coach',
-        brand: 'SportX',
+        brand: 'Jabraat',
         category: 'T-Shirts',
         sport: 'Volleyball',
         usageType: 'Coaches',
         productCode: '#VB-CH-99',
-        title: 'SportX Spike-Master Coach Tee',
+        title: 'Jabraat Spike-Master Coach Tee',
         description: 'Breathable coach apparel for the volleyball court.',
         longDescription: 'Designed with a high collar for sun protection and a relaxed fit for long hours of court-side instruction.',
-        image: 'https://images.unsplash.com/photo-1592653310459-b591b52109bc?w=800&q=80',
+        image: '/T-shirts/34.png',
+        imageBack: '/T-shirts/35.png',
         features: ['Sun Protection', 'Relaxed Cut', 'Stain Resistant'],
         specs: { 'Material': 'Micro-Honeycomb Poly', 'Usage': 'Coaching' }
     },
@@ -408,51 +403,1673 @@ export const PRODUCTS: Product[] = [
         title: 'Jabraat Pro-Mat Official Shirt',
         description: 'High-visibility officials shirt for intense Kabaddi matches.',
         longDescription: 'Stretchable yet durable to keep up with the fast-paced movements of kabaddi officiating.',
-        image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800&q=80',
+        image: '/T-shirts/36.png',
+        imageBack: '/T-shirts/37.png',
         features: ['Mat-Grip Seams', 'Signal Visibility', 'Breathable'],
         specs: { 'Material': 'Reinforced Mesh', 'Usage': 'Officiating' }
     },
-    // Activity / General Variants
     {
-        id: 'force-travel-polo',
-        brand: 'SportX',
-        category: 'T-Shirts',
-        sport: 'Activity',
-        usageType: 'Travel',
-        productCode: '#TR 900',
-        title: 'Elite Travel Team Polo',
-        description: 'Premium travel apparel for teams and staff.',
-        longDescription: 'The Elite Travel Team Polo is designed for comfort during transit. Made with breathable, wrinkle-resistant fabric to keep you looking sharp from the airport to the hotel.',
-        image: 'https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=800&q=80',
-        features: ['Wrinkle-Resistant', 'Soft Touch Fabric', 'Breathable', 'Staff Standard Fit'],
-        specs: { 'Material': 'Cotton/Poly Blend', 'Usage': 'Travel / Casual' }
-    },
-    {
-        id: 'force-coach-tee',
-        brand: 'Shatak',
-        category: 'T-Shirts',
-        sport: 'Activity',
-        usageType: 'Coaches',
-        productCode: '#CH 101',
-        title: 'Shatak Coach Performance Tee',
-        description: 'Dedicated apparel for coaching staff.',
-        longDescription: 'High-visibility and professional design for coaches on the field. Features extra ventilation and a professional aesthetic.',
-        image: 'https://images.unsplash.com/photo-1519315901367-f34ff9154487?w=800&q=80',
-        features: ['Extra Ventilation', 'Professional Look', 'Anti-Odor', 'UV Protection'],
-        specs: { 'Material': '100% Performance Poly', 'Usage': 'Coaching' }
-    },
-    {
-        id: 'force-official-shirt',
+        id: 'jabraat-elite-001',
         brand: 'Jabraat',
         category: 'T-Shirts',
-        sport: 'Activity',
+        sport: 'Cricket',
+        usageType: 'Practice',
+        productCode: '#JB-1001',
+        title: 'Jabraat Elite Series #01',
+        description: 'Professional grade high-performance cricket apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense cricket sessions.',
+        image: '/T-shirts/1.png',
+        imageBack: '/T-shirts/2.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-002',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Football',
+        usageType: 'Travel',
+        productCode: '#JB-1002',
+        title: 'Jabraat Elite Series #02',
+        description: 'Professional grade high-performance football apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense football sessions.',
+        image: '/T-shirts/3.png',
+        imageBack: '/T-shirts/4.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-003',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Badminton',
+        usageType: 'Coaches',
+        productCode: '#JB-1003',
+        title: 'Jabraat Elite Series #03',
+        description: 'Professional grade high-performance badminton apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense badminton sessions.',
+        image: '/T-shirts/5.png',
+        imageBack: '/T-shirts/6.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-004',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Kabaddi',
         usageType: 'Officials',
-        productCode: '#OF 202',
-        title: 'Jabraat Official Referee Shirt',
-        description: 'Pro-grade officials and referee apparel.',
-        longDescription: 'Designed for officials who need to stay cool and focused. Features specific pocket placements and a streamlined athletic cut.',
-        image: 'https://images.unsplash.com/photo-1493723843671-1d655e7d7722?w=800&q=80',
-        features: ['Dual Pocket Setup', 'Quick Dry', 'Streamlined Fit', 'Durable Stitching'],
-        specs: { 'Material': 'Structured Micro-Mesh', 'Usage': 'Officiating' }
+        productCode: '#JB-1004',
+        title: 'Jabraat Elite Series #04',
+        description: 'Professional grade high-performance kabaddi apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense kabaddi sessions.',
+        image: '/T-shirts/7.png',
+        imageBack: '/T-shirts/8.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-005',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Tennis',
+        usageType: 'General',
+        productCode: '#JB-1005',
+        title: 'Jabraat Elite Series #05',
+        description: 'Professional grade high-performance tennis apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense tennis sessions.',
+        image: '/T-shirts/9.png',
+        imageBack: '/T-shirts/10.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-006',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Pickleball',
+        usageType: 'Practice',
+        productCode: '#JB-1006',
+        title: 'Jabraat Elite Series #06',
+        description: 'Professional grade high-performance pickleball apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense pickleball sessions.',
+        image: '/T-shirts/11.png',
+        imageBack: '/T-shirts/11 back.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-007',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Cricket',
+        usageType: 'Travel',
+        productCode: '#JB-1007',
+        title: 'Jabraat Elite Series #07',
+        description: 'Professional grade high-performance cricket apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense cricket sessions.',
+        image: '/T-shirts/12.png',
+        imageBack: '/T-shirts/12 backed.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-008',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Football',
+        usageType: 'Coaches',
+        productCode: '#JB-1008',
+        title: 'Jabraat Elite Series #08',
+        description: 'Professional grade high-performance football apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense football sessions.',
+        image: '/T-shirts/13.png',
+        imageBack: '/T-shirts/13 backed.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-009',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Badminton',
+        usageType: 'Officials',
+        productCode: '#JB-1009',
+        title: 'Jabraat Elite Series #09',
+        description: 'Professional grade high-performance badminton apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense badminton sessions.',
+        image: '/T-shirts/14.png',
+        imageBack: '/T-shirts/15.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-010',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Kabaddi',
+        usageType: 'General',
+        productCode: '#JB-1010',
+        title: 'Jabraat Elite Series #10',
+        description: 'Professional grade high-performance kabaddi apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense kabaddi sessions.',
+        image: '/T-shirts/16.png',
+        imageBack: '/T-shirts/17.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-011',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Tennis',
+        usageType: 'Practice',
+        productCode: '#JB-1011',
+        title: 'Jabraat Elite Series #11',
+        description: 'Professional grade high-performance tennis apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense tennis sessions.',
+        image: '/T-shirts/18.png',
+        imageBack: '/T-shirts/19.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-012',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Pickleball',
+        usageType: 'Travel',
+        productCode: '#JB-1012',
+        title: 'Jabraat Elite Series #12',
+        description: 'Professional grade high-performance pickleball apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense pickleball sessions.',
+        image: '/T-shirts/20.png',
+        imageBack: '/T-shirts/21.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-013',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Cricket',
+        usageType: 'Coaches',
+        productCode: '#JB-1013',
+        title: 'Jabraat Elite Series #13',
+        description: 'Professional grade high-performance cricket apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense cricket sessions.',
+        image: '/T-shirts/22.png',
+        imageBack: '/T-shirts/23.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-014',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Football',
+        usageType: 'Officials',
+        productCode: '#JB-1014',
+        title: 'Jabraat Elite Series #14',
+        description: 'Professional grade high-performance football apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense football sessions.',
+        image: '/T-shirts/24.png',
+        imageBack: '/T-shirts/25.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-015',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Badminton',
+        usageType: 'General',
+        productCode: '#JB-1015',
+        title: 'Jabraat Elite Series #15',
+        description: 'Professional grade high-performance badminton apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense badminton sessions.',
+        image: '/T-shirts/26.png',
+        imageBack: '/T-shirts/27.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-016',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Kabaddi',
+        usageType: 'Practice',
+        productCode: '#JB-1016',
+        title: 'Jabraat Elite Series #16',
+        description: 'Professional grade high-performance kabaddi apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense kabaddi sessions.',
+        image: '/T-shirts/28.png',
+        imageBack: '/T-shirts/29.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-017',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Tennis',
+        usageType: 'Travel',
+        productCode: '#JB-1017',
+        title: 'Jabraat Elite Series #17',
+        description: 'Professional grade high-performance tennis apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense tennis sessions.',
+        image: '/T-shirts/30.png',
+        imageBack: '/T-shirts/31.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-018',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Pickleball',
+        usageType: 'Coaches',
+        productCode: '#JB-1018',
+        title: 'Jabraat Elite Series #18',
+        description: 'Professional grade high-performance pickleball apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense pickleball sessions.',
+        image: '/T-shirts/32.png',
+        imageBack: '/T-shirts/33.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-019',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Cricket',
+        usageType: 'Officials',
+        productCode: '#JB-1019',
+        title: 'Jabraat Elite Series #19',
+        description: 'Professional grade high-performance cricket apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense cricket sessions.',
+        image: '/T-shirts/34.png',
+        imageBack: '/T-shirts/35.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-020',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Football',
+        usageType: 'General',
+        productCode: '#JB-1020',
+        title: 'Jabraat Elite Series #20',
+        description: 'Professional grade high-performance football apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense football sessions.',
+        image: '/T-shirts/36.png',
+        imageBack: '/T-shirts/37.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-021',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Badminton',
+        usageType: 'Practice',
+        productCode: '#JB-1021',
+        title: 'Jabraat Elite Series #21',
+        description: 'Professional grade high-performance badminton apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense badminton sessions.',
+        image: '/T-shirts/38.png',
+        imageBack: '/T-shirts/39.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-022',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Kabaddi',
+        usageType: 'Travel',
+        productCode: '#JB-1022',
+        title: 'Jabraat Elite Series #22',
+        description: 'Professional grade high-performance kabaddi apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense kabaddi sessions.',
+        image: '/T-shirts/40.png',
+        imageBack: '/T-shirts/41.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-023',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Tennis',
+        usageType: 'Coaches',
+        productCode: '#JB-1023',
+        title: 'Jabraat Elite Series #23',
+        description: 'Professional grade high-performance tennis apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense tennis sessions.',
+        image: '/T-shirts/42.png',
+        imageBack: '/T-shirts/43.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-024',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Pickleball',
+        usageType: 'Officials',
+        productCode: '#JB-1024',
+        title: 'Jabraat Elite Series #24',
+        description: 'Professional grade high-performance pickleball apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense pickleball sessions.',
+        image: '/T-shirts/44.png',
+        imageBack: '/T-shirts/45.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-025',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Cricket',
+        usageType: 'General',
+        productCode: '#JB-1025',
+        title: 'Jabraat Elite Series #25',
+        description: 'Professional grade high-performance cricket apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense cricket sessions.',
+        image: '/T-shirts/46.png',
+        imageBack: '/T-shirts/47.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-026',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Football',
+        usageType: 'Practice',
+        productCode: '#JB-1026',
+        title: 'Jabraat Elite Series #26',
+        description: 'Professional grade high-performance football apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense football sessions.',
+        image: '/T-shirts/48.png',
+        imageBack: '/T-shirts/49.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-027',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Badminton',
+        usageType: 'Travel',
+        productCode: '#JB-1027',
+        title: 'Jabraat Elite Series #27',
+        description: 'Professional grade high-performance badminton apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense badminton sessions.',
+        image: '/T-shirts/50.png',
+        imageBack: '/T-shirts/51.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-028',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Kabaddi',
+        usageType: 'Coaches',
+        productCode: '#JB-1028',
+        title: 'Jabraat Elite Series #28',
+        description: 'Professional grade high-performance kabaddi apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense kabaddi sessions.',
+        image: '/T-shirts/52.png',
+        imageBack: '/T-shirts/53.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-029',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Tennis',
+        usageType: 'Officials',
+        productCode: '#JB-1029',
+        title: 'Jabraat Elite Series #29',
+        description: 'Professional grade high-performance tennis apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense tennis sessions.',
+        image: '/T-shirts/54.png',
+        imageBack: '/T-shirts/55.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-030',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Pickleball',
+        usageType: 'General',
+        productCode: '#JB-1030',
+        title: 'Jabraat Elite Series #30',
+        description: 'Professional grade high-performance pickleball apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense pickleball sessions.',
+        image: '/T-shirts/56.png',
+        imageBack: '/T-shirts/57.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-031',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Cricket',
+        usageType: 'Practice',
+        productCode: '#JB-1031',
+        title: 'Jabraat Elite Series #31',
+        description: 'Professional grade high-performance cricket apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense cricket sessions.',
+        image: '/T-shirts/58.png',
+        imageBack: '/T-shirts/59.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-032',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Football',
+        usageType: 'Travel',
+        productCode: '#JB-1032',
+        title: 'Jabraat Elite Series #32',
+        description: 'Professional grade high-performance football apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense football sessions.',
+        image: '/T-shirts/60.png',
+        imageBack: '/T-shirts/61.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-033',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Badminton',
+        usageType: 'Coaches',
+        productCode: '#JB-1033',
+        title: 'Jabraat Elite Series #33',
+        description: 'Professional grade high-performance badminton apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense badminton sessions.',
+        image: '/T-shirts/62.png',
+        imageBack: '/T-shirts/63.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-034',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Kabaddi',
+        usageType: 'Officials',
+        productCode: '#JB-1034',
+        title: 'Jabraat Elite Series #34',
+        description: 'Professional grade high-performance kabaddi apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense kabaddi sessions.',
+        image: '/T-shirts/64.png',
+        imageBack: '/T-shirts/65.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-035',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Tennis',
+        usageType: 'General',
+        productCode: '#JB-1035',
+        title: 'Jabraat Elite Series #35',
+        description: 'Professional grade high-performance tennis apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense tennis sessions.',
+        image: '/T-shirts/66.png',
+        imageBack: '/T-shirts/67.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-036',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Pickleball',
+        usageType: 'Practice',
+        productCode: '#JB-1036',
+        title: 'Jabraat Elite Series #36',
+        description: 'Professional grade high-performance pickleball apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense pickleball sessions.',
+        image: '/T-shirts/68.png',
+        imageBack: '/T-shirts/69.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-037',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Cricket',
+        usageType: 'Travel',
+        productCode: '#JB-1037',
+        title: 'Jabraat Elite Series #37',
+        description: 'Professional grade high-performance cricket apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense cricket sessions.',
+        image: '/T-shirts/70.png',
+        imageBack: '/T-shirts/71.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-038',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Football',
+        usageType: 'Coaches',
+        productCode: '#JB-1038',
+        title: 'Jabraat Elite Series #38',
+        description: 'Professional grade high-performance football apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense football sessions.',
+        image: '/T-shirts/72.png',
+        imageBack: '/T-shirts/73.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-039',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Badminton',
+        usageType: 'Officials',
+        productCode: '#JB-1039',
+        title: 'Jabraat Elite Series #39',
+        description: 'Professional grade high-performance badminton apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense badminton sessions.',
+        image: '/T-shirts/74.png',
+        imageBack: '/T-shirts/75.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-040',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Kabaddi',
+        usageType: 'General',
+        productCode: '#JB-1040',
+        title: 'Jabraat Elite Series #40',
+        description: 'Professional grade high-performance kabaddi apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense kabaddi sessions.',
+        image: '/T-shirts/76.png',
+        imageBack: '/T-shirts/77.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-041',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Tennis',
+        usageType: 'Practice',
+        productCode: '#JB-1041',
+        title: 'Jabraat Elite Series #41',
+        description: 'Professional grade high-performance tennis apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense tennis sessions.',
+        image: '/T-shirts/78.png',
+        imageBack: '/T-shirts/79.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-042',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Pickleball',
+        usageType: 'Travel',
+        productCode: '#JB-1042',
+        title: 'Jabraat Elite Series #42',
+        description: 'Professional grade high-performance pickleball apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense pickleball sessions.',
+        image: '/T-shirts/80.png',
+        imageBack: '/T-shirts/81.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-043',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Cricket',
+        usageType: 'Coaches',
+        productCode: '#JB-1043',
+        title: 'Jabraat Elite Series #43',
+        description: 'Professional grade high-performance cricket apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense cricket sessions.',
+        image: '/T-shirts/82.png',
+        imageBack: '/T-shirts/83.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-044',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Football',
+        usageType: 'Officials',
+        productCode: '#JB-1044',
+        title: 'Jabraat Elite Series #44',
+        description: 'Professional grade high-performance football apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense football sessions.',
+        image: '/T-shirts/84.png',
+        imageBack: '/T-shirts/85.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-045',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Badminton',
+        usageType: 'General',
+        productCode: '#JB-1045',
+        title: 'Jabraat Elite Series #45',
+        description: 'Professional grade high-performance badminton apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense badminton sessions.',
+        image: '/T-shirts/86.png',
+        imageBack: '/T-shirts/87.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-046',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Kabaddi',
+        usageType: 'Practice',
+        productCode: '#JB-1046',
+        title: 'Jabraat Elite Series #46',
+        description: 'Professional grade high-performance kabaddi apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense kabaddi sessions.',
+        image: '/T-shirts/88.png',
+        imageBack: '/T-shirts/89.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-047',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Tennis',
+        usageType: 'Travel',
+        productCode: '#JB-1047',
+        title: 'Jabraat Elite Series #47',
+        description: 'Professional grade high-performance tennis apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense tennis sessions.',
+        image: '/T-shirts/90.png',
+        imageBack: '/T-shirts/91.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-048',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Pickleball',
+        usageType: 'Coaches',
+        productCode: '#JB-1048',
+        title: 'Jabraat Elite Series #48',
+        description: 'Professional grade high-performance pickleball apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense pickleball sessions.',
+        image: '/T-shirts/92.png',
+        imageBack: '/T-shirts/93.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-049',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Cricket',
+        usageType: 'Officials',
+        productCode: '#JB-1049',
+        title: 'Jabraat Elite Series #49',
+        description: 'Professional grade high-performance cricket apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense cricket sessions.',
+        image: '/T-shirts/94.png',
+        imageBack: '/T-shirts/95.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-050',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Football',
+        usageType: 'General',
+        productCode: '#JB-1050',
+        title: 'Jabraat Elite Series #50',
+        description: 'Professional grade high-performance football apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense football sessions.',
+        image: '/T-shirts/96.png',
+        imageBack: '/T-shirts/97.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-051',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Badminton',
+        usageType: 'Practice',
+        productCode: '#JB-1051',
+        title: 'Jabraat Elite Series #51',
+        description: 'Professional grade high-performance badminton apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense badminton sessions.',
+        image: '/T-shirts/98.png',
+        imageBack: '/T-shirts/99.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-052',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Kabaddi',
+        usageType: 'Travel',
+        productCode: '#JB-1052',
+        title: 'Jabraat Elite Series #52',
+        description: 'Professional grade high-performance kabaddi apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense kabaddi sessions.',
+        image: '/T-shirts/100.png',
+        imageBack: '/T-shirts/101.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-053',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Tennis',
+        usageType: 'Coaches',
+        productCode: '#JB-1053',
+        title: 'Jabraat Elite Series #53',
+        description: 'Professional grade high-performance tennis apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense tennis sessions.',
+        image: '/T-shirts/102.png',
+        imageBack: '/T-shirts/103.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-054',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Pickleball',
+        usageType: 'Officials',
+        productCode: '#JB-1054',
+        title: 'Jabraat Elite Series #54',
+        description: 'Professional grade high-performance pickleball apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense pickleball sessions.',
+        image: '/T-shirts/104.png',
+        imageBack: '/T-shirts/105.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-055',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Cricket',
+        usageType: 'General',
+        productCode: '#JB-1055',
+        title: 'Jabraat Elite Series #55',
+        description: 'Professional grade high-performance cricket apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense cricket sessions.',
+        image: '/T-shirts/106.png',
+        imageBack: '/T-shirts/107.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-056',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Football',
+        usageType: 'Practice',
+        productCode: '#JB-1056',
+        title: 'Jabraat Elite Series #56',
+        description: 'Professional grade high-performance football apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense football sessions.',
+        image: '/T-shirts/108.png',
+        imageBack: '/T-shirts/109.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-057',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Badminton',
+        usageType: 'Travel',
+        productCode: '#JB-1057',
+        title: 'Jabraat Elite Series #57',
+        description: 'Professional grade high-performance badminton apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense badminton sessions.',
+        image: '/T-shirts/110.png',
+        imageBack: '/T-shirts/111.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-058',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Kabaddi',
+        usageType: 'Coaches',
+        productCode: '#JB-1058',
+        title: 'Jabraat Elite Series #58',
+        description: 'Professional grade high-performance kabaddi apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense kabaddi sessions.',
+        image: '/T-shirts/112.png',
+        imageBack: '/T-shirts/113.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-059',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Tennis',
+        usageType: 'Officials',
+        productCode: '#JB-1059',
+        title: 'Jabraat Elite Series #59',
+        description: 'Professional grade high-performance tennis apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense tennis sessions.',
+        image: '/T-shirts/114.png',
+        imageBack: '/T-shirts/115.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-060',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Pickleball',
+        usageType: 'General',
+        productCode: '#JB-1060',
+        title: 'Jabraat Elite Series #60',
+        description: 'Professional grade high-performance pickleball apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense pickleball sessions.',
+        image: '/T-shirts/116.png',
+        imageBack: '/T-shirts/117.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-061',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Cricket',
+        usageType: 'Practice',
+        productCode: '#JB-1061',
+        title: 'Jabraat Elite Series #61',
+        description: 'Professional grade high-performance cricket apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense cricket sessions.',
+        image: '/T-shirts/118.png',
+        imageBack: '/T-shirts/119.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-062',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Football',
+        usageType: 'Travel',
+        productCode: '#JB-1062',
+        title: 'Jabraat Elite Series #62',
+        description: 'Professional grade high-performance football apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense football sessions.',
+        image: '/T-shirts/120.png',
+        imageBack: '/T-shirts/121.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-063',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Badminton',
+        usageType: 'Coaches',
+        productCode: '#JB-1063',
+        title: 'Jabraat Elite Series #63',
+        description: 'Professional grade high-performance badminton apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense badminton sessions.',
+        image: '/T-shirts/122.png',
+        imageBack: '/T-shirts/123.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
+    },
+    {
+        id: 'jabraat-elite-064',
+        brand: 'Jabraat',
+        category: 'T-Shirts',
+        sport: 'Kabaddi',
+        usageType: 'Officials',
+        productCode: '#JB-1064',
+        title: 'Jabraat Elite Series #64',
+        description: 'Professional grade high-performance kabaddi apparel.',
+        longDescription: 'Part of the premium Jabraat Elite Collection, this shirt is engineered for maximum performance. Featuring our advanced moisture-wicking fabric and ergonomic stitch lines, it provides the perfect balance of comfort and durability for intense kabaddi sessions.',
+        image: '/T-shirts/124.png',
+        imageBack: '/T-shirts/125.png',
+        features: [
+            'Moisture-Wicking Fabric',
+            'Ergonomic Performance Cut',
+            'Reinforced Stitching',
+            'Sublimated Graphic Print',
+            'Breathable Side Panels'
+        ],
+        specs: {
+            'Material': '100% Performance Polyester',
+            'Fit': 'Athletic Fit',
+            'Weight': '160 GSM',
+            'Origin': 'Made in India'
+        }
     }
 ];
