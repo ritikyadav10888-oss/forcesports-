@@ -175,7 +175,7 @@ export const PRODUCTS: Product[] = [
         title: 'Pro-Flow Cap',
         description: 'Advanced moisture-wicking sports cap for maximum performance.',
         longDescription: 'The Pro-Flow Cap features a multi-panel construction with laser-cut ventilation for superior breathability. The moisture-wicking sweatband keeps you dry, while the adjustable strap ensures a perfect fit for any head size.',
-        image: 'https://images.unsplash.com/photo-1556822272-b41eeb89d9eb?w=800&q=80',
+        image: '/cap-pro-flow.png',
         features: ['Laser-Cut Ventilation', 'Moisture-Wicking Sweatband', 'Adjustable Fit', 'Durable Fabric'],
         specs: {
             'Material': 'Performance Polyester Mesh',
@@ -210,7 +210,7 @@ export const PRODUCTS: Product[] = [
         title: 'Stealth Tech Joggers',
         description: 'Tapered athletic joggers designed for style and mobility.',
         longDescription: 'The Stealth Tech Joggers combine a modern tapered fit with technical fabrics. Featuring zippered pockets for secure storage and an elasticated waistband with drawcord for a custom fit.',
-        image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&q=80',
+        image: '/trackpant-stealth.png',
         features: ['Zippered Pockets', 'Tapered Fit', 'Tech-Fleece Fabric', 'Drawcord Waist'],
         specs: {
             'Material': 'Polyester/Cotton Blend',
@@ -227,7 +227,7 @@ export const PRODUCTS: Product[] = [
         title: 'Flex Training Shorts',
         description: 'Lightweight and durable training shorts for all-day comfort.',
         longDescription: 'Engineered for variety, the Flex Training Shorts are perfect for the gym, turf, or casual wear. The reinforced stitching ensures longevity, while the side slits allow for maximum range of motion.',
-        image: 'https://images.unsplash.com/photo-1542280756-74b2f55e73ef?w=800&q=80',
+        image: '/short-flex.png',
         features: ['Lightweight Fabric', 'Side Slits', 'Reinforced Stitching', 'Elastic Waist'],
         specs: {
             'Material': '100% Performance Poly',
@@ -244,7 +244,7 @@ export const PRODUCTS: Product[] = [
         title: 'Element Windbreaker',
         description: 'Water-resistant and windproof jacket for outdoor athletes.',
         longDescription: 'The Element Windbreaker is your go-to for unpredictable weather. It features a lightweight, water-resistant shell and a mesh lining for breathability. The packable design makes it easy to carry anywhere.',
-        image: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=800&q=80',
+        image: '/jacket-element.png',
         features: ['Water-Resistant', 'Windproof', 'Packable Design', 'Reflective Accents'],
         specs: {
             'Material': 'Micro-Ripstop Poly',
@@ -261,7 +261,7 @@ export const PRODUCTS: Product[] = [
         title: 'Apex Pro Duffel',
         description: 'Premium sports bag with dedicated compartments for any gear.',
         longDescription: 'The Apex Pro Duffel is designed for the serious athlete. It features a ventilated shoe compartment, padded shoulder strap, and multiple internal pockets for organized storage of your essentials.',
-        image: 'https://images.unsplash.com/photo-1553481187-be93c21490a9?w=800&q=80',
+        image: '/bag-apex.png',
         features: ['Ventilated Shoe Pocket', 'Padded Straps', 'Heavy-Duty Fabric', '50L Capacity'],
         specs: {
             'Material': 'Matt Finish 900D Poly',
