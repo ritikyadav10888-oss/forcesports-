@@ -1,207 +1,248 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Filter, Check, Briefcase, Activity, MessageCircle } from 'lucide-react';
+import { Filter, Check, Briefcase, Activity, MessageCircle, Zap, Shield, Star, X, Info } from 'lucide-react';
 import { BRAND_DETAILS } from '../../data/brandData';
 
-const UniformCategories = ['School', 'Quick Delivery Services', 'Corporate Staff', 'Fast Food Staff', 'Industrial'] as const;
+const UniformCategories = ['School /colleges', 'Corporate staff', 'Fast Food floor staff', 'Industrial', 'Quick Delivery services'] as const;
 
 interface UniformProduct {
     id: string;
     title: string;
-    category: string;
+    category: typeof UniformCategories[number];
     description: string;
     image: string;
     features: string[];
+    specs: {
+        fabric: string;
+        weight: string;
+        fit: string;
+        durability: string;
+    };
+    customization: string[];
 }
 
 const UNIFORMS: UniformProduct[] = [
     // SCHOOL
     {
-        id: 'uni-sch-round-neck',
-        title: 'Basic Round Neck School Tee',
-        category: 'School',
-        description: 'Simple, heavy-duty 100% cotton round neck t-shirt. Ideal for daily classroom wear.',
-        image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&q=80',
-        features: ['100% Bio-Wash Cotton', 'Pre-Shrunk', 'Standard Fit']
+        id: 'uni-sch-polo',
+        title: 'Modern School Polo T-Shirt',
+        category: 'School /colleges',
+        description: 'Premium pique cotton-blend polo with reinforced collar and vibrant school colors.',
+        image: '/uniforms/school_polo.png',
+        features: ['Anti-Pilling Fabric', 'Breathable Blend', 'Superior Color Hold'],
+        specs: {
+            fabric: '60% Cotton, 40% Polyester Pique',
+            weight: '220 - 240 GSM',
+            fit: 'Regular School Fit',
+            durability: 'High - Lab Tested for 50+ Washes'
+        },
+        customization: ['School Logo Embroidery', 'Pocket Printing', 'House Color Tipping']
     },
     {
-        id: 'uni-sch-polo-classic',
-        title: 'Classic School Polo',
-        category: 'School',
-        description: 'Traditional pique polo shirt with ribbed collar. Perfect for formal school attendance.',
-        image: 'https://images.unsplash.com/photo-1598522338214-29532fb30b32?w=800&q=80',
-        features: ['Breathable Pique Fabric', 'Reinforced Collar', 'Color Fastness']
+        id: 'uni-sch-trackpant',
+        title: 'Performance School Trackpant',
+        category: 'School /colleges',
+        description: 'Durable and flexible trackpants designed for active school days and sports.',
+        image: '/uniforms/school_trackpant.png',
+        features: ['Reinforced Knees', 'Elasticized Waist', 'Quick-Dry Tech'],
+        specs: {
+            fabric: 'Super Poly / NS Lycra Blend',
+            weight: '200 - 220 GSM',
+            fit: 'Athletic Tapered Fit',
+            durability: 'Anti-Abrasion Material'
+        },
+        customization: ['Side Stripe Branding', 'Logo Vinyl Print', 'Zipped Pockets']
     },
     {
-        id: 'uni-sch-jersey-simple',
-        title: 'Simple PE Jersey',
-        category: 'School',
-        description: 'Lightweight and airy jersey for physical education classes.',
-        image: 'https://images.unsplash.com/photo-1580087433295-ab2600c1030e?w=800&q=80',
-        features: ['Sweat Absorbent', 'Easy Stretch', 'Contrast Stitching']
+        id: 'uni-sch-shorts',
+        title: 'Classic School Shorts',
+        category: 'School /colleges',
+        description: 'Comfortable and rugged school shorts, perfect for summer schedules.',
+        image: '/uniforms/school_shorts.png',
+        features: ['Tear-Resistant', 'Easy-Iron Fabric', 'Multiple Pockets'],
+        specs: {
+            fabric: 'Cotton Drill / Twill',
+            weight: '180 - 200 GSM',
+            fit: 'Relaxed Comfort Fit',
+            durability: 'Reinforced Stitching'
+        },
+        customization: ['School Crest Embroidery', 'Internal Name Tags']
     },
     {
-        id: 'uni-sch-trackpant-basic',
-        title: 'Classic School Trackpant',
-        category: 'School',
-        description: 'Standard navy/black trackpants with comfortable elastic grip.',
-        image: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=800&q=80',
-        features: ['Durable Interlock Fabric', 'Elasticated Hem', 'Internal Drawcord']
-    },
-    {
-        id: 'uni-sch-shorts-classic',
-        title: 'School Cotton Shorts',
-        category: 'School',
-        description: 'Simple cotton shorts designed for warm weather school days.',
-        image: 'https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=800&q=80',
-        features: ['Twin Needle Stitching', 'Strong Elastic', 'Breathable']
-    },
-    {
-        id: 'uni-sch-cap-classic',
-        title: 'Simple School Cap',
-        category: 'School',
-        description: 'Classic 6-panel cotton cap for house colors and sun protection.',
-        image: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=800&q=80',
-        features: ['Curved Visor', 'Velcro Closure', 'Fade Resistant']
-    },
-    
-    // QDS
-    {
-        id: 'uni-qds-tshirt',
-        title: 'QDS T-Shirt',
-        category: 'Quick Delivery Services',
-        description: 'Highly visible, moisture-wicking t-shirt for delivery personnel.',
-        image: 'https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=800&q=80',
-        features: ['High-Visibility', 'Quick-Dry', 'Anti-Odor']
-    },
-    {
-        id: 'uni-qds-jersey',
-        title: 'QDS Jersey',
-        category: 'Quick Delivery Services',
-        description: 'Performance jersey designed for long hours of riding and swift movement.',
-        image: 'https://images.unsplash.com/photo-1502224562085-639556652f33?w=800&q=80',
-        features: ['Lightweight', 'Reflective Details', 'Stretchable']
-    },
-    {
-        id: 'uni-qds-cap',
-        title: 'QDS Delivery Cap',
-        category: 'Quick Delivery Services',
-        description: 'Breathable cap featuring reflective materials for safe nighttime deliveries.',
-        image: 'https://images.unsplash.com/photo-1521369909029-2afed882baee?w=800&q=80',
-        features: ['Reflective Trim', 'Mesh Back', 'UV Protection']
+        id: 'uni-sch-cap',
+        title: 'School Identity Cap',
+        category: 'School /colleges',
+        description: 'Structured 6-panel cap featuring school colors and protection from the sun.',
+        image: '/uniforms/school_cap.png',
+        features: ['Cotton Twill', 'Adjustable Strap', 'UV Shield'],
+        specs: {
+            fabric: '100% Cotton Twill',
+            weight: 'Structured 6-Panel',
+            fit: 'One Size (Adjustable)',
+            durability: 'Color Fast Material'
+        },
+        customization: ['3D Logo Embroidery', 'Contrast Sandwich Peak']
     },
 
-    // CORPORATE STAFF
+    // CORPORATE
+    {
+        id: 'uni-corp-polo',
+        title: 'Executive Style Polo',
+        category: 'Corporate staff',
+        description: 'Elite corporate polo for a sharp, professional boardroom presence.',
+        image: '/uniforms/corporate_polo.png',
+        features: ['Premium Mercerized Cotton', 'Wrinkle-Free', 'Tailored Fit'],
+        specs: {
+            fabric: '100% Mercerized Pique Cotton',
+            weight: '240 - 260 GSM',
+            fit: 'Slim / Professional Fit',
+            durability: 'Anti-Shrink & Anti-Fade'
+        },
+        customization: ['Subtle Chest Embroidery', 'Nape Branding', 'Logo Engraved Buttons']
+    },
     {
         id: 'uni-corp-tshirt',
-        title: 'Corporate Polo T-Shirt',
-        category: 'Corporate Staff',
-        description: 'Premium polo t-shirt for a smart, modern corporate look.',
-        image: 'https://images.unsplash.com/photo-1586363104862-3a5e222ee5bb?w=800&q=80',
-        features: ['Wrinkle-Free', 'Smart Fit', 'Premium Blend']
-    },
-    {
-        id: 'uni-corp-jersey',
-        title: 'Corporate Event Jersey',
-        category: 'Corporate Staff',
-        description: 'Custom corporate jersey for company sports events and team building.',
-        image: 'https://images.unsplash.com/photo-1504198458649-3128b932f49e?w=800&q=80',
-        features: ['Cool-Max Tech', 'Custom Branding Area', 'Comfort Fit']
-    },
-    {
-        id: 'uni-corp-cap',
-        title: 'Corporate Cap',
-        category: 'Corporate Staff',
-        description: 'Minimalist, branded premium cap for outdoor corporate events.',
-        image: 'https://images.unsplash.com/photo-1576871337622-98d48d1cf531?w=800&q=80',
-        features: ['Premium Fabric', 'Sleek Design', 'Adjustable Fit']
-    },
-    {
-        id: 'uni-corp-shorts',
-        title: 'Corporate Retreat Shorts',
-        category: 'Corporate Staff',
-        description: 'Casual yet smart shorts for corporate retreats and outdoor activities.',
-        image: 'https://images.unsplash.com/photo-1565084888279-aca607ecce0c?w=800&q=80',
-        features: ['Chino Style', 'Stretch Cotton', 'Knee Length']
-    },
-    {
-        id: 'uni-corp-trackpant',
-        title: 'Corporate Wellness Trackpant',
-        category: 'Corporate Staff',
-        description: 'Comfortable performance trackpants ideal for company wellness programs.',
-        image: 'https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=800&q=80',
-        features: ['Four-Way Stretch', 'Zipper Pockets', 'Tapered Fit']
-    },
-
-    // INDUSTRIAL / FACTORY
-    {
-        id: 'uni-ind-tshirt',
-        title: 'Industrial Work T-Shirt',
-        category: 'Industrial',
-        description: 'Heavy-duty poly-cotton t-shirt built to withstand tough environments.',
-        image: 'https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=800&q=80',
-        features: ['Industrial Washable', 'Tear Resistant', 'Breathable']
-    },
-    {
-        id: 'uni-ind-jersey',
-        title: 'Factory Worker Jersey',
-        category: 'Industrial',
-        description: 'Durable and breathable jersey designed for active factory floor staff.',
-        image: 'https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=800&q=80',
-        features: ['Stain Repellent', ' Reinforced Seams', 'Comfort Fit']
-    },
-    {
-        id: 'uni-ind-cap',
-        title: 'Industrial Safety Cap',
-        category: 'Industrial',
-        description: 'Durable cap with inner protection and high-visibility elements.',
-        image: 'https://images.unsplash.com/photo-1534260933201-689fe91e7e40?w=800&q=80',
-        features: ['Bump Protection', 'High-Vis Color', 'Dust Resistant']
-    },
-    {
-        id: 'uni-ind-shorts',
-        title: 'Cargo Work Shorts',
-        category: 'Industrial',
-        description: 'Heavy-duty cargo shorts featuring multiple tool pockets.',
-        image: 'https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=800&q=80',
-        features: ['Multiple Pockets', 'Reinforced Stitching', 'Durable Canvas']
-    },
-    {
-        id: 'uni-ind-trackpant',
-        title: 'Factory Utility Trackpant',
-        category: 'Industrial',
-        description: 'Tough, flexible trackpants suited for factory mobility and comfort.',
-        image: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=800&q=80',
-        features: ['Knee Protection Compatible', 'Industrial Grade Flex', 'Secure Pockets']
+        title: 'Staff Event T-Shirt',
+        category: 'Corporate staff',
+        description: 'High-quality cotton t-shirts designed for corporate team-building and events.',
+        image: '/uniforms/corporate_tshirt.png',
+        features: ['100% Bio-Wash Cotton', 'Pre-Shrunk', 'Vibrant Sublimation'],
+        specs: {
+            fabric: '100% Combed Cotton (Bio-Washed)',
+            weight: '180 GSM',
+            fit: 'Modern Unisex Fit',
+            durability: 'Soft Touch Feel'
+        },
+        customization: ['Large Back Printing', 'Sleeve Branding', 'Photo-Realistic Prints']
     },
 
     // FAST FOOD
     {
-        id: 'uni-ff-tshirt',
-        title: 'Fast Food Staff T-Shirt',
-        category: 'Fast Food Staff',
-        description: 'Easy-care, comfortable t-shirt that resists stains and holds its shape.',
-        image: 'https://images.unsplash.com/photo-1620799139507-2a76f79a2f4d?w=800&q=80',
-        features: ['Stain Repellent', 'Colorfast', 'Easy Iron']
+        id: 'uni-ff-service-tshirt',
+        title: 'Floor Services T-Shirt',
+        category: 'Fast Food floor staff',
+        description: 'Stain-resistant and comfortable t-shirt designed for high-paced food service environments.',
+        image: '/uniforms/fast_food_tshirt.png',
+        features: ['Oil-Repellent', 'Ultra-Durable', 'Odor-Control'],
+        specs: {
+            fabric: 'Teflon-Coated Polyester Blend',
+            weight: '190 GSM',
+            fit: 'Active Work Fit',
+            durability: 'Industrial Wash Grade'
+        },
+        customization: ['Employee Name Tags', 'Chef Coat Style Printing']
     },
     {
         id: 'uni-ff-cap',
-        title: 'Service Staff Cap',
-        category: 'Fast Food Staff',
-        description: 'Classic visor cap that keeps hair secure and maintains a hygienic look.',
-        image: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=800&q=80',
-        features: ['Hair Control', 'Hygienic Design', 'Washable']
+        title: 'Service Crew Cap',
+        category: 'Fast Food floor staff',
+        description: 'Professional hygiene-focused cap for kitchen and floor staff.',
+        image: '/uniforms/fast_food_cap.png',
+        features: ['Washable Mesh', 'Hair Control', 'Breathable'],
+        specs: {
+            fabric: 'Poly-Cotton with Mesh Back',
+            weight: 'Lightweight Hygiene Grade',
+            fit: 'Velcro Adjustable',
+            durability: 'Highly Breathable'
+        },
+        customization: ['Front Logo Embroidery', 'Side Ventilation']
+    },
+
+    // INDUSTRIAL
+    {
+        id: 'uni-ind-workwear',
+        title: 'Industrial Heavy T-Shirt',
+        category: 'Industrial',
+        description: 'Rugged, high-GSM industrial t-shirt built to withstand factory wear and tear.',
+        image: '/uniforms/industrial_tshirt.png',
+        features: ['Double-Stitched Seams', 'Industrial Grade Cotton', 'Fade-Proof'],
+        specs: {
+            fabric: 'Heavy Duty 100% Open-End Cotton',
+            weight: '280 - 300 GSM',
+            fit: 'Loose / Functional Fit',
+            durability: 'Tear-Resistant Construction'
+        },
+        customization: ['Reflective Tape Stitched', 'Heavy Duty Screen Print']
+    },
+    {
+        id: 'uni-ind-cargo',
+        title: 'Industrial Cargo Shorts',
+        category: 'Industrial',
+        description: 'Heavy-duty cargo shorts with multiple utility pockets for industrial workers.',
+        image: '/uniforms/industrial_shorts.png',
+        features: ['Reinforced Pockets', 'Tear-Stop Fabric', 'Worker Comfort Fit'],
+        specs: {
+            fabric: 'Ripstop / Canvas Blend',
+            weight: '260 GSM',
+            fit: 'Multi-Pocket Utility Fit',
+            durability: 'Safety Grade Fabric'
+        },
+        customization: ['Knee Pad Slots', 'Hammer Loops branding']
+    },
+    {
+        id: 'uni-ind-safecap',
+        title: 'Safety Industry Cap',
+        category: 'Industrial',
+        description: 'High-visibility industrial cap for site safety and staff identification.',
+        image: '/uniforms/industrial_cap.png',
+        features: ['Sweat-Wicking Band', 'Durable Construction', 'High-Vis Details'],
+        specs: {
+            fabric: 'Fluorescent Polyester',
+            weight: 'Reinforced 5-Panel',
+            fit: 'Bumper Cap Option',
+            durability: 'Site Safety Compliant'
+        },
+        customization: ['Reflective Print', 'ID Badge Holder']
+    },
+
+    // QUICK DELIVERY
+    {
+        id: 'uni-qds-rider-jersey',
+        title: 'Delivery Rider T-Shirt',
+        category: 'Quick Delivery services',
+        description: 'Performance jersey with high-visibility accents for delivery professionals.',
+        image: '/uniforms/qds_jersey.png',
+        features: ['Reflective Tech', 'UV Protection', '4-Way Stretch'],
+        specs: {
+            fabric: 'Dry-Fit Micro Polyester',
+            weight: '150 - 170 GSM',
+            fit: 'Tapered Rider Fit',
+            durability: 'Sweat-Wicking & Anti-Static'
+        },
+        customization: ['Full Sublimation Print', 'Night-Reflective Accents']
+    },
+    {
+        id: 'uni-qds-safecap',
+        title: 'Rider Safety Cap',
+        category: 'Quick Delivery services',
+        description: 'Lightweight delivery cap designed for long hours on the road.',
+        image: '/uniforms/qds_cap.png',
+        features: ['Reflective Trim', 'Airflow Mesh', 'Comfort Lining'],
+        specs: {
+            fabric: 'Ultralight Ripstop Nylon',
+            weight: 'Featherlight',
+            fit: 'Draw-String Adjustable',
+            durability: 'Water-Resistant'
+        },
+        customization: ['Brand Logo Print', 'Reflective Side Panels']
     }
 ];
 
 const UniformsPage = () => {
     const [isMobileFiltersOpen, setIsMobileFiltersOpen] = useState(false);
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+    const [selectedProduct, setSelectedProduct] = useState<UniformProduct | null>(null);
 
     const filteredUniforms = UNIFORMS.filter(u => {
         return selectedCategories.length === 0 || selectedCategories.includes(u.category);
     });
+
+    const openWhatsApp = (product: UniformProduct) => {
+        const message = `Hi! I am interested in the ${product.title} from the ${product.category} section.\n\nSpecs: ${product.specs.fabric} / ${product.specs.weight}.\n\nPlease provide pricing for a bulk order.`;
+        const encoded = encodeURIComponent(message);
+        window.open(`${BRAND_DETAILS.contacts.whatsappLink}&text=${encoded}`, '_blank');
+    };
 
     return (
         <div className="bg-slate-50 min-h-screen">
@@ -307,7 +348,8 @@ const UniformsPage = () => {
                                         initial={{ opacity: 0, scale: 0.9 }}
                                         animate={{ opacity: 1, scale: 1 }}
                                         exit={{ opacity: 0, scale: 0.9 }}
-                                        className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-slate-200 transition-all border border-slate-100 group flex flex-col h-full"
+                                        className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-slate-200 transition-all border border-slate-100 group flex flex-col h-full cursor-pointer"
+                                        onClick={() => setSelectedProduct(uniform)}
                                     >
                                         <div className="h-72 bg-slate-100 overflow-hidden relative">
                                             <img
@@ -320,6 +362,12 @@ const UniformsPage = () => {
                                                     {uniform.category}
                                                 </div>
                                             </div>
+                                            <div className="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                                <div className="bg-white/20 backdrop-blur-md px-6 py-3 rounded-full border border-white/30 flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-transform">
+                                                    <Info size={16} className="text-white" />
+                                                    <span className="text-[10px] font-black text-white uppercase tracking-widest">View Deep Details</span>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div className="p-10 flex flex-col flex-1">
                                             <div className="mb-6 flex-1">
@@ -327,13 +375,25 @@ const UniformsPage = () => {
                                                 <p className="text-slate-500 text-xs leading-relaxed font-medium line-clamp-2">{uniform.description}</p>
                                             </div>
 
-                                            <div className="mt-auto">
-                                                <Link
-                                                    to="/inquiry"
-                                                    className="w-full block py-4 bg-slate-50 text-slate-900 text-xs font-bold uppercase tracking-widest rounded-xl hover:bg-cyan-600 hover:text-white transition-all border border-slate-100 text-center"
+                                            <div className="mt-auto flex gap-3">
+                                                <button
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        setSelectedProduct(uniform);
+                                                    }}
+                                                    className="flex-1 py-4 bg-slate-50 text-slate-900 text-[10px] font-black uppercase tracking-widest rounded-xl hover:bg-cyan-600 hover:text-white transition-all border border-slate-100 text-center"
                                                 >
-                                                    Inquire for Bulk
-                                                </Link>
+                                                    View Specs
+                                                </button>
+                                                <button
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        openWhatsApp(uniform);
+                                                    }}
+                                                    className="px-4 py-4 bg-[#25D366]/10 text-[#25D366] rounded-xl hover:bg-[#25D366] hover:text-white transition-all border border-[#25D366]/20"
+                                                >
+                                                    <MessageCircle size={18} />
+                                                </button>
                                             </div>
                                         </div>
                                     </motion.div>
@@ -357,6 +417,121 @@ const UniformsPage = () => {
                     </main>
                 </div>
             </div>
+
+            {/* Product Deep Detail Modal */}
+            <AnimatePresence>
+                {selectedProduct && (
+                    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8">
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            onClick={() => setSelectedProduct(null)}
+                            className="absolute inset-0 bg-slate-900/90 backdrop-blur-sm"
+                        />
+                        <motion.div
+                            initial={{ opacity: 0, y: 50, scale: 0.95 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            exit={{ opacity: 0, y: 50, scale: 0.95 }}
+                            className="bg-white w-full max-w-5xl rounded-[2.5rem] overflow-hidden relative z-10 flex flex-col md:flex-row shadow-2xl"
+                        >
+                            <button 
+                                onClick={() => setSelectedProduct(null)}
+                                className="absolute top-6 right-6 w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center text-slate-500 hover:bg-slate-900 hover:text-white transition-all z-20"
+                            >
+                                <X size={20} />
+                            </button>
+
+                            {/* Modal Image */}
+                            <div className="md:w-1/2 bg-slate-100 relative h-[400px] md:h-auto">
+                                <img 
+                                    src={selectedProduct.image} 
+                                    alt={selectedProduct.title} 
+                                    className="w-full h-full object-cover"
+                                />
+                                <div className="absolute bottom-10 left-10">
+                                    <div className="bg-slate-900/90 backdrop-blur px-4 py-2 rounded-full text-[10px] font-black text-white uppercase tracking-[0.2em]">
+                                        {selectedProduct.category}
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Modal Content */}
+                            <div className="md:w-1/2 p-8 md:p-14 overflow-y-auto max-h-[80vh]">
+                                <h2 className="text-3xl font-black text-slate-900 uppercase tracking-tighter mb-4">{selectedProduct.title}</h2>
+                                <p className="text-slate-500 text-sm leading-relaxed mb-10 font-medium">
+                                    {selectedProduct.description}
+                                </p>
+
+                                {/* Technical Specs Grid */}
+                                <div className="grid grid-cols-2 gap-6 mb-12">
+                                    <div className="space-y-1">
+                                        <h4 className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Fabric</h4>
+                                        <p className="text-xs font-bold text-slate-900 uppercase tracking-wide">{selectedProduct.specs.fabric}</p>
+                                    </div>
+                                    <div className="space-y-1">
+                                        <h4 className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Weight / GSM</h4>
+                                        <p className="text-xs font-bold text-slate-900 uppercase tracking-wide">{selectedProduct.specs.weight}</p>
+                                    </div>
+                                    <div className="space-y-1">
+                                        <h4 className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Fit Type</h4>
+                                        <p className="text-xs font-bold text-slate-900 uppercase tracking-wide">{selectedProduct.specs.fit}</p>
+                                    </div>
+                                    <div className="space-y-1">
+                                        <h4 className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Durability</h4>
+                                        <p className="text-xs font-bold text-slate-900 uppercase tracking-wide">{selectedProduct.specs.durability}</p>
+                                    </div>
+                                </div>
+
+                                {/* Features & Customization */}
+                                <div className="space-y-10 mb-12">
+                                    <div>
+                                        <h4 className="text-xs font-black text-slate-900 uppercase tracking-widest mb-4 flex items-center gap-2">
+                                            <Shield size={16} className="text-cyan-600" /> Key Features
+                                        </h4>
+                                        <div className="flex flex-wrap gap-2">
+                                            {selectedProduct.features.map(f => (
+                                                <span key={f} className="px-3 py-1.5 bg-slate-50 text-slate-600 text-[9px] font-black uppercase tracking-widest rounded-lg border border-slate-100">
+                                                    {f}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h4 className="text-xs font-black text-slate-900 uppercase tracking-widest mb-4 flex items-center gap-2">
+                                            <Star size={16} className="text-cyan-600" /> Customization Options
+                                        </h4>
+                                        <ul className="grid grid-cols-1 gap-3">
+                                            {selectedProduct.customization.map(c => (
+                                                <li key={c} className="flex items-center gap-3 text-[10px] font-bold text-slate-500 uppercase tracking-wider">
+                                                    <div className="w-1.5 h-1.5 rounded-full bg-cyan-500"></div>
+                                                    {c}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                {/* Modal Actions */}
+                                <div className="flex flex-col sm:flex-row gap-4">
+                                    <button
+                                        onClick={() => openWhatsApp(selectedProduct)}
+                                        className="flex-1 py-5 bg-[#25D366] text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-2xl hover:bg-[#128C7E] transition-all flex items-center justify-center gap-3 shadow-xl shadow-[#25D366]/20"
+                                    >
+                                        WhatsApp Inquiry <MessageCircle size={18} />
+                                    </button>
+                                    <Link
+                                        to={`/inquiry?product=${encodeURIComponent(selectedProduct.title)}`}
+                                        className="flex-1 py-5 bg-slate-900 text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-2xl hover:bg-cyan-600 transition-all flex items-center justify-center gap-3 shadow-xl shadow-slate-900/20"
+                                    >
+                                        Email Quote <Zap size={18} />
+                                    </Link>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </div>
+                )}
+            </AnimatePresence>
         </div>
     );
 };
