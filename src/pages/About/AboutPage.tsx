@@ -79,13 +79,19 @@ const AboutPage = () => {
                             <p className="text-slate-400 leading-relaxed">
                                 What started as a focused manufacturing unit in Goregaon has grown into a vertically integrated powerhouse, trusted by schools, corporate teams, and professional sports organizations across the country.
                             </p>
-                            <div className="mt-12 pt-8 border-t border-white/5 flex items-center gap-4">
-                                <div className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center">
-                                    <Shield className="text-cyan-400" size={24} />
+                            <div className="mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                                <div className="flex items-center gap-4">
+                                    <div className="w-14 h-14 bg-cyan-500/10 rounded-full flex items-center justify-center border border-cyan-500/20">
+                                        <Shield className="text-cyan-400" size={28} />
+                                    </div>
+                                    <div>
+                                        <span className="block text-white font-black uppercase tracking-widest text-[10px] mb-1">Founder & Proprietor</span>
+                                        <span className="text-cyan-400 font-bold text-lg tracking-tight">{BRAND_DETAILS.proprietor}</span>
+                                    </div>
                                 </div>
-                                <div>
-                                    <span className="block text-white font-bold uppercase tracking-widest text-[10px]">Proprietor</span>
-                                    <span className="text-slate-400 text-sm">{BRAND_DETAILS.proprietor}</span>
+                                <div className="text-right">
+                                    <span className="block text-slate-500 font-cursive text-2xl opacity-40 italic">Anand Sanghai</span>
+                                    <span className="text-[9px] uppercase tracking-[0.3em] font-black text-slate-600">Digital Signature</span>
                                 </div>
                             </div>
                         </div>

@@ -1,11 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import {
-    ChevronRight, Shield, Zap, Sparkles, Truck,
-    Building2, Trophy, Building, Landmark,
-    Factory, ShoppingCart, CarFront, Bike,
-    Signal, Palette, ShieldCheck,
-    Globe2, BookOpen
+import { 
+    ChevronRight, Sparkles, Zap, Shield, 
+    Truck, Award, Trophy, Building2, 
+    Building, Landmark, Factory, Bike, 
+    Signal, Palette, ShieldCheck, Globe2, 
+    ShoppingCart,
+    CarFront, BookOpen
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { PRODUCTS } from '../../data/products';
@@ -45,7 +46,11 @@ const ClientMarqueeItem = ({ client, size = "large" }: { client: any, size?: "sm
 
 const HomePage = () => {
     // Select a few premium products to feature
-    const featuredProducts = PRODUCTS.filter(p => p.id === 'shatak-tn-5111' || p.id === 'jabraat-pro-kit' || p.id === 'sportx-aero-tee');
+    const featuredProducts = PRODUCTS.filter(p => 
+        p.id === 'force-3d-innov-01' || 
+        p.id === 'force-stealth-joggers' || 
+        p.id === 'force-plain-cap-black'
+    );
 
     return (
         <div className="overflow-x-hidden">
@@ -131,9 +136,9 @@ const HomePage = () => {
             </section>
 
             {/* Featured Products Showcase */}
-            <section className="py-24 bg-slate-50">
+            <section className="py-12 bg-slate-50">
                 <div className="max-w-7xl mx-auto px-6">
-                    <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                    <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-6">
                         <div>
                             <span className="text-cyan-600 font-bold tracking-widest uppercase text-sm mb-2 block">Our Masterpieces</span>
                             <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight uppercase">Featured Products</h2>
@@ -179,25 +184,54 @@ const HomePage = () => {
             </section>
 
             {/* Brand Spotlight */}
-            <section className="py-24 bg-slate-900 text-white relative overflow-hidden">
+            <section className="py-14 bg-slate-900 text-white relative overflow-hidden">
                 <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1558222218-b7b54eede3f3?w=1600&q=80')] opacity-5 bg-cover bg-center mix-blend-luminosity" />
-                <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
-                    <span className="text-cyan-400 font-bold tracking-widest uppercase text-sm mb-4 block">Our Heritage</span>
-                    <h2 className="text-3xl md:text-5xl font-black tracking-tight uppercase mb-16">The Force Sports Family</h2>
+                <div className="max-w-7xl mx-auto px-6 relative z-10">
+                    <div className="text-center mb-12">
+                        <span className="text-cyan-400 font-bold tracking-widest uppercase text-sm mb-4 block">Our Ecosystem</span>
+                        <h2 className="text-4xl md:text-5xl font-black tracking-tight uppercase">The Force Sports Family</h2>
+                    </div>
 
-                    <div className="flex flex-wrap gap-12 md:gap-24 items-center justify-center opacity-70">
-                        {['Elite', 'Pro', 'Vanguard'].map((brand, idx) => (
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+                        {[
+                            { 
+                                name: 'Elite', 
+                                segment: 'Professional Kits',
+                                desc: 'High-performance teamwear engineered for top-tier competitive sporting organizations.',
+                                icon: Award
+                            },
+                            { 
+                                name: 'Pro', 
+                                segment: 'Technical Apparel',
+                                desc: 'Advanced moisture-wicking gear for athletes who demand precision and durability.',
+                                icon: Shield
+                            },
+                            { 
+                                name: 'Vanguard', 
+                                segment: 'Institutional Supply',
+                                desc: 'Premium uniform solutions for leading schools and corporate wellness initiatives.',
+                                icon: Trophy
+                            }
+                        ].map((brand, idx) => (
                             <motion.div
                                 key={idx}
-                                initial={{ opacity: 0, y: 10 }}
+                                initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ delay: idx * 0.1 }}
-                                className="flex flex-col items-center gap-3 group"
+                                className="p-10 rounded-[3rem] bg-white/[0.03] border border-white/5 hover:bg-white/[0.08] hover:border-cyan-500/30 transition-all group"
                             >
-                                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-slate-800/50 flex items-center justify-center border border-slate-700 group-hover:bg-cyan-900/40 group-hover:border-cyan-500/50 transition-all">
-                                    <Shield className="text-slate-500 group-hover:text-cyan-400 transition-colors" size={24} />
+                                <div className="w-16 h-16 rounded-2xl bg-cyan-500/10 flex items-center justify-center mb-8 text-cyan-400 group-hover:bg-cyan-500 group-hover:text-white transition-all">
+                                    <brand.icon size={32} />
                                 </div>
-                                <span className="font-bold uppercase tracking-widest text-xs text-slate-400 group-hover:text-white transition-colors">{brand}</span>
+                                <h3 className="text-3xl font-black uppercase tracking-tighter mb-2 italic">
+                                    {brand.name}
+                                </h3>
+                                <span className="block text-cyan-500 text-[10px] font-black uppercase tracking-widest mb-6 px-3 py-1 bg-cyan-500/10 rounded-full w-fit">
+                                    {brand.segment}
+                                </span>
+                                <p className="text-slate-400 text-sm leading-relaxed font-medium">
+                                    {brand.desc}
+                                </p>
                             </motion.div>
                         ))}
                     </div>
@@ -205,14 +239,14 @@ const HomePage = () => {
             </section>
 
             {/* Quick Process Section */}
-            <section className="py-24 bg-white relative overflow-hidden">
+            <section className="py-12 bg-white relative overflow-hidden">
                 {/* Decorative Elements */}
                 <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
                 <div className="absolute top-1/4 -right-64 w-96 h-96 bg-cyan-50 rounded-full blur-3xl opacity-50" />
                 <div className="absolute -bottom-32 -left-64 w-96 h-96 bg-purple-50 rounded-full blur-3xl opacity-50" />
 
                 <div className="max-w-7xl mx-auto px-6 relative z-10">
-                    <div className="text-center mb-16">
+                    <div className="text-center mb-10">
                         <span className="text-cyan-600 font-bold tracking-widest uppercase text-sm mb-3 block">The Journey</span>
                         <h2 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tight uppercase">How We Craft Perfection</h2>
                     </div>
@@ -248,10 +282,10 @@ const HomePage = () => {
             </section>
 
             {/* Esteemed Clients Section */}
-            <section className="py-16 bg-white relative overflow-hidden">
-                <div className="max-w-7xl mx-auto px-6 mb-12 relative z-10">
+            <section className="py-10 bg-white relative overflow-hidden">
+                <div className="max-w-7xl mx-auto px-6 mb-8 relative z-10">
                     <div className="text-center">
-                        <span className="text-orange-600 font-bold tracking-[0.2em] uppercase text-xs mb-3 block">Trusted by Industry Leaders</span>
+                        <span className="text-orange-600 font-bold tracking-[0.2em] uppercase text-xs mb-2 block">Trusted by Industry Leaders</span>
                         <h2 className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight uppercase">OUR TOP ESTEEMED CLIENTS</h2>
                         <div className="w-16 h-1 bg-orange-600 mx-auto mt-4 rounded-full" />
                     </div>

@@ -18,13 +18,22 @@ const Footer = () => {
                         <p className="text-slate-400 max-w-sm mb-8 leading-relaxed">
                             {BRAND_DETAILS.tagline}. Leading manufacturer and supplier of customized sports apparel since {BRAND_DETAILS.established}.
                         </p>
-                        <div className="flex gap-4">
+                        <div className="flex gap-4 mb-10">
                             <a href={BRAND_DETAILS.social.instagram} target="_blank" rel="noopener noreferrer" title="Instagram" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-cyan-500 cursor-pointer transition-all">
                                 <Instagram size={20} />
                             </a>
                             <a href={BRAND_DETAILS.social.facebook} target="_blank" rel="noopener noreferrer" title="Facebook" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-cyan-500 cursor-pointer transition-all">
                                 <Facebook size={20} />
                             </a>
+                        </div>
+                        
+                        <div className="flex flex-wrap gap-4 opacity-40">
+                            <div className="px-3 py-1 border border-white/20 rounded-lg text-[9px] font-black uppercase tracking-widest">
+                                ISO 9001:2015
+                            </div>
+                            <div className="px-3 py-1 border border-white/20 rounded-lg text-[9px] font-black uppercase tracking-widest">
+                                Make In India
+                            </div>
                         </div>
                     </div>
 

@@ -35,7 +35,7 @@ const ProductPage = () => {
     return (
         <div className="bg-slate-50 min-h-screen">
             {/* Header */}
-            <section className="bg-slate-900 py-20 px-6 text-center relative overflow-hidden">
+            <section className="bg-slate-900 py-10 px-6 text-center relative overflow-hidden">
                 <div className="absolute inset-0 opacity-10">
                     <div className="absolute top-0 left-0 w-64 h-64 bg-cyan-500 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2"></div>
                     <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-600 rounded-full blur-[150px] translate-x-1/2 translate-y-1/2"></div>
@@ -43,17 +43,17 @@ const ProductPage = () => {
                 <motion.h1
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-5xl md:text-6xl font-black text-white uppercase tracking-tighter relative z-10"
+                    className="text-4xl md:text-5xl font-black text-white uppercase tracking-tighter relative z-10"
                 >
                     Gear Up <span className="text-cyan-500">Pro</span>
                 </motion.h1>
-                <p className="text-slate-400 mt-6 max-w-2xl mx-auto uppercase tracking-[0.3em] text-[10px] font-black relative z-10">
+                <p className="text-slate-400 mt-4 max-w-2xl mx-auto uppercase tracking-[0.3em] text-[10px] font-black relative z-10">
                     Premium Sports Apparel & Custom Solutions
                 </p>
             </section>
 
-            <div className="max-w-[1600px] mx-auto px-6 py-12">
-                <div className="flex flex-col lg:flex-row gap-12">
+            <div className="max-w-[1600px] mx-auto px-6 py-6">
+                <div className="flex flex-col lg:flex-row gap-8">
                     {/* Left Sidebar - Product Categories */}
                     <aside className="w-full lg:w-72 flex-shrink-0">
                         <div className="lg:hidden mb-6 flex items-center justify-between bg-white p-4 rounded-2xl border border-slate-100 shadow-sm">
@@ -235,7 +235,14 @@ const ProductPage = () => {
 
                                             <div className="grid grid-cols-2 gap-4">
                                                 <button
-                                                    onClick={() => setCustomizingProduct(product)}
+                                                    onClick={() => {
+                                                        setCustomization({
+                                                            logo: '',
+                                                            size: 'Medium',
+                                                            placement: product.category === 'T-Shirts' ? 'Center Chest' : 'Front'
+                                                        });
+                                                        setCustomizingProduct(product);
+                                                    }}
                                                     className="py-4 bg-cyan-600 text-white text-xs font-bold uppercase tracking-widest rounded-xl hover:bg-slate-900 transition-all"
                                                 >
                                                     Customize
@@ -254,7 +261,7 @@ const ProductPage = () => {
                         </div>
 
                         {filteredProducts.length === 0 && (
-                            <div className="text-center py-32 bg-white rounded-[3rem] border border-dashed border-slate-200">
+                            <div className="text-center py-20 bg-white rounded-[3rem] border border-dashed border-slate-200">
                                 <AnimatePresence>
                                     <motion.div
                                         initial={{ opacity: 0, scale: 0.9 }}
@@ -298,18 +305,26 @@ const ProductPage = () => {
                              <div className="w-full md:w-1/2 bg-slate-50 flex items-center justify-center p-12">
                                 <div className="relative group">
                                     <img 
-                                        src={customization.placement === 'Back' && customizingProduct.imageBack ? customizingProduct.imageBack : customizingProduct.image} 
+                                        src={(customization.placement.includes('Back') || customization.placement.includes('Shoulders') || customization.placement.includes('Locker')) && customizingProduct.imageBack ? customizingProduct.imageBack : customizingProduct.image} 
                                         alt={customizingProduct.title} 
                                         className="w-full max-w-xs object-contain rounded-3xl" 
                                     />
-                                    {/* Placeholder for Logo placement debug */}
-                                    <div className={`absolute border-2 border-cyan-500 border-dashed rounded-lg flex items-center justify-center bg-cyan-500/10 transition-all
-                                        ${customization.placement === 'Front' ? 'top-1/4 left-1/4 w-16 h-16' :
-                                            customization.placement === 'Back' ? 'top-1/4 right-1/4 w-16 h-16 opacity-30 animate-pulse' :
-                                                customization.placement === 'Sleeve Left' ? 'top-1/3 left-0 w-10 h-10' :
-                                                    'top-1/3 right-0 w-10 h-10'}`}
+                                    {/* Logo Placement Visual Overlay */}
+                                    <div className={`absolute border-2 border-cyan-500 border-dashed rounded-lg flex items-center justify-center bg-cyan-500/10 transition-all duration-500
+                                        ${customizingProduct.category === 'T-Shirts' ? 
+                                            (customization.placement === 'Full Front' ? 'top-[20%] left-[20%] w-[60%] h-[60%]' :
+                                            customization.placement === 'Medium Front' ? 'top-[25%] left-[30%] w-[40%] h-[40%]' :
+                                            customization.placement === 'Center Chest' ? 'top-[30%] left-[40%] w-[20%] h-[15%]' :
+                                            customization.placement === 'Across Chest' ? 'top-[35%] left-[20%] w-[60%] h-[10%]' :
+                                            customization.placement === 'Left Chest' ? 'top-[30%] left-[25%] w-[15%] h-[15%]' :
+                                            customization.placement === 'Right Chest' ? 'top-[30%] right-[25%] w-[15%] h-[15%]' :
+                                            customization.placement === 'Left Sleeve' ? 'top-[35%] left-0 w-[15%] h-[15%]' :
+                                            customization.placement === 'Right Sleeve' ? 'top-[35%] right-0 w-[15%] h-[15%]' :
+                                            customization.placement === 'Full Back' ? 'top-[20%] left-[20%] w-[60%] h-[60%]' :
+                                            'top-[40%] left-[40%] w-[20%] h-[20%]')
+                                        : 'hidden'}`}
                                     >
-                                        <span className="text-[8px] font-bold text-cyan-600">LOGO</span>
+                                        <span className="text-[8px] font-black tracking-tighter text-cyan-600">LOGO</span>
                                     </div>
                                 </div>
                             </div>
@@ -333,23 +348,30 @@ const ProductPage = () => {
                                         />
                                     </div>
 
-                                    <div>
-                                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4 block">Logo Placement</label>
-                                        <div className="grid grid-cols-2 gap-3">
-                                            {['Front', 'Back', 'Sleeve Left', 'Sleeve Right'].map(p => (
-                                                <button
-                                                    key={p}
-                                                    onClick={() => setCustomization({ ...customization, placement: p })}
-                                                    className={`px-4 py-3 rounded-xl text-[9px] font-black uppercase tracking-widest border transition-all ${customization.placement === p
-                                                        ? 'bg-slate-900 text-white border-slate-900 shadow-lg'
-                                                        : 'bg-white text-slate-400 border-slate-100 hover:border-slate-300'
-                                                        }`}
-                                                >
-                                                    {p}
-                                                </button>
-                                            ))}
+                                    {customizingProduct.category === 'T-Shirts' && (
+                                        <div>
+                                            <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4 block">Logo Placement</label>
+                                            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                                                {[
+                                                    'Full Front', 'Medium Front', 'Center Chest', 'Across Chest',
+                                                    'Right Chest', 'Left Chest', 'Right Sleeve', 'Left Sleeve',
+                                                    'Right Vertical', 'Left Vertical', 'Front Bottom Right', 'Front Bottom Left',
+                                                    'Full Back', 'Medium Back', 'Locker Patch Area', 'Across Shoulders'
+                                                ].map(p => (
+                                                    <button
+                                                        key={p}
+                                                        onClick={() => setCustomization({ ...customization, placement: p })}
+                                                        className={`px-3 py-2.5 rounded-xl text-[8px] font-black uppercase tracking-widest border transition-all ${customization.placement === p
+                                                            ? 'bg-slate-900 text-white border-slate-900 shadow-lg'
+                                                            : 'bg-white text-slate-400 border-slate-100 hover:border-slate-300'
+                                                            }`}
+                                                    >
+                                                        {p}
+                                                    </button>
+                                                ))}
+                                            </div>
                                         </div>
-                                    </div>
+                                    )}
 
                                     <div>
                                         <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4 block">Logo Size</label>

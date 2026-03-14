@@ -1,6 +1,6 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, MessageCircle } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Mail, Phone, MapPin, Send, MessageCircle, Upload, X, CheckCircle } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 import { BRAND_DETAILS } from '../../data/brandData';
 
@@ -8,6 +8,48 @@ const InquiryPage = () => {
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
     const prefilledProduct = queryParams.get('product');
+
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        phone: '',
+        quantity: '',
+        message: prefilledProduct ? `I am interested in: ${prefilledProduct}` : ''
+    });
+
+    const [image, setImage] = useState<File | null>(null);
+    const [imagePreview, setImagePreview] = useState<string | null>(null);
+    const [isSubmitted, setIsSubmitted] = useState(false);
+
+    const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            setImage(file);
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setImagePreview(reader.result as string);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        
+        const subject = encodeURIComponent(BRAND_DETAILS.contacts.defaultSubject);
+        const body = encodeURIComponent(
+            `Name: ${formData.name}\n` +
+            `Email: ${formData.email}\n` +
+            `Phone: ${formData.phone}\n` +
+            `Quantity: ${formData.quantity}\n\n` +
+            `Message: ${formData.message}\n\n` +
+            (image ? "[Image Selected for Attachment]" : "")
+        );
+
+        window.location.href = `mailto:${BRAND_DETAILS.contacts.email}?subject=${subject}&body=${body}`;
+        setIsSubmitted(true);
+        setTimeout(() => setIsSubmitted(false), 5000);
+    };
 
     return (
         <div className="bg-slate-50 min-h-screen">
@@ -86,44 +128,145 @@ const InquiryPage = () => {
 
                     {/* Form Area */}
                     <div className="p-12 lg:w-2/3">
-                        <div className="mb-10">
-                            <h3 className="text-3xl font-black text-slate-900 uppercase">Tell us about your order</h3>
-                            <p className="text-slate-500 mt-2 font-medium">We specialize in 100% customized team jerseys and gear.</p>
-                        </div>
+                        <AnimatePresence>
+                            {isSubmitted ? (
+                                <motion.div 
+                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    exit={{ opacity: 0 }}
+                                    className="h-full flex flex-col items-center justify-center text-center space-y-6 py-20"
+                                >
+                                    <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center">
+                                        <CheckCircle size={48} />
+                                    </div>
+                                    <div>
+                                        <h3 className="text-3xl font-black text-slate-900 uppercase">Opening Email Client</h3>
+                                        <p className="text-slate-500 mt-2 font-medium">Please attach your selected image in the email before sending!</p>
+                                    </div>
+                                    <button 
+                                        onClick={() => setIsSubmitted(false)}
+                                        className="text-cyan-600 font-bold uppercase tracking-widest text-sm hover:underline"
+                                    >
+                                        Back to Form
+                                    </button>
+                                </motion.div>
+                            ) : (
+                                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+                                    <div className="mb-10">
+                                        <h3 className="text-3xl font-black text-slate-900 uppercase">Tell us about your order</h3>
+                                        <p className="text-slate-500 mt-2 font-medium">We specialize in 100% customized team jerseys and gear.</p>
+                                    </div>
 
-                        <form className="space-y-6">
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div className="space-y-2">
-                                    <label className="text-xs font-black uppercase tracking-widest text-slate-400">FullName</label>
-                                    <input type="text" className="w-full p-4 bg-slate-50 rounded-2xl border-none focus:ring-2 focus:ring-cyan-400 outline-none transition-all" placeholder="John Doe" />
-                                </div>
-                                <div className="space-y-2">
-                                    <label className="text-xs font-black uppercase tracking-widest text-slate-400">Email Address</label>
-                                    <input type="email" className="w-full p-4 bg-slate-50 rounded-2xl border-none focus:ring-2 focus:ring-cyan-400 outline-none transition-all" placeholder="john@example.com" />
-                                </div>
-                            </div>
+                                    <form onSubmit={handleSubmit} className="space-y-6">
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                            <div className="space-y-2">
+                                                <label className="text-xs font-black uppercase tracking-widest text-slate-400">FullName</label>
+                                                <input 
+                                                    required 
+                                                    type="text" 
+                                                    className="w-full p-4 bg-slate-50 text-slate-900 rounded-2xl border-none focus:ring-2 focus:ring-cyan-400 outline-none transition-all" 
+                                                    placeholder="John Doe"
+                                                    value={formData.name}
+                                                    onChange={(e) => setFormData({...formData, name: e.target.value})}
+                                                />
+                                            </div>
+                                            <div className="space-y-2">
+                                                <label className="text-xs font-black uppercase tracking-widest text-slate-400">Email Address</label>
+                                                <input 
+                                                    required 
+                                                    type="email" 
+                                                    className="w-full p-4 bg-slate-50 text-slate-900 rounded-2xl border-none focus:ring-2 focus:ring-cyan-400 outline-none transition-all" 
+                                                    placeholder="john@example.com"
+                                                    value={formData.email}
+                                                    onChange={(e) => setFormData({...formData, email: e.target.value})}
+                                                />
+                                            </div>
+                                        </div>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div className="space-y-2">
-                                    <label className="text-xs font-black uppercase tracking-widest text-slate-400">Quantity</label>
-                                    <input type="number" className="w-full p-4 bg-slate-50 rounded-2xl border-none focus:ring-2 focus:ring-cyan-400 outline-none transition-all" placeholder="E.g. 50" />
-                                </div>
-                            </div>
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                            <div className="space-y-2">
+                                                <label className="text-xs font-black uppercase tracking-widest text-slate-400">Phone Number</label>
+                                                <input 
+                                                    required 
+                                                    type="tel" 
+                                                    className="w-full p-4 bg-slate-50 text-slate-900 rounded-2xl border-none focus:ring-2 focus:ring-cyan-400 outline-none transition-all" 
+                                                    placeholder="+91 00000 00000"
+                                                    value={formData.phone}
+                                                    onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                                                />
+                                            </div>
+                                            <div className="space-y-2">
+                                                <label className="text-xs font-black uppercase tracking-widest text-slate-400">Quantity</label>
+                                                <input 
+                                                    required 
+                                                    type="number" 
+                                                    className="w-full p-4 bg-slate-50 text-slate-900 rounded-2xl border-none focus:ring-2 focus:ring-cyan-400 outline-none transition-all" 
+                                                    placeholder="E.g. 50"
+                                                    value={formData.quantity}
+                                                    onChange={(e) => setFormData({...formData, quantity: e.target.value})}
+                                                />
+                                            </div>
+                                        </div>
 
-                            <div className="space-y-2">
-                                <label className="text-xs font-black uppercase tracking-widest text-slate-400">Inquiry Message</label>
-                                <textarea
-                                    rows={6}
-                                    className="w-full p-4 bg-slate-50 rounded-2xl border-none focus:ring-2 focus:ring-cyan-400 outline-none transition-all resize-none"
-                                    placeholder="Details about colors, logos, and sizing..."
-                                    defaultValue={prefilledProduct ? `I am interested in inquiring about: ${prefilledProduct}. \n\nPlease provide more details regarding customization options and pricing.` : ''}
-                                ></textarea>
-                            </div>
+                                        <div className="space-y-2">
+                                            <label className="text-xs font-black uppercase tracking-widest text-slate-400">Reference Product Design (Optional)</label>
+                                            <div className="relative group">
+                                                <div className={`w-full p-10 border-2 border-dashed rounded-3xl transition-all flex flex-col items-center justify-center gap-4 ${imagePreview ? 'border-cyan-500 bg-cyan-50/10' : 'border-slate-200 hover:border-cyan-400 bg-slate-50'}`}>
+                                                    {imagePreview ? (
+                                                        <div className="relative">
+                                                            <img src={imagePreview} alt="Preview" className="h-32 w-auto object-contain rounded-xl shadow-lg" />
+                                                            <button 
+                                                                type="button"
+                                                                onClick={() => {setImage(null); setImagePreview(null);}}
+                                                                className="absolute -top-2 -right-2 bg-red-500 text-white p-1 rounded-full shadow-lg hover:bg-red-600 transition-colors"
+                                                                aria-label="Remove image"
+                                                                title="Remove image"
+                                                            >
+                                                                <X size={16} />
+                                                            </button>
+                                                        </div>
+                                                    ) : (
+                                                        <>
+                                                            <div className="w-16 h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center text-slate-400 group-hover:text-cyan-500 group-hover:scale-110 transition-all">
+                                                                <Upload size={32} />
+                                                            </div>
+                                                            <div className="text-center">
+                                                                <p className="text-sm font-bold text-slate-900">Click to upload your design</p>
+                                                                <p className="text-xs text-slate-500 mt-1">PNG, JPG up to 10MB</p>
+                                                            </div>
+                                                        </>
+                                                    )}
+                                                    <input 
+                                                        type="file" 
+                                                        accept="image/*" 
+                                                        className="absolute inset-0 opacity-0 cursor-pointer"
+                                                        onChange={handleImageChange}
+                                                        aria-label="Upload design image"
+                                                        title="Upload design image"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
 
-                            <button type="button" className="w-full py-5 bg-slate-900 text-white font-bold uppercase tracking-widest rounded-xl hover:bg-cyan-600 hover:shadow-2xl hover:shadow-cyan-100 transition-all flex items-center justify-center gap-3 active:scale-95 group">
-                                Submit Inquiry <Send size={20} className="group-hover:translate-x-1 transition-transform" />
-                            </button>
-                        </form>
+                                        <div className="space-y-2">
+                                            <label className="text-xs font-black uppercase tracking-widest text-slate-400">Inquiry Message</label>
+                                            <textarea
+                                                required
+                                                rows={4}
+                                                className="w-full p-4 bg-slate-50 text-slate-900 rounded-2xl border-none focus:ring-2 focus:ring-cyan-400 outline-none transition-all resize-none"
+                                                placeholder="Details about colors, logos, and sizing..."
+                                                value={formData.message}
+                                                onChange={(e) => setFormData({...formData, message: e.target.value})}
+                                            ></textarea>
+                                        </div>
+
+                                        <button type="submit" className="w-full py-5 bg-slate-900 text-white font-bold uppercase tracking-widest rounded-xl hover:bg-cyan-600 hover:shadow-2xl hover:shadow-cyan-100 transition-all flex items-center justify-center gap-3 active:scale-95 group">
+                                            Submit Inquiry <Send size={20} className="group-hover:translate-x-1 transition-transform" />
+                                        </button>
+                                    </form>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
                     </div>
                 </div>
             </div>
