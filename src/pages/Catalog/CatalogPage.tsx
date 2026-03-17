@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { CATALOG_DATA } from '../../data/catalogData';
 import { PRODUCTS } from '../../data/products';
 import { ChevronLeft, ChevronRight, Maximize2, X, Download, BookOpen } from 'lucide-react';
+import { getCDNUrl } from '../../utils/cdnUtils';
 
 const INTERACTIVE_COLORS = [
     { name: 'Sky Blue', hex: '#7dd3fc', files: ['sky blue.png', 'sky bule.png', 'sky.png'] },
@@ -66,9 +67,12 @@ const CatalogPage = () => {
     const totalPages = currentCatalog.pages.length;
 
     const getPageSrc = (page: any, colorFile?: string | null) => {
-        if (typeof page === 'string') return page;
-        if (colorFile) return `${page.folder}/${colorFile}`;
-        return page.master;
+        let path = '';
+        if (typeof page === 'string') path = page;
+        else if (colorFile) path = `${page.folder}/${colorFile}`;
+        else path = page.master;
+        
+        return getCDNUrl(path, { width: 1200 });
     };
 
     const nextPage = useCallback(() => {
@@ -238,7 +242,7 @@ const CatalogPage = () => {
                                                                 className={`w-5 h-5 md:w-6 md:h-6 rounded-full border-2 transition-transform hover:scale-125 flex-shrink-0 overflow-hidden ${selectedColor === filename ? 'border-cyan-400' : 'border-white/20'}`}
                                                                 title={`Variant ${idx + 1}`}
                                                             >
-                                                                <img src={item} alt={`Variant ${idx + 1}`} className="w-full h-full object-cover object-top" />
+                                                                <img src={getCDNUrl(item, { width: 50 })} alt={`Variant ${idx + 1}`} className="w-full h-full object-cover object-top" />
                                                             </button>
                                                         );
                                                     });

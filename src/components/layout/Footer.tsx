@@ -43,7 +43,7 @@ const Footer = () => {
                             <li className="flex items-start gap-3">
                                 <MapPin size={18} className="mt-1 flex-shrink-0 text-cyan-400" />
                                 <a 
-                                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(BRAND_DETAILS.addresses[0].text)}`}
+                                    href={BRAND_DETAILS.addresses[0].googleMapsUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="hover:text-white transition-colors"
@@ -79,6 +79,10 @@ const Footer = () => {
 
                 <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-slate-500 text-xs font-medium uppercase tracking-widest">
                     <p>&copy; {new Date().getFullYear()} {BRAND_DETAILS.name}. All Rights Reserved.</p>
+                    <div className="flex gap-8">
+                        <a href="/terms" className="hover:text-cyan-500 transition-colors">Terms</a>
+                        <a href="/privacy" className="hover:text-cyan-500 transition-colors">Privacy</a>
+                    </div>
                     <p>Hand-crafted in Mumbai, India</p>
                 </div>
             </div>

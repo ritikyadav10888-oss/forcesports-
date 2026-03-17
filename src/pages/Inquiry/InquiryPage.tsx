@@ -71,11 +71,12 @@ const InquiryPage = () => {
                                 <div>
                                     <h4 className="text-xs font-bold text-slate-400 uppercase mb-2 tracking-widest">Address</h4>
                                     <a 
-                                        href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(BRAND_DETAILS.addresses[0].text)}`}
+                                        href={BRAND_DETAILS.addresses[0].googleMapsUrl}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="text-sm font-medium leading-relaxed hover:text-cyan-400 transition-colors"
                                     >
+                                        <span className="block font-black text-white mb-1 uppercase tracking-tight">Force Sports and Wears India</span>
                                         {BRAND_DETAILS.addresses[0].text}
                                     </a>
                                 </div>

@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { PRODUCTS, Product } from '../../data/products';
 import { Link } from 'react-router-dom';
 import { Filter, X, Check, Activity } from 'lucide-react';
+import { getCDNUrl } from '../../utils/cdnUtils';
 
 const Categories = ['T-Shirts', 'Track Pants', 'Shorts', 'Jackets', 'Bags', 'Caps'] as const;
 const Sports = ['Badminton', 'Cricket', 'Football', 'Volleyball', 'Kabaddi', 'Pickleball', 'Tennis'] as const;
@@ -68,7 +69,11 @@ const ProductPage = () => {
                             </button>
                         </div>
 
-                        <div className={`sticky top-32 space-y-8 ${isMobileFiltersOpen ? 'block' : 'hidden lg:block'}`}>
+                        <div className={`sticky top-32 max-h-[calc(100vh-160px)] overflow-y-auto no-scrollbar space-y-8 ${isMobileFiltersOpen ? 'block' : 'hidden lg:block'}`}>
+                            <style>{`
+                                .no-scrollbar::-webkit-scrollbar { display: none; }
+                                .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+                            `}</style>
                             <div>
                                 <h3 className="text-[11px] font-black text-slate-400 uppercase tracking-widest mb-6 flex items-center gap-2">
                                     <Filter size={14} className="text-cyan-600" /> Filters
@@ -183,6 +188,39 @@ const ProductPage = () => {
 
                     {/* Main Content Area */}
                     <main className="flex-1">
+                        {/* Horizontal Scrollable Categories (Mobile Optimized) */}
+                        <div className="mb-10 -mx-6 px-6 lg:mx-0 lg:px-0">
+                            <div className="flex overflow-x-auto pb-4 no-scrollbar gap-3 scroll-smooth">
+                                <button
+                                    onClick={() => setSelectedCategories([])}
+                                    className={`flex-shrink-0 px-6 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all border ${
+                                        selectedCategories.length === 0 
+                                        ? 'bg-slate-900 text-white border-slate-900 shadow-xl shadow-slate-900/20' 
+                                        : 'bg-white text-slate-500 border-slate-100 hover:border-slate-300'
+                                    }`}
+                                >
+                                    All Gear
+                                </button>
+                                {Categories.map(cat => (
+                                    <button
+                                        key={cat}
+                                        onClick={() => {
+                                            setSelectedCategories(prev => 
+                                                prev.includes(cat) ? prev.filter(c => c !== cat) : [...prev, cat]
+                                            );
+                                        }}
+                                        className={`flex-shrink-0 px-6 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all border ${
+                                            selectedCategories.includes(cat) 
+                                            ? 'bg-cyan-600 text-white border-cyan-600 shadow-xl shadow-cyan-900/20' 
+                                            : 'bg-white text-slate-500 border-slate-100 hover:border-slate-300'
+                                        }`}
+                                    >
+                                        {cat}
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+
 
 
                         {/* Grid */}
@@ -198,15 +236,17 @@ const ProductPage = () => {
                                     >
                                         <div className="h-72 bg-slate-100 overflow-hidden relative p-8">
                                             <img
-                                                src={product.image}
+                                                src={getCDNUrl(product.image, { width: 600 })}
                                                 alt={product.title}
+                                                loading="lazy"
                                                 className={`w-full h-full object-contain transition-all duration-700 
                                                     ${product.imageBack ? 'group-hover:opacity-0 group-hover:scale-110' : 'group-hover:scale-110'}`}
                                             />
                                             {product.imageBack && (
                                                 <img 
-                                                    src={product.imageBack} 
+                                                    src={getCDNUrl(product.imageBack, { width: 600 })} 
                                                     alt={`${product.title} - Back View`}
+                                                    loading="lazy"
                                                     className="absolute inset-0 w-full h-full object-contain p-8 opacity-0 group-hover:opacity-100 transition-all duration-700 scale-110 group-hover:scale-100"
                                                 />
                                             )}

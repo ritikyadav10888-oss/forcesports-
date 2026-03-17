@@ -9,6 +9,8 @@ import InquiryPage from './pages/Inquiry/InquiryPage';
 import ManufacturingPage from './pages/Manufacturing/ManufacturingPage';
 import ProductDetailPage from './pages/Products/ProductDetailPage';
 import CatalogPage from './pages/Catalog/CatalogPage';
+import TermsPage from './pages/Legal/TermsPage';
+import PrivacyPage from './pages/Legal/PrivacyPage';
 
 function App() {
     return (
@@ -23,6 +25,8 @@ function App() {
                     <Route path="/about" element={<AboutPage />} />
                     <Route path="/manufacturing" element={<ManufacturingPage />} />
                     <Route path="/inquiry" element={<InquiryPage />} />
+                    <Route path="/terms" element={<TermsPage />} />
+                    <Route path="/privacy" element={<PrivacyPage />} />
                 </Routes>
             </Layout>
         </Router>

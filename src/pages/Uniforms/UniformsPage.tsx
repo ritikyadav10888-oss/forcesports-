@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Filter, Check, Briefcase, Activity, MessageCircle, Zap, Shield, Star, X, Info } from 'lucide-react';
 import { BRAND_DETAILS } from '../../data/brandData';
+import { getCDNUrl } from '../../utils/cdnUtils';
 
 const UniformCategories = ['School /colleges', 'Corporate staff', 'Fast Food floor staff', 'Industrial', 'Quick Delivery services'] as const;
 
@@ -274,7 +275,8 @@ const UniformsPage = () => {
                             </h3>
                             <button 
                                 onClick={() => setIsMobileFiltersOpen(!isMobileFiltersOpen)}
-                                className="px-4 py-2 bg-slate-100 text-slate-600 rounded-lg text-[9px] font-black uppercase tracking-widest"
+                                title={isMobileFiltersOpen ? 'Hide Filters' : 'Show Filters'}
+                                className="px-4 py-2 bg-white text-slate-900 rounded-lg text-[9px] font-black uppercase tracking-widest border border-slate-200"
                             >
                                 {isMobileFiltersOpen ? 'Hide' : 'Show'}
                             </button>
@@ -353,9 +355,10 @@ const UniformsPage = () => {
                                     >
                                         <div className="h-72 bg-slate-100 overflow-hidden relative">
                                             <img
-                                                src={uniform.image}
+                                                src={getCDNUrl(uniform.image, { width: 800 })}
                                                 alt={uniform.title}
-                                                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                                loading="lazy"
+                                                className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700"
                                             />
                                             <div className="absolute top-6 left-6 flex flex-col gap-2">
                                                 <div className="bg-slate-900/90 backdrop-blur px-3 py-1 rounded-full text-[9px] font-black text-white uppercase tracking-widest">
@@ -436,8 +439,9 @@ const UniformsPage = () => {
                             className="bg-white w-full max-w-5xl rounded-[2.5rem] overflow-hidden relative z-10 flex flex-col md:flex-row shadow-2xl"
                         >
                             <button 
-                                onClick={() => setSelectedProduct(null)}
-                                className="absolute top-6 right-6 w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center text-slate-500 hover:bg-slate-900 hover:text-white transition-all z-20"
+                                onClick={() => setViewingUniform(null)}
+                                title="Close Details"
+                                className="absolute top-6 right-6 w-12 h-12 bg-white rounded-full flex items-center justify-center text-slate-900 hover:bg-slate-100 transition-all z-20 shadow-sm"
                             >
                                 <X size={20} />
                             </button>

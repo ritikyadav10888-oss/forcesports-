@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { PRODUCTS } from '../../data/products';
+import { getCDNUrl } from '../../utils/cdnUtils';
 
 const ClientMarqueeItem = ({ client, size = "large" }: { client: any, size?: "small" | "large" | "medium" }) => {
     const [imageError, setImageError] = React.useState(false);
@@ -28,8 +29,9 @@ const ClientMarqueeItem = ({ client, size = "large" }: { client: any, size?: "sm
             <div className={`${boxSize} ${imageError || !client.logo ? client.color : 'bg-white'} rounded-2xl flex items-center justify-center text-white shadow-xl transition-all duration-500 group-hover/item:scale-110 group-hover/item:rotate-6 border border-white/50 overflow-hidden`}>
                 {client.logo && !imageError ? (
                     <img
-                        src={client.logo}
+                        src={getCDNUrl(client.logo, { width: 100 })}
                         alt={client.name}
+                        loading="lazy"
                         className={`w-full h-full object-contain ${padding}`}
                         onError={() => setImageError(true)}
                     />
@@ -59,7 +61,7 @@ const HomePage = () => {
                 {/* Background Video/Image */}
                 <div className="absolute inset-0 z-0">
                     <img
-                        src="/force_sports.png"
+                        src={getCDNUrl('/force_sports.png', { width: 1920 })}
                         alt="Force Sports Athlete"
                         className="w-full h-full object-cover opacity-50 scale-105 animate-[slow-zoom_20s_ease-in-out_infinite_alternate]"
                     />

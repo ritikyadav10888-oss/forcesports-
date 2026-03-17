@@ -1,5 +1,5 @@
 export const BRAND_DETAILS = {
-    name: "Force Sports & Wears India",
+    name: "Force Sports and Wears India",
     logo: "/brand-logo.png",
     shortName: "Force Sports",
     tagline: "Fueling Champions Since 2007",
@@ -15,7 +15,8 @@ export const BRAND_DETAILS = {
             text: "5/31-C, Motilal Nagar No. 03, M.G. Road, Goregaon West, Mumbai - 400062",
             city: "Mumbai",
             state: "Maharashtra",
-            pincode: "400062"
+            pincode: "400062",
+            googleMapsUrl: "https://maps.app.goo.gl/cs8op5sj9B3YCuux8"
         }
     ],
     contacts: {

@@ -3811,6 +3811,283 @@ export const PRODUCTS: Product[] = [
             'Material': 'Performance Polyester',
             'Design': '3D Technical'
         }
+    },
+    {
+        id: 'force-3d-innov-31',
+        brand: 'Force',
+        category: 'T-Shirts',
+        sport: 'All',
+        productCode: '#3D-INV-31',
+        title: '3D Innovation Design #31',
+        description: 'Advanced technical 3D sublimated design with multiple color variants.',
+        longDescription: 'Part of our cutting-edge 3D Innovations series, Design #31 offers a range of professional color variants. Engineered for elite performance and high-definition sublimation.',
+        image: '/New folder/ppt 31/261.png',
+        gallery: [
+            '/New folder/ppt 31/261.png',
+            '/New folder/ppt 31/262.png',
+            '/New folder/ppt 31/263.png',
+            '/New folder/ppt 31/264.png',
+            '/New folder/ppt 31/265.png',
+            '/New folder/ppt 31/266.png',
+            '/New folder/ppt 31/267.png',
+            '/New folder/ppt 31/268.png',
+            '/New folder/ppt 31/269.png',
+            '/New folder/ppt 31/270.png',
+            '/New folder/ppt 31/271.png',
+            '/New folder/ppt 31/272.png',
+            '/New folder/ppt 31/273.png'
+        ],
+        features: [
+            'Multiple Color Variants',
+            '3D Sublimated Graphics',
+            'High-Performance Technical Fabric',
+            'Moisture-Wicking Technology'
+        ],
+        specs: {
+            'Series': '3D Innovations',
+            'Material': 'Performance Polyester',
+            'Design': '3D Technical'
+        }
+    },
+    {
+        id: 'force-bag-cricket-01',
+        brand: 'Force',
+        category: 'Bags',
+        sport: 'Cricket',
+        productCode: '#FB-CRK-01',
+        title: 'Professional Cricket Kit Bag',
+        description: 'Heavy-duty wheelie kit bag with specialized compartments for bats and gear.',
+        longDescription: 'The Elite Force Cricket Kit Bag is designed for the serious cricketer. Featuring rugged all-terrain wheels, padded internal bat sleeves, and a ventilated shoe compartment, it offers maximum protection and organization for all your match-day essentials.',
+        image: '/Bags/professional_cricket_kit_bag_1773738848299.png',
+        features: [
+            'Heavy-Duty All-Terrain Wheels',
+            'Internal Padded Bat Sleeves',
+            'Ventilated Separate Shoe Compartment',
+            'Industrial Grade Zippers',
+            'Reinforced Base & Handles'
+        ],
+        specs: {
+            'Material': '1680D Ballistic Nylon',
+            'Capacity': '120 Liters',
+            'Wheels': 'Triple-Wheel System',
+            'Type': 'Professional Kit Bag'
+        }
+    },
+    {
+        id: 'force-bag-duffel-01',
+        brand: 'Force',
+        category: 'Bags',
+        sport: 'Other',
+        productCode: '#FB-TDUF-01',
+        title: 'Tactical Sports Duffel Bag',
+        description: 'Water-resistant tactical duffel with multiple utility pockets.',
+        longDescription: 'Built for durability and versatility, the Tactical Sports Duffel features a rugged water-resistant exterior. With its tactical modular design and multiple quick-access pockets, it is perfect for transitions between the gym, field, and travel.',
+        image: '/Bags/tactical_sports_duffel_bag_1773738867037.png',
+        features: [
+            'Water-Resistant Coating',
+            'Tactical Molle Webbing',
+            'Integrated Wet/Dry Pocket',
+            'Padded Adjustable Strap',
+            'Reflective Safety Piping'
+        ],
+        specs: {
+            'Material': 'Ripstop Technical Fabric',
+            'Dimensions': '60 x 30 x 28 cm',
+            'Weight': '850 grams',
+            'Type': 'All-Purpose Duffel'
+        }
+    },
+    {
+        id: 'force-bag-back-01',
+        brand: 'Force',
+        category: 'Bags',
+        sport: 'Other',
+        productCode: '#FB-EBP-01',
+        title: 'Elite Gym Backpack',
+        description: 'Ergonomic performance backpack with laptop and shoe storage.',
+        longDescription: 'The Elite Gym Backpack combines style with technical function. Designed with an ergonomic ventilated back panel and specialized compartments for tech and training gear, it is the ultimate bag for the active professional.',
+        image: '/Bags/elite_gym_backpack_1773738892671.png',
+        features: [
+            'Padded 15.6" Laptop Sleeve',
+            'Ventilated Air-Mesh Back',
+            'Bottom Shoe Access',
+            'Sternum Support Strap',
+            'Carbon Fiber Texture Accents'
+        ],
+        specs: {
+            'Material': 'Reinforced Polyester / Carbon Vinyl',
+            'Capacity': '35 Liters',
+            'Ventilation': 'Air-Flow System',
+            'Type': 'Performance Backpack'
+        }
+    },
+    {
+        id: 'force-bag-boot-01',
+        brand: 'Force',
+        category: 'Bags',
+        sport: 'Football',
+        productCode: '#FB-CBB-01',
+        title: 'Compact Sports Boot Bag',
+        description: 'Minimalist ventilated bag for sports footwear.',
+        longDescription: 'Keep your gear clean with the Force Compact Boot Bag. Designed specifically for sports shoes, it features large mesh side panels for maximum ventilation and a durable ripstop exterior to handle post-match grit.',
+        image: '/Bags/compact_sports_boot_bag_1773738913964.png',
+        features: [
+            'Dual Mesh Air Vents',
+            'Easy-Carry Top Handle',
+            'Wipe-Clean Internal Lining',
+            'Compact Foldable Design',
+            'Heavy-Duty Zipper'
+        ],
+        specs: {
+            'Material': '420D Ripstop Nylon',
+            'Size': 'Universal Shoe Size',
+            'Breathability': 'High-Flow Mesh',
+            'Type': 'Footwear Storage'
+        }
+    },
+    {
+        id: 'force-bag-holdall-01',
+        brand: 'Force',
+        category: 'Bags',
+        sport: 'Other',
+        productCode: '#FB-TTH-01',
+        title: 'Team Training Holdall (Large)',
+        description: 'Spacious team bag with reinforced base and handles.',
+        longDescription: 'The Team Training Holdall is built for volume and resilience. Capable of carrying full sets of uniforms or equipment, it features a heavy-duty reinforced base and industrial stitching to support significant weight during team travel.',
+        image: '/Bags/team_training_holdall_large_bag_1773738933752.png',
+        features: [
+            'Ultra-Large Main Cavity',
+            'Reinforced Load-Bearing Straps',
+            'Internal Mesh Organizers',
+            'Identification Name Slot',
+            'Weather-Shield Base'
+        ],
+        specs: {
+            'Material': 'Heavy-Duty 900D Canvas',
+            'Capacity': '90 Liters',
+            'Durability': 'Extreme Load Grade',
+            'Type': 'Equipment Holdall'
+        }
+    },
+    {
+        id: 'force-bag-mesh-01',
+        brand: 'Force',
+        category: 'Bags',
+        sport: 'Other',
+        productCode: '#FB-MME-01',
+        title: 'Versatile Mesh Equipment Bag',
+        description: 'Durable mesh bag for sports ball and equipment storage.',
+        longDescription: 'A essential for coaches and teams, this heavy-duty mesh bag allows for easy drying and transport of sports balls. The high-tension drawstring ensures gear stays secure during transport.',
+        image: '/Bags/mesh_equipment_sports_bag_equipment_1773738951652.png',
+        features: [
+            'High-Tension Mesh Weave',
+            'Reinforced Drawstring Closure',
+            'Holds up to 12 Footballs',
+            'Anti-Mold Technical Mesh',
+            'Compact Storage When Empty'
+        ],
+        specs: {
+            'Material': 'Polyester Technical Mesh',
+            'Size': 'Standard Multi-Ball',
+            'Maintenance': 'Washable',
+            'Type': 'Equipment Net'
+        }
+    },
+    {
+        id: 'force-bag-roll-01',
+        brand: 'Force',
+        category: 'Bags',
+        sport: 'Other',
+        productCode: '#FB-RKC-01',
+        title: 'Premium Rolling Kit Case',
+        description: 'Hard-shell rolling gear case with technical design.',
+        longDescription: 'Combining travel elegance with sports utility, this premium rolling case features a semi-rigid technical shell to protect high-value gear. Perfect for international athletes and frequent travelers.',
+        image: '/Bags/premium_rolling_kit_case_kit_1773738969285.png',
+        features: [
+            'Impact-Resistant Hard Shell',
+            'Retractable Telescopic Handle',
+            'Silent-Glide Spin Wheels',
+            'Padded Internal Dividers',
+            'Integrated Security Lock'
+        ],
+        specs: {
+            'Material': 'Polycarbonate / Technical Fabric',
+            'Size': 'International Carry-on Compliant',
+            'Security': 'TSA Approved Lock System',
+            'Type': 'Rolling Travel Case'
+        }
+    },
+    {
+        id: 'force-bag-hyb-01',
+        brand: 'Force',
+        category: 'Bags',
+        sport: 'Other',
+        productCode: '#FB-LGH-01',
+        title: 'Slim Laptop/Gym Hybrid Bag',
+        description: 'Modern minimalist hybrid for office and gym use.',
+        longDescription: 'The Force Hybrid is designed for the modern lifestyle transition. Its slim profile hides a specialized laptop compartment alongside a dedicated space for gym apparel, ensuring you stay professional and active.',
+        image: '/Bags/slim_laptop_gym_hybrid_bag_gym_1773738988004.png',
+        features: [
+            'Invisible Waterproof Zippers',
+            'Dual-Purpose Compartments',
+            'Minimalist Sleek Profile',
+            'Scratch-Resistant Surface',
+            'Internal Accessory Tech-Pouch'
+        ],
+        specs: {
+            'Material': 'Matte Technical PU / Nylon',
+            'Style': 'Hybrid Professional',
+            'Fit': 'Slim Vertical',
+            'Type': 'Utility Work-Bag'
+        }
+    },
+    {
+        id: 'force-bag-cross-01',
+        brand: 'Force',
+        category: 'Bags',
+        sport: 'Other',
+        productCode: '#FB-CAA-01',
+        title: 'Crossbody Active Bag',
+        description: 'Lightweight essentials bag for active lifestyle.',
+        longDescription: 'Keep your essentials secure and accessible with the Crossbody Active Bag. Built with ultralight ripstop fabric and featuring a technical multi-point strap, it is the perfect companion for cycling, running, or quick travel.',
+        image: '/Bags/crossbody_active_sports_bag_active_1773739009916.png',
+        features: [
+            'Ultralight Ripstop Construction',
+            'Technical 3-Point Strap',
+            'Quick-Access Security Pocket',
+            'Sweat-Resistant Backing',
+            'Vibrant Technical Design'
+        ],
+        specs: {
+            'Material': 'Featherweight Ripstop Nylon',
+            'Strap': 'Adjustable Tech-Webbing',
+            'Weight': '110 grams',
+            'Type': 'Essentials Carrier'
+        }
+    },
+    {
+        id: 'force-bag-ball-01',
+        brand: 'Force',
+        category: 'Bags',
+        sport: 'Other',
+        productCode: '#FB-HBC-01',
+        title: 'Heavy-Duty Ball Carrier',
+        description: 'Rugged canvas and mesh bag for team ball storage.',
+        longDescription: 'Designed for the rigors of the training field, the Heavy-Duty Ball Carrier features a reinforced canvas bottom and breathable mesh top. It is built to last through seasons of intense team use.',
+        image: '/Bags/heavy_duty_ball_carrier_bag_ball_1773739029492.png',
+        features: [
+            'Reinforced 900D Canvas Base',
+            'Air-Flow Mesh Top Section',
+            'Heavy-Duty Shoulder Carry Strap',
+            'Industrial Toggle Closure',
+            'Holds 10-12 Regulation Balls'
+        ],
+        specs: {
+            'Material': 'Canvas / High-Density Mesh',
+            'Capacity': '12 Full-Size Balls',
+            'Durability': 'Club Grade Resilience',
+            'Type': 'Team Equipment Bag'
+        }
     }
 ];
 
