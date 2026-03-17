@@ -2,7 +2,7 @@ export interface Product {
     id: string;
     title: string;
     brand?: string;
-    category: 'T-Shirts' | 'Track Pants' | 'Shorts' | 'Jackets' | 'Bags' | 'Caps';
+    category: 'T-Shirts' | 'Track Pants' | 'Shorts' | 'Jackets' | 'Bags' | 'Caps' | '3D Innovations';
     sport?: 'Badminton' | 'Cricket' | 'Football' | 'Volleyball' | 'Kabaddi' | 'Pickleball' | 'Tennis' | 'Other' | 'All';
     usageType?: 'T20' | 'Practice' | 'Travel' | 'Coaches' | 'Officials' | 'General';
     productCode?: string;
@@ -2704,7 +2704,7 @@ export const PRODUCTS: Product[] = [
     {
         id: 'force-3d-innov-01',
         brand: 'Force',
-        category: 'T-Shirts',
+        category: '3D Innovations',
         sport: 'All',
         productCode: '#3D-INV-01',
         title: '3D Innovation Design #1',
@@ -2741,7 +2741,7 @@ export const PRODUCTS: Product[] = [
     {
         id: 'force-3d-innov-02',
         brand: 'Force',
-        category: 'T-Shirts',
+        category: '3D Innovations',
         sport: 'All',
         productCode: '#3D-INV-02',
         title: '3D Innovation Design #2',
@@ -2778,7 +2778,7 @@ export const PRODUCTS: Product[] = [
     {
         id: 'force-3d-innov-03',
         brand: 'Force',
-        category: 'T-Shirts',
+        category: '3D Innovations',
         sport: 'All',
         productCode: '#3D-INV-03',
         title: '3D Innovation Design #3',
@@ -2815,7 +2815,7 @@ export const PRODUCTS: Product[] = [
     {
         id: 'force-3d-innov-04',
         brand: 'Force',
-        category: 'T-Shirts',
+        category: '3D Innovations',
         sport: 'All',
         productCode: '#3D-INV-04',
         title: '3D Innovation Design #4',
@@ -2852,7 +2852,7 @@ export const PRODUCTS: Product[] = [
     {
         id: 'force-3d-innov-05',
         brand: 'Force',
-        category: 'T-Shirts',
+        category: '3D Innovations',
         sport: 'All',
         productCode: '#3D-INV-05',
         title: '3D Innovation Design #5',
@@ -2889,7 +2889,7 @@ export const PRODUCTS: Product[] = [
     {
         id: 'force-3d-innov-06',
         brand: 'Force',
-        category: 'T-Shirts',
+        category: '3D Innovations',
         sport: 'All',
         productCode: '#3D-INV-06',
         title: '3D Innovation Design #6',
@@ -2926,7 +2926,7 @@ export const PRODUCTS: Product[] = [
     {
         id: 'force-3d-innov-07',
         brand: 'Force',
-        category: 'T-Shirts',
+        category: '3D Innovations',
         sport: 'All',
         productCode: '#3D-INV-07',
         title: '3D Innovation Design #7',
@@ -2963,7 +2963,7 @@ export const PRODUCTS: Product[] = [
     {
         id: 'force-3d-innov-08',
         brand: 'Force',
-        category: 'T-Shirts',
+        category: '3D Innovations',
         sport: 'All',
         productCode: '#3D-INV-08',
         title: '3D Innovation Design #8',
@@ -3000,7 +3000,7 @@ export const PRODUCTS: Product[] = [
     {
         id: 'force-3d-innov-09',
         brand: 'Force',
-        category: 'T-Shirts',
+        category: '3D Innovations',
         sport: 'All',
         productCode: '#3D-INV-09',
         title: '3D Innovation Design #9',
@@ -3037,7 +3037,7 @@ export const PRODUCTS: Product[] = [
     {
         id: 'force-3d-innov-10',
         brand: 'Force',
-        category: 'T-Shirts',
+        category: '3D Innovations',
         sport: 'All',
         productCode: '#3D-INV-10',
         title: '3D Innovation Design #10',
@@ -3074,7 +3074,7 @@ export const PRODUCTS: Product[] = [
     {
         id: 'force-3d-innov-11',
         brand: 'Force',
-        category: 'T-Shirts',
+        category: '3D Innovations',
         sport: 'All',
         productCode: '#3D-INV-11',
         title: '3D Innovation Design #11',
@@ -3111,7 +3111,7 @@ export const PRODUCTS: Product[] = [
     {
         id: 'force-3d-innov-12',
         brand: 'Force',
-        category: 'T-Shirts',
+        category: '3D Innovations',
         sport: 'All',
         productCode: '#3D-INV-12',
         title: '3D Innovation Design #12',
@@ -3148,7 +3148,7 @@ export const PRODUCTS: Product[] = [
     {
         id: 'force-3d-innov-13',
         brand: 'Force',
-        category: 'T-Shirts',
+        category: '3D Innovations',
         sport: 'All',
         productCode: '#3D-INV-13',
         title: '3D Innovation Design #13',
@@ -3185,7 +3185,7 @@ export const PRODUCTS: Product[] = [
     {
         id: 'force-3d-innov-14',
         brand: 'Force',
-        category: 'T-Shirts',
+        category: '3D Innovations',
         sport: 'All',
         productCode: '#3D-INV-14',
         title: '3D Innovation Design #14',
@@ -3222,7 +3222,7 @@ export const PRODUCTS: Product[] = [
     {
         id: 'force-3d-innov-15',
         brand: 'Force',
-        category: 'T-Shirts',
+        category: '3D Innovations',
         sport: 'All',
         productCode: '#3D-INV-15',
         title: '3D Innovation Design #15',
@@ -3259,7 +3259,7 @@ export const PRODUCTS: Product[] = [
     {
         id: 'force-3d-innov-16',
         brand: 'Force',
-        category: 'T-Shirts',
+        category: '3D Innovations',
         sport: 'All',
         productCode: '#3D-INV-16',
         title: '3D Innovation Design #16',
@@ -3296,7 +3296,7 @@ export const PRODUCTS: Product[] = [
     {
         id: 'force-3d-innov-17',
         brand: 'Force',
-        category: 'T-Shirts',
+        category: '3D Innovations',
         sport: 'All',
         productCode: '#3D-INV-17',
         title: '3D Innovation Design #17',
@@ -3333,7 +3333,7 @@ export const PRODUCTS: Product[] = [
     {
         id: 'force-3d-innov-18',
         brand: 'Force',
-        category: 'T-Shirts',
+        category: '3D Innovations',
         sport: 'All',
         productCode: '#3D-INV-18',
         title: '3D Innovation Design #18',
@@ -3370,7 +3370,7 @@ export const PRODUCTS: Product[] = [
     {
         id: 'force-3d-innov-19',
         brand: 'Force',
-        category: 'T-Shirts',
+        category: '3D Innovations',
         sport: 'All',
         productCode: '#3D-INV-19',
         title: '3D Innovation Design #19',
@@ -3407,7 +3407,7 @@ export const PRODUCTS: Product[] = [
     {
         id: 'force-3d-innov-20',
         brand: 'Force',
-        category: 'T-Shirts',
+        category: '3D Innovations',
         sport: 'All',
         productCode: '#3D-INV-20',
         title: '3D Innovation Design #20',
@@ -3444,7 +3444,7 @@ export const PRODUCTS: Product[] = [
     {
         id: 'force-3d-innov-21',
         brand: 'Force',
-        category: 'T-Shirts',
+        category: '3D Innovations',
         sport: 'All',
         productCode: '#3D-INV-21',
         title: '3D Innovation Design #21',
@@ -3481,7 +3481,7 @@ export const PRODUCTS: Product[] = [
     {
         id: 'force-3d-innov-22',
         brand: 'Force',
-        category: 'T-Shirts',
+        category: '3D Innovations',
         sport: 'All',
         productCode: '#3D-INV-22',
         title: '3D Innovation Design #22',
@@ -3518,7 +3518,7 @@ export const PRODUCTS: Product[] = [
     {
         id: 'force-3d-innov-23',
         brand: 'Force',
-        category: 'T-Shirts',
+        category: '3D Innovations',
         sport: 'All',
         productCode: '#3D-INV-23',
         title: '3D Innovation Design #23',
@@ -3556,7 +3556,7 @@ export const PRODUCTS: Product[] = [
     {
         id: 'force-3d-innov-24',
         brand: 'Force',
-        category: 'T-Shirts',
+        category: '3D Innovations',
         sport: 'All',
         productCode: '#3D-INV-24',
         title: '3D Innovation Design #24',
@@ -3593,7 +3593,7 @@ export const PRODUCTS: Product[] = [
     {
         id: 'force-3d-innov-25',
         brand: 'Force',
-        category: 'T-Shirts',
+        category: '3D Innovations',
         sport: 'All',
         productCode: '#3D-INV-25',
         title: '3D Innovation Design #25',
@@ -3630,7 +3630,7 @@ export const PRODUCTS: Product[] = [
     {
         id: 'force-3d-innov-26',
         brand: 'Force',
-        category: 'T-Shirts',
+        category: '3D Innovations',
         sport: 'All',
         productCode: '#3D-INV-26',
         title: '3D Innovation Design #26',
@@ -3667,7 +3667,7 @@ export const PRODUCTS: Product[] = [
     {
         id: 'force-3d-innov-27',
         brand: 'Force',
-        category: 'T-Shirts',
+        category: '3D Innovations',
         sport: 'All',
         productCode: '#3D-INV-27',
         title: '3D Innovation Design #27',
@@ -3704,7 +3704,7 @@ export const PRODUCTS: Product[] = [
     {
         id: 'force-3d-innov-28',
         brand: 'Force',
-        category: 'T-Shirts',
+        category: '3D Innovations',
         sport: 'All',
         productCode: '#3D-INV-28',
         title: '3D Innovation Design #28',
@@ -3741,7 +3741,7 @@ export const PRODUCTS: Product[] = [
     {
         id: 'force-3d-innov-29',
         brand: 'Force',
-        category: 'T-Shirts',
+        category: '3D Innovations',
         sport: 'All',
         productCode: '#3D-INV-29',
         title: '3D Innovation Design #29',
@@ -3778,7 +3778,7 @@ export const PRODUCTS: Product[] = [
     {
         id: 'force-3d-innov-30',
         brand: 'Force',
-        category: 'T-Shirts',
+        category: '3D Innovations',
         sport: 'All',
         productCode: '#3D-INV-30',
         title: '3D Innovation Design #30',

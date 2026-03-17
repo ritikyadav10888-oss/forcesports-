@@ -4,7 +4,7 @@ import { PRODUCTS, Product } from '../../data/products';
 import { Link } from 'react-router-dom';
 import { Filter, X, Check, Activity } from 'lucide-react';
 
-const Categories = ['T-Shirts', 'Track Pants', 'Shorts', 'Jackets', 'Bags', 'Caps'] as const;
+const Categories = ['T-Shirts', 'Track Pants', 'Shorts', 'Jackets', 'Bags', 'Caps', '3D Innovations'] as const;
 const Sports = ['Badminton', 'Cricket', 'Football', 'Volleyball', 'Kabaddi', 'Pickleball', 'Tennis'] as const;
 const UsageTypes = ['T20', 'Practice', 'Travel', 'Coaches', 'Officials'] as const;
 
@@ -54,136 +54,160 @@ const ProductPage = () => {
 
             <div className="max-w-[1600px] mx-auto px-6 py-6">
                 <div className="flex flex-col lg:flex-row gap-8">
-                    {/* Left Sidebar - Product Categories */}
-                    <aside className="w-full lg:w-72 flex-shrink-0">
-                        <div className="lg:hidden mb-6 flex items-center justify-between bg-white p-4 rounded-2xl border border-slate-100 shadow-sm">
-                            <h3 className="text-[11px] font-black text-slate-900 uppercase tracking-widest flex items-center gap-2">
-                                <Filter size={16} className="text-cyan-600" /> Filter Products
-                            </h3>
-                            <button 
-                                onClick={() => setIsMobileFiltersOpen(!isMobileFiltersOpen)}
-                                className="px-4 py-2 bg-slate-100 text-slate-600 rounded-lg text-[9px] font-black uppercase tracking-widest"
-                            >
-                                {isMobileFiltersOpen ? 'Hide' : 'Show'}
-                            </button>
-                        </div>
+                    {/* Sidebar / Filter Drawer */}
+                    <aside 
+                        className={`
+                            fixed inset-y-0 right-0 w-[300px] bg-white z-[60] p-8 shadow-2xl border-l border-slate-100 flex flex-col transition-transform duration-300 transform
+                            ${isMobileFiltersOpen ? 'translate-x-0' : 'translate-x-full'}
+                            lg:sticky lg:top-32 lg:w-72 lg:p-0 lg:shadow-none lg:border-none lg:bg-transparent lg:z-auto lg:h-fit lg:translate-x-0 lg:flex
+                        `}
+                    >
+                                <div className="lg:hidden flex items-center justify-between mb-8">
+                                    <h3 className="text-sm font-black text-slate-900 uppercase tracking-widest flex items-center gap-2">
+                                        <Filter size={18} className="text-cyan-600" /> Filters
+                                    </h3>
+                                    <button 
+                                        onClick={() => setIsMobileFiltersOpen(false)}
+                                        className="p-2 hover:bg-slate-100 rounded-full transition-colors"
+                                    >
+                                        <X size={20} className="text-slate-400" />
+                                    </button>
+                                </div>
 
-                        <div className={`sticky top-32 space-y-8 ${isMobileFiltersOpen ? 'block' : 'hidden lg:block'}`}>
-                            <div>
-                                <h3 className="text-[11px] font-black text-slate-400 uppercase tracking-widest mb-6 flex items-center gap-2">
-                                    <Filter size={14} className="text-cyan-600" /> Filters
-                                </h3>
-
-                                {/* Categories Filter */}
-                                <div className="mb-8">
-                                    <h4 className="text-[10px] font-black text-slate-800 uppercase tracking-widest mb-4">Categories</h4>
-                                    <div className="space-y-3">
-                                        {Categories.map(cat => (
-                                            <label key={cat} className="flex items-center gap-3 cursor-pointer group">
-                                                <input 
-                                                    type="checkbox" 
-                                                    className="hidden" 
-                                                    checked={selectedCategories.includes(cat)}
-                                                    onChange={() => {
-                                                        setSelectedCategories(prev => 
-                                                            prev.includes(cat) ? prev.filter(c => c !== cat) : [...prev, cat]
-                                                        );
-                                                    }}
-                                                />
-                                                <div className={`w-4 h-4 rounded border flex items-center justify-center transition-all ${selectedCategories.includes(cat) ? 'bg-cyan-600 border-cyan-600' : 'bg-white border-slate-300 group-hover:border-cyan-400'}`}>
-                                                    {selectedCategories.includes(cat) && <Check size={10} className="text-white" />}
+                                <div className="flex-1 space-y-6 lg:overflow-visible overflow-y-auto pr-2 scrollbar-none">
+                                    <div className="lg:sticky lg:top-32 space-y-6">
+                                        <div>
+                                            {/* Categories Filter */}
+                                            <div className="mb-6">
+                                                <h4 className="text-[10px] font-black text-slate-800 uppercase tracking-widest mb-4">Categories</h4>
+                                                <div className="space-y-3">
+                                                    {Categories.map(cat => (
+                                                        <label key={cat} className="flex items-center gap-3 cursor-pointer group">
+                                                            <input 
+                                                                type="checkbox" 
+                                                                className="hidden" 
+                                                                checked={selectedCategories.includes(cat)}
+                                                                onChange={() => {
+                                                                    setSelectedCategories(prev => 
+                                                                        prev.includes(cat) ? prev.filter(c => c !== cat) : [...prev, cat]
+                                                                    );
+                                                                }}
+                                                            />
+                                                            <div className={`w-4 h-4 rounded border flex items-center justify-center transition-all ${selectedCategories.includes(cat) ? 'bg-cyan-600 border-cyan-600' : 'bg-white border-slate-300 group-hover:border-cyan-400'}`}>
+                                                                {selectedCategories.includes(cat) && <Check size={10} className="text-white" />}
+                                                            </div>
+                                                            <span className={`text-[10px] uppercase font-black tracking-widest transition-colors ${selectedCategories.includes(cat) ? 'text-slate-900' : 'text-slate-500 group-hover:text-slate-800'}`}>
+                                                                {cat}
+                                                            </span>
+                                                        </label>
+                                                    ))}
                                                 </div>
-                                                <span className={`text-[10px] uppercase font-black tracking-widest transition-colors ${selectedCategories.includes(cat) ? 'text-slate-900' : 'text-slate-500 group-hover:text-slate-800'}`}>
-                                                    {cat}
-                                                </span>
-                                            </label>
-                                        ))}
-                                    </div>
-                                </div>
-
-
-                                {/* Sports Filter (with Subcategories) */}
-                                <div className="mb-8">
-                                    <h4 className="text-[10px] font-black text-slate-800 uppercase tracking-widest mb-4">Sports</h4>
-                                    <div className="space-y-4">
-                                        {Sports.map(sport => (
-                                            <div key={sport}>
-                                                <label className="flex items-center gap-3 cursor-pointer group">
-                                                    <input 
-                                                        type="checkbox" 
-                                                        className="hidden" 
-                                                        checked={selectedSports.includes(sport)}
-                                                        onChange={() => {
-                                                            setSelectedSports(prev => 
-                                                                prev.includes(sport) ? prev.filter(s => s !== sport) : [...prev, sport]
-                                                            );
-                                                        }}
-                                                    />
-                                                    <div className={`w-4 h-4 rounded border flex items-center justify-center transition-all ${selectedSports.includes(sport) ? 'bg-cyan-600 border-cyan-600' : 'bg-white border-slate-300 group-hover:border-cyan-400'}`}>
-                                                        {selectedSports.includes(sport) && <Check size={10} className="text-white" />}
-                                                    </div>
-                                                    <span className={`text-[10px] uppercase font-black tracking-widest transition-colors ${selectedSports.includes(sport) ? 'text-slate-900' : 'text-slate-500 group-hover:text-slate-800'}`}>
-                                                        {sport}
-                                                    </span>
-                                                </label>
-                                                
-                                                {/* Subcategories visible when Sport is selected */}
-                                                <AnimatePresence>
-                                                    {selectedSports.includes(sport) && (
-                                                        <motion.div 
-                                                            initial={{ opacity: 0, height: 0 }}
-                                                            animate={{ opacity: 1, height: 'auto' }}
-                                                            exit={{ opacity: 0, height: 0 }}
-                                                            className="mt-3 ml-7 space-y-3 border-l-2 border-slate-100 pl-4 overflow-hidden"
-                                                        >
-                                                            {UsageTypes.filter(usage => {
-                                                                if (usage === 'T20' && sport !== 'Cricket') return false;
-                                                                return true;
-                                                            }).map(usage => (
-                                                                <label key={`${sport}-${usage}`} className="flex items-center gap-2 cursor-pointer group">
-                                                                    <input 
-                                                                        type="checkbox" 
-                                                                        className="hidden" 
-                                                                        checked={selectedUsages.includes(usage)}
-                                                                        onChange={() => {
-                                                                            setSelectedUsages(prev => 
-                                                                                prev.includes(usage) ? prev.filter(u => u !== usage) : [...prev, usage]
-                                                                            );
-                                                                        }}
-                                                                    />
-                                                                    <div className={`w-3 h-3 rounded-[3px] border flex items-center justify-center transition-all ${selectedUsages.includes(usage) ? 'bg-cyan-600 border-cyan-600' : 'bg-white border-slate-300 group-hover:border-cyan-400'}`}>
-                                                                        {selectedUsages.includes(usage) && <Check size={8} className="text-white" />}
-                                                                    </div>
-                                                                    <span className={`text-[9px] uppercase font-black tracking-widest transition-colors ${selectedUsages.includes(usage) ? 'text-slate-900' : 'text-slate-400 group-hover:text-slate-600'}`}>
-                                                                        {usage}
-                                                                    </span>
-                                                                </label>
-                                                            ))}
-                                                        </motion.div>
-                                                    )}
-                                                </AnimatePresence>
                                             </div>
-                                        ))}
+
+                                            {/* Sports Filter */}
+                                            <div className="mb-6">
+                                                <h4 className="text-[10px] font-black text-slate-800 uppercase tracking-widest mb-4">Sports</h4>
+                                                <div className="space-y-4">
+                                                    {Sports.map(sport => (
+                                                        <div key={sport}>
+                                                            <label className="flex items-center gap-3 cursor-pointer group">
+                                                                <input 
+                                                                    type="checkbox" 
+                                                                    className="hidden" 
+                                                                    checked={selectedSports.includes(sport)}
+                                                                    onChange={() => {
+                                                                        setSelectedSports(prev => 
+                                                                            prev.includes(sport) ? prev.filter(s => s !== sport) : [...prev, sport]
+                                                                        );
+                                                                    }}
+                                                                />
+                                                                <div className={`w-4 h-4 rounded border flex items-center justify-center transition-all ${selectedSports.includes(sport) ? 'bg-cyan-600 border-cyan-600' : 'bg-white border-slate-300 group-hover:border-cyan-400'}`}>
+                                                                    {selectedSports.includes(sport) && <Check size={10} className="text-white" />}
+                                                                </div>
+                                                                <span className={`text-[10px] uppercase font-black tracking-widest transition-colors ${selectedSports.includes(sport) ? 'text-slate-900' : 'text-slate-500 group-hover:text-slate-800'}`}>
+                                                                    {sport}
+                                                                </span>
+                                                            </label>
+                                                            
+                                                            <AnimatePresence>
+                                                                {selectedSports.includes(sport) && (
+                                                                    <motion.div 
+                                                                        initial={{ opacity: 0, height: 0 }}
+                                                                        animate={{ opacity: 1, height: 'auto' }}
+                                                                        exit={{ opacity: 0, height: 0 }}
+                                                                        className="mt-3 ml-7 space-y-3 border-l-2 border-slate-100 pl-4 overflow-hidden"
+                                                                    >
+                                                                        {UsageTypes.filter(usage => {
+                                                                            if (usage === 'T20' && sport !== 'Cricket') return false;
+                                                                            return true;
+                                                                        }).map(usage => (
+                                                                            <label key={`${sport}-${usage}`} className="flex items-center gap-2 cursor-pointer group">
+                                                                                <input 
+                                                                                    type="checkbox" 
+                                                                                    className="hidden" 
+                                                                                    checked={selectedUsages.includes(usage)}
+                                                                                    onChange={() => {
+                                                                                        setSelectedUsages(prev => 
+                                                                                            prev.includes(usage) ? prev.filter(u => u !== usage) : [...prev, usage]
+                                                                                        );
+                                                                                    }}
+                                                                                />
+                                                                                <div className={`w-3 h-3 rounded-[3px] border flex items-center justify-center transition-all ${selectedUsages.includes(usage) ? 'bg-cyan-600 border-cyan-600' : 'bg-white border-slate-300 group-hover:border-cyan-400'}`}>
+                                                                                    {selectedUsages.includes(usage) && <Check size={8} className="text-white" />}
+                                                                                </div>
+                                                                                <span className={`text-[9px] uppercase font-black tracking-widest transition-colors ${selectedUsages.includes(usage) ? 'text-slate-900' : 'text-slate-400 group-hover:text-slate-600'}`}>
+                                                                                    {usage}
+                                                                                </span>
+                                                                            </label>
+                                                                        ))}
+                                                                    </motion.div>
+                                                                )}
+                                                            </AnimatePresence>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div className="p-8 bg-cyan-600 rounded-[2.5rem] text-white relative overflow-hidden group mb-6">
+                                            <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700"></div>
+                                            <h4 className="text-xl font-black uppercase tracking-tighter mb-4 relative z-10">Custom Design?</h4>
+                                            <p className="text-cyan-100 text-[10px] font-bold uppercase tracking-wider leading-relaxed mb-6 relative z-10 opacity-80">
+                                                Create your unique team identity.
+                                            </p>
+                                            <Link to="/inquiry" onClick={() => setIsMobileFiltersOpen(false)} className="inline-block px-6 py-3 bg-white text-cyan-600 rounded-xl text-[9px] font-black uppercase tracking-widest relative z-10 hover:scale-105 transition-transform text-center font-black">
+                                                Start Now
+                                            </Link>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div className="p-8 bg-cyan-600 rounded-[2.5rem] text-white relative overflow-hidden group">
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700"></div>
-                                <h4 className="text-xl font-black uppercase tracking-tighter mb-4 relative z-10">Custom Design?</h4>
-                                <p className="text-cyan-100 text-[10px] font-bold uppercase tracking-wider leading-relaxed mb-6 relative z-10 opacity-80">
-                                    Create your own unique team identity with our experts.
-                                </p>
-                                <Link to="/inquiry" className="inline-block px-6 py-3 bg-white text-cyan-600 rounded-xl text-[9px] font-black uppercase tracking-widest relative z-10 hover:scale-105 transition-transform">
-                                    Start Now
-                                </Link>
-                            </div>
-                        </div>
                     </aside>
+
+                    {/* Backdrop */}
+                    <AnimatePresence>
+                        {isMobileFiltersOpen && (
+                            <motion.div 
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                onClick={() => setIsMobileFiltersOpen(false)}
+                                className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 lg:hidden"
+                            />
+                        )}
+                    </AnimatePresence>
 
                     {/* Main Content Area */}
                     <main className="flex-1">
-
+                        {/* Mobile Filter Toggle */}
+                        <div className="lg:hidden mb-8">
+                            <button 
+                                onClick={() => setIsMobileFiltersOpen(true)}
+                                className="w-full py-5 bg-white rounded-2xl border border-slate-100 shadow-sm shadow-slate-200/50 flex items-center justify-center gap-3 text-slate-900 font-black uppercase tracking-widest text-[11px] active:scale-95 transition-all"
+                            >
+                                <Filter size={18} className="text-cyan-600" />
+                                Refine Your Gear
+                            </button>
+                        </div>
 
                         {/* Grid */}
                         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
@@ -196,18 +220,18 @@ const ProductPage = () => {
                                         exit={{ opacity: 0, scale: 0.9 }}
                                         className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-slate-200 transition-all border border-slate-100 group flex flex-col h-full"
                                     >
-                                        <div className="h-72 bg-slate-100 overflow-hidden relative p-8">
+                                        <div className="relative aspect-[4/5] bg-slate-50/50 flex items-center justify-center overflow-hidden p-6">
                                             <img
                                                 src={product.image}
                                                 alt={product.title}
-                                                className={`w-full h-full object-contain transition-all duration-700 
-                                                    ${product.imageBack ? 'group-hover:opacity-0 group-hover:scale-110' : 'group-hover:scale-110'}`}
+                                                className={`max-w-full max-h-full object-contain transition-all duration-700 
+                                                    ${product.imageBack ? 'group-hover/img:opacity-0 group-hover/img:scale-110' : 'group-hover/img:scale-110'}`}
                                             />
                                             {product.imageBack && (
                                                 <img 
                                                     src={product.imageBack} 
                                                     alt={`${product.title} - Back View`}
-                                                    className="absolute inset-0 w-full h-full object-contain p-8 opacity-0 group-hover:opacity-100 transition-all duration-700 scale-110 group-hover:scale-100"
+                                                    className="absolute inset-0 w-full h-full object-contain p-6 opacity-0 group-hover/img:opacity-100 transition-all duration-700 scale-110 group-hover/img:scale-100"
                                                 />
                                             )}
                                             <div className="absolute top-6 left-6 flex flex-col gap-2">
@@ -226,10 +250,14 @@ const ProductPage = () => {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="p-10 flex flex-col flex-1">
-                                            <div className="mb-6 flex-1">
-                                                <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-2 block">{product.category}</span>
-                                                <h3 className="text-xl font-black text-slate-900 uppercase tracking-tighter mb-3">{product.title}</h3>
+                                        <div className="p-8 flex flex-col flex-1">
+                                            <div className="mb-4">
+                                                <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-2 block">
+                                                    {product.category}
+                                                    {product.sport && !['Other', 'Activity', 'General', 'All'].includes(product.sport) && ` • ${product.sport}`}
+                                                    {product.usageType && product.usageType !== 'General' && ` • ${product.usageType}`}
+                                                </span>
+                                                <h3 className="text-xl font-black text-slate-900 uppercase tracking-tighter mb-2">{product.title}</h3>
                                                 <p className="text-slate-500 text-xs leading-relaxed font-medium line-clamp-2">{product.description}</p>
                                             </div>
 

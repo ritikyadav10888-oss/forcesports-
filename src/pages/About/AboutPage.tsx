@@ -38,8 +38,8 @@ const AboutPage = () => {
             </section>
 
             {/* Core Story */}
-            <section className="max-w-7xl mx-auto px-6 py-24">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <section className="max-w-7xl mx-auto px-6 py-16 md:py-24">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-center">
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -100,7 +100,7 @@ const AboutPage = () => {
             </section>
 
             {/* Why Alpha Section */}
-            <section className="bg-slate-50 py-24">
+            <section className="bg-slate-50 py-16 md:py-24">
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="text-center mb-20">
                         <h2 className="text-4xl font-black uppercase tracking-tighter mb-4">What Sets Us Alpha?</h2>
@@ -150,10 +150,10 @@ const AboutPage = () => {
             </section>
 
             {/* Manufacturing Powerhouse Section */}
-            <section className="py-32 px-6 bg-slate-900 text-white overflow-hidden relative">
+            <section className="py-20 md:py-32 px-6 bg-slate-900 text-white overflow-hidden relative">
                 <div className="absolute top-0 right-0 w-1/2 h-full bg-cyan-500/5 skew-x-12 translate-x-1/4" />
                 <div className="max-w-7xl mx-auto relative z-10">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-center">
                         <motion.div
                             initial={{ opacity: 0, x: -30 }}
                             whileInView={{ opacity: 1, x: 0 }}
@@ -197,7 +197,7 @@ const AboutPage = () => {
                 </div>
             </section>
 
-            <section className="py-24 bg-slate-50">
+            <section className="py-16 md:py-24 bg-slate-50">
                 <div className="max-w-4xl mx-auto px-6 text-center">
                     <h2 className="text-4xl font-black mb-16 uppercase tracking-tighter">Our Product Ecosystem</h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -218,7 +218,7 @@ const AboutPage = () => {
             </section>
 
             {/* Commitment CTA */}
-            <section className="bg-slate-900 pt-24 pb-16 relative overflow-hidden text-center">
+            <section className="bg-slate-900 pt-16 pb-12 md:pt-24 md:pb-16 relative overflow-hidden text-center">
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-500 via-white to-amber-500" />
                 <div className="relative z-10 max-w-3xl mx-auto px-6">
                     <h2 className="text-4xl font-black text-white mb-8 uppercase tracking-tighter">Our Commitment</h2>

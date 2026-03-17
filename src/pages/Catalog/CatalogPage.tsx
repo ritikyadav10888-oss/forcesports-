@@ -61,6 +61,7 @@ const CatalogPage = () => {
     const [viewMode, setViewMode] = useState<'grid' | 'reader'>('reader');
     const [fullscreenImage, setFullscreenImage] = useState<string | null>(null);
     const [selectedColor, setSelectedColor] = useState<string | null>(null);
+    const is3D = selectedCatalog === 'design3d';
 
     const currentCatalog = CATALOG_DATA[selectedCatalog];
     const totalPages = currentCatalog.pages.length;
@@ -131,27 +132,48 @@ const CatalogPage = () => {
                 </div>
 
                 {/* Controls */}
-                <div className="flex items-center justify-between mb-4 bg-white/5 p-3 rounded-xl border border-white/5">
-                    <div className="flex items-center gap-4">
-                        <button
-                            onClick={() => setViewMode('reader')}
-                            className={`flex items-center gap-2 text-[10px] font-black uppercase tracking-widest transition-colors ${viewMode === 'reader' ? 'text-cyan-400' : 'text-slate-500'}`}
-                        >
-                            <BookOpen size={14} /> Reader View
-                        </button>
-                        <button
-                            onClick={() => setViewMode('grid')}
-                            className={`flex items-center gap-2 text-[10px] font-black uppercase tracking-widest transition-colors ${viewMode === 'grid' ? 'text-cyan-400' : 'text-slate-500'}`}
-                        >
-                            <Maximize2 size={14} /> Grid View
-                        </button>
+                <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-4 bg-white/5 p-4 md:p-3 rounded-2xl border border-white/5">
+                    <div className="flex items-center justify-between w-full md:w-auto gap-4">
+                        <div className="flex items-center gap-6">
+                            <button
+                                onClick={() => setViewMode('reader')}
+                                className={`flex items-center gap-2 text-[11px] font-black uppercase tracking-widest transition-colors ${viewMode === 'reader' ? 'text-cyan-400' : 'text-slate-500'}`}
+                            >
+                                <BookOpen size={16} /> <span className="hidden xs:inline">Reader</span>
+                            </button>
+                            <button
+                                onClick={() => setViewMode('grid')}
+                                className={`flex items-center gap-2 text-[11px] font-black uppercase tracking-widest transition-colors ${viewMode === 'grid' ? 'text-cyan-400' : 'text-slate-500'}`}
+                            >
+                                <Maximize2 size={16} /> <span className="hidden xs:inline">Grid</span>
+                            </button>
+                        </div>
+                        <div className="md:hidden flex items-center gap-2 bg-white/5 rounded-full p-1 pr-3">
+                            <button 
+                                onClick={prevPage}
+                                className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-cyan-600 transition-colors text-white"
+                                aria-label="Previous Page"
+                            >
+                                <ChevronLeft size={16} />
+                            </button>
+                            <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest min-w-[50px]">
+                                {currentPage + 1} / {totalPages}
+                            </span>
+                            <button 
+                                onClick={nextPage}
+                                className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-cyan-600 transition-colors text-white"
+                                aria-label="Next Page"
+                            >
+                                <ChevronRight size={16} />
+                            </button>
+                        </div>
                     </div>
                     <div className="hidden md:block">
                         <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">
                             {currentCatalog.description}
                         </p>
                     </div>
-                    <div className="flex items-center gap-4">
+                    <div className="hidden md:flex items-center gap-4">
                         <div className="flex items-center gap-2 bg-white/5 rounded-full p-1 pr-4">
                             <button 
                                 onClick={prevPage}
@@ -186,9 +208,9 @@ const CatalogPage = () => {
                                 className="flex flex-col items-center"
                             >
                                 <div className="relative group max-w-5xl w-full">
-                                    <div className="bg-slate-800 rounded-2xl overflow-hidden shadow-2xl relative shadow-cyan-900/10 min-h-[40vh] max-h-[75vh] flex items-center justify-center">
-                                        <div className="absolute inset-0 bg-slate-800/50 animate-pulse flex items-center justify-center">
-                                            <BookOpen className="text-slate-700" size={32} />
+                                    <div className={`${is3D ? 'bg-white' : 'bg-slate-800'} rounded-2xl overflow-hidden shadow-2xl relative shadow-cyan-900/10 min-h-[40vh] max-h-[75vh] flex items-center justify-center`}>
+                                        <div className={`absolute inset-0 ${is3D ? 'bg-slate-100' : 'bg-slate-800/50'} animate-pulse flex items-center justify-center`}>
+                                            <BookOpen className={is3D ? 'text-slate-300' : 'text-slate-700'} size={32} />
                                         </div>
                                         <img
                                             src={getPageSrc(currentCatalog.pages[currentPage], selectedColor)}
@@ -275,13 +297,13 @@ const CatalogPage = () => {
                                 {currentCatalog.pages.map((page, idx) => (
                                     <div
                                         key={idx}
-                                        className="group aspect-[1/1.4] bg-slate-800 rounded-xl overflow-hidden relative cursor-pointer"
+                                        className={`group aspect-[1/1.4] ${is3D ? 'bg-white' : 'bg-slate-800'} rounded-xl overflow-hidden relative cursor-pointer`}
                                         onClick={() => {
                                             setCurrentPage(idx);
                                             setViewMode('reader');
                                         }}
                                     >
-                                        <div className="absolute inset-0 bg-slate-800 animate-pulse" />
+                                        <div className={`absolute inset-0 ${is3D ? 'bg-slate-100' : 'bg-slate-800'} animate-pulse`} />
                                         <img 
                                             src={getPageSrc(page)} 
                                             alt="" 
