@@ -11,7 +11,7 @@ const ManufacturingPage = () => {
     return (
         <div className="bg-slate-950 pt-20 overflow-x-hidden">
             {/* Hero Section - High Impact */}
-            <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden py-24 px-6 border-b border-white/5">
+            <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden py-16 md:py-24 px-6 border-b border-white/5">
                 <div className="absolute inset-0 z-0">
                     <img 
                         src="/manufacturing_tech_hero.png" 
@@ -66,8 +66,8 @@ const ManufacturingPage = () => {
             </section>
 
             {/* Vertical Integration Section */}
-            <section className="py-32 px-6 relative">
-                <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+            <section className="py-20 md:py-32 px-6 relative">
+                <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-24 items-center">
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -120,14 +120,14 @@ const ManufacturingPage = () => {
             </section>
 
             {/* Technical Capability Grid */}
-            <section className="py-32 px-6 bg-slate-900/30 border-y border-white/5">
+            <section className="py-20 md:py-32 px-6 bg-slate-900/30 border-y border-white/5">
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-24">
                         <span className="text-cyan-500 font-bold tracking-widest uppercase text-sm mb-4 block">Advanced Capabilities</span>
                         <h2 className="text-4xl md:text-5xl font-black text-white uppercase tracking-tighter">The Force Tech Lab</h2>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                         {[
                             {
                                 icon: Printer,
@@ -179,9 +179,9 @@ const ManufacturingPage = () => {
             </section>
 
             {/* Fabric Innovation Showcase */}
-            <section className="py-32 px-6">
+            <section className="py-20 md:py-32 px-6">
                 <div className="max-w-7xl mx-auto">
-                    <div className="flex flex-col lg:flex-row items-center gap-24">
+                    <div className="flex flex-col lg:flex-row items-center gap-12 md:gap-24">
                         <div className="lg:w-1/2 relative">
                             <div className="absolute -inset-10 bg-cyan-500/10 blur-[80px] rounded-full" />
                             <motion.div

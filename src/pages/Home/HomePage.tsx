@@ -86,7 +86,7 @@ const HomePage = () => {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                        className="text-6xl md:text-7xl lg:text-8xl font-black text-white tracking-tighter mb-6 uppercase leading-none"
+                        className="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tighter mb-6 uppercase leading-[0.9]"
                     >
                         FORCE SPORTS
                     </motion.h1>
@@ -138,7 +138,7 @@ const HomePage = () => {
             </section>
 
             {/* Featured Products Showcase */}
-            <section className="py-12 bg-slate-50">
+            <section className="py-10 md:py-20 bg-slate-50">
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-6">
                         <div>
@@ -186,7 +186,7 @@ const HomePage = () => {
             </section>
 
             {/* Brand Spotlight */}
-            <section className="py-14 bg-slate-900 text-white relative overflow-hidden">
+            <section className="py-14 md:py-24 bg-slate-900 text-white relative overflow-hidden">
                 <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1558222218-b7b54eede3f3?w=1600&q=80')] opacity-5 bg-cover bg-center mix-blend-luminosity" />
                 <div className="max-w-7xl mx-auto px-6 relative z-10">
                     <div className="text-center mb-12">
@@ -194,7 +194,7 @@ const HomePage = () => {
                         <h2 className="text-4xl md:text-5xl font-black tracking-tight uppercase">The Force Sports Family</h2>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
                         {[
                             { 
                                 name: 'Elite', 
@@ -241,7 +241,7 @@ const HomePage = () => {
             </section>
 
             {/* Quick Process Section */}
-            <section className="py-12 bg-white relative overflow-hidden">
+            <section className="py-14 md:py-24 bg-white relative overflow-hidden">
                 {/* Decorative Elements */}
                 <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
                 <div className="absolute top-1/4 -right-64 w-96 h-96 bg-cyan-50 rounded-full blur-3xl opacity-50" />
@@ -299,7 +299,7 @@ const HomePage = () => {
                             { name: "HDFC BANK", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/HDFC_Bank_Logo_2023.svg/512px-HDFC_Bank_Logo_2023.svg.png", icon: Building2, color: "bg-blue-700" },
                             { name: "Goregaon Sports Club", logo: "https://gsc.in/wp-content/uploads/2016/11/logo.png", icon: Trophy, color: "bg-slate-900" },
                             { name: "KOTAK MAHINDRA", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Kotak_Mahindra_Bank_logo.svg/512px-Kotak_Mahindra_Bank_logo.svg.png", icon: Building, color: "bg-red-600" },
-                            { name: "J.P.MORGAN", logo: "https://logo.clearbit.com/jpmorgan.com", icon: Landmark, color: "bg-slate-800" },
+                            { name: "J.P.MORGAN", logo: null, icon: Landmark, color: "bg-slate-800" },
                             { name: "RELIANCE INDUSTRIES", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Reliance_Industries_Logo.svg/512px-Reliance_Industries_Logo.svg.png", icon: Factory, color: "bg-blue-800" },
                             { name: "TOYOTA", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Toyota_Eu_Logo.svg/512px-Toyota_Eu_Logo.svg.png", icon: CarFront, color: "bg-red-700" },
                             { name: "DECATHLON", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Decathlon_Logo.svg/512px-Decathlon_Logo.svg.png", icon: Bike, color: "bg-cyan-600" },
@@ -307,8 +307,8 @@ const HomePage = () => {
                             { name: "ASIAN PAINTS", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Asian_Paints_logo.svg/512px-Asian_Paints_logo.svg.png", icon: Palette, color: "bg-yellow-500" },
                             { name: "BAJAJ ALLIANZ", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Bajaj_Allianz_logo.svg/512px-Bajaj_Allianz_logo.svg.png", icon: ShieldCheck, color: "bg-blue-600" },
                             { name: "GM SWITCHES", logo: "https://gmmodular.com/assets/img/logo.png", icon: Zap, color: "bg-red-700" },
-                            { name: "ROTARY", logo: "https://logo.clearbit.com/rotary.org", icon: Globe2, color: "bg-yellow-600" },
-                            { name: "DMART", logo: "https://logo.clearbit.com/dmartindia.com", icon: ShoppingCart, color: "bg-green-700" }
+                            { name: "ROTARY", logo: null, icon: Globe2, color: "bg-yellow-600" },
+                            { name: "DMART", logo: null, icon: ShoppingCart, color: "bg-green-700" }
                         ].map((client, idx) => (
                             <ClientMarqueeItem key={idx} client={client} size="medium" />
                         ))}
@@ -317,7 +317,7 @@ const HomePage = () => {
                             { name: "HDFC BANK", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/HDFC_Bank_Logo_2023.svg/512px-HDFC_Bank_Logo_2023.svg.png", icon: Building2, color: "bg-blue-700" },
                             { name: "Goregaon Sports Club", logo: "https://gsc.in/wp-content/uploads/2016/11/logo.png", icon: Trophy, color: "bg-slate-900" },
                             { name: "KOTAK MAHINDRA", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Kotak_Mahindra_Bank_logo.svg/512px-Kotak_Mahindra_Bank_logo.svg.png", icon: Building, color: "bg-red-600" },
-                            { name: "J.P.MORGAN", logo: "https://logo.clearbit.com/jpmorgan.com", icon: Landmark, color: "bg-slate-800" },
+                            { name: "J.P.MORGAN", logo: null, icon: Landmark, color: "bg-slate-800" },
                             { name: "RELIANCE INDUSTRIES", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Reliance_Industries_Logo.svg/512px-Reliance_Industries_Logo.svg.png", icon: Factory, color: "bg-blue-800" },
                             { name: "TOYOTA", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Toyota_Eu_Logo.svg/512px-Toyota_Eu_Logo.svg.png", icon: CarFront, color: "bg-red-700" },
                             { name: "DECATHLON", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Decathlon_Logo.svg/512px-Decathlon_Logo.svg.png", icon: Bike, color: "bg-cyan-600" },
@@ -325,8 +325,8 @@ const HomePage = () => {
                             { name: "ASIAN PAINTS", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Asian_Paints_logo.svg/512px-Asian_Paints_logo.svg.png", icon: Palette, color: "bg-yellow-500" },
                             { name: "BAJAJ ALLIANZ", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Bajaj_Allianz_logo.svg/512px-Bajaj_Allianz_logo.svg.png", icon: ShieldCheck, color: "bg-blue-600" },
                             { name: "GM SWITCHES", logo: "https://gmmodular.com/assets/img/logo.png", icon: Zap, color: "bg-red-700" },
-                            { name: "ROTARY", logo: "https://logo.clearbit.com/rotary.org", icon: Globe2, color: "bg-yellow-600" },
-                            { name: "DMART", logo: "https://logo.clearbit.com/dmartindia.com", icon: ShoppingCart, color: "bg-green-700" }
+                            { name: "ROTARY", logo: null, icon: Globe2, color: "bg-yellow-600" },
+                            { name: "DMART", logo: null, icon: ShoppingCart, color: "bg-green-700" }
                         ].map((client, idx) => (
                             <ClientMarqueeItem key={`dup-${idx}`} client={client} size="medium" />
                         ))}

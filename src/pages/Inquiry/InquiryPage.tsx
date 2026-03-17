@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, MessageCircle, Upload, X, CheckCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, MessageCircle, Upload, X, CheckCircle, Loader2, CheckCircle2, AlertCircle } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 import { BRAND_DETAILS } from '../../data/brandData';
 
@@ -10,7 +10,7 @@ const InquiryPage = () => {
     const prefilledProduct = queryParams.get('product');
 
     const [formData, setFormData] = useState({
-        name: '',
+        fullName: '',
         email: '',
         phone: '',
         quantity: '',
@@ -19,7 +19,8 @@ const InquiryPage = () => {
 
     const [image, setImage] = useState<File | null>(null);
     const [imagePreview, setImagePreview] = useState<string | null>(null);
-    const [isSubmitted, setIsSubmitted] = useState(false);
+    const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+    const [statusMsg, setStatusMsg] = useState('');
 
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
@@ -33,22 +34,50 @@ const InquiryPage = () => {
         }
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         
-        const subject = encodeURIComponent(BRAND_DETAILS.contacts.defaultSubject);
-        const body = encodeURIComponent(
-            `Name: ${formData.name}\n` +
-            `Email: ${formData.email}\n` +
-            `Phone: ${formData.phone}\n` +
-            `Quantity: ${formData.quantity}\n\n` +
-            `Message: ${formData.message}\n\n` +
-            (image ? "[Image Selected for Attachment]" : "")
-        );
+        if (!formData.fullName || !formData.email || !formData.message) {
+            setStatus('error');
+            setStatusMsg('Please fill in all required fields.');
+            return;
+        }
 
-        window.location.href = `mailto:${BRAND_DETAILS.contacts.email}?subject=${subject}&body=${body}`;
-        setIsSubmitted(true);
-        setTimeout(() => setIsSubmitted(false), 5000);
+        setStatus('sending');
+        setStatusMsg('Sending your inquiry...');
+
+        try {
+            // Note: In a real production app, we would use FormData to send the image file.
+            // For now, we follow the existing pattern of sending JSON for fields.
+            const response = await fetch('http://localhost:5000/api/send-inquiry', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                setStatus('success');
+                setStatusMsg('Thank you! Your inquiry has been sent successfully.');
+                setFormData({ fullName: '', email: '', phone: '', quantity: '', message: '' });
+                setImage(null);
+                setImagePreview(null);
+            } else {
+                setStatus('error');
+                setStatusMsg(data.error || 'Failed to send inquiry.');
+            }
+        } catch (error) {
+            console.error('Submission error:', error);
+            setStatus('error');
+            setStatusMsg('Could not connect to the server. Please try again later.');
+        }
     };
 
     return (
@@ -119,7 +148,7 @@ const InquiryPage = () => {
                         </div>
 
                         <div className="mt-20 pt-10 border-t border-white/5">
-                            <p className="text-[10px] text-slate-500 leading-relaxed font-bold uppercase tracking-widest leading-loose">
+                            <p className="text-[10px] text-slate-500 leading-relaxed font-bold uppercase tracking-widest">
                                 Sole Proprietorship <br />
                                 Experience: {BRAND_DETAILS.experience} <br />
                                 Manager: {BRAND_DETAILS.proprietor}
@@ -129,145 +158,144 @@ const InquiryPage = () => {
 
                     {/* Form Area */}
                     <div className="p-12 lg:w-2/3">
-                        <AnimatePresence>
-                            {isSubmitted ? (
-                                <motion.div 
-                                    initial={{ opacity: 0, scale: 0.9 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    exit={{ opacity: 0 }}
-                                    className="h-full flex flex-col items-center justify-center text-center space-y-6 py-20"
-                                >
-                                    <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center">
-                                        <CheckCircle size={48} />
-                                    </div>
-                                    <div>
-                                        <h3 className="text-3xl font-black text-slate-900 uppercase">Opening Email Client</h3>
-                                        <p className="text-slate-500 mt-2 font-medium">Please attach your selected image in the email before sending!</p>
-                                    </div>
-                                    <button 
-                                        onClick={() => setIsSubmitted(false)}
-                                        className="text-cyan-600 font-bold uppercase tracking-widest text-sm hover:underline"
-                                    >
-                                        Back to Form
-                                    </button>
-                                </motion.div>
-                            ) : (
-                                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-                                    <div className="mb-10">
-                                        <h3 className="text-3xl font-black text-slate-900 uppercase">Tell us about your order</h3>
-                                        <p className="text-slate-500 mt-2 font-medium">We specialize in 100% customized team jerseys and gear.</p>
-                                    </div>
+                        <form onSubmit={handleSubmit} className="space-y-6">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div className="space-y-2">
+                                    <label className="text-xs font-black uppercase tracking-widest text-slate-400">FullName</label>
+                                    <input 
+                                        required 
+                                        type="text" 
+                                        name="fullName"
+                                        className="w-full p-4 bg-slate-50 text-slate-900 rounded-2xl border-none focus:ring-2 focus:ring-cyan-400 outline-none transition-all" 
+                                        placeholder="John Doe"
+                                        value={formData.fullName}
+                                        onChange={handleChange}
+                                    />
+                                </div>
+                                <div className="space-y-2">
+                                    <label className="text-xs font-black uppercase tracking-widest text-slate-400">Email Address</label>
+                                    <input 
+                                        required 
+                                        type="email" 
+                                        name="email"
+                                        className="w-full p-4 bg-slate-50 text-slate-900 rounded-2xl border-none focus:ring-2 focus:ring-cyan-400 outline-none transition-all" 
+                                        placeholder="john@example.com"
+                                        value={formData.email}
+                                        onChange={handleChange}
+                                    />
+                                </div>
+                            </div>
 
-                                    <form onSubmit={handleSubmit} className="space-y-6">
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                            <div className="space-y-2">
-                                                <label className="text-xs font-black uppercase tracking-widest text-slate-400">FullName</label>
-                                                <input 
-                                                    required 
-                                                    type="text" 
-                                                    className="w-full p-4 bg-slate-50 text-slate-900 rounded-2xl border-none focus:ring-2 focus:ring-cyan-400 outline-none transition-all" 
-                                                    placeholder="John Doe"
-                                                    value={formData.name}
-                                                    onChange={(e) => setFormData({...formData, name: e.target.value})}
-                                                />
-                                            </div>
-                                            <div className="space-y-2">
-                                                <label className="text-xs font-black uppercase tracking-widest text-slate-400">Email Address</label>
-                                                <input 
-                                                    required 
-                                                    type="email" 
-                                                    className="w-full p-4 bg-slate-50 text-slate-900 rounded-2xl border-none focus:ring-2 focus:ring-cyan-400 outline-none transition-all" 
-                                                    placeholder="john@example.com"
-                                                    value={formData.email}
-                                                    onChange={(e) => setFormData({...formData, email: e.target.value})}
-                                                />
-                                            </div>
-                                        </div>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div className="space-y-2">
+                                    <label className="text-xs font-black uppercase tracking-widest text-slate-400">Phone Number</label>
+                                    <input 
+                                        required 
+                                        type="tel" 
+                                        name="phone"
+                                        className="w-full p-4 bg-slate-50 text-slate-900 rounded-2xl border-none focus:ring-2 focus:ring-cyan-400 outline-none transition-all" 
+                                        placeholder="+91 00000 00000"
+                                        value={formData.phone}
+                                        onChange={handleChange}
+                                    />
+                                </div>
+                                <div className="space-y-2">
+                                    <label className="text-xs font-black uppercase tracking-widest text-slate-400">Quantity</label>
+                                    <input 
+                                        required 
+                                        type="number" 
+                                        name="quantity"
+                                        className="w-full p-4 bg-slate-50 text-slate-900 rounded-2xl border-none focus:ring-2 focus:ring-cyan-400 outline-none transition-all" 
+                                        placeholder="E.g. 50"
+                                        value={formData.quantity}
+                                        onChange={handleChange}
+                                    />
+                                </div>
+                            </div>
 
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                            <div className="space-y-2">
-                                                <label className="text-xs font-black uppercase tracking-widest text-slate-400">Phone Number</label>
-                                                <input 
-                                                    required 
-                                                    type="tel" 
-                                                    className="w-full p-4 bg-slate-50 text-slate-900 rounded-2xl border-none focus:ring-2 focus:ring-cyan-400 outline-none transition-all" 
-                                                    placeholder="+91 00000 00000"
-                                                    value={formData.phone}
-                                                    onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                                                />
+                            <div className="space-y-2">
+                                <label className="text-xs font-black uppercase tracking-widest text-slate-400">Reference Product Design (Optional)</label>
+                                <div className="relative group">
+                                    <div className={`w-full p-10 border-2 border-dashed rounded-3xl transition-all flex flex-col items-center justify-center gap-4 ${imagePreview ? 'border-cyan-500 bg-cyan-50/10' : 'border-slate-200 hover:border-cyan-400 bg-slate-50'}`}>
+                                        {imagePreview ? (
+                                            <div className="relative">
+                                                <img src={imagePreview} alt="Preview" className="h-32 w-auto object-contain rounded-xl shadow-lg" />
+                                                <button 
+                                                    type="button"
+                                                    onClick={() => {setImage(null); setImagePreview(null);}}
+                                                    className="absolute -top-2 -right-2 bg-red-500 text-white p-1 rounded-full shadow-lg hover:bg-red-600 transition-colors"
+                                                    aria-label="Remove image"
+                                                    title="Remove image"
+                                                >
+                                                    <X size={16} />
+                                                </button>
                                             </div>
-                                            <div className="space-y-2">
-                                                <label className="text-xs font-black uppercase tracking-widest text-slate-400">Quantity</label>
-                                                <input 
-                                                    required 
-                                                    type="number" 
-                                                    className="w-full p-4 bg-slate-50 text-slate-900 rounded-2xl border-none focus:ring-2 focus:ring-cyan-400 outline-none transition-all" 
-                                                    placeholder="E.g. 50"
-                                                    value={formData.quantity}
-                                                    onChange={(e) => setFormData({...formData, quantity: e.target.value})}
-                                                />
-                                            </div>
-                                        </div>
-
-                                        <div className="space-y-2">
-                                            <label className="text-xs font-black uppercase tracking-widest text-slate-400">Reference Product Design (Optional)</label>
-                                            <div className="relative group">
-                                                <div className={`w-full p-10 border-2 border-dashed rounded-3xl transition-all flex flex-col items-center justify-center gap-4 ${imagePreview ? 'border-cyan-500 bg-cyan-50/10' : 'border-slate-200 hover:border-cyan-400 bg-slate-50'}`}>
-                                                    {imagePreview ? (
-                                                        <div className="relative">
-                                                            <img src={imagePreview} alt="Preview" className="h-32 w-auto object-contain rounded-xl shadow-lg" />
-                                                            <button 
-                                                                type="button"
-                                                                onClick={() => {setImage(null); setImagePreview(null);}}
-                                                                className="absolute -top-2 -right-2 bg-red-500 text-white p-1 rounded-full shadow-lg hover:bg-red-600 transition-colors"
-                                                                aria-label="Remove image"
-                                                                title="Remove image"
-                                                            >
-                                                                <X size={16} />
-                                                            </button>
-                                                        </div>
-                                                    ) : (
-                                                        <>
-                                                            <div className="w-16 h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center text-slate-400 group-hover:text-cyan-500 group-hover:scale-110 transition-all">
-                                                                <Upload size={32} />
-                                                            </div>
-                                                            <div className="text-center">
-                                                                <p className="text-sm font-bold text-slate-900">Click to upload your design</p>
-                                                                <p className="text-xs text-slate-500 mt-1">PNG, JPG up to 10MB</p>
-                                                            </div>
-                                                        </>
-                                                    )}
-                                                    <input 
-                                                        type="file" 
-                                                        accept="image/*" 
-                                                        className="absolute inset-0 opacity-0 cursor-pointer"
-                                                        onChange={handleImageChange}
-                                                        aria-label="Upload design image"
-                                                        title="Upload design image"
-                                                    />
+                                        ) : (
+                                            <>
+                                                <div className="w-16 h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center text-slate-400 group-hover:text-cyan-500 group-hover:scale-110 transition-all">
+                                                    <Upload size={32} />
                                                 </div>
-                                            </div>
-                                        </div>
+                                                <div className="text-center">
+                                                    <p className="text-sm font-bold text-slate-900">Click to upload your design</p>
+                                                    <p className="text-xs text-slate-500 mt-1">PNG, JPG up to 10MB</p>
+                                                </div>
+                                            </>
+                                        )}
+                                        <input 
+                                            type="file" 
+                                            accept="image/*" 
+                                            className="absolute inset-0 opacity-0 cursor-pointer"
+                                            onChange={handleImageChange}
+                                            aria-label="Upload design image"
+                                            title="Upload design image"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
 
-                                        <div className="space-y-2">
-                                            <label className="text-xs font-black uppercase tracking-widest text-slate-400">Inquiry Message</label>
-                                            <textarea
-                                                required
-                                                rows={4}
-                                                className="w-full p-4 bg-slate-50 text-slate-900 rounded-2xl border-none focus:ring-2 focus:ring-cyan-400 outline-none transition-all resize-none"
-                                                placeholder="Details about colors, logos, and sizing..."
-                                                value={formData.message}
-                                                onChange={(e) => setFormData({...formData, message: e.target.value})}
-                                            ></textarea>
-                                        </div>
+                            <div className="space-y-2">
+                                <label className="text-xs font-black uppercase tracking-widest text-slate-400">Inquiry Message</label>
+                                <textarea
+                                    required
+                                    name="message"
+                                    rows={4}
+                                    className="w-full p-4 bg-slate-50 text-slate-900 rounded-2xl border-none focus:ring-2 focus:ring-cyan-400 outline-none transition-all resize-none"
+                                    placeholder="Details about colors, logos, and sizing..."
+                                    value={formData.message}
+                                    onChange={handleChange}
+                                ></textarea>
+                            </div>
 
-                                        <button type="submit" className="w-full py-5 bg-slate-900 text-white font-bold uppercase tracking-widest rounded-xl hover:bg-cyan-600 hover:shadow-2xl hover:shadow-cyan-100 transition-all flex items-center justify-center gap-3 active:scale-95 group">
-                                            Submit Inquiry <Send size={20} className="group-hover:translate-x-1 transition-transform" />
-                                        </button>
-                                    </form>
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
+                            <AnimatePresence>
+                                {status !== 'idle' && (
+                                    <motion.div
+                                        initial={{ opacity: 0, height: 0 }}
+                                        animate={{ opacity: 1, height: 'auto' }}
+                                        exit={{ opacity: 0, height: 0 }}
+                                        className={`flex items-center gap-3 p-4 rounded-xl text-sm font-bold ${
+                                            status === 'success' ? 'bg-green-50 text-green-700' : 
+                                            status === 'error' ? 'bg-red-50 text-red-700' : 
+                                            'bg-cyan-50 text-cyan-700'
+                                        }`}
+                                    >
+                                        {status === 'success' && <CheckCircle2 size={18} />}
+                                        {status === 'error' && <AlertCircle size={18} />}
+                                        {status === 'sending' && <Loader2 size={18} className="animate-spin" />}
+                                        {statusMsg}
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+
+                            <button 
+                                type="submit" 
+                                disabled={status === 'sending'}
+                                className={`w-full py-5 bg-slate-900 text-white font-bold uppercase tracking-widest rounded-xl transition-all flex items-center justify-center gap-3 active:scale-95 group ${status === 'sending' ? 'opacity-70 cursor-not-allowed' : 'hover:bg-cyan-600 hover:shadow-2xl hover:shadow-cyan-100'}`}
+                            >
+                                {status === 'sending' ? 'Sending...' : 'Submit Inquiry'}
+                                <Send size={20} className={status === 'sending' ? '' : 'group-hover:translate-x-1 transition-transform'} />
+                            </button>
+                        </form>
+
                     </div>
                 </div>
             </div>

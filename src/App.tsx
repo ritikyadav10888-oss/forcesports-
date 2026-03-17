@@ -8,6 +8,7 @@ import AboutPage from './pages/About/AboutPage';
 import InquiryPage from './pages/Inquiry/InquiryPage';
 import ManufacturingPage from './pages/Manufacturing/ManufacturingPage';
 import ProductDetailPage from './pages/Products/ProductDetailPage';
+import UniformDetailPage from './pages/Uniforms/UniformDetailPage';
 import CatalogPage from './pages/Catalog/CatalogPage';
 import TermsPage from './pages/Legal/TermsPage';
 import PrivacyPage from './pages/Legal/PrivacyPage';
@@ -21,6 +22,7 @@ function App() {
                     <Route path="/products" element={<ProductPage />} />
                     <Route path="/products/:productId" element={<ProductDetailPage />} />
                     <Route path="/uniforms" element={<UniformsPage />} />
+                    <Route path="/uniforms/:uniformId" element={<UniformDetailPage />} />
                     <Route path="/catalog" element={<CatalogPage />} />
                     <Route path="/about" element={<AboutPage />} />
                     <Route path="/manufacturing" element={<ManufacturingPage />} />
