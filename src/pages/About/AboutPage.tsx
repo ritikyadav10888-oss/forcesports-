@@ -3,10 +3,15 @@ import { motion } from 'framer-motion';
 import { Shield, Target, Award, Users, ChevronRight } from 'lucide-react';
 import { BRAND_DETAILS } from '../../data/brandData';
 import { Link } from 'react-router-dom';
+import SEO from '../../components/seo/SEO';
 
 const AboutPage = () => {
     return (
         <div className="bg-white">
+            <SEO 
+                title="About Us | Manufacturing Experts Since 2007"
+                description="Learn about Force Sports & Wears India, our heritage, our mission, and our commitment to fueling champions with high-quality customized sports gear."
+            />
             {/* Hero Section */}
             <section className="relative h-[70vh] flex items-center justify-center overflow-hidden bg-slate-900 pt-20">
                 <div className="absolute inset-0 z-0">

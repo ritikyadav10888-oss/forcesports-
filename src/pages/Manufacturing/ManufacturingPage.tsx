@@ -6,10 +6,15 @@ import {
     Wind, Droplets, ChevronRight, Binary
 } from 'lucide-react';
 import { BRAND_DETAILS } from '../../data/brandData';
+import SEO from '../../components/seo/SEO';
 
 const ManufacturingPage = () => {
     return (
         <div className="bg-slate-950 pt-20 overflow-x-hidden">
+            <SEO 
+                title="Manufacturing Excellence | Tech & Fabric Lab"
+                description="Our vertically integrated Mumbai facility manages everything from sublimation lab to 3D prototyping. Engineered breathability and industrial mastery."
+            />
             {/* Hero Section - High Impact */}
             <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden py-16 md:py-24 px-6 border-b border-white/5">
                 <div className="absolute inset-0 z-0">

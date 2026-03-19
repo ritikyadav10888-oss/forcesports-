@@ -4,6 +4,7 @@ import { PRODUCTS, Product } from '../../data/products';
 import { Link } from 'react-router-dom';
 import { Filter, X, Check, Activity } from 'lucide-react';
 import { getCDNUrl } from '../../utils/cdnUtils';
+import SEO from '../../components/seo/SEO';
 
 const Categories = ['T-Shirts', 'Track Pants', 'Shorts', 'Jackets', 'Bags', 'Caps', '3D Innovations'] as const;
 const Sports = ['Badminton', 'Cricket', 'Football', 'Volleyball', 'Kabaddi', 'Pickleball', 'Tennis'] as const;
@@ -35,6 +36,10 @@ const ProductPage = () => {
 
     return (
         <div className="bg-slate-50 min-h-screen">
+            <SEO 
+                title="Our Products | Customized Sports Apparel & Gear"
+                description="Explore our range of premium sports apparel, including T-shirts, track pants, shorts, and jackets. 100% customizable for teams and individuals."
+            />
             {/* Header */}
             <section className="bg-slate-900 py-10 px-6 text-center relative overflow-hidden">
                 <div className="absolute inset-0 opacity-10">

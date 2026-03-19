@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { ArrowLeft, ChevronRight, Zap, CheckCircle2, MessageCircle } from 'lucide-react';
 import { UNIFORMS } from '../../data/uniforms';
 import { BRAND_DETAILS } from '../../data/brandData';
+import SEO from '../../components/seo/SEO';
 
 const UniformDetailPage = () => {
     const { uniformId } = useParams();
@@ -42,6 +43,11 @@ const UniformDetailPage = () => {
 
     return (
         <div className="bg-white pt-20">
+            <SEO 
+                title={`${product.title} | ${product.category}`}
+                description={`${product.description}. Professional uniform solution by Force Sports India.`}
+                image={product.image}
+            />
             {/* Breadcrumbs & Back Nav */}
             <div className="max-w-7xl mx-auto px-6 py-8">
                 <button

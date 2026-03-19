@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, MessageCircle, Upload, X, CheckCircle, Loader2, CheckCircle2, AlertCircle } from 'lucide-react';
+import SEO from '../../components/seo/SEO';
+import { Mail, Phone, MapPin, Send, MessageCircle, Upload, X, CheckCircle, Loader2, CheckCircle2, AlertCircle, Clock, ChevronRight, MessageSquare, Building2, User2 } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 import { BRAND_DETAILS } from '../../data/brandData';
 
@@ -82,6 +83,10 @@ const InquiryPage = () => {
 
     return (
         <div className="bg-slate-50 min-h-screen">
+            <SEO 
+                title="Get a Quote | Custom Teamwear Manufacturing"
+                description="Contact Force Sports & Wears India for a custom quote on sports jerseys, uniforms, and athletic gear. Premium quality, best prices, manufactured in Mumbai."
+            />
             <section className="bg-slate-900 py-20 px-6 text-center">
                 <motion.h1 initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="text-4xl md:text-5xl font-black text-white uppercase tracking-tighter">Get A Quote</motion.h1>
                 <p className="text-cyan-400 mt-4 uppercase tracking-widest text-xs font-bold">Mumbai Headquarters: {BRAND_DETAILS.headquarters}</p>

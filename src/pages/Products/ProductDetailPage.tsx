@@ -3,6 +3,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, ChevronRight, Zap, CheckCircle2 } from 'lucide-react';
 import { PRODUCTS } from '../../data/products';
+import SEO from '../../components/seo/SEO';
 
 const ProductDetailPage = () => {
     const { productId } = useParams();
@@ -41,6 +42,11 @@ const ProductDetailPage = () => {
 
     return (
         <div className="bg-white pt-20">
+            <SEO 
+                title={`${product.title} | ${product.category}`}
+                description={`${product.description} | Product Code: ${product.productCode}. Custom manufactured by Force Sports India.`}
+                image={product.image}
+            />
             {/* Breadcrumbs & Back Nav */}
             <div className="max-w-7xl mx-auto px-6 py-8">
                 <button

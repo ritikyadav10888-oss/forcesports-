@@ -13,12 +13,14 @@ import CatalogPage from './pages/Catalog/CatalogPage';
 import TermsPage from './pages/Legal/TermsPage';
 import PrivacyPage from './pages/Legal/PrivacyPage';
 import { Analytics } from "@vercel/analytics/react";
+import Schema from './components/seo/Schema';
 
 function App() {
     return (
         <Router>
             <Layout>
                 <Analytics />
+                <Schema />
                 <Routes>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/products" element={<ProductPage />} />

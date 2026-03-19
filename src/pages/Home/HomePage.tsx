@@ -11,6 +11,7 @@ import {
 import { Link } from 'react-router-dom';
 import { PRODUCTS } from '../../data/products';
 import { getCDNUrl } from '../../utils/cdnUtils';
+import SEO from '../../components/seo/SEO';
 
 const ClientMarqueeItem = ({ client, size = "large" }: { client: any, size?: "small" | "large" | "medium" }) => {
     const [imageError, setImageError] = React.useState(false);
@@ -55,7 +56,11 @@ const HomePage = () => {
     );
 
     return (
-        <div className="overflow-x-hidden">
+        <div className="bg-white overflow-x-hidden">
+            <SEO 
+                title="Custom Sports Jersey Manufacturer Mumbai"
+                description="Force Sports & Wears India - Premium manufacturer of customized sports jerseys, athletic apparel, and technical gear based in Mumbai since 2007. Specializing in sublimation and technical fabrics."
+            />
             {/* Single High-Impact Hero Section */}
             <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-900 pt-20">
                 {/* Background Video/Image */}
