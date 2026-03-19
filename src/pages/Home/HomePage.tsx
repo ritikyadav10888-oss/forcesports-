@@ -5,7 +5,7 @@ import {
     Truck, Award, Trophy, Building2, 
     Building, Landmark, Factory, Bike, 
     Signal, Palette, ShieldCheck, Globe2, 
-    ShoppingCart,
+    ShoppingCart, Star,
     CarFront, BookOpen
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -127,6 +127,28 @@ const HomePage = () => {
                         >
                             <BookOpen size={18} /> View Digital Catalog
                         </Link>
+                    </motion.div>
+
+                    {/* Trust Badge with Stars */}
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 1, delay: 1.2 }}
+                        className="mt-12 flex items-center gap-3 py-2 px-4 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10"
+                    >
+                        <div className="flex -space-x-2">
+                             {[1,2,3,4].map(i => (
+                                <div key={i} className="w-8 h-8 rounded-full border-2 border-slate-900 bg-slate-800 flex items-center justify-center overflow-hidden">
+                                    <img src={`https://i.pravatar.cc/100?u=${i}`} alt="User" className="w-full h-full object-cover" />
+                                </div>
+                             ))}
+                        </div>
+                        <div className="flex flex-col items-start leading-none">
+                            <div className="flex text-yellow-400 mb-1">
+                                {[1,2,3,4,5].map(i => <Star key={i} size={12} fill="currentColor" />)}
+                            </div>
+                            <span className="text-white/60 text-[10px] font-bold uppercase tracking-widest">Trusted by 1,000+ Teams</span>
+                        </div>
                     </motion.div>
                 </div>
 
@@ -282,6 +304,67 @@ const HomePage = () => {
                                 </div>
                                 <h4 className="text-base font-black text-slate-900 uppercase tracking-widest mb-3">{step.title}</h4>
                                 <p className="text-slate-500 text-sm leading-relaxed font-medium">{step.desc}</p>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Testimonials Section */}
+            <section className="py-24 bg-slate-50 relative overflow-hidden">
+                <div className="max-w-7xl mx-auto px-6 relative z-10">
+                    <div className="flex flex-col items-center text-center mb-16">
+                        <span className="text-cyan-600 font-bold tracking-widest uppercase text-sm mb-4 block">Voice of the Athlete</span>
+                        <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight uppercase mb-6">WHAT OUR USERS SAY</h2>
+                        <div className="flex gap-1 text-yellow-500 bg-yellow-500/10 px-4 py-2 rounded-full">
+                            {[1, 2, 3, 4, 5].map(i => <Star key={i} size={20} fill="currentColor" />)}
+                            <span className="ml-2 font-black text-slate-900 text-sm">4.9/5 RATING</span>
+                        </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {[
+                            {
+                                name: "Rajesh Kumar",
+                                role: "Team Manager, HDFC Bank",
+                                quote: "The durability of Force jerseys is unmatched. Even after a full season of corporate league matches, the colors and fabric remained as good as new.",
+                                rating: 5
+                            },
+                            {
+                                name: "Siddharth Mehta",
+                                role: "Goregaon Sports Club",
+                                quote: "Choosing Force for our club uniforms was the best decision. The technical fabric is breathable and the fit is perfect for high-intensity games.",
+                                rating: 5
+                            },
+                            {
+                                name: "Anil D'Souza",
+                                role: "Elite Athlete",
+                                quote: "Force Sports understands what athletes need. Their compression gear and tracksuits are world-class. Highly recommended for professionals.",
+                                rating: 5
+                            }
+                        ].map((testi, idx) => (
+                            <motion.div
+                                key={idx}
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                transition={{ delay: idx * 0.1 }}
+                                className="p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-xl shadow-slate-200/50 flex flex-col justify-between"
+                            >
+                                <div>
+                                    <div className="flex text-yellow-400 mb-6">
+                                        {[...Array(testi.rating)].map((_, i) => <Star key={i} size={16} fill="currentColor" />)}
+                                    </div>
+                                    <p className="text-slate-600 text-lg italic leading-relaxed mb-8">"{testi.quote}"</p>
+                                </div>
+                                <div className="flex items-center gap-4 border-t border-slate-50 pt-6">
+                                    <div className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center font-black text-slate-400">
+                                        {testi.name[0]}
+                                    </div>
+                                    <div>
+                                        <h4 className="font-black text-slate-900 text-sm uppercase">{testi.name}</h4>
+                                        <span className="text-cyan-600 text-[10px] font-bold uppercase tracking-widest">{testi.role}</span>
+                                    </div>
+                                </div>
                             </motion.div>
                         ))}
                     </div>
