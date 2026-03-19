@@ -12,11 +12,13 @@ import UniformDetailPage from './pages/Uniforms/UniformDetailPage';
 import CatalogPage from './pages/Catalog/CatalogPage';
 import TermsPage from './pages/Legal/TermsPage';
 import PrivacyPage from './pages/Legal/PrivacyPage';
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
     return (
         <Router>
             <Layout>
+                <Analytics />
                 <Routes>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/products" element={<ProductPage />} />
@@ -29,6 +31,8 @@ function App() {
                     <Route path="/inquiry" element={<InquiryPage />} />
                     <Route path="/terms" element={<TermsPage />} />
                     <Route path="/privacy" element={<PrivacyPage />} />
+                    {/* Catch-all 404 handler - redirecting to home for SEO consolidation */}
+                    <Route path="*" element={<HomePage />} />
                 </Routes>
             </Layout>
         </Router>
