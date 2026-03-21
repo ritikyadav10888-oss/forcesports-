@@ -376,7 +376,7 @@ const ProductPage = () => {
                             initial={{ opacity: 0, scale: 0.9, y: 20 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                            className="bg-white w-full max-w-4xl rounded-[3rem] overflow-hidden shadow-2xl relative z-10 flex flex-col md:flex-row max-h-[90vh]"
+                            className="bg-white w-[95%] md:w-full max-w-4xl rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl relative z-10 flex flex-col md:flex-row max-h-[90vh]"
                         >
                             <button
                                 onClick={() => setCustomizingProduct(null)}
@@ -386,7 +386,7 @@ const ProductPage = () => {
                                 <X size={20} />
                             </button>
 
-                             <div className="w-full md:w-1/2 bg-slate-50 flex items-center justify-center p-12">
+                             <div className="w-full md:w-1/2 bg-slate-50 flex items-center justify-center p-6 md:p-12 h-[35vh] md:h-auto shrink-0">
                                 <div className="relative group">
                                     <img 
                                         src={(customization.placement.includes('Back') || customization.placement.includes('Shoulders') || customization.placement.includes('Locker')) && customizingProduct.imageBack ? customizingProduct.imageBack : customizingProduct.image} 
@@ -413,7 +413,7 @@ const ProductPage = () => {
                                 </div>
                             </div>
 
-                            <div className="w-full md:w-1/2 p-12 flex flex-col overflow-y-auto">
+                            <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col overflow-y-auto min-h-0">
                                 <div className="mb-10">
                                     <span className="text-[10px] font-black text-cyan-600 uppercase tracking-widest mb-3 block">Customization</span>
                                     <h2 className="text-3xl font-black text-slate-900 uppercase tracking-tighter mb-2">{customizingProduct.title}</h2>

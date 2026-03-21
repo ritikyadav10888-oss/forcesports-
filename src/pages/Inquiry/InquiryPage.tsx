@@ -95,7 +95,7 @@ const InquiryPage = () => {
             <div className="max-w-6xl mx-auto px-6 -mt-16 pb-24">
                 <div className="bg-white rounded-3xl shadow-2xl shadow-slate-300 overflow-hidden flex flex-col lg:flex-row">
                     {/* Contact Sidebar */}
-                    <div className="bg-slate-900 p-12 text-white lg:w-1/3">
+                    <div className="bg-slate-900 p-8 md:p-12 text-white lg:w-1/3">
                         <h2 className="text-2xl font-black mb-10 border-b border-white/10 pb-6 uppercase tracking-tight">Main HQ</h2>
                         <div className="space-y-8">
                             <div className="flex items-start gap-4">
@@ -162,7 +162,7 @@ const InquiryPage = () => {
                     </div>
 
                     {/* Form Area */}
-                    <div className="p-12 lg:w-2/3">
+                    <div className="p-8 md:p-12 lg:w-2/3">
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div className="space-y-2">
