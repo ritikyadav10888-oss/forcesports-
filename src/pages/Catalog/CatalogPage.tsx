@@ -85,6 +85,20 @@ const CatalogPage = () => {
         setSelectedColor(null);
     }, [totalPages]);
 
+    // Preload neighbors
+    useEffect(() => {
+        const preload = (pageIdx: number) => {
+            if (pageIdx >= 0 && pageIdx < totalPages) {
+                const img = new Image();
+                img.src = getPageSrc(currentCatalog.pages[pageIdx]);
+            }
+        };
+        // Preload next 2 pages and previous 1 page for smooth browsing
+        preload(currentPage + 1);
+        preload(currentPage + 2);
+        preload(currentPage - 1);
+    }, [currentPage, currentCatalog, totalPages]);
+
     // Keyboard Navigation
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
@@ -197,6 +211,15 @@ const CatalogPage = () => {
                                 <ChevronRight size={14} />
                             </button>
                         </div>
+                        {(currentCatalog as any).downloadUrl && (
+                            <a
+                                href={(currentCatalog as any).downloadUrl}
+                                download
+                                className="hidden lg:flex items-center gap-2 px-4 py-2 bg-cyan-600 hover:bg-cyan-700 text-white rounded-full text-[10px] font-black uppercase tracking-widest transition-all shadow-lg shadow-cyan-900/20"
+                            >
+                                <Download size={14} /> <span className="hidden xl:inline">Download</span> PDF
+                            </a>
+                        )}
                     </div>
                 </div>
 
@@ -284,7 +307,14 @@ const CatalogPage = () => {
                                                     currentPage === idx ? 'border-cyan-500 scale-110' : 'border-transparent opacity-50 hover:opacity-100'
                                                 }`}
                                             >
-                                                <img src={getPageSrc(page)} alt="" className="w-full h-full object-cover" />
+                                                <img 
+                                                    src={getPageSrc(page)} 
+                                                    alt="" 
+                                                    className="w-full h-full object-cover" 
+                                                    loading="lazy"
+                                                    width="64"
+                                                    height="90"
+                                                />
                                             </button>
                                         ))}
                                     </div>
@@ -312,6 +342,7 @@ const CatalogPage = () => {
                                             src={getPageSrc(page)} 
                                             alt="" 
                                             className="w-full h-full object-cover group-hover:scale-110 transition-all duration-500 opacity-0" 
+                                            loading="lazy"
                                             onLoad={(e) => {
                                                 (e.target as HTMLImageElement).classList.remove('opacity-0');
                                                 (e.target as HTMLImageElement).classList.add('opacity-100');

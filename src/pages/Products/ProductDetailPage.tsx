@@ -64,25 +64,23 @@ const ProductDetailPage = () => {
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
-                        className="sticky top-32"
+                        className="lg:sticky lg:top-32"
                     >
-                        <div className="relative rounded-[2.5rem] overflow-hidden bg-white aspect-square shadow-2xl p-12 border border-slate-100">
+                        <div className="relative rounded-[2rem] md:rounded-[2.5rem] overflow-hidden bg-white aspect-square shadow-2xl p-6 md:p-12 border border-slate-100">
                              <img src={activeImage} alt={product.title} className="w-full h-full object-contain" />
                         </div>
-                        {images.length > 1 && (
-                            <div className="flex gap-3 mt-4">
+                            <div className="flex flex-wrap gap-2 md:gap-3 mt-4">
                                 {images.map((img, idx) => (
                                     <button
                                         key={idx}
                                         onClick={() => setActiveImageIndex(idx)}
-                                        className={`flex-1 rounded-2xl overflow-hidden aspect-square border-2 transition-all p-2 bg-slate-50 ${activeImageIndex === idx ? 'border-cyan-500 shadow-lg shadow-cyan-100' : 'border-transparent opacity-60 hover:opacity-100'
+                                        className={`w-16 h-16 md:w-20 md:h-20 rounded-xl md:rounded-2xl overflow-hidden aspect-square border-2 transition-all p-1.5 md:p-2 bg-slate-50 ${activeImageIndex === idx ? 'border-cyan-500 shadow-lg shadow-cyan-100' : 'border-transparent opacity-60 hover:opacity-100'
                                             }`}
                                     >
                                         <img src={img} alt={`View ${idx + 1}`} className="w-full h-full object-contain" />
                                     </button>
                                 ))}
                             </div>
-                        )}
                     </motion.div>
 
                     {/* Content Column */}
@@ -100,10 +98,10 @@ const ProductDetailPage = () => {
                                 </span>
                             )}
                         </div>
-                        <h1 className="text-4xl md:text-5xl lg:text-5xl font-black text-slate-900 uppercase tracking-tighter mb-8 leading-[0.9]">
+                        <h1 className="text-3xl md:text-5xl font-black text-slate-900 uppercase tracking-tighter mb-8 leading-[0.9]">
                             {product.title}
                         </h1>
-                        <p className="text-slate-500 text-lg leading-relaxed mb-10">
+                        <p className="text-slate-500 text-base md:text-lg leading-relaxed mb-10">
                             {product.longDescription}
                         </p>
 

@@ -51,7 +51,7 @@ const UniformsPage = () => {
                 <motion.h1
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-5xl md:text-6xl font-black text-white uppercase tracking-tighter relative z-10"
+                    className="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter relative z-10"
                 >
                     Professional <span className="text-cyan-500">Uniforms</span>
                 </motion.h1>
@@ -246,13 +246,13 @@ const UniformsPage = () => {
                                                 <p className="text-slate-500 text-xs leading-relaxed font-medium line-clamp-2">{uniform.description}</p>
                                             </div>
 
-                                            <div className="mt-auto flex gap-3">
+                                            <div className="mt-auto flex gap-2 md:gap-3">
                                                 <button
                                                     onClick={(e) => {
                                                         e.stopPropagation();
                                                         navigate(`/uniforms/${uniform.id}`);
                                                     }}
-                                                    className="flex-1 py-4 bg-slate-50 text-slate-900 text-[10px] font-black uppercase tracking-widest rounded-xl hover:bg-cyan-600 hover:text-white transition-all border border-slate-100 text-center"
+                                                    className="flex-1 py-3 md:py-4 bg-slate-50 text-slate-900 text-[9px] md:text-[10px] font-black uppercase tracking-widest rounded-xl hover:bg-cyan-600 hover:text-white transition-all border border-slate-100 text-center"
                                                 >
                                                     View Specs
                                                 </button>
@@ -261,7 +261,7 @@ const UniformsPage = () => {
                                                         e.stopPropagation();
                                                         openWhatsApp(uniform);
                                                     }}
-                                                    className="px-4 py-4 bg-[#25D366]/10 text-[#25D366] rounded-xl hover:bg-[#25D366] hover:text-white transition-all border border-[#25D366]/20"
+                                                    className="px-3 md:px-4 py-3 md:py-4 bg-[#25D366]/10 text-[#25D366] rounded-xl hover:bg-[#25D366] hover:text-white transition-all border border-[#25D366]/20"
                                                 >
                                                     <MessageCircle size={18} />
                                                 </button>

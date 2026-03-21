@@ -19,15 +19,15 @@ const Navbar = () => {
     return (
         <nav className="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-100">
             <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-                <Link to="/" className="flex items-center gap-3 group" onClick={() => setIsOpen(false)}>
+                <Link to="/" className="flex items-center gap-2 md:gap-3 group" onClick={() => setIsOpen(false)}>
                     <img
                         src={BRAND_DETAILS.logo}
                         alt={BRAND_DETAILS.name}
-                        className="h-12 w-auto object-contain transition-transform group-hover:scale-110"
+                        className="h-10 md:h-12 w-auto object-contain transition-transform group-hover:scale-110"
                     />
                     <div className="flex flex-col">
-                        <span className="text-lg font-black tracking-tighter text-slate-900 leading-none">FORCE SPORTS</span>
-                        <span className="text-[10px] font-black text-cyan-600 tracking-widest uppercase mt-0.5">Wears India</span>
+                        <span className="text-base md:text-lg font-black tracking-tighter text-slate-900 leading-none">FORCE SPORTS</span>
+                        <span className="text-[8px] md:text-[10px] font-black text-cyan-600 tracking-widest uppercase mt-0.5">Wears India</span>
                     </div>
                 </Link>
 

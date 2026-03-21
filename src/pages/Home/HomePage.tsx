@@ -22,11 +22,11 @@ const ClientMarqueeItem = ({ client, size = "large" }: { client: any, size?: "sm
     const textStyle = size === "large"
         ? "text-2xl md:text-3xl font-black text-slate-900 opacity-80 group-hover/item:opacity-100 group-hover/item:text-cyan-600"
         : size === "medium"
-            ? "text-xl md:text-2xl font-black text-slate-400 group-hover/item:text-orange-600"
-            : "text-lg md:text-xl font-black text-slate-300 group-hover/item:text-slate-900";
+            ? "text-lg md:text-2xl font-black text-slate-400 group-hover/item:text-orange-600"
+            : "text-base md:text-xl font-black text-slate-300 group-hover/item:text-slate-900";
 
     return (
-        <div className={`${size === "medium" ? "mx-10" : "mx-12"} flex items-center gap-5 group/item cursor-default`}>
+        <div className={`${size === "medium" ? "mx-6 md:mx-10" : "mx-8 md:mx-12"} flex items-center gap-3 md:gap-5 group/item cursor-default`}>
             <div className={`${boxSize} ${imageError || !client.logo ? client.color : 'bg-white'} rounded-2xl flex items-center justify-center text-white shadow-xl transition-all duration-500 group-hover/item:scale-110 group-hover/item:rotate-6 border border-white/50 overflow-hidden`}>
                 {client.logo && !imageError ? (
                     <img
@@ -91,7 +91,7 @@ const HomePage = () => {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                        className="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tighter mb-6 uppercase leading-[0.9]"
+                        className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tighter mb-6 uppercase leading-[0.9]"
                     >
                         FORCE SPORTS
                     </motion.h1>
@@ -277,7 +277,7 @@ const HomePage = () => {
                 <div className="max-w-7xl mx-auto px-6 relative z-10">
                     <div className="text-center mb-10">
                         <span className="text-cyan-600 font-bold tracking-widest uppercase text-sm mb-3 block">The Journey</span>
-                        <h2 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tight uppercase">How We Craft Perfection</h2>
+                        <h2 className="text-2xl md:text-5xl font-black text-slate-900 tracking-tight uppercase">How We Craft Perfection</h2>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

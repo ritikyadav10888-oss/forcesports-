@@ -49,7 +49,7 @@ const ProductPage = () => {
                 <motion.h1
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-4xl md:text-5xl font-black text-white uppercase tracking-tighter relative z-10"
+                    className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter relative z-10"
                 >
                     Gear Up <span className="text-cyan-500">Pro</span>
                 </motion.h1>
@@ -317,7 +317,7 @@ const ProductPage = () => {
                                                 <p className="text-slate-500 text-xs leading-relaxed font-medium line-clamp-2">{product.description}</p>
                                             </div>
 
-                                            <div className="grid grid-cols-2 gap-4">
+                                            <div className="grid grid-cols-2 gap-3 md:gap-4 mt-auto">
                                                 <button
                                                     onClick={() => {
                                                         setCustomization({
@@ -327,13 +327,13 @@ const ProductPage = () => {
                                                         });
                                                         setCustomizingProduct(product);
                                                     }}
-                                                    className="py-4 bg-cyan-600 text-white text-xs font-bold uppercase tracking-widest rounded-xl hover:bg-slate-900 transition-all"
+                                                    className="py-3 md:py-4 bg-cyan-600 text-white text-[10px] md:text-xs font-bold uppercase tracking-widest rounded-xl hover:bg-slate-900 transition-all"
                                                 >
                                                     Customize
                                                 </button>
                                                 <Link
                                                     to={`/products/${product.id}`}
-                                                    className="py-4 bg-slate-50 text-slate-900 text-xs font-bold uppercase tracking-widest rounded-xl hover:bg-slate-200 transition-all border border-slate-100 text-center flex items-center justify-center"
+                                                    className="py-3 md:py-4 bg-slate-50 text-slate-900 text-[10px] md:text-xs font-bold uppercase tracking-widest rounded-xl hover:bg-slate-200 transition-all border border-slate-100 text-center flex items-center justify-center"
                                                 >
                                                     View
                                                 </Link>
