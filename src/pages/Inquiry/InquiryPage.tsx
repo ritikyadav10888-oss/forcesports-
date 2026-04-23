@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import SEO from '../../components/seo/SEO';
-import { Mail, Phone, MapPin, Send, MessageCircle, Upload, X, CheckCircle, Loader2, CheckCircle2, AlertCircle, Clock, ChevronRight, MessageSquare, Building2, User2 } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, MessageCircle, Upload, X, Loader2, CheckCircle2, AlertCircle } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 import { BRAND_DETAILS } from '../../data/brandData';
 
@@ -9,6 +9,7 @@ const InquiryPage = () => {
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
     const prefilledProduct = queryParams.get('product');
+    const apiBaseUrl = (import.meta as any).env?.VITE_API_BASE_URL || '';
 
     const [formData, setFormData] = useState({
         fullName: '',
@@ -52,14 +53,18 @@ const InquiryPage = () => {
         setStatusMsg('Sending your inquiry...');
 
         try {
-            // Note: In a real production app, we would use FormData to send the image file.
-            // For now, we follow the existing pattern of sending JSON for fields.
-            const response = await fetch('http://localhost:5000/api/send-inquiry', {
+            const payload = new FormData();
+            payload.append('fullName', formData.fullName);
+            payload.append('email', formData.email);
+            payload.append('phone', formData.phone);
+            payload.append('quantity', formData.quantity);
+            payload.append('message', formData.message);
+            if (image) payload.append('image', image);
+
+            const url = `${apiBaseUrl}/api/send-inquiry`.replace(/([^:]\/)\/+/g, '$1');
+            const response = await fetch(url, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
+                body: payload,
             });
 
             const data = await response.json();

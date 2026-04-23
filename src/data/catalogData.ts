@@ -172,11 +172,6 @@ export const CATALOG_DATA = {
         pages: Array.from({ length: 30 }, (_, i) => {
             const pageNum = i + 1;
             const folderNum = pageNum;
-            // Map of standard labels to filenames based on the data audit
-            const colorMapping: Record<string, string> = {};
-            
-            // This is a simplified mapping based on the file audit
-            // In a real scenario, this would be even more granular
             return {
                 master: `/3d design/30 design -31-3-25_page-${pageNum.toString().padStart(4, '0')}.jpg`,
                 folder: `/New folder/ppt ${folderNum}`

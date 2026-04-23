@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ChevronRight, Zap, CheckCircle2 } from 'lucide-react';
+import { ArrowLeft, ChevronRight, Zap, CheckCircle2, MessageCircle, Maximize2, X } from 'lucide-react';
 import { PRODUCTS } from '../../data/products';
+import { BRAND_DETAILS } from '../../data/brandData';
 import SEO from '../../components/seo/SEO';
 
 const ProductDetailPage = () => {
@@ -10,17 +11,34 @@ const ProductDetailPage = () => {
     const navigate = useNavigate();
     const product = PRODUCTS.find(p => p.id === productId);
 
-    const images = product ? [
-        ...(product.gallery ?? [product.image]),
-        ...(product.imageBack ? [product.imageBack] : [])
-    ] : [];
+    const images = (() => {
+        if (!product) return [];
+        const front = product.image;
+        const back = product.imageBack;
+        const gallery = product.gallery ?? [];
+
+        const uniq: string[] = [];
+        const push = (src?: string) => {
+            if (!src) return;
+            if (!uniq.includes(src)) uniq.push(src);
+        };
+
+        // Always keep order stable: Front first → gallery → Back last
+        push(front);
+        for (const g of gallery) push(g);
+        if (back) push(back);
+
+        return uniq;
+    })();
 
     const [activeImageIndex, setActiveImageIndex] = useState(0);
     const [prevProductId, setPrevProductId] = useState(productId);
+    const [isZoomOpen, setIsZoomOpen] = useState(false);
 
     if (productId !== prevProductId) {
         setPrevProductId(productId);
         setActiveImageIndex(0);
+        setIsZoomOpen(false);
     }
 
     useEffect(() => {
@@ -39,6 +57,13 @@ const ProductDetailPage = () => {
     }
 
     const activeImage = images[activeImageIndex] || product.image;
+    const isBackView = Boolean(product.imageBack && activeImage === product.imageBack);
+
+    const openWhatsApp = () => {
+        const message = `Hi! I am interested in ${product.title} (${product.productCode || 'N/A'}) from ${product.category}.\n\nPlease share bulk pricing, MOQ, and delivery timeline.`;
+        const encoded = encodeURIComponent(message);
+        window.open(`${BRAND_DETAILS.contacts.whatsappLink}&text=${encoded}`, '_blank');
+    };
 
     return (
         <div className="bg-white pt-20">
@@ -64,19 +89,54 @@ const ProductDetailPage = () => {
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
-                        className="lg:sticky lg:top-32"
+                        className="self-start lg:sticky lg:top-32"
                     >
-                        <div className="relative rounded-[2rem] md:rounded-[2.5rem] overflow-hidden bg-white aspect-square shadow-2xl p-6 md:p-12 border border-slate-100">
-                             <img src={activeImage} alt={product.title} className="w-full h-full object-contain" />
+                        <div className="relative rounded-[2.5rem] overflow-hidden bg-white aspect-square shadow-2xl p-12 border border-slate-100">
+                            <button
+                                type="button"
+                                onClick={() => setIsZoomOpen(true)}
+                                className="absolute inset-0 z-10"
+                                aria-label="Open image zoom"
+                                title="Open image zoom"
+                            />
+                            <img src={activeImage} alt={product.title} className="w-full h-full object-contain" />
+                            {product.imageBack && (
+                                <div
+                                    data-testid="view-badge"
+                                    className="absolute top-6 left-6 z-20 px-3 py-1 rounded-full bg-slate-900/90 text-white text-[10px] font-black uppercase tracking-widest"
+                                >
+                                    {isBackView ? 'Back' : 'Front'}
+                                </div>
+                            )}
+                            <div className="absolute top-6 right-6 z-20">
+                                <button
+                                    type="button"
+                                    onClick={() => setIsZoomOpen(true)}
+                                    className="w-10 h-10 rounded-full bg-white/90 backdrop-blur border border-slate-200 flex items-center justify-center text-slate-900 hover:bg-white transition-colors shadow-sm"
+                                    aria-label="Zoom image"
+                                    title="Zoom"
+                                >
+                                    <Maximize2 size={18} />
+                                </button>
+                            </div>
                         </div>
                             <div className="flex flex-wrap gap-2 md:gap-3 mt-4">
                                 {images.map((img, idx) => (
                                     <button
                                         key={idx}
                                         onClick={() => setActiveImageIndex(idx)}
-                                        className={`w-16 h-16 md:w-20 md:h-20 rounded-xl md:rounded-2xl overflow-hidden aspect-square border-2 transition-all p-1.5 md:p-2 bg-slate-50 ${activeImageIndex === idx ? 'border-cyan-500 shadow-lg shadow-cyan-100' : 'border-transparent opacity-60 hover:opacity-100'
+                                        className={`relative flex-1 rounded-2xl overflow-hidden aspect-square border-2 transition-all p-2 bg-slate-50 ${activeImageIndex === idx ? 'border-cyan-500 shadow-lg shadow-cyan-100' : 'border-transparent opacity-60 hover:opacity-100'
                                             }`}
                                     >
+                                        {product.imageBack && (
+                                            <span
+                                                data-testid={img === product.imageBack ? 'thumb-badge-back' : 'thumb-badge-front'}
+                                                className={`absolute top-2 left-2 z-10 px-2 py-0.5 rounded-full text-[9px] font-black uppercase tracking-widest ${
+                                                img === product.imageBack ? 'bg-slate-900 text-white' : 'bg-white text-slate-700 border border-slate-200'
+                                            }`}>
+                                                {img === product.imageBack ? 'Back' : 'Front'}
+                                            </span>
+                                        )}
                                         <img src={img} alt={`View ${idx + 1}`} className="w-full h-full object-contain" />
                                     </button>
                                 ))}
@@ -132,9 +192,65 @@ const ProductDetailPage = () => {
                                 Inquire Now <ChevronRight className="group-hover:translate-x-1 transition-transform" />
                             </Link>
                         </div>
+
+                        <button
+                            type="button"
+                            onClick={openWhatsApp}
+                            className="mt-4 w-full py-5 bg-[#25D366]/10 text-[#128C7E] border border-[#25D366]/20 rounded-[2rem] font-black uppercase tracking-widest text-xs flex items-center justify-center gap-3 hover:bg-[#25D366] hover:text-white transition-all active:scale-95"
+                        >
+                            WhatsApp Quote <MessageCircle className="transition-transform" />
+                        </button>
                     </motion.div>
                 </div>
             </section>
+
+            {/* Zoom Modal */}
+            {isZoomOpen && (
+                <div className="fixed inset-0 z-[200] bg-black/90 backdrop-blur-sm flex items-center justify-center p-4">
+                    <button
+                        type="button"
+                        onClick={() => setIsZoomOpen(false)}
+                        className="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition-colors"
+                        aria-label="Close zoom"
+                        title="Close"
+                    >
+                        <X size={22} />
+                    </button>
+                    <div className="max-w-6xl w-full">
+                        <img
+                            src={activeImage}
+                            alt={`${product.title} zoomed`}
+                            className="w-full max-h-[78vh] object-contain"
+                        />
+                        {images.length > 1 && (
+                            <div className="mt-6 flex gap-3 overflow-x-auto pb-2">
+                                {images.map((img, idx) => (
+                                    <button
+                                        key={`zoom-${idx}`}
+                                        type="button"
+                                        onClick={() => setActiveImageIndex(idx)}
+                                        className={`relative flex-shrink-0 w-20 aspect-square rounded-2xl overflow-hidden border-2 p-2 bg-white/5 ${
+                                            activeImageIndex === idx ? 'border-cyan-400' : 'border-white/10 opacity-70 hover:opacity-100'
+                                        }`}
+                                        aria-label={`Select image ${idx + 1}`}
+                                    >
+                                        {product.imageBack && (
+                                            <span
+                                                data-testid={img === product.imageBack ? 'zoom-thumb-badge-back' : 'zoom-thumb-badge-front'}
+                                                className={`absolute top-2 left-2 z-10 px-2 py-0.5 rounded-full text-[9px] font-black uppercase tracking-widest ${
+                                                img === product.imageBack ? 'bg-white text-slate-900' : 'bg-black/40 text-white border border-white/10'
+                                            }`}>
+                                                {img === product.imageBack ? 'Back' : 'Front'}
+                                            </span>
+                                        )}
+                                        <img src={img} alt="" className="w-full h-full object-contain" />
+                                    </button>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                </div>
+            )}
 
             {/* Technical Specs & Size Charts Section */}
             <section className="bg-slate-50 py-24 px-6 border-y border-slate-100">

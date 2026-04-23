@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PRODUCTS, Product } from '../../data/products';
 import { Link } from 'react-router-dom';
-import { Filter, X, Check, Activity } from 'lucide-react';
+import { Filter, X, Check, Activity, MessageCircle } from 'lucide-react';
 import { getCDNUrl } from '../../utils/cdnUtils';
 import SEO from '../../components/seo/SEO';
+import { BRAND_DETAILS } from '../../data/brandData';
 
 const Categories = ['T-Shirts', 'Track Pants', 'Shorts', 'Jackets', 'Bags', 'Caps', '3D Innovations'] as const;
 const Sports = ['Badminton', 'Cricket', 'Football', 'Volleyball', 'Kabaddi', 'Pickleball', 'Tennis'] as const;
@@ -24,6 +25,12 @@ const ProductPage = () => {
         const usageMatch = selectedUsages.length === 0 || (p.usageType && selectedUsages.includes(p.usageType));
         return categoryMatch && sportMatch && usageMatch;
     });
+
+    const openWhatsApp = (product: Product) => {
+        const message = `Hi! I am interested in ${product.title} (${product.productCode || 'N/A'}).\n\nCategory: ${product.category}\n\nPlease share bulk pricing, MOQ, and delivery timeline.`;
+        const encoded = encodeURIComponent(message);
+        window.open(`${BRAND_DETAILS.contacts.whatsappLink}&text=${encoded}`, '_blank');
+    };
 
     const handleCustomizationSubmit = () => {
         console.log('Customization Placed:', {
@@ -220,39 +227,6 @@ const ProductPage = () => {
 
                     {/* Main Content Area */}
                     <main className="flex-1">
-                        {/* Horizontal Scrollable Categories (Mobile Optimized) */}
-                        <div className="mb-10 -mx-6 px-6 lg:mx-0 lg:px-0">
-                            <div className="flex overflow-x-auto pb-4 no-scrollbar gap-3 scroll-smooth">
-                                <button
-                                    onClick={() => setSelectedCategories([])}
-                                    className={`flex-shrink-0 px-6 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all border ${
-                                        selectedCategories.length === 0 
-                                        ? 'bg-slate-900 text-white border-slate-900 shadow-xl shadow-slate-900/20' 
-                                        : 'bg-white text-slate-500 border-slate-100 hover:border-slate-300'
-                                    }`}
-                                >
-                                    All Gear
-                                </button>
-                                {Categories.map(cat => (
-                                    <button
-                                        key={cat}
-                                        onClick={() => {
-                                            setSelectedCategories(prev => 
-                                                prev.includes(cat) ? prev.filter(c => c !== cat) : [...prev, cat]
-                                            );
-                                        }}
-                                        className={`flex-shrink-0 px-6 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all border ${
-                                            selectedCategories.includes(cat) 
-                                            ? 'bg-cyan-600 text-white border-cyan-600 shadow-xl shadow-cyan-900/20' 
-                                            : 'bg-white text-slate-500 border-slate-100 hover:border-slate-300'
-                                        }`}
-                                    >
-                                        {cat}
-                                    </button>
-                                ))}
-                            </div>
-                        </div>
-
                         {/* Mobile Filter Toggle */}
                         <div className="lg:hidden mb-8">
                             <button 
@@ -265,7 +239,7 @@ const ProductPage = () => {
                         </div>
 
                         {/* Grid */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-6 lg:gap-8">
                             <AnimatePresence>
                                 {filteredProducts.map(product => (
                                     <motion.div
@@ -273,14 +247,15 @@ const ProductPage = () => {
                                         initial={{ opacity: 0, scale: 0.9 }}
                                         animate={{ opacity: 1, scale: 1 }}
                                         exit={{ opacity: 0, scale: 0.9 }}
-                                        className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-slate-200 transition-all border border-slate-100 group flex flex-col h-full"
+                                        className="bg-white rounded-[2rem] overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-slate-200 transition-all border border-slate-100 group flex flex-col h-full"
                                     >
-                                        <div className="relative aspect-[4/5] bg-slate-50/50 flex items-center justify-center overflow-hidden p-6 group/img">
+                                        <div className="relative aspect-[4/5] bg-[radial-gradient(circle_at_top,rgba(6,182,212,0.08),transparent_60%)] flex items-center justify-center overflow-hidden p-5 sm:p-6 group/img">
+                                            <div className="absolute inset-0 bg-gradient-to-b from-white via-white/40 to-slate-50" />
                                             <img
                                                 src={getCDNUrl(product.image, { width: 600 })}
                                                 alt={product.title}
                                                 loading="lazy"
-                                                className={`max-w-full max-h-full object-contain transition-all duration-700 
+                                                className={`relative z-10 max-w-full max-h-full object-contain transition-all duration-700 drop-shadow-[0_20px_30px_rgba(15,23,42,0.10)]
                                                     ${product.imageBack ? 'group-hover/img:opacity-0 group-hover/img:scale-110' : 'group-hover/img:scale-110'}`}
                                             />
                                             {product.imageBack && (
@@ -288,10 +263,10 @@ const ProductPage = () => {
                                                     src={getCDNUrl(product.imageBack, { width: 600 })} 
                                                     alt={`${product.title} - Back View`}
                                                     loading="lazy"
-                                                    className="absolute inset-0 w-full h-full object-contain p-6 opacity-0 group-hover/img:opacity-100 transition-all duration-700 scale-110 group-hover/img:scale-100"
+                                                    className="absolute inset-0 w-full h-full object-contain p-5 sm:p-6 opacity-0 group-hover/img:opacity-100 transition-all duration-700 scale-110 group-hover/img:scale-100 drop-shadow-[0_20px_30px_rgba(15,23,42,0.10)]"
                                                 />
                                             )}
-                                            <div className="absolute top-6 left-6 flex flex-col gap-2">
+                                            <div className="absolute top-4 left-4 sm:top-6 sm:left-6 flex flex-col gap-2 z-20">
                                                 <div className="flex gap-2">
                                                     {product.sport && !['Other', 'Activity', 'General', 'All'].includes(product.sport) && (
                                                         <div className="bg-cyan-500 text-white px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest shadow-xl shadow-cyan-900/20">
@@ -305,16 +280,32 @@ const ProductPage = () => {
                                                     )}
                                                 </div>
                                             </div>
+
+                                            <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 z-20">
+                                                {product.productCode && (
+                                                    <div className="bg-slate-900/90 text-white px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest">
+                                                        {product.productCode}
+                                                    </div>
+                                                )}
+                                            </div>
                                         </div>
-                                        <div className="p-8 flex flex-col flex-1">
+                                        <div className="p-6 sm:p-8 flex flex-col flex-1">
                                             <div className="mb-4">
-                                                <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-2 block">
-                                                    {product.category}
-                                                    {product.sport && !['Other', 'Activity', 'General', 'All'].includes(product.sport) && ` • ${product.sport}`}
-                                                    {product.usageType && product.usageType !== 'General' && ` • ${product.usageType}`}
-                                                </span>
-                                                <h3 className="text-xl font-black text-slate-900 uppercase tracking-tighter mb-2">{product.title}</h3>
-                                                <p className="text-slate-500 text-xs leading-relaxed font-medium line-clamp-2">{product.description}</p>
+                                                <div className="flex items-start justify-between gap-4">
+                                                    <div>
+                                                        <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-2 block">
+                                                            {product.category}
+                                                            {product.sport && !['Other', 'Activity', 'General', 'All'].includes(product.sport) && ` • ${product.sport}`}
+                                                            {product.usageType && product.usageType !== 'General' && ` • ${product.usageType}`}
+                                                        </span>
+                                                        <h3 className="text-lg sm:text-xl font-black text-slate-900 uppercase tracking-tighter leading-tight">
+                                                            {product.title}
+                                                        </h3>
+                                                    </div>
+                                                </div>
+                                                <p className="mt-2 text-slate-500 text-xs leading-relaxed font-medium line-clamp-2">
+                                                    {product.description}
+                                                </p>
                                             </div>
 
                                             <div className="grid grid-cols-2 gap-3 md:gap-4 mt-auto">
@@ -327,17 +318,25 @@ const ProductPage = () => {
                                                         });
                                                         setCustomizingProduct(product);
                                                     }}
-                                                    className="py-3 md:py-4 bg-cyan-600 text-white text-[10px] md:text-xs font-bold uppercase tracking-widest rounded-xl hover:bg-slate-900 transition-all"
+                                                    className="py-4 bg-slate-900 text-white text-[11px] font-black uppercase tracking-widest rounded-2xl hover:bg-cyan-600 transition-all"
                                                 >
                                                     Customize
                                                 </button>
                                                 <Link
                                                     to={`/products/${product.id}`}
-                                                    className="py-3 md:py-4 bg-slate-50 text-slate-900 text-[10px] md:text-xs font-bold uppercase tracking-widest rounded-xl hover:bg-slate-200 transition-all border border-slate-100 text-center flex items-center justify-center"
+                                                    className="py-4 bg-white text-slate-900 text-[11px] font-black uppercase tracking-widest rounded-2xl hover:bg-slate-50 transition-all border border-slate-200 text-center flex items-center justify-center"
                                                 >
                                                     View
                                                 </Link>
                                             </div>
+
+                                            <button
+                                                type="button"
+                                                onClick={() => openWhatsApp(product)}
+                                                className="mt-3 w-full py-3 rounded-2xl bg-[#25D366]/10 border border-[#25D366]/20 text-[#128C7E] text-[10px] font-black uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-[#25D366] hover:text-white transition-all"
+                                            >
+                                                <MessageCircle size={16} /> WhatsApp Quote
+                                            </button>
                                         </div>
                                     </motion.div>
                                 ))}
@@ -364,7 +363,7 @@ const ProductPage = () => {
             {/* Customization Modal */}
             <AnimatePresence>
                 {customizingProduct && (
-                    <div className="fixed inset-0 z-[100] flex items-center justify-center p-6">
+                    <div className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6">
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
@@ -376,22 +375,22 @@ const ProductPage = () => {
                             initial={{ opacity: 0, scale: 0.9, y: 20 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                            className="bg-white w-[95%] md:w-full max-w-4xl rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl relative z-10 flex flex-col md:flex-row max-h-[90vh]"
+                            className="bg-white w-full max-w-4xl rounded-[2rem] sm:rounded-[3rem] overflow-hidden shadow-2xl relative z-10 flex flex-col md:flex-row h-[92vh] max-h-[92vh] md:h-auto md:max-h-[90vh] min-h-0"
                         >
                             <button
                                 onClick={() => setCustomizingProduct(null)}
                                 aria-label="Close modal"
-                                className="absolute top-6 right-6 w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center text-slate-900 hover:bg-slate-200 transition-all z-20"
+                                className="absolute top-3 right-3 sm:top-6 sm:right-6 w-10 h-10 sm:w-12 sm:h-12 bg-slate-100 rounded-full flex items-center justify-center text-slate-900 hover:bg-slate-200 transition-all z-20"
                             >
                                 <X size={20} />
                             </button>
 
-                             <div className="w-full md:w-1/2 bg-slate-50 flex items-center justify-center p-6 md:p-12 h-[35vh] md:h-auto shrink-0">
+                             <div className="w-full md:w-1/2 bg-slate-50 flex items-center justify-center p-6 sm:p-10 md:p-12 max-h-[38vh] md:max-h-none overflow-hidden shrink-0">
                                 <div className="relative group">
                                     <img 
                                         src={(customization.placement.includes('Back') || customization.placement.includes('Shoulders') || customization.placement.includes('Locker')) && customizingProduct.imageBack ? customizingProduct.imageBack : customizingProduct.image} 
                                         alt={customizingProduct.title} 
-                                        className="w-full max-w-xs object-contain rounded-3xl" 
+                                        className="w-full max-w-xs max-h-[30vh] md:max-h-none object-contain rounded-3xl" 
                                     />
                                     {/* Logo Placement Visual Overlay */}
                                     <div className={`absolute border-2 border-cyan-500 border-dashed rounded-lg flex items-center justify-center bg-cyan-500/10 transition-all duration-500
@@ -413,7 +412,7 @@ const ProductPage = () => {
                                 </div>
                             </div>
 
-                            <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col overflow-y-auto min-h-0">
+                                 <div className="w-full md:w-1/2 p-6 sm:p-10 md:p-12 flex flex-col overflow-y-auto min-h-0 overscroll-contain">
                                 <div className="mb-10">
                                     <span className="text-[10px] font-black text-cyan-600 uppercase tracking-widest mb-3 block">Customization</span>
                                     <h2 className="text-3xl font-black text-slate-900 uppercase tracking-tighter mb-2">{customizingProduct.title}</h2>

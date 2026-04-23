@@ -2,58 +2,8 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CATALOG_DATA } from '../../data/catalogData';
 import { PRODUCTS } from '../../data/products';
-import { ChevronLeft, ChevronRight, Maximize2, X, Download, BookOpen } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Maximize2, X, BookOpen } from 'lucide-react';
 import { getCDNUrl } from '../../utils/cdnUtils';
-
-const INTERACTIVE_COLORS = [
-    { name: 'Sky Blue', hex: '#7dd3fc', files: ['sky blue.png', 'sky bule.png', 'sky.png'] },
-    { name: 'Red', hex: '#ef4444', files: ['red.png'] },
-    { name: 'Lemon', hex: '#fde047', files: ['lemon.png'] },
-    { name: 'Bisleri', hex: '#22d3ee', files: ['bisleri.png'] },
-    { name: 'India Blue', hex: '#1e40af', files: ['india blue.png', 'inidia bule.png'] },
-    { name: 'Maroon', hex: '#7f1d1d', files: ['maroon.png'] },
-    { name: 'Navy Blue', hex: '#1e3a8a', files: ['navy blue.png'] },
-    { name: 'Pink', hex: '#f472b6', files: ['pink.png'] },
-    { name: 'Royal Blue', hex: '#2563eb', files: ['royal blue.png', 'royal bule.png'] },
-    { name: 'Orange', hex: '#f97316', files: ['orange.png'] },
-    { name: 'Firozi', hex: '#0d9488', files: ['firozi.png'] },
-];
-
-const VariantDot = ({ color, folder, selectedColor, onSelect }: any) => {
-    const [exists, setExists] = useState<boolean | null>(null);
-    const [actualFile, setActualFile] = useState<string | null>(null);
-
-    useEffect(() => {
-        const checkFiles = async () => {
-            for (const file of color.files) {
-                const img = new Image();
-                img.src = `${folder}/${file}`;
-                const success = await new Promise((resolve) => {
-                    img.onload = () => resolve(true);
-                    img.onerror = () => resolve(false);
-                });
-                if (success) {
-                    setExists(true);
-                    setActualFile(file);
-                    return;
-                }
-            }
-            setExists(false);
-        };
-        checkFiles();
-    }, [folder, color.files]);
-
-    if (exists === false) return null;
-
-    return (
-        <button
-            onClick={() => onSelect(actualFile)}
-            className={`w-4 h-4 rounded-full border-2 transition-transform hover:scale-125 ${selectedColor === actualFile ? 'border-cyan-400' : 'border-white/20'}`}
-            style={{ backgroundColor: color.hex }}
-            title={color.name}
-        />
-    );
-};
 
 const CatalogPage = () => {
     const catalogKeys = Object.keys(CATALOG_DATA) as (keyof typeof CATALOG_DATA)[];

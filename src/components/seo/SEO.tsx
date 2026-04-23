@@ -48,6 +48,7 @@ const SEO: React.FC<SEOProps> = ({
 
         // Standard Meta Tags
         updateMetaTag('name', 'description', seo.description);
+        updateMetaTag('name', 'robots', 'index,follow');
 
         // Open Graph / Facebook
         updateMetaTag('property', 'og:type', article ? 'article' : 'website');
@@ -56,6 +57,7 @@ const SEO: React.FC<SEOProps> = ({
         updateMetaTag('property', 'og:image', seo.image);
         updateMetaTag('property', 'og:url', seo.url);
         updateMetaTag('property', 'og:site_name', siteName);
+        updateMetaTag('property', 'og:locale', 'en_IN');
 
         // Twitter
         updateMetaTag('name', 'twitter:card', 'summary_large_image');

@@ -7,7 +7,8 @@
         "dev": "vite",
         "build": "tsc && vite build",
         "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
-        "preview": "vite preview"
+        "preview": "vite preview",
+        "test:ui": "playwright test"
     },
     "dependencies": {
         "@vercel/analytics": "^2.0.1",
@@ -21,6 +22,7 @@
     },
     "devDependencies": {
         "@eslint/js": "^9.39.4",
+        "@playwright/test": "^1.59.1",
         "@types/eslint": "^9.6.1",
         "@types/react": "^18.3.3",
         "@types/react-dom": "^18.3.0",
