@@ -30,8 +30,5 @@ export const getCDNUrl = (localPath: string, options: { width?: number; quality?
   const encodedPath = encodeURIComponent(cleanPath).replace(/%2F/g, '/');
   const finalUrl = `https://cdn.jsdelivr.net/gh/${USER}/${REPO}@${BRANCH}/public/${encodedPath}`;
   
-  // Debug log to trace CDN transformations
-  console.log(`[CDN] ${localPath} -> ${finalUrl}`);
-  
   return finalUrl;
 };
