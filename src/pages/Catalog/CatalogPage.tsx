@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CATALOG_DATA } from '../../data/catalogData';
 import { PRODUCTS } from '../../data/products';
-import { ChevronLeft, ChevronRight, Maximize2, X, BookOpen } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Maximize2, X, BookOpen, Download } from 'lucide-react';
 import { getCDNUrl } from '../../utils/cdnUtils';
 
 const CatalogPage = () => {
