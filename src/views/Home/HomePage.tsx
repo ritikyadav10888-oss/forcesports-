@@ -459,7 +459,7 @@ const HomePage = () => {
                             >
                                 <div className="aspect-square bg-white p-3 border-b border-slate-100">
                                     <img
-                                        src={`/Sportex Fabrics/${fabric.file}`}
+                                        src={getCDNUrl(`/Sportex Fabrics/${fabric.file}`)}
                                         alt={fabric.name}
                                         loading="lazy"
                                         className="w-full h-full object-contain group-hover:scale-105 transition-transform"

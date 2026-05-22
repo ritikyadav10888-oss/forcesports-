@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { fabricSlug } from '../../utils/fabricMatching';
 import SEO from '../../components/seo/SEO';
 import { SPORTEX_FABRICS } from '../../data/sportexFabrics';
+import { getCDNUrl } from '../../utils/cdnUtils';
 
 interface Fabric {
     id: string;
@@ -363,7 +364,7 @@ const FabricsPage = () => {
                                     >
                                         <div className="relative aspect-[4/3] overflow-hidden bg-white border-b border-slate-100 p-4 sm:p-6">
                                             <img
-                                                src={fabric.file}
+                                                src={getCDNUrl(fabric.file)}
                                                 alt={fabric.name}
                                                 loading="lazy"
                                                 className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"

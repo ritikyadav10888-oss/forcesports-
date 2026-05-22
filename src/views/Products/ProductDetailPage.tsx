@@ -11,6 +11,7 @@ import { BRAND_DETAILS } from '../../data/brandData';
 import { getProductSportexFabric, fabricSlug } from '../../utils/fabricMatching';
 import { SPORTEX_FABRICS } from '../../data/sportexFabrics';
 import { mergeProductWithLocal } from '../../utils/productUtils';
+import { getCDNUrl } from '../../utils/cdnUtils';
 import SEO from '../../components/seo/SEO';
 import SizeChartModal from '../../components/SizeChartModal';
 import { Ruler } from 'lucide-react';
@@ -107,7 +108,7 @@ const ProductDetailPage = () => {
         );
     }
 
-    const activeImage = images[activeImageIndex] || product.image;
+    const activeImage = getCDNUrl(images[activeImageIndex] || product.image);
     const isBackView = Boolean(product.imageBack && activeImage === product.imageBack);
     const sportexFabric = getProductSportexFabric(
         product.id,
@@ -130,7 +131,7 @@ const ProductDetailPage = () => {
             <SEO 
                 title={`${product.title} | ${product.category}`}
                 description={`${product.description} | Product Code: ${product.productCode}. Custom manufactured by Force Sports India.`}
-                image={product.image}
+                image={getCDNUrl(product.image)}
             />
             {/* Breadcrumbs & Back Nav */}
             <div className="max-w-7xl mx-auto px-6 py-8">
@@ -197,7 +198,7 @@ const ProductDetailPage = () => {
                                                 {img === product.imageBack ? 'Back' : 'Front'}
                                             </span>
                                         )}
-                                        <img src={img} alt={`View ${idx + 1}`} className="w-full h-full object-contain" />
+                                        <img src={getCDNUrl(img)} alt={`View ${idx + 1}`} className="w-full h-full object-contain" />
                                     </button>
                                 ))}
                             </div>
@@ -402,7 +403,7 @@ const ProductDetailPage = () => {
                                                 {img === product.imageBack ? 'Back' : 'Front'}
                                             </span>
                                         )}
-                                        <img src={img} alt="" className="w-full h-full object-contain" />
+                                        <img src={getCDNUrl(img)} alt="" className="w-full h-full object-contain" />
                                     </button>
                                 ))}
                             </div>

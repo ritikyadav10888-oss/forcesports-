@@ -10,6 +10,7 @@ import { BRAND_DETAILS } from '../../data/brandData';
 import { getUniformSportexFabric, fabricSlug } from '../../utils/fabricMatching';
 import { SPORTEX_FABRICS } from '../../data/sportexFabrics';
 import SEO from '../../components/seo/SEO';
+import { getCDNUrl } from '../../utils/cdnUtils';
 import SizeChartModal from '../../components/SizeChartModal';
 
 const UniformDetailPage = () => {
@@ -61,7 +62,7 @@ const UniformDetailPage = () => {
         );
     }
 
-    const activeImage = images[activeImageIndex] || product.image;
+    const activeImage = getCDNUrl(images[activeImageIndex] || product.image);
     const sportexFabric = getUniformSportexFabric(
         product.id,
         product.title,
@@ -83,7 +84,7 @@ const UniformDetailPage = () => {
             <SEO 
                 title={`${product.title} | ${product.category}`}
                 description={`${product.description}. Professional uniform solution by Force Sports India.`}
-                image={product.image}
+                image={getCDNUrl(product.image)}
             />
             {/* Breadcrumbs & Back Nav */}
             <div className="max-w-7xl mx-auto px-6 py-8">
@@ -115,7 +116,7 @@ const UniformDetailPage = () => {
                                         className={`w-16 h-16 md:w-20 md:h-20 rounded-xl md:rounded-2xl overflow-hidden aspect-square border-2 transition-all p-1.5 md:p-2 bg-slate-50 ${activeImageIndex === idx ? 'border-cyan-500 shadow-lg shadow-cyan-100' : 'border-transparent opacity-60 hover:opacity-100'
                                             }`}
                                     >
-                                        <img src={img} alt={`View ${idx + 1}`} className="w-full h-full object-contain mix-blend-multiply" />
+                                        <img src={getCDNUrl(img)} alt={`View ${idx + 1}`} className="w-full h-full object-contain mix-blend-multiply" />
                                     </button>
                                 ))}
                             </div>
