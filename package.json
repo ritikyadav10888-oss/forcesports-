@@ -4,8 +4,8 @@
     "version": "0.1.0",
     "type": "module",
     "scripts": {
-        "dev": "next dev",
-        "build": "next build",
+        "dev": "node scripts/build_image_map.cjs && next dev",
+        "build": "node scripts/build_image_map.cjs && next build",
         "lint": "next lint",
         "preview": "vite preview",
         "test:ui": "playwright test",
