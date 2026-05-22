@@ -1,3 +1,4 @@
+"use client";
 import React from 'react';
 
 const Schema = () => {
@@ -6,7 +7,7 @@ const Schema = () => {
         '@type': 'Organization',
         'name': 'Force Sports & Wears India',
         'url': 'https://www.forcesportsindia.com',
-        'logo': 'https://www.forcesportsindia.com/logo.png',
+        'logo': 'https://www.forcesportsindia.com/brand-logo.png',
         'description': 'Premium manufacturer of customized sports jerseys and athletic apparel in Mumbai.',
         'founder': 'Anand Sanghai',
         'foundingDate': '2007',

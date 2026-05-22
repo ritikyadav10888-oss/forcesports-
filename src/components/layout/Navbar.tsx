@@ -1,47 +1,59 @@
+"use client";
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { BRAND_DETAILS } from '../../data/brandData';
 
 const Navbar = () => {
-    const location = useLocation();
+    const location = usePathname();
     const [isOpen, setIsOpen] = useState(false);
 
     const navLinks = [
         { name: 'Home', path: '/' },
         { name: 'Products', path: '/products' },
         { name: 'Uniforms', path: '/uniforms' },
+        { name: 'Fabrics', path: '/fabrics' },
         { name: 'Catalog', path: '/catalog' },
-        { name: 'About', path: '/about' }
+        { name: 'About', path: '/about' },
+        { name: 'FAQ', path: '/faq' },
     ];
 
     return (
-        <nav className="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-100">
-            <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-                <Link to="/" className="flex items-center gap-2 md:gap-3 group" onClick={() => setIsOpen(false)}>
-                    <img
-                        src={BRAND_DETAILS.logo}
-                        alt={BRAND_DETAILS.name}
-                        className="h-10 md:h-12 w-auto object-contain transition-transform group-hover:scale-110"
-                    />
-                    <div className="flex flex-col">
-                        <span className="text-base md:text-lg font-black tracking-tighter text-slate-900 leading-none">FORCE SPORTS</span>
-                        <span className="text-[8px] md:text-[10px] font-black text-cyan-600 tracking-widest uppercase mt-0.5">Wears India</span>
-                    </div>
+        <nav className="sticky top-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-100">
+            <div className="max-w-[1600px] mx-auto px-4 sm:px-6 h-16 lg:h-20 flex items-center justify-between gap-3 lg:gap-6">
+                <Link
+                    href="/"
+                    className="flex items-center gap-2 sm:gap-2.5 min-w-0 shrink group max-w-[70%] sm:max-w-[60%] lg:max-w-none"
+                    onClick={() => setIsOpen(false)}
+                >
+                    <span className="h-9 w-9 sm:h-10 sm:w-10 lg:h-12 lg:w-12 shrink-0 rounded-[1.1rem] bg-white flex items-center justify-center shadow-[0_4px_14px_rgba(15,23,42,0.12)] border border-slate-200 p-1.5 transition-transform group-hover:scale-105">
+                        <img
+                            src={BRAND_DETAILS.logo}
+                            alt={BRAND_DETAILS.logoAlt ?? BRAND_DETAILS.name}
+                            width={48}
+                            height={48}
+                            className="w-full h-full object-contain"
+                        />
+                    </span>
+                    <span className="text-[10px] sm:text-xs md:text-sm lg:text-base font-black tracking-tight text-slate-900 leading-tight uppercase lg:whitespace-nowrap group-hover:text-cyan-700 transition-colors">
+                        {BRAND_DETAILS.navDisplayName}
+                    </span>
                 </Link>
 
-                {/* Desktop Menu */}
-                <div className="hidden md:flex items-center gap-10">
+                <div className="hidden lg:flex items-center gap-4 xl:gap-6 shrink-0">
                     {navLinks.map((link) => (
                         <Link
                             key={link.path}
-                            to={link.path}
-                            className={`text-sm font-bold uppercase tracking-widest transition-all hover:text-cyan-500 relative ${location.pathname === link.path ? 'text-cyan-600' : 'text-slate-600'
-                                }`}
+                            href={link.path}
+                            className={`text-xs xl:text-sm font-bold uppercase tracking-wide xl:tracking-widest transition-all hover:text-cyan-500 relative whitespace-nowrap ${
+                                location === link.path ? 'text-cyan-600' : 'text-slate-600'
+                            }`}
                         >
                             {link.name}
-                            {location.pathname === link.path && (
+                            {location === link.path && (
                                 <motion.div
                                     layoutId="nav-underline"
                                     className="absolute -bottom-1 left-0 w-full h-0.5 bg-cyan-600"
@@ -50,16 +62,15 @@ const Navbar = () => {
                         </Link>
                     ))}
                     <Link
-                        to="/inquiry"
-                        className="px-6 py-2.5 bg-slate-900 text-white text-xs font-bold uppercase tracking-widest rounded-full hover:bg-cyan-600 hover:shadow-lg hover:shadow-cyan-200 transition-all active:scale-95"
+                        href="/inquiry"
+                        className="px-5 py-2.5 bg-slate-900 text-white text-xs font-bold uppercase tracking-widest rounded-full hover:bg-cyan-600 hover:shadow-lg hover:shadow-cyan-200/50 transition-all active:scale-95 whitespace-nowrap shrink-0"
                     >
                         Get Quote
                     </Link>
                 </div>
 
-                {/* Mobile Hamburger Toggle */}
                 <button
-                    className="md:hidden p-2 text-slate-900 focus:outline-none"
+                    className="lg:hidden p-2 text-slate-900 focus:outline-none shrink-0"
                     onClick={() => setIsOpen(!isOpen)}
                     aria-label="Toggle menu"
                 >
@@ -67,29 +78,29 @@ const Navbar = () => {
                 </button>
             </div>
 
-            {/* Mobile Menu Overlay */}
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="md:hidden bg-white border-b border-slate-100 overflow-hidden"
+                        className="lg:hidden bg-white border-b border-slate-100 overflow-hidden"
                     >
                         <div className="flex flex-col px-6 py-8 gap-6">
                             {navLinks.map((link) => (
                                 <Link
                                     key={link.path}
-                                    to={link.path}
+                                    href={link.path}
                                     onClick={() => setIsOpen(false)}
-                                    className={`text-lg font-black uppercase tracking-tighter transition-all ${location.pathname === link.path ? 'text-cyan-600' : 'text-slate-900'
-                                        }`}
+                                    className={`text-lg font-black uppercase tracking-tighter transition-all ${
+                                        location === link.path ? 'text-cyan-600' : 'text-slate-900'
+                                    }`}
                                 >
                                     {link.name}
                                 </Link>
                             ))}
                             <Link
-                                to="/inquiry"
+                                href="/inquiry"
                                 onClick={() => setIsOpen(false)}
                                 className="w-full py-4 bg-slate-900 text-white text-center text-sm font-black uppercase tracking-widest rounded-2xl"
                             >

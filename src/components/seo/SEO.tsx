@@ -1,5 +1,7 @@
+"use client";
 import React, { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { usePathname } from 'next/navigation';
+
 
 interface SEOProps {
     title?: string;
@@ -14,7 +16,7 @@ const SEO: React.FC<SEOProps> = ({
     image = 'https://www.forcesportsindia.com/og-image.jpg', 
     article = false 
 }) => {
-    const { pathname } = useLocation();
+    const pathname = usePathname();
     
     // Base configuration
     const siteName = 'Force Sports & Wears India';

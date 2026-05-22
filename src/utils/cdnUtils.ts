@@ -12,7 +12,7 @@ export const getCDNUrl = (localPath: string, options: { width?: number; quality?
   if (localPath.startsWith('http')) return localPath;
 
   // During development, serve from local public folder
-  if ((typeof import.meta !== 'undefined' && import.meta.env?.DEV) || 
+  if ((typeof import.meta !== 'undefined' && process.env.NODE_ENV === 'development') || 
       (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'))) {
     return localPath;
   }
@@ -32,3 +32,4 @@ export const getCDNUrl = (localPath: string, options: { width?: number; quality?
   
   return finalUrl;
 };
+

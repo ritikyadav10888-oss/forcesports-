@@ -19,8 +19,8 @@ export default {
                 }
             },
             fontFamily: {
-                sans: ['Inter', 'sans-serif'],
-                serif: ['Playfair Display', 'serif'],
+                sans: ['var(--font-roboto)', 'Roboto', 'sans-serif'],
+                serif: ['var(--font-serif)', 'Playfair Display', 'Georgia', 'serif'],
             },
             animation: {
                 'marquee': 'marquee 30s linear infinite',

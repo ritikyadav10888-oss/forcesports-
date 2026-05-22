@@ -1,8 +1,21 @@
 export const BRAND_DETAILS = {
     name: "Force Sports and Wears India",
+    /** Navbar & footer — single horizontal line */
+    navDisplayName: "Force Sports & Wears India",
     logo: "/brand-logo.png",
+    logoAlt: "Force Sports & Wears India — orange bull mark",
+    brandOrange: "#F15A24",
     shortName: "Force Sports",
+    /** Hero / headings — line breaks for responsive stacks */
+    nameLines: ["Force Sports", "and Wears India"] as const,
     tagline: "Fueling Champions Since 2007",
+    heroSubtitle:
+        "Custom athletic jerseys and technical apparel engineered for peak performance and relentless durability.",
+    trustedTeamsLabel: "Trusted by 1,000+ Teams",
+    aboutIntro:
+        "At Force Sports and Wears India, we don't just make apparel; we engineer performance. Based in the heart of Mumbai, we have spent over 18+ years perfecting the art of sports manufacturing and custom teamwear.",
+    aboutMission:
+        "From local clubs to international arenas, our mission has always been clear: to provide athletes with high-quality, customized gear that empowers them to push past their limits.",
     established: 2007,
     proprietor: "Mr. Anand Sanghai",
     headquarters: "Goregaon West, Mumbai",

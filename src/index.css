@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 :root {
-  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: var(--font-roboto), 'Roboto', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  color-scheme: light dark;
+  color-scheme: light;
   background-color: #ffffff;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -100,11 +100,13 @@ textarea:-webkit-autofill:focus {
   transition: background-color 5000s ease-in-out 0s;
 }
 
-input, textarea {
-  color: #0f172a !important;
+/* Native selects: readable options on Windows/macOS */
+select {
+  color: #0f172a;
+  background-color: #f8fafc;
 }
 
-::placeholder {
-  color: #94a3b8 !important; /* slate-400 */
-  opacity: 1;
+select option {
+  color: #0f172a;
+  background-color: #ffffff;
 }

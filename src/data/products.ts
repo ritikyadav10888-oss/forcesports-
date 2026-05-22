@@ -14,6 +14,9 @@ export interface Product {
     features: string[];
     specs: Record<string, string>;
     customizationOptions?: string[];
+    /** Admin / Firestore fabric assignments */
+    fabrics?: string[];
+    gsms?: string[];
 
     sizeCharts?: Record<string, { label: string; values: Record<string, string>[] }>;
 }

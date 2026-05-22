@@ -1,7 +1,7 @@
 
 export const CATALOG_DATA = {
     jabraat: {
-        title: "Force Elite Collection",
+        title: "Jabraat Collection",
         description: "Premium performance apparel and customized kits.",
         downloadUrl: "/catalogs/force-elite-collection.pdf",
         pages: [
@@ -86,7 +86,7 @@ export const CATALOG_DATA = {
         ]
     },
     shatak: {
-        title: "Force Pro Series",
+        title: "Shatak Collection",
         description: "Technical sports gear and professional match day apparel.",
         downloadUrl: "/catalogs/force-pro-series.pdf",
         pages: [
@@ -165,7 +165,7 @@ export const CATALOG_DATA = {
         ]
     },
     design3d: {
-        title: "Force 3D Innovations",
+        title: "Premium Designed",
         description: "Advanced 3D designs and conceptual sports architecture.",
         isInteractive: true,
         downloadUrl: "/catalogs/force-3d-innovations.pdf",
