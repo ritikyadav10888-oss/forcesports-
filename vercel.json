@@ -2,9 +2,6 @@
   "redirects": [
     { "source": "/contact", "destination": "/inquiry", "permanent": true }
   ],
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
-  ],
   "headers": [
     {
       "source": "/(assets|3d design|Bags|T-shirts|caps|jabraat|shatak|uniforms)/(.*)",

@@ -70,20 +70,26 @@ const InquiryPage = () => {
 
     // Build a rich pre-filled message for the admin
     const buildPrefilledMessage = () => {
-        if (!prefilledProduct) return '';
-        const parts = [`I am interested in: ${prefilledProduct}`];
-        if (prefilledCode)      parts.push(`Product Code: ${prefilledCode}`);
+        const parts = [];
+        if (prefilledProduct) {
+            parts.push(`I am interested in: ${prefilledProduct}`);
+            if (prefilledCode)      parts.push(`Product Code: ${prefilledCode}`);
+        }
         if (prefilledFabric)    parts.push(`Preferred Fabric: ${prefilledFabric}`);
         if (prefilledPlacement) parts.push(`Logo Placement: ${prefilledPlacement}`);
         if (prefilledSize)      parts.push(`Logo Size: ${prefilledSize}`);
         if (prefilledLogo)      parts.push(`Logo: ${prefilledLogo}`);
         if (prefilledQuantity)  parts.push(`Estimated Quantity: ${prefilledQuantity}`);
-        parts.push('\nPlease share bulk pricing, MOQ, and delivery timeline.');
-        return parts.join('\n');
+        
+        if (parts.length > 0) {
+            parts.push('\nPlease share bulk pricing, MOQ, and delivery timeline.');
+            return parts.join('\n');
+        }
+        return '';
     };
 
     const [formData, setFormData] = useState({
-        productType: prefilledProduct ? 'custom' : '',
+        productType: (prefilledProduct || prefilledFabric) ? 'custom' : '',
         fullName: '',
         email: '',
         phone: '',
@@ -397,17 +403,21 @@ const InquiryPage = () => {
                         <form onSubmit={handleSubmit} className="space-y-6">
                             
                             {/* Pre-filled context badge */}
-                            {prefilledProduct && (
+                            {(prefilledProduct || prefilledFabric) && (
                                 <div className="flex items-start gap-3 p-4 rounded-2xl bg-cyan-50 border border-cyan-200">
                                     <div className="w-8 h-8 rounded-xl bg-cyan-500 flex items-center justify-center shrink-0 mt-0.5">
                                         <CheckCircle2 size={16} className="text-white" />
                                     </div>
                                     <div>
-                                        <p className="text-[10px] font-black uppercase tracking-widest text-cyan-600 mb-1">Customizing From Product Page</p>
-                                        <p className="text-sm font-bold text-slate-800">{prefilledProduct}</p>
+                                        <p className="text-[10px] font-black uppercase tracking-widest text-cyan-600 mb-1">
+                                            {prefilledProduct ? 'Customizing From Product Page' : 'Inquiry From Fabric Library'}
+                                        </p>
+                                        <p className="text-sm font-bold text-slate-800">
+                                            {prefilledProduct || prefilledFabric}
+                                        </p>
                                         <div className="flex flex-wrap gap-2 mt-2">
                                             {prefilledCode && <span className="px-2 py-0.5 rounded-full bg-slate-900 text-white text-[9px] font-black uppercase tracking-widest">{prefilledCode}</span>}
-                                            {prefilledFabric && <span className="px-2 py-0.5 rounded-full bg-cyan-600 text-white text-[9px] font-black uppercase tracking-widest">{prefilledFabric}</span>}
+                                            {prefilledProduct && prefilledFabric && <span className="px-2 py-0.5 rounded-full bg-cyan-600 text-white text-[9px] font-black uppercase tracking-widest">{prefilledFabric}</span>}
                                             {prefilledPlacement && <span className="px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 text-[9px] font-black uppercase tracking-widest">{prefilledPlacement}</span>}
                                             {prefilledSize && <span className="px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 text-[9px] font-black uppercase tracking-widest">Size: {prefilledSize}</span>}
                                             {prefilledLogo && <span className="px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 text-[9px] font-black uppercase tracking-widest truncate max-w-[200px]">Logo: {prefilledLogo}</span>}

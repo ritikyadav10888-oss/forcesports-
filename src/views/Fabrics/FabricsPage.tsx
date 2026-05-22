@@ -399,7 +399,7 @@ const FabricsPage = () => {
                                             <p className="text-slate-600 text-xs font-medium leading-relaxed mb-4 flex-1">
                                                 {fabric.desc}
                                             </p>
-                                            <div className="flex flex-wrap gap-2 pt-3 border-t border-slate-100">
+                                            <div className="flex flex-wrap gap-2 pt-3 border-t border-slate-100 items-center">
                                                 <Link
                                                     href={`/products?fabric=${encodeURIComponent(fabric.name)}`}
                                                     className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-slate-50 hover:bg-cyan-50 border border-slate-200 hover:border-cyan-300 text-[9px] font-black uppercase tracking-widest text-slate-600 hover:text-cyan-700 transition-all"
@@ -411,6 +411,12 @@ const FabricsPage = () => {
                                                     className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-slate-50 hover:bg-cyan-50 border border-slate-200 hover:border-cyan-300 text-[9px] font-black uppercase tracking-widest text-slate-600 hover:text-cyan-700 transition-all"
                                                 >
                                                     Uniforms <ArrowRight size={8} />
+                                                </Link>
+                                                <Link
+                                                    href={`/inquiry?fabric=${encodeURIComponent(fabric.name)}`}
+                                                    className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-cyan-600 hover:bg-cyan-700 text-[9px] font-black uppercase tracking-widest text-white transition-all ml-auto"
+                                                >
+                                                    Inquire <ArrowRight size={8} />
                                                 </Link>
                                             </div>
                                         </div>
