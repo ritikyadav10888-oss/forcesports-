@@ -24,7 +24,13 @@ const UniformsPage = () => {
             try {
                 const { db } = await import('../../lib/firebase');
                 const { collection, getDocs } = await import('firebase/firestore');
-                const snapshot = await getDocs(collection(db, 'uniforms'));
+                
+                const queryPromise = getDocs(collection(db, 'uniforms'));
+                const timeoutPromise = new Promise<never>((_, reject) =>
+                    setTimeout(() => reject(new Error('Firestore query timed out')), 4000)
+                );
+                
+                const snapshot = await Promise.race([queryPromise, timeoutPromise]);
                 if (!snapshot.empty) {
                     const fetchedUniforms = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })) as UniformProduct[];
                     setLiveUniforms(fetchedUniforms);

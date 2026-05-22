@@ -36,7 +36,13 @@ const ProductPage = () => {
             try {
                 const { db } = await import('../../lib/firebase');
                 const { collection, getDocs } = await import('firebase/firestore');
-                const snapshot = await getDocs(collection(db, 'products'));
+                
+                const queryPromise = getDocs(collection(db, 'products'));
+                const timeoutPromise = new Promise<never>((_, reject) =>
+                    setTimeout(() => reject(new Error('Firestore query timed out')), 4000)
+                );
+                
+                const snapshot = await Promise.race([queryPromise, timeoutPromise]);
                 if (!snapshot.empty) {
                     const fetchedProducts = snapshot.docs.map((doc) =>
                         mergeProductWithLocal({ id: doc.id, ...doc.data() } as Product)
@@ -47,6 +53,7 @@ const ProductPage = () => {
                 }
             } catch (error) {
                 console.error("Error fetching live products:", error);
+                setLiveProducts(PRODUCTS.map((p) => mergeProductWithLocal(p)));
             } finally {
                 setLoading(false);
             }

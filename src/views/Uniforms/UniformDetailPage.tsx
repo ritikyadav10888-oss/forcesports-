@@ -27,7 +27,13 @@ const UniformDetailPage = () => {
             try {
                 const { db } = await import('../../lib/firebase');
                 const { doc, getDoc } = await import('firebase/firestore');
-                const docSnap = await getDoc(doc(db, 'uniforms', uniformId as string));
+                
+                const queryPromise = getDoc(doc(db, 'uniforms', uniformId as string));
+                const timeoutPromise = new Promise<never>((_, reject) =>
+                    setTimeout(() => reject(new Error('Firestore query timed out')), 4000)
+                );
+                
+                const docSnap = await Promise.race([queryPromise, timeoutPromise]);
                 if (docSnap.exists()) {
                     setProduct({ id: docSnap.id, ...docSnap.data() } as UniformProduct);
                 }

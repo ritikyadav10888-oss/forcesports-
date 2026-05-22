@@ -54,9 +54,14 @@ env:
       - BUILD
       - RUNTIME
 
-  # Set to your live App Hosting URL after first deploy (e.g. https://forcesports-web--force-sports-and-wears-i-a38aa.us-central1.hosted.app)
   - variable: NEXT_PUBLIC_SITE_URL
-    value: https://force-sports-and-wears-i-a38aa.web.app
+    value: https://forcesportsandwearsindia--force-sports-and-wears-i-a38aa.us-east4.hosted.app
+    availability:
+      - BUILD
+      - RUNTIME
+
+  - variable: NEXT_PUBLIC_API_BASE_URL
+    value: https://forcesportsandwearsindia--force-sports-and-wears-i-a38aa.us-east4.hosted.app
     availability:
       - BUILD
       - RUNTIME

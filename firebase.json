@@ -1,7 +1,7 @@
 {
   "apphosting": [
     {
-      "backendId": "forcesports-web",
+      "backendId": "forcesportsandwearsindia",
       "rootDir": ".",
       "ignore": [
         "node_modules",

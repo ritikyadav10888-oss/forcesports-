@@ -78,7 +78,13 @@ const FabricsPage = () => {
             try {
                 const { db } = await import('../../lib/firebase');
                 const { collection, getDocs } = await import('firebase/firestore');
-                const snapshot = await getDocs(collection(db, 'fabrics'));
+                
+                const queryPromise = getDocs(collection(db, 'fabrics'));
+                const timeoutPromise = new Promise<never>((_, reject) =>
+                    setTimeout(() => reject(new Error('Firestore query timed out')), 4000)
+                );
+                
+                const snapshot = await Promise.race([queryPromise, timeoutPromise]);
                 if (!snapshot.empty) {
                     const data = snapshot.docs.map((doc) => {
                         const d = doc.data();
