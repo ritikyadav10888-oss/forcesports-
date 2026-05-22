@@ -1,10 +1,14 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "nextjs",
+  "buildCommand": "npm run build",
+  "installCommand": "npm install",
   "redirects": [
     { "source": "/contact", "destination": "/inquiry", "permanent": true }
   ],
   "headers": [
     {
-      "source": "/(assets|3d design|Bags|T-shirts|caps|jabraat|shatak|uniforms)/(.*)",
+      "source": "/(assets|3d design|Bags|T-shirts|caps|jabraat|shatak|uniforms|Sportex Fabrics)/(.*)",
       "headers": [
         {
           "key": "Cache-Control",

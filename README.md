@@ -119,6 +119,22 @@ See **[docs/HOSTING-GUIDE.md](docs/HOSTING-GUIDE.md)** for local setup, env vars
 
 Quick deploy: push to `main` (GitHub connected to Firebase App Hosting) or run `npm run deploy:firebase`.
 
+### Vercel (optional)
+
+This app is **Next.js**, not Vite. If Vercel shows *“No Output Directory named dist”*:
+
+1. [Vercel Dashboard](https://vercel.com) → your project → **Settings → General**
+2. **Framework Preset:** `Next.js`
+3. **Build Command:** `npm run build` (or leave default)
+4. **Output Directory:** leave **empty** (do not use `dist` or `.next`)
+5. **Install Command:** `npm install`
+6. Add the same env vars as `.env.local` under **Environment Variables**
+7. Redeploy
+
+`vercel.json` in the repo sets `framework: "nextjs"` so new deploys pick the right preset.
+
+Use **either** Firebase App Hosting **or** Vercel for production—not both with conflicting settings.
+
 ---
 
 ## Running Tests

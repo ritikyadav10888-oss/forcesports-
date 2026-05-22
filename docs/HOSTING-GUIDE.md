@@ -304,6 +304,25 @@ firebase apphosting:backends:list
 
 ---
 
+## Vercel error: “No Output Directory named dist”
+
+The project was migrated from **Vite** (`dist/`) to **Next.js** (`.next/`). Vercel still has old project settings.
+
+**Fix in Vercel Dashboard → Project → Settings → General:**
+
+| Setting | Correct value |
+|---------|----------------|
+| Framework Preset | **Next.js** |
+| Build Command | `npm run build` |
+| Output Directory | **(empty / blank)** |
+| Install Command | `npm install` |
+
+Do **not** set Output Directory to `dist` or `.next`.
+
+Then **Redeploy**. The repo `vercel.json` includes `"framework": "nextjs"`.
+
+---
+
 ## Quick links
 
 - [Firebase Console](https://console.firebase.google.com/project/force-sports-and-wears-i-a38aa)

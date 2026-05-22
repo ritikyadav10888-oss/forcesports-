@@ -7,7 +7,6 @@
         "dev": "node scripts/build_image_map.cjs && next dev",
         "build": "node scripts/build_image_map.cjs && next build",
         "lint": "next lint",
-        "preview": "vite preview",
         "test:ui": "playwright test",
         "start": "next start",
         "deploy:firebase": "firebase deploy --only apphosting",

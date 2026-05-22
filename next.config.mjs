@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  // Required for Firebase App Hosting (Cloud Run standalone server)
-  output: 'standalone',
+  // Standalone only for Firebase App Hosting; Vercel uses its own Next.js runtime
+  ...(process.env.VERCEL ? {} : { output: 'standalone' }),
   images: {
     remotePatterns: [
       { protocol: 'https', hostname: 'firebasestorage.googleapis.com' },
