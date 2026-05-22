@@ -1,6 +1,6 @@
 # Force Sports & Wears India
 
-Premium custom sports uniforms & teamwear manufacturer — B2B catalog built with **Next.js 14**, **Firebase**, and **Tailwind CSS**.
+Premium custom sports uniforms & teamwear manufacturer — B2B catalog built with **Next.js 16**, **Firebase**, and **Tailwind CSS**.
 
 ---
 
@@ -8,12 +8,12 @@ Premium custom sports uniforms & teamwear manufacturer — B2B catalog built wit
 
 | Layer | Technology |
 |-------|-----------|
-| Framework | Next.js 14 (App Router) |
+| Framework | Next.js 16 (App Router) |
 | Styling | Tailwind CSS |
 | Database | Firebase Firestore |
 | Storage | Firebase Storage |
 | Email | Resend API |
-| Deployment | Firebase App Hosting (see `docs/FIREBASE-DEPLOY.md`) |
+| Deployment | Firebase App Hosting — **[Hosting guide](docs/HOSTING-GUIDE.md)** |
 | Tests | Playwright |
 
 ---
@@ -111,11 +111,13 @@ The Fabrics page (`/fabrics`) uses a **Firebase-first, local-fallback** approach
 
 ---
 
-## Deployment (Vercel)
+## Deployment
 
-1. Connect the GitHub repository to Vercel.
-2. Set all environment variables in the Vercel dashboard under **Settings → Environment Variables**.
-3. Vercel automatically runs `next build` on every push to `main`.
+**Live site:** https://forcesportsandwearsindia--force-sports-and-wears-i-a38aa.us-east4.hosted.app
+
+See **[docs/HOSTING-GUIDE.md](docs/HOSTING-GUIDE.md)** for local setup, env vars, secrets, deploy, custom domain, costs, and troubleshooting.
+
+Quick deploy: push to `main` (GitHub connected to Firebase App Hosting) or run `npm run deploy:firebase`.
 
 ---
 
