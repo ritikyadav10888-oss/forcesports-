@@ -236,7 +236,7 @@ const AboutPage = () => {
                             { name: <span className="flex items-center justify-center gap-[2px]">FORCE<span className="text-[#F15A24] text-3xl md:text-4xl mx-[1px]">1</span>LIVE</span>, desc: 'Sports Media & Broadcasting', logo: '/force group of company/force1live .png' },
                             { name: 'Force Sports Infra', desc: 'Infrastructure & Development', logo: '/force group of company/force sport infra .png' },
                             { name: 'Sportex India', desc: 'Fabrics & Manufacturing Unit', logo: '/force group of company/Sportex india.png' },
-                            { name: 'Fitoos', desc: 'Lifestyle & Streetwear', logo: '/force group of company/fittooos.png' },
+                            { name: 'Fittooos', desc: 'Lifestyle & Streetwear', logo: '/force group of company/fittooos.png' },
                             { name: 'Fit Sutra', desc: 'Fitness & Wellness', logo: '/force group of company/fit sutra .png' },
                             { name: 'Shatak', desc: 'Premium Activewear', logo: '/force group of company/shatak logo.png' },
                             { name: 'Jabraat', desc: 'Pro Team Kits', logo: '/force group of company/jabraat logo.png' },
