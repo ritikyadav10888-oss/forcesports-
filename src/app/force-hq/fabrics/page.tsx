@@ -28,6 +28,10 @@ export default function FabricsManager() {
     const [view, setView] = useState<'list' | 'form'>('list');
     const [saving, setSaving] = useState(false);
     
+    // Filters
+    const [selectedUse, setSelectedUse] = useState<string | null>(null);
+    const [selectedPrinting, setSelectedPrinting] = useState<string | null>(null);
+    
     // Form State
     const [currentId, setCurrentId] = useState('');
     const [formData, setFormData] = useState<Partial<Fabric>>({});
@@ -304,16 +308,56 @@ export default function FabricsManager() {
                 </div>
             </div>
 
+            {/* ── Best Uses Stats ── */}
+            <div>
+                <div className="flex justify-between items-center mb-3">
+                    <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Filter By Best Use</p>
+                    {selectedUse && <button onClick={() => setSelectedUse(null)} className="text-[10px] font-black uppercase text-cyan-600 hover:text-cyan-700">Clear</button>}
+                </div>
+                <div className="flex flex-wrap gap-2">
+                    {BEST_USES.map(use => {
+                        const count = fabrics.filter(f => (f.use || '').includes(use) && (!selectedPrinting || (f.printing || '').includes(selectedPrinting))).length;
+                        const isSelected = selectedUse === use;
+                        return (
+                            <button key={use} onClick={() => setSelectedUse(isSelected ? null : use)} className={`flex items-center gap-2 px-4 py-2 rounded-xl border transition-all hover:scale-105 ${isSelected ? 'ring-2 ring-amber-500 shadow-md bg-amber-50 border-amber-100 text-amber-700' : 'bg-slate-50 border-slate-200 text-slate-700 opacity-80 hover:opacity-100'}`}>
+                                <span className="text-xs font-black uppercase tracking-widest">{use}</span>
+                                <span className="bg-white text-slate-900 text-[10px] px-2 py-0.5 rounded-full font-bold">{count}</span>
+                            </button>
+                        );
+                    })}
+                </div>
+            </div>
+
+            {/* ── Printing Methods Stats ── */}
+            <div>
+                <div className="flex justify-between items-center mb-3">
+                    <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Filter By Printing Method</p>
+                    {selectedPrinting && <button onClick={() => setSelectedPrinting(null)} className="text-[10px] font-black uppercase text-cyan-600 hover:text-cyan-700">Clear</button>}
+                </div>
+                <div className="flex flex-wrap gap-2">
+                    {PRINTING_METHODS.map(method => {
+                        const count = fabrics.filter(f => (f.printing || '').includes(method) && (!selectedUse || (f.use || '').includes(selectedUse))).length;
+                        const isSelected = selectedPrinting === method;
+                        return (
+                            <button key={method} onClick={() => setSelectedPrinting(isSelected ? null : method)} className={`flex items-center gap-2 px-4 py-2 rounded-xl border transition-all hover:scale-105 ${isSelected ? 'ring-2 ring-cyan-500 shadow-md bg-cyan-50 border-cyan-100 text-cyan-700' : 'bg-slate-50 border-slate-200 text-slate-700 opacity-80 hover:opacity-100'}`}>
+                                <span className="text-xs font-black uppercase tracking-widest">{method}</span>
+                                <span className="bg-white text-slate-900 text-[10px] px-2 py-0.5 rounded-full font-bold">{count}</span>
+                            </button>
+                        );
+                    })}
+                </div>
+            </div>
+
             <div className="bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-sm">
-                {fabrics.length === 0 ? (
+                {fabrics.filter(f => (!selectedUse || (f.use || '').includes(selectedUse)) && (!selectedPrinting || (f.printing || '').includes(selectedPrinting))).length === 0 ? (
                     <div className="p-12 text-center text-slate-400">
                         <ImageIcon className="w-16 h-16 mx-auto mb-4 opacity-20" />
                         <h3 className="text-lg font-bold text-slate-900 mb-2">No fabrics found</h3>
-                        <p className="text-sm">Click the Add Fabric button to create your first item.</p>
+                        <p className="text-sm">Try clearing your filters or add a new fabric.</p>
                     </div>
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
-                        {fabrics.map(fab => (
+                        {fabrics.filter(f => (!selectedUse || (f.use || '').includes(selectedUse)) && (!selectedPrinting || (f.printing || '').includes(selectedPrinting))).map(fab => (
                             <div key={fab.id} className="border border-slate-200 rounded-2xl overflow-hidden hover:shadow-lg transition-all group bg-slate-50">
                                 <div className="h-48 bg-slate-200 relative">
                                     {fab.file ? (

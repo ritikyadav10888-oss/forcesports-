@@ -231,19 +231,25 @@ const AboutPage = () => {
                     
                     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
                         {[
-                            { name: 'Force Sports United', desc: 'Sports Event Management Company' },
-                            { name: 'Force Playing Field', desc: 'Sports Infrastructure' },
-                            { name: 'Force1Live', desc: 'Sports Media & Broadcasting' },
-                            { name: 'Force Infra', desc: 'Infrastructure & Development' },
-                            { name: 'SportxIndia', desc: 'Fabrics & Manufacturing Unit' },
-                            { name: 'Fatoos', desc: 'Lifestyle & Streetwear' },
-                            { name: 'Fitsutra', desc: 'Fitness & Wellness' },
-                            { name: 'Shatak', desc: 'Premium Activewear' },
-                            { name: 'Jabraat', desc: 'Pro Team Kits' }
+                            { name: 'Force Sports and Wears India', desc: 'Custom Sportswear Manufacturing', logo: '/force sport and wears india.png' },
+                            { name: 'Force Playing Field India Private Limited', desc: 'Sports Infrastructure', logo: '/force group of company/force playing field logo .png' },
+                            { name: <span className="flex items-center justify-center gap-[2px]">FORCE<span className="text-[#F15A24] text-3xl md:text-4xl mx-[1px]">1</span>LIVE</span>, desc: 'Sports Media & Broadcasting', logo: '/force group of company/force1live .png' },
+                            { name: 'Force Sports Infra', desc: 'Infrastructure & Development', logo: '/force group of company/force sport infra .png' },
+                            { name: 'Sportex India', desc: 'Fabrics & Manufacturing Unit', logo: '/force group of company/Sportex india.png' },
+                            { name: 'Fitoos', desc: 'Lifestyle & Streetwear', logo: '/force group of company/fittooos.png' },
+                            { name: 'Fit Sutra', desc: 'Fitness & Wellness', logo: '/force group of company/fit sutra .png' },
+                            { name: 'Shatak', desc: 'Premium Activewear', logo: '/force group of company/shatak logo.png' },
+                            { name: 'Jabraat', desc: 'Pro Team Kits', logo: '/force group of company/jabraat logo.png' },
+                            { name: 'Force Sports United', desc: 'Sports Event Management Company', logo: '/force group of company/force sports united logo.png' }
                         ].map((company, idx) => (
-                            <div key={idx} className="p-8 bg-white rounded-3xl shadow-sm border border-slate-100 hover:border-cyan-500 hover:shadow-xl transition-all group flex flex-col justify-center">
-                                <h4 className="text-lg md:text-xl font-black text-slate-900 mb-3 uppercase group-hover:text-cyan-600 transition-colors tracking-tight leading-tight">{company.name}</h4>
-                                <p className="text-slate-500 text-[10px] md:text-xs leading-relaxed font-bold uppercase tracking-widest opacity-60">{company.desc}</p>
+                            <div key={idx} className="p-8 bg-white rounded-3xl shadow-sm border border-slate-100 hover:border-cyan-500 hover:shadow-xl transition-all group flex flex-col justify-center items-center text-center">
+                                {company.logo && (
+                                    <div className="flex-1 flex items-center justify-center mb-4 min-h-[80px]">
+                                        <img src={company.logo} alt="Company Logo" className="max-h-20 max-w-full object-contain group-hover:scale-105 transition-transform" />
+                                    </div>
+                                )}
+                                <h4 className="text-lg md:text-xl font-black text-slate-900 mb-3 uppercase group-hover:text-cyan-600 transition-colors tracking-tight leading-tight flex items-center">{company.name}</h4>
+                                <p className="text-slate-500 text-[10px] md:text-xs leading-relaxed font-bold uppercase tracking-widest opacity-60 mt-auto">{company.desc}</p>
                             </div>
                         ))}
                     </div>

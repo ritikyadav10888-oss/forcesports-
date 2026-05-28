@@ -38,6 +38,10 @@ export default function ProductsManager() {
     const [view, setView] = useState<'list' | 'form'>('list');
     const [saving, setSaving] = useState(false);
     
+    // Filters
+    const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+    const [selectedSport, setSelectedSport] = useState<string | null>(null);
+    
     // Form State
     const [currentId, setCurrentId] = useState('');
     const [formData, setFormData] = useState<Partial<Product>>({
@@ -177,6 +181,32 @@ export default function ProductsManager() {
         
         newPreviews.splice(idx, 1);
         setGalleryPreviews(newPreviews);
+    };
+
+    const setGalleryAsFront = (idx: number) => {
+        if (galleryPreviews[idx].startsWith('http')) {
+            setFormData({ ...formData, image: galleryPreviews[idx] });
+            setImagePreview(galleryPreviews[idx]);
+            setImageFile(null);
+        } else {
+            const fileIdx = galleryPreviews.slice(0, idx).filter(p => !p.startsWith('http')).length;
+            setImageFile(galleryFiles[fileIdx]);
+            setImagePreview(galleryPreviews[idx]);
+            setFormData({ ...formData, image: '' }); // Reset formData image since we have a file
+        }
+    };
+
+    const setGalleryAsBack = (idx: number) => {
+        if (galleryPreviews[idx].startsWith('http')) {
+            setFormData({ ...formData, imageBack: galleryPreviews[idx] });
+            setImageBackPreview(galleryPreviews[idx]);
+            setImageBackFile(null);
+        } else {
+            const fileIdx = galleryPreviews.slice(0, idx).filter(p => !p.startsWith('http')).length;
+            setImageBackFile(galleryFiles[fileIdx]);
+            setImageBackPreview(galleryPreviews[idx]);
+            setFormData({ ...formData, imageBack: '' });
+        }
     };
 
     const handleSave = async (e: React.FormEvent) => {
@@ -375,11 +405,15 @@ export default function ProductsManager() {
                             {galleryPreviews.length > 0 ? (
                                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 p-4 bg-slate-50 rounded-2xl border border-slate-200">
                                     {galleryPreviews.map((preview, idx) => (
-                                        <div key={idx} className="relative group rounded-xl overflow-hidden border border-slate-200 bg-white">
+                                        <div key={idx} className="relative group rounded-xl overflow-hidden border border-slate-200 bg-white flex flex-col">
                                             <img src={preview} alt="Gallery item" className="w-full h-24 object-cover" />
-                                            <button type="button" onClick={() => removeGalleryImage(idx)} className="absolute top-1 right-1 p-1 bg-red-500 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+                                            <button type="button" onClick={() => removeGalleryImage(idx)} className="absolute top-1 right-1 p-1 bg-red-500 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity z-10">
                                                 <X className="w-3 h-3" />
                                             </button>
+                                            <div className="flex gap-1 p-1 bg-slate-50 border-t border-slate-200">
+                                                <button type="button" onClick={() => setGalleryAsFront(idx)} className="flex-1 py-1 px-1 bg-white hover:bg-cyan-50 text-[9px] font-black uppercase text-cyan-700 border border-slate-200 rounded text-center transition-colors">Set Front</button>
+                                                <button type="button" onClick={() => setGalleryAsBack(idx)} className="flex-1 py-1 px-1 bg-white hover:bg-slate-100 text-[9px] font-black uppercase text-slate-700 border border-slate-200 rounded text-center transition-colors">Set Back</button>
+                                            </div>
                                         </div>
                                     ))}
                                 </div>
@@ -499,7 +533,10 @@ export default function ProductsManager() {
 
             {/* ── Category Stats ── */}
             <div>
-                <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">By Category</p>
+                <div className="flex justify-between items-center mb-3">
+                    <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Filter By Category</p>
+                    {selectedCategory && <button onClick={() => setSelectedCategory(null)} className="text-[10px] font-black uppercase text-cyan-600 hover:text-cyan-700">Clear</button>}
+                </div>
                 <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3">
                     {[
                         { label: 'T-Shirts',      key: 'T-Shirts',        emoji: '👕', color: 'bg-blue-50 border-blue-100 text-blue-700' },
@@ -510,13 +547,14 @@ export default function ProductsManager() {
                         { label: 'Caps',          key: 'Caps',            emoji: '🧢', color: 'bg-green-50 border-green-100 text-green-700' },
                         { label: '3D Innovations',key: '3D Innovations',  emoji: '🏅', color: 'bg-cyan-50 border-cyan-100 text-cyan-700' },
                     ].map(({ label, key, emoji, color }) => {
-                        const count = products.filter(p => p.category === key).length;
+                        const count = products.filter(p => p.category === key && (!selectedSport || p.sport === selectedSport)).length;
+                        const isSelected = selectedCategory === key;
                         return (
-                            <div key={key} className={`flex flex-col items-center justify-center p-4 rounded-2xl border ${color} transition-all hover:scale-105`}>
+                            <button key={key} onClick={() => setSelectedCategory(isSelected ? null : key)} className={`flex flex-col items-center justify-center p-4 rounded-2xl border transition-all hover:scale-105 ${isSelected ? 'ring-2 ring-cyan-500 shadow-md ' + color : color + ' opacity-80 hover:opacity-100'}`}>
                                 <span className="text-2xl mb-1">{emoji}</span>
                                 <span className="text-2xl font-black leading-none">{count}</span>
                                 <span className="text-[9px] font-black uppercase tracking-widest mt-1 text-center opacity-70">{label}</span>
-                            </div>
+                            </button>
                         );
                     })}
                 </div>
@@ -524,7 +562,10 @@ export default function ProductsManager() {
 
             {/* ── Sport Stats ── */}
             <div>
-                <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">By Sport</p>
+                <div className="flex justify-between items-center mb-3">
+                    <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Filter By Sport</p>
+                    {selectedSport && <button onClick={() => setSelectedSport(null)} className="text-[10px] font-black uppercase text-cyan-600 hover:text-cyan-700">Clear</button>}
+                </div>
                 <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3">
                     {[
                         { label: 'Cricket',     key: 'Cricket',     emoji: '🏏', color: 'bg-yellow-50 border-yellow-100 text-yellow-800' },
@@ -535,24 +576,25 @@ export default function ProductsManager() {
                         { label: 'Pickleball',  key: 'Pickleball',  emoji: '🎾', color: 'bg-lime-50 border-lime-100 text-lime-700' },
                         { label: 'Tennis',      key: 'Tennis',      emoji: '🎾', color: 'bg-teal-50 border-teal-100 text-teal-700' },
                     ].map(({ label, key, emoji, color }) => {
-                        const count = products.filter(p => p.sport === key).length;
+                        const count = products.filter(p => p.sport === key && (!selectedCategory || p.category === selectedCategory)).length;
+                        const isSelected = selectedSport === key;
                         return (
-                            <div key={key} className={`flex flex-col items-center justify-center p-4 rounded-2xl border ${color} transition-all hover:scale-105`}>
+                            <button key={key} onClick={() => setSelectedSport(isSelected ? null : key)} className={`flex flex-col items-center justify-center p-4 rounded-2xl border transition-all hover:scale-105 ${isSelected ? 'ring-2 ring-cyan-500 shadow-md ' + color : color + ' opacity-80 hover:opacity-100'}`}>
                                 <span className="text-2xl mb-1">{emoji}</span>
                                 <span className="text-2xl font-black leading-none">{count}</span>
                                 <span className="text-[9px] font-black uppercase tracking-widest mt-1 text-center opacity-70">{label}</span>
-                            </div>
+                            </button>
                         );
                     })}
                 </div>
             </div>
 
             <div className="bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-sm">
-                {products.length === 0 ? (
+                {products.filter(p => (!selectedCategory || p.category === selectedCategory) && (!selectedSport || p.sport === selectedSport)).length === 0 ? (
                     <div className="p-12 text-center text-slate-400">
                         <ImageIcon className="w-16 h-16 mx-auto mb-4 opacity-20" />
                         <h3 className="text-lg font-bold text-slate-900 mb-2">No products found</h3>
-                        <p className="text-sm">Click the Add Product button to create your first item.</p>
+                        <p className="text-sm">Try clearing your filters or add a new product.</p>
                     </div>
                 ) : (
                     <div className="divide-y divide-slate-100">
@@ -565,7 +607,7 @@ export default function ProductsManager() {
                             <span className="text-right">Actions</span>
                         </div>
 
-                        {products.map(prod => (
+                        {products.filter(p => (!selectedCategory || p.category === selectedCategory) && (!selectedSport || p.sport === selectedSport)).map(prod => (
                             <div key={prod.id} className="grid grid-cols-[90px_1fr_1fr_160px_120px] gap-4 px-6 py-5 items-start hover:bg-slate-50/60 transition-colors group">
 
                                 {/* Images — front + back stacked */}

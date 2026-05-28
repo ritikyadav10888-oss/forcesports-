@@ -37,19 +37,19 @@ const EXPLORE_LINKS = [
 ];
 
 const CLIENTS = [
-    { name: "HDFC BANK", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/HDFC_Bank_Logo_2023.svg/512px-HDFC_Bank_Logo_2023.svg.png", icon: Building2, color: "bg-blue-700" },
-    { name: "Goregaon Sports Club", logo: "https://gsc.in/wp-content/uploads/2016/11/logo.png", icon: Trophy, color: "bg-slate-900" },
-    { name: "KOTAK MAHINDRA", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Kotak_Mahindra_Bank_logo.svg/512px-Kotak_Mahindra_Bank_logo.svg.png", icon: Building, color: "bg-red-600" },
-    { name: "J.P.MORGAN", logo: null, icon: Landmark, color: "bg-slate-800" },
-    { name: "RELIANCE INDUSTRIES", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Reliance_Industries_Logo.svg/512px-Reliance_Industries_Logo.svg.png", icon: Factory, color: "bg-blue-800" },
-    { name: "TOYOTA", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Toyota_Eu_Logo.svg/512px-Toyota_Eu_Logo.svg.png", icon: CarFront, color: "bg-red-700" },
-    { name: "DECATHLON", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Decathlon_Logo.svg/512px-Decathlon_Logo.svg.png", icon: Bike, color: "bg-cyan-600" },
-    { name: "AIRTEL", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Airtel_logo.svg/512px-Airtel_logo.svg.png", icon: Signal, color: "bg-red-600" },
-    { name: "ASIAN PAINTS", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Asian_Paints_logo.svg/512px-Asian_Paints_logo.svg.png", icon: Palette, color: "bg-yellow-500" },
-    { name: "BAJAJ ALLIANZ", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Bajaj_Allianz_logo.svg/512px-Bajaj_Allianz_logo.svg.png", icon: ShieldCheck, color: "bg-blue-600" },
-    { name: "GM SWITCHES", logo: "https://gmmodular.com/assets/img/logo.png", icon: Zap, color: "bg-red-700" },
-    { name: "ROTARY", logo: null, icon: Globe2, color: "bg-yellow-600" },
-    { name: "DMART", logo: null, icon: ShoppingCart, color: "bg-green-700" },
+    { name: "HDFC BANK", logo: "/client logo/hdfc-bank-logo.png", icon: Building2, color: "bg-blue-700" },
+    { name: "Goregaon Sports Club", logo: "/client logo/goregaon sports club.jpg", icon: Trophy, color: "bg-slate-900" },
+    { name: "KOTAK MAHINDRA", logo: "/client logo/kotak-mahindra-bank.png", icon: Building, color: "bg-red-600" },
+    { name: "J.P.MORGAN", logo: "/client logo/jp morgan.jpg", icon: Landmark, color: "bg-slate-800" },
+    { name: "RELIANCE INDUSTRIES", logo: "/client logo/reliance.jpg", icon: Factory, color: "bg-blue-800" },
+    { name: "TOYOTA", logo: "/client logo/toyota.jpg", icon: CarFront, color: "bg-red-700" },
+    { name: "DECATHLON", logo: "/client logo/decathlon.png", icon: Bike, color: "bg-cyan-600" },
+    { name: "AIRTEL", logo: "/client logo/airtel.jpg", icon: Signal, color: "bg-red-600" },
+    { name: "ASIAN PAINTS", logo: "/client logo/asianpaints.jpg", icon: Palette, color: "bg-yellow-500" },
+    { name: "BAJAJ ALLIANZ", logo: "/client logo/bajaj allianz.png", icon: ShieldCheck, color: "bg-blue-600" },
+    { name: "GM SWITCHES", logo: "/client logo/GM switches.png", icon: Zap, color: "bg-red-700" },
+    { name: "ROTARY", logo: "/client logo/rotary-international.svg", icon: Globe2, color: "bg-yellow-600" },
+    { name: "DMART", logo: "/client logo/DMart-Logo-Vector.jpg", icon: ShoppingCart, color: "bg-green-700" },
 ] as const;
 
 const ClientMarqueeItem = ({ client, size = 'medium' }: { client: (typeof CLIENTS)[number]; size?: 'small' | 'large' | 'medium' }) => {
@@ -68,7 +68,7 @@ const ClientMarqueeItem = ({ client, size = 'medium' }: { client: (typeof CLIENT
             className={`${size === 'medium' ? 'mx-8 md:mx-12' : 'mx-10 md:mx-14'} flex items-center gap-4 md:gap-5 group/item shrink-0`}
         >
             <div
-                className={`${boxSize} shrink-0 rounded-[1.35rem] bg-white flex items-center justify-center shadow-[0_8px_24px_rgba(15,23,42,0.08)] border border-slate-100/90 transition-transform duration-300 group-hover/item:scale-[1.03] overflow-hidden p-2.5`}
+                className={`${boxSize} shrink-0 rounded-full bg-white flex items-center justify-center shadow-[0_8px_24px_rgba(15,23,42,0.08)] border border-slate-100/90 transition-transform duration-300 group-hover/item:scale-[1.03] overflow-hidden p-2`}
             >
                 {client.logo && !imageError ? (
                     <img
@@ -76,7 +76,7 @@ const ClientMarqueeItem = ({ client, size = 'medium' }: { client: (typeof CLIENT
                         alt={client.name}
                         loading="lazy"
                         referrerPolicy="no-referrer"
-                        className="w-full h-full object-contain"
+                        className="w-full h-full object-contain scale-[1.15] mix-blend-multiply"
                         onError={() => setImageError(true)}
                     />
                 ) : (
@@ -110,9 +110,9 @@ const HomePage = () => {
             <section className="relative min-h-[92vh] flex items-center justify-center overflow-hidden bg-slate-900 pt-20">
                 <div className="absolute inset-0 z-0">
                     <img
-                        src={getCDNUrl('/force_sports.png', { width: 1920 })}
+                        src="/hero-montage-2.jpg"
                         alt={BRAND_DETAILS.name}
-                        className="w-full h-full object-cover opacity-45 scale-105 animate-[slow-zoom_20s_ease-in-out_infinite_alternate]"
+                        className="w-full h-full object-cover opacity-60 scale-105 animate-[slow-zoom_20s_ease-in-out_infinite_alternate]"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/75 to-slate-900/40" />
                 </div>
@@ -132,18 +132,10 @@ const HomePage = () => {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.15, ease: 'easeOut' }}
-                        className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tighter mb-2 uppercase leading-[0.9]"
+                        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[5.5rem] font-black text-white tracking-tighter mb-4 uppercase leading-[0.95] xl:whitespace-nowrap"
                     >
-                        {BRAND_DETAILS.shortName}
+                        {BRAND_DETAILS.navDisplayName}
                     </motion.h1>
-                    <motion.p
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.2 }}
-                        className="text-cyan-400/90 text-sm md:text-base font-black uppercase tracking-[0.2em] mb-6"
-                    >
-                        {BRAND_DETAILS.nameLines[1]}
-                    </motion.p>
 
                     <motion.p
                         initial={{ opacity: 0 }}

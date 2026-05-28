@@ -35,6 +35,10 @@ export default function UniformsManager() {
     const [view, setView] = useState<'list' | 'form'>('list');
     const [saving, setSaving] = useState(false);
     
+    // Filters
+    const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+    const [selectedSubcategory, setSelectedSubcategory] = useState<string | null>(null);
+    
     // Form State
     const [currentId, setCurrentId] = useState('');
     const [formData, setFormData] = useState<Partial<Uniform>>({
@@ -171,6 +175,32 @@ export default function UniformsManager() {
         
         newPreviews.splice(idx, 1);
         setGalleryPreviews(newPreviews);
+    };
+
+    const setGalleryAsFront = (idx: number) => {
+        if (galleryPreviews[idx].startsWith('http')) {
+            setFormData({ ...formData, image: galleryPreviews[idx] });
+            setImagePreview(galleryPreviews[idx]);
+            setImageFile(null);
+        } else {
+            const fileIdx = galleryPreviews.slice(0, idx).filter(p => !p.startsWith('http')).length;
+            setImageFile(galleryFiles[fileIdx]);
+            setImagePreview(galleryPreviews[idx]);
+            setFormData({ ...formData, image: '' });
+        }
+    };
+
+    const setGalleryAsBack = (idx: number) => {
+        if (galleryPreviews[idx].startsWith('http')) {
+            setFormData({ ...formData, imageBack: galleryPreviews[idx] });
+            setImageBackPreview(galleryPreviews[idx]);
+            setImageBackFile(null);
+        } else {
+            const fileIdx = galleryPreviews.slice(0, idx).filter(p => !p.startsWith('http')).length;
+            setImageBackFile(galleryFiles[fileIdx]);
+            setImageBackPreview(galleryPreviews[idx]);
+            setFormData({ ...formData, imageBack: '' });
+        }
     };
 
     const handleSave = async (e: React.FormEvent) => {
@@ -360,11 +390,15 @@ export default function UniformsManager() {
                             {galleryPreviews.length > 0 ? (
                                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 p-4 bg-slate-50 rounded-2xl border border-slate-200">
                                     {galleryPreviews.map((preview, idx) => (
-                                        <div key={idx} className="relative group rounded-xl overflow-hidden border border-slate-200 bg-white">
+                                        <div key={idx} className="relative group rounded-xl overflow-hidden border border-slate-200 bg-white flex flex-col">
                                             <img src={preview} alt="Gallery item" className="w-full h-24 object-cover" />
-                                            <button type="button" onClick={() => removeGalleryImage(idx)} className="absolute top-1 right-1 p-1 bg-red-500 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+                                            <button type="button" onClick={() => removeGalleryImage(idx)} className="absolute top-1 right-1 p-1 bg-red-500 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity z-10">
                                                 <X className="w-3 h-3" />
                                             </button>
+                                            <div className="flex gap-1 p-1 bg-slate-50 border-t border-slate-200">
+                                                <button type="button" onClick={() => setGalleryAsFront(idx)} className="flex-1 py-1 px-1 bg-white hover:bg-cyan-50 text-[9px] font-black uppercase text-cyan-700 border border-slate-200 rounded text-center transition-colors">Set Front</button>
+                                                <button type="button" onClick={() => setGalleryAsBack(idx)} className="flex-1 py-1 px-1 bg-white hover:bg-slate-100 text-[9px] font-black uppercase text-slate-700 border border-slate-200 rounded text-center transition-colors">Set Back</button>
+                                            </div>
                                         </div>
                                     ))}
                                 </div>
@@ -474,12 +508,52 @@ export default function UniformsManager() {
                 </button>
             </div>
 
+            {/* ── Category Stats ── */}
+            <div>
+                <div className="flex justify-between items-center mb-3">
+                    <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Filter By Category</p>
+                    {selectedCategory && <button onClick={() => setSelectedCategory(null)} className="text-[10px] font-black uppercase text-cyan-600 hover:text-cyan-700">Clear</button>}
+                </div>
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+                    {CATEGORIES.map(cat => {
+                        const count = uniforms.filter(u => u.category === cat && (!selectedSubcategory || u.subcategory === selectedSubcategory)).length;
+                        const isSelected = selectedCategory === cat;
+                        return (
+                            <button key={cat} onClick={() => setSelectedCategory(isSelected ? null : cat)} className={`flex flex-col items-center justify-center p-4 rounded-2xl border transition-all hover:scale-105 ${isSelected ? 'ring-2 ring-purple-500 shadow-md bg-purple-50 border-purple-100 text-purple-700' : 'bg-slate-50 border-slate-200 text-slate-700 opacity-80 hover:opacity-100'}`}>
+                                <span className="text-2xl font-black leading-none">{count}</span>
+                                <span className="text-[9px] font-black uppercase tracking-widest mt-1 text-center opacity-70">{cat}</span>
+                            </button>
+                        );
+                    })}
+                </div>
+            </div>
+
+            {/* ── Subcategory Stats ── */}
+            <div>
+                <div className="flex justify-between items-center mb-3">
+                    <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Filter By Subcategory</p>
+                    {selectedSubcategory && <button onClick={() => setSelectedSubcategory(null)} className="text-[10px] font-black uppercase text-cyan-600 hover:text-cyan-700">Clear</button>}
+                </div>
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+                    {SUBCATEGORIES.map(subcat => {
+                        const count = uniforms.filter(u => u.subcategory === subcat && (!selectedCategory || u.category === selectedCategory)).length;
+                        const isSelected = selectedSubcategory === subcat;
+                        return (
+                            <button key={subcat} onClick={() => setSelectedSubcategory(isSelected ? null : subcat)} className={`flex flex-col items-center justify-center p-4 rounded-2xl border transition-all hover:scale-105 ${isSelected ? 'ring-2 ring-blue-500 shadow-md bg-blue-50 border-blue-100 text-blue-700' : 'bg-slate-50 border-slate-200 text-slate-700 opacity-80 hover:opacity-100'}`}>
+                                <span className="text-2xl font-black leading-none">{count}</span>
+                                <span className="text-[9px] font-black uppercase tracking-widest mt-1 text-center opacity-70">{subcat}</span>
+                            </button>
+                        );
+                    })}
+                </div>
+            </div>
+
             <div className="bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-sm">
-                {uniforms.length === 0 ? (
+                {uniforms.filter(u => (!selectedCategory || u.category === selectedCategory) && (!selectedSubcategory || u.subcategory === selectedSubcategory)).length === 0 ? (
                     <div className="p-12 text-center text-slate-400">
                         <ImageIcon className="w-16 h-16 mx-auto mb-4 opacity-20" />
                         <h3 className="text-lg font-bold text-slate-900 mb-2">No uniforms found</h3>
-                        <p className="text-sm">Click the Add Uniform button to create your first item.</p>
+                        <p className="text-sm">Try clearing your filters or add a new uniform.</p>
                     </div>
                 ) : (
                     <div className="overflow-x-auto">
@@ -493,7 +567,7 @@ export default function UniformsManager() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {uniforms.map(uni => (
+                                {uniforms.filter(u => (!selectedCategory || u.category === selectedCategory) && (!selectedSubcategory || u.subcategory === selectedSubcategory)).map(uni => (
                                     <tr key={uni.id} className="border-b border-slate-100 hover:bg-slate-50/50 transition-colors">
                                         <td className="p-4 pl-6 w-24">
                                             <div className="w-16 h-16 bg-white border border-slate-200 rounded-xl overflow-hidden flex items-center justify-center">

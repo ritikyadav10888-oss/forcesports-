@@ -2714,6 +2714,7 @@ export const PRODUCTS: Product[] = [
         description: 'Advanced technical 3D sublimated design with multiple color variants.',
         longDescription: 'Part of our cutting-edge 3D Innovations series, Design #1 offers a range of professional color variants. Engineered for elite performance and high-definition sublimation.',
         image: '/New folder/ppt 1/326.png',
+        imageBack: '/New folder/ppt 1/327.png',
         gallery: [
             '/New folder/ppt 1/326.png',
             '/New folder/ppt 1/327.png',
@@ -2750,7 +2751,8 @@ export const PRODUCTS: Product[] = [
         title: '3D Innovation Design #2',
         description: 'Advanced technical 3D sublimated design with multiple color variants.',
         longDescription: 'Part of our cutting-edge 3D Innovations series, Design #2 offers a range of professional color variants. Engineered for elite performance and high-definition sublimation.',
-        image: '/New folder/ppt 2/339.png',
+        image: '/New folder/ppt 2/340.png',
+        imageBack: '/New folder/ppt 2/339.png',
         gallery: [
             '/New folder/ppt 2/339.png',
             '/New folder/ppt 2/340.png',
@@ -2788,6 +2790,7 @@ export const PRODUCTS: Product[] = [
         description: 'Advanced technical 3D sublimated design with multiple color variants.',
         longDescription: 'Part of our cutting-edge 3D Innovations series, Design #3 offers a range of professional color variants. Engineered for elite performance and high-definition sublimation.',
         image: '/New folder/ppt 3/352.png',
+        imageBack: '/New folder/ppt 3/353.png',
         gallery: [
             '/New folder/ppt 3/352.png',
             '/New folder/ppt 3/353.png',
@@ -2824,7 +2827,8 @@ export const PRODUCTS: Product[] = [
         title: '3D Innovation Design #4',
         description: 'Advanced technical 3D sublimated design with multiple color variants.',
         longDescription: 'Part of our cutting-edge 3D Innovations series, Design #4 offers a range of professional color variants. Engineered for elite performance and high-definition sublimation.',
-        image: '/New folder/ppt 4/365.png',
+        image: '/New folder/ppt 4/366.png',
+        imageBack: '/New folder/ppt 4/365.png',
         gallery: [
             '/New folder/ppt 4/365.png',
             '/New folder/ppt 4/366.png',
@@ -2861,7 +2865,8 @@ export const PRODUCTS: Product[] = [
         title: '3D Innovation Design #5',
         description: 'Advanced technical 3D sublimated design with multiple color variants.',
         longDescription: 'Part of our cutting-edge 3D Innovations series, Design #5 offers a range of professional color variants. Engineered for elite performance and high-definition sublimation.',
-        image: '/New folder/ppt 5/379.png',
+        image: '/New folder/ppt 5/380.png',
+        imageBack: '/New folder/ppt 5/379.png',
         gallery: [
             '/New folder/ppt 5/379.png',
             '/New folder/ppt 5/380.png',
@@ -2899,6 +2904,7 @@ export const PRODUCTS: Product[] = [
         description: 'Advanced technical 3D sublimated design with multiple color variants.',
         longDescription: 'Part of our cutting-edge 3D Innovations series, Design #6 offers a range of professional color variants. Engineered for elite performance and high-definition sublimation.',
         image: '/New folder/ppt 6/392.png',
+        imageBack: '/New folder/ppt 6/393.png',
         gallery: [
             '/New folder/ppt 6/392.png',
             '/New folder/ppt 6/393.png',
@@ -2935,7 +2941,8 @@ export const PRODUCTS: Product[] = [
         title: '3D Innovation Design #7',
         description: 'Advanced technical 3D sublimated design with multiple color variants.',
         longDescription: 'Part of our cutting-edge 3D Innovations series, Design #7 offers a range of professional color variants. Engineered for elite performance and high-definition sublimation.',
-        image: '/New folder/ppt 7/1.png',
+        image: '/New folder/ppt 7/2.png',
+        imageBack: '/New folder/ppt 7/1.png',
         gallery: [
             '/New folder/ppt 7/1.png',
             '/New folder/ppt 7/2.png',
@@ -2973,6 +2980,7 @@ export const PRODUCTS: Product[] = [
         description: 'Advanced technical 3D sublimated design with multiple color variants.',
         longDescription: 'Part of our cutting-edge 3D Innovations series, Design #8 offers a range of professional color variants. Engineered for elite performance and high-definition sublimation.',
         image: '/New folder/ppt 8/14.png',
+        imageBack: '/New folder/ppt 8/15.png',
         gallery: [
             '/New folder/ppt 8/14.png',
             '/New folder/ppt 8/15.png',
@@ -3009,7 +3017,8 @@ export const PRODUCTS: Product[] = [
         title: '3D Innovation Design #9',
         description: 'Advanced technical 3D sublimated design with multiple color variants.',
         longDescription: 'Part of our cutting-edge 3D Innovations series, Design #9 offers a range of professional color variants. Engineered for elite performance and high-definition sublimation.',
-        image: '/New folder/ppt 9/27.png',
+        image: '/New folder/ppt 9/28.png',
+        imageBack: '/New folder/ppt 9/27.png',
         gallery: [
             '/New folder/ppt 9/27.png',
             '/New folder/ppt 9/28.png',
@@ -3047,6 +3056,7 @@ export const PRODUCTS: Product[] = [
         description: 'Advanced technical 3D sublimated design with multiple color variants.',
         longDescription: 'Part of our cutting-edge 3D Innovations series, Design #10 offers a range of professional color variants. Engineered for elite performance and high-definition sublimation.',
         image: '/New folder/ppt 10/40.png',
+        imageBack: '/New folder/ppt 10/41.png',
         gallery: [
             '/New folder/ppt 10/40.png',
             '/New folder/ppt 10/41.png',
@@ -3083,7 +3093,8 @@ export const PRODUCTS: Product[] = [
         title: '3D Innovation Design #11',
         description: 'Advanced technical 3D sublimated design with multiple color variants.',
         longDescription: 'Part of our cutting-edge 3D Innovations series, Design #11 offers a range of professional color variants. Engineered for elite performance and high-definition sublimation.',
-        image: '/New folder/ppt 11/53.png',
+        image: '/New folder/ppt 11/54.png',
+        imageBack: '/New folder/ppt 11/53.png',
         gallery: [
             '/New folder/ppt 11/53.png',
             '/New folder/ppt 11/54.png',
@@ -3121,6 +3132,7 @@ export const PRODUCTS: Product[] = [
         description: 'Advanced technical 3D sublimated design with multiple color variants.',
         longDescription: 'Part of our cutting-edge 3D Innovations series, Design #12 offers a range of professional color variants. Engineered for elite performance and high-definition sublimation.',
         image: '/New folder/ppt 12/66.png',
+        imageBack: '/New folder/ppt 12/67.png',
         gallery: [
             '/New folder/ppt 12/66.png',
             '/New folder/ppt 12/67.png',
@@ -3157,7 +3169,8 @@ export const PRODUCTS: Product[] = [
         title: '3D Innovation Design #13',
         description: 'Advanced technical 3D sublimated design with multiple color variants.',
         longDescription: 'Part of our cutting-edge 3D Innovations series, Design #13 offers a range of professional color variants. Engineered for elite performance and high-definition sublimation.',
-        image: '/New folder/ppt 13/79.png',
+        image: '/New folder/ppt 13/80.png',
+        imageBack: '/New folder/ppt 13/79.png',
         gallery: [
             '/New folder/ppt 13/79.png',
             '/New folder/ppt 13/80.png',
@@ -3195,6 +3208,7 @@ export const PRODUCTS: Product[] = [
         description: 'Advanced technical 3D sublimated design with multiple color variants.',
         longDescription: 'Part of our cutting-edge 3D Innovations series, Design #14 offers a range of professional color variants. Engineered for elite performance and high-definition sublimation.',
         image: '/New folder/ppt 14/92.png',
+        imageBack: '/New folder/ppt 14/93.png',
         gallery: [
             '/New folder/ppt 14/92.png',
             '/New folder/ppt 14/93.png',
@@ -3231,7 +3245,8 @@ export const PRODUCTS: Product[] = [
         title: '3D Innovation Design #15',
         description: 'Advanced technical 3D sublimated design with multiple color variants.',
         longDescription: 'Part of our cutting-edge 3D Innovations series, Design #15 offers a range of professional color variants. Engineered for elite performance and high-definition sublimation.',
-        image: '/New folder/ppt 15/105.png',
+        image: '/New folder/ppt 15/106.png',
+        imageBack: '/New folder/ppt 15/105.png',
         gallery: [
             '/New folder/ppt 15/105.png',
             '/New folder/ppt 15/106.png',
@@ -3269,6 +3284,7 @@ export const PRODUCTS: Product[] = [
         description: 'Advanced technical 3D sublimated design with multiple color variants.',
         longDescription: 'Part of our cutting-edge 3D Innovations series, Design #16 offers a range of professional color variants. Engineered for elite performance and high-definition sublimation.',
         image: '/New folder/ppt 16/118.png',
+        imageBack: '/New folder/ppt 16/119.png',
         gallery: [
             '/New folder/ppt 16/118.png',
             '/New folder/ppt 16/119.png',
@@ -3306,6 +3322,7 @@ export const PRODUCTS: Product[] = [
         description: 'Advanced technical 3D sublimated design with multiple color variants.',
         longDescription: 'Part of our cutting-edge 3D Innovations series, Design #17 offers a range of professional color variants. Engineered for elite performance and high-definition sublimation.',
         image: '/New folder/ppt 17/144.png',
+        imageBack: '/New folder/ppt 17/145.png',
         gallery: [
             '/New folder/ppt 17/144.png',
             '/New folder/ppt 17/145.png',
@@ -3342,7 +3359,8 @@ export const PRODUCTS: Product[] = [
         title: '3D Innovation Design #18',
         description: 'Advanced technical 3D sublimated design with multiple color variants.',
         longDescription: 'Part of our cutting-edge 3D Innovations series, Design #18 offers a range of professional color variants. Engineered for elite performance and high-definition sublimation.',
-        image: '/New folder/ppt 18/131.png',
+        image: '/New folder/ppt 18/132.png',
+        imageBack: '/New folder/ppt 18/131.png',
         gallery: [
             '/New folder/ppt 18/131.png',
             '/New folder/ppt 18/132.png',
@@ -3379,7 +3397,8 @@ export const PRODUCTS: Product[] = [
         title: '3D Innovation Design #19',
         description: 'Advanced technical 3D sublimated design with multiple color variants.',
         longDescription: 'Part of our cutting-edge 3D Innovations series, Design #19 offers a range of professional color variants. Engineered for elite performance and high-definition sublimation.',
-        image: '/New folder/ppt 19/183.png',
+        image: '/New folder/ppt 19/184.png',
+        imageBack: '/New folder/ppt 19/183.png',
         gallery: [
             '/New folder/ppt 19/183.png',
             '/New folder/ppt 19/184.png',
@@ -3417,6 +3436,7 @@ export const PRODUCTS: Product[] = [
         description: 'Advanced technical 3D sublimated design with multiple color variants.',
         longDescription: 'Part of our cutting-edge 3D Innovations series, Design #20 offers a range of professional color variants. Engineered for elite performance and high-definition sublimation.',
         image: '/New folder/ppt 20/196.png',
+        imageBack: '/New folder/ppt 20/197.png',
         gallery: [
             '/New folder/ppt 20/196.png',
             '/New folder/ppt 20/197.png',
@@ -3453,7 +3473,8 @@ export const PRODUCTS: Product[] = [
         title: '3D Innovation Design #21',
         description: 'Advanced technical 3D sublimated design with multiple color variants.',
         longDescription: 'Part of our cutting-edge 3D Innovations series, Design #21 offers a range of professional color variants. Engineered for elite performance and high-definition sublimation.',
-        image: '/New folder/ppt 21/209.png',
+        image: '/New folder/ppt 21/210.png',
+        imageBack: '/New folder/ppt 21/209.png',
         gallery: [
             '/New folder/ppt 21/209.png',
             '/New folder/ppt 21/210.png',
@@ -3491,6 +3512,7 @@ export const PRODUCTS: Product[] = [
         description: 'Advanced technical 3D sublimated design with multiple color variants.',
         longDescription: 'Part of our cutting-edge 3D Innovations series, Design #22 offers a range of professional color variants. Engineered for elite performance and high-definition sublimation.',
         image: '/New folder/ppt 22/222.png',
+        imageBack: '/New folder/ppt 22/223.png',
         gallery: [
             '/New folder/ppt 22/222.png',
             '/New folder/ppt 22/223.png',
@@ -3528,6 +3550,7 @@ export const PRODUCTS: Product[] = [
         description: 'Advanced technical 3D sublimated design with multiple color variants.',
         longDescription: 'Part of our cutting-edge 3D Innovations series, Design #23 offers a range of professional color variants. Engineered for elite performance and high-definition sublimation.',
         image: '/New folder/ppt 23/274.png',
+        imageBack: '/New folder/ppt 23/275.png',
         gallery: [
             '/New folder/ppt 23/274.png',
             '/New folder/ppt 23/275.png',
@@ -3565,7 +3588,8 @@ export const PRODUCTS: Product[] = [
         title: '3D Innovation Design #24',
         description: 'Advanced technical 3D sublimated design with multiple color variants.',
         longDescription: 'Part of our cutting-edge 3D Innovations series, Design #24 offers a range of professional color variants. Engineered for elite performance and high-definition sublimation.',
-        image: '/New folder/ppt 24/287.png',
+        image: '/New folder/ppt 24/288.png',
+        imageBack: '/New folder/ppt 24/287.png',
         gallery: [
             '/New folder/ppt 24/287.png',
             '/New folder/ppt 24/288.png',
@@ -3602,7 +3626,8 @@ export const PRODUCTS: Product[] = [
         title: '3D Innovation Design #25',
         description: 'Advanced technical 3D sublimated design with multiple color variants.',
         longDescription: 'Part of our cutting-edge 3D Innovations series, Design #25 offers a range of professional color variants. Engineered for elite performance and high-definition sublimation.',
-        image: '/New folder/ppt 25/235.png',
+        image: '/New folder/ppt 25/236.png',
+        imageBack: '/New folder/ppt 25/235.png',
         gallery: [
             '/New folder/ppt 25/235.png',
             '/New folder/ppt 25/236.png',
@@ -3640,6 +3665,7 @@ export const PRODUCTS: Product[] = [
         description: 'Advanced technical 3D sublimated design with multiple color variants.',
         longDescription: 'Part of our cutting-edge 3D Innovations series, Design #26 offers a range of professional color variants. Engineered for elite performance and high-definition sublimation.',
         image: '/New folder/ppt 26/248.png',
+        imageBack: '/New folder/ppt 26/249.png',
         gallery: [
             '/New folder/ppt 26/248.png',
             '/New folder/ppt 26/249.png',
@@ -3677,6 +3703,7 @@ export const PRODUCTS: Product[] = [
         description: 'Advanced technical 3D sublimated design with multiple color variants.',
         longDescription: 'Part of our cutting-edge 3D Innovations series, Design #27 offers a range of professional color variants. Engineered for elite performance and high-definition sublimation.',
         image: '/New folder/ppt 27/300.png',
+        imageBack: '/New folder/ppt 27/301.png',
         gallery: [
             '/New folder/ppt 27/300.png',
             '/New folder/ppt 27/301.png',
@@ -3713,7 +3740,8 @@ export const PRODUCTS: Product[] = [
         title: '3D Innovation Design #28',
         description: 'Advanced technical 3D sublimated design with multiple color variants.',
         longDescription: 'Part of our cutting-edge 3D Innovations series, Design #28 offers a range of professional color variants. Engineered for elite performance and high-definition sublimation.',
-        image: '/New folder/ppt 28/313.png',
+        image: '/New folder/ppt 28/314.png',
+        imageBack: '/New folder/ppt 28/313.png',
         gallery: [
             '/New folder/ppt 28/313.png',
             '/New folder/ppt 28/314.png',
@@ -3750,7 +3778,8 @@ export const PRODUCTS: Product[] = [
         title: '3D Innovation Design #29',
         description: 'Advanced technical 3D sublimated design with multiple color variants.',
         longDescription: 'Part of our cutting-edge 3D Innovations series, Design #29 offers a range of professional color variants. Engineered for elite performance and high-definition sublimation.',
-        image: '/New folder/ppt 29/157.png',
+        image: '/New folder/ppt 29/158.png',
+        imageBack: '/New folder/ppt 29/157.png',
         gallery: [
             '/New folder/ppt 29/157.png',
             '/New folder/ppt 29/158.png',
@@ -3788,6 +3817,7 @@ export const PRODUCTS: Product[] = [
         description: 'Advanced technical 3D sublimated design with multiple color variants.',
         longDescription: 'Part of our cutting-edge 3D Innovations series, Design #30 offers a range of professional color variants. Engineered for elite performance and high-definition sublimation.',
         image: '/New folder/ppt 30/170.png',
+        imageBack: '/New folder/ppt 30/171.png',
         gallery: [
             '/New folder/ppt 30/170.png',
             '/New folder/ppt 30/171.png',
@@ -3824,7 +3854,8 @@ export const PRODUCTS: Product[] = [
         title: '3D Innovation Design #31',
         description: 'Advanced technical 3D sublimated design with multiple color variants.',
         longDescription: 'Part of our cutting-edge 3D Innovations series, Design #31 offers a range of professional color variants. Engineered for elite performance and high-definition sublimation.',
-        image: '/New folder/ppt 31/261.png',
+        image: '/New folder/ppt 31/262.png',
+        imageBack: '/New folder/ppt 31/261.png',
         gallery: [
             '/New folder/ppt 31/261.png',
             '/New folder/ppt 31/262.png',

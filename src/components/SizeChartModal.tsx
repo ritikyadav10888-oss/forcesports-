@@ -10,13 +10,26 @@ interface SizeChartModalProps {
 export default function SizeChartModal({ isOpen, onClose }: SizeChartModalProps) {
     if (!isOpen) return null;
 
-    const sizes = [
-        { label: 'S', chest: '38"', length: '26"' },
-        { label: 'M', chest: '40"', length: '27"' },
-        { label: 'L', chest: '42"', length: '28"' },
-        { label: 'XL', chest: '44"', length: '29"' },
-        { label: 'XXL', chest: '46"', length: '30"' },
-        { label: '3XL', chest: '48"', length: '31"' },
+    const tshirtSizes = [
+        { label: 'SMALL', chest: '38', length: '27' },
+        { label: 'MEDIUM', chest: '40', length: '28' },
+        { label: 'LARGE', chest: '42', length: '29' },
+        { label: 'EXTRA LARGE', chest: '44', length: '30' },
+        { label: '2x LARGE', chest: '46', length: '31' },
+    ];
+
+    const trackPantSizes = [
+        { label: 'MEDIUM', waist: '30-32', length: '39' },
+        { label: 'LARGE', waist: '32-34', length: '40' },
+        { label: 'EXTRA LARGE', waist: '34-36', length: '41' },
+        { label: '2x LARGE', waist: '36-38', length: '42' },
+    ];
+
+    const shortPantSizes = [
+        { label: 'MEDIUM', waist: '30-32', length: '20' },
+        { label: 'LARGE', waist: '32-34', length: '21' },
+        { label: 'EXTRA LARGE', waist: '34-36', length: '22' },
+        { label: '2x LARGE', waist: '36-38', length: '23' },
     ];
 
     return (
@@ -44,23 +57,73 @@ export default function SizeChartModal({ isOpen, onClose }: SizeChartModalProps)
                     </div>
 
                     <div className="p-6 md:p-8 space-y-8 max-h-[70vh] overflow-y-auto">
-                        {/* Size Table */}
+                        {/* T-Shirt Size Table */}
                         <div className="space-y-4">
-                            <h3 className="font-bold text-slate-900 uppercase tracking-widest text-sm">Standard Measurements (Inches)</h3>
+                            <h3 className="font-bold text-slate-900 uppercase tracking-widest text-sm">T-Shirt Sizes (In Inches)</h3>
                             <div className="overflow-x-auto rounded-2xl border border-slate-200">
                                 <table className="w-full text-sm text-left">
                                     <thead className="text-xs uppercase bg-slate-100 text-slate-700 font-bold tracking-wider">
                                         <tr>
                                             <th className="px-6 py-4">Size</th>
-                                            <th className="px-6 py-4">Chest (Half)</th>
+                                            <th className="px-6 py-4">Full Chest</th>
+                                            <th className="px-6 py-4">Body Length</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {tshirtSizes.map((s, i) => (
+                                            <tr key={s.label} className={i % 2 === 0 ? 'bg-white' : 'bg-slate-50'}>
+                                                <td className="px-6 py-4 font-black text-slate-900">{s.label}</td>
+                                                <td className="px-6 py-4 text-slate-600 font-medium">{s.chest}</td>
+                                                <td className="px-6 py-4 text-slate-600 font-medium">{s.length}</td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        {/* Track Pant Size Table */}
+                        <div className="space-y-4">
+                            <h3 className="font-bold text-slate-900 uppercase tracking-widest text-sm">Track Pant Sizes (In Inches)</h3>
+                            <div className="overflow-x-auto rounded-2xl border border-slate-200">
+                                <table className="w-full text-sm text-left">
+                                    <thead className="text-xs uppercase bg-slate-100 text-slate-700 font-bold tracking-wider">
+                                        <tr>
+                                            <th className="px-6 py-4">Size</th>
+                                            <th className="px-6 py-4">Waist</th>
                                             <th className="px-6 py-4">Length</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {sizes.map((s, i) => (
+                                        {trackPantSizes.map((s, i) => (
                                             <tr key={s.label} className={i % 2 === 0 ? 'bg-white' : 'bg-slate-50'}>
                                                 <td className="px-6 py-4 font-black text-slate-900">{s.label}</td>
-                                                <td className="px-6 py-4 text-slate-600 font-medium">{s.chest}</td>
+                                                <td className="px-6 py-4 text-slate-600 font-medium">{s.waist}</td>
+                                                <td className="px-6 py-4 text-slate-600 font-medium">{s.length}</td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        {/* Short Pant Size Table */}
+                        <div className="space-y-4">
+                            <h3 className="font-bold text-slate-900 uppercase tracking-widest text-sm">Short Pant Sizes (In Inches)</h3>
+                            <div className="overflow-x-auto rounded-2xl border border-slate-200">
+                                <table className="w-full text-sm text-left">
+                                    <thead className="text-xs uppercase bg-slate-100 text-slate-700 font-bold tracking-wider">
+                                        <tr>
+                                            <th className="px-6 py-4">Size</th>
+                                            <th className="px-6 py-4">Waist</th>
+                                            <th className="px-6 py-4">Length</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {shortPantSizes.map((s, i) => (
+                                            <tr key={s.label} className={i % 2 === 0 ? 'bg-white' : 'bg-slate-50'}>
+                                                <td className="px-6 py-4 font-black text-slate-900">{s.label}</td>
+                                                <td className="px-6 py-4 text-slate-600 font-medium">{s.waist}</td>
                                                 <td className="px-6 py-4 text-slate-600 font-medium">{s.length}</td>
                                             </tr>
                                         ))}
