@@ -74,39 +74,7 @@ const FabricsPage = () => {
     const [isMobileFiltersOpen, setIsMobileFiltersOpen] = useState(false);
 
     useEffect(() => {
-        const fetchFabrics = async () => {
-            try {
-                const { db } = await import('../../lib/firebase');
-                const { collection, getDocs } = await import('firebase/firestore');
-                
-                const queryPromise = getDocs(collection(db, 'fabrics'));
-                const timeoutPromise = new Promise<never>((_, reject) =>
-                    setTimeout(() => reject(new Error('Firestore query timed out')), 4000)
-                );
-                
-                const snapshot = await Promise.race([queryPromise, timeoutPromise]);
-                if (!snapshot.empty) {
-                    const data = snapshot.docs.map((doc) => {
-                        const d = doc.data();
-                        return {
-                            id: doc.id,
-                            name: d.name || '',
-                            gsm: d.gsm || '',
-                            desc: d.desc || d.description || '',
-                            use: d.use || '',
-                            printing: d.printing,
-                            file: d.file || d.image || '',
-                        } as Fabric;
-                    });
-                    setFabrics(data);
-                }
-            } catch (err) {
-                console.error('Firebase fabrics fetch failed, using static fallback', err);
-            } finally {
-                setLoading(false);
-            }
-        };
-        fetchFabrics();
+        setLoading(false);
     }, []);
 
     const filteredFabrics = useMemo(() => {

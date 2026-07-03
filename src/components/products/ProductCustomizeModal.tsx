@@ -21,6 +21,12 @@ import {
     LogoSize,
 } from './productCustomizeUtils';
 
+export interface PlayerRosterItem {
+    name: string;
+    number: string;
+    size: string;
+}
+
 export interface CustomizationState {
     logo: string;
     logoPreview: string | null;
@@ -28,6 +34,14 @@ export interface CustomizationState {
     placement: string;
     fabric: string;
     quantity: string;
+    mode: 'Team Roster Order';
+    roster: PlayerRosterItem[];
+    leftSleeveText: string;
+    rightSleeveText: string;
+    frontLeftLogoDesc: string;
+    frontRightLogoText: string;
+    frontMidSponsorText: string;
+    backLeftBottomText: string;
 }
 
 interface ProductCustomizeModalProps {
@@ -63,6 +77,14 @@ export default function ProductCustomizeModal({ product, onClose }: ProductCusto
         placement: getDefaultPlacement(product.category),
         fabric: defaultFabric,
         quantity: '',
+        mode: 'Team Roster Order',
+        roster: [{ name: '', number: '', size: 'M' }],
+        leftSleeveText: '',
+        rightSleeveText: '',
+        frontLeftLogoDesc: '',
+        frontRightLogoText: '',
+        frontMidSponsorText: '',
+        backLeftBottomText: '',
     });
 
     useEffect(() => {
@@ -128,13 +150,23 @@ export default function ProductCustomizeModal({ product, onClose }: ProductCusto
             placement: customization.placement,
             size: customization.size,
             fabric: customization.fabric,
+            mode: customization.mode,
+            leftSleeve: customization.leftSleeveText,
+            rightSleeve: customization.rightSleeveText,
+            frontLeft: customization.frontLeftLogoDesc,
+            frontRight: customization.frontRightLogoText,
+            frontMid: customization.frontMidSponsorText,
+            backBottom: customization.backLeftBottomText,
         });
         if (customization.logo) params.set('logo', customization.logo);
         if (customization.quantity) params.set('quantity', customization.quantity);
+        params.set('roster', JSON.stringify(customization.roster));
         return params;
     };
 
     const openWhatsApp = () => {
+        const rosterStr = customization.roster.map((r, idx) => `#${idx + 1} ${r.name || 'Unnamed'} (No. ${r.number || '-'}, Size ${r.size})`).join(', ');
+            
         const lines = [
             `Hi! I want to customize: ${product.title}`,
             product.productCode ? `Code: ${product.productCode}` : '',
@@ -142,6 +174,13 @@ export default function ProductCustomizeModal({ product, onClose }: ProductCusto
             `Placement: ${customization.placement}`,
             `Logo size: ${customization.size}`,
             customization.logo ? `Logo: ${customization.logo}` : '',
+            `Roster Info: ${rosterStr}`,
+            customization.leftSleeveText ? `Left Sleeve: ${customization.leftSleeveText}` : '',
+            customization.rightSleeveText ? `Right Sleeve: ${customization.rightSleeveText}` : '',
+            customization.frontLeftLogoDesc ? `Front Left Logo: ${customization.frontLeftLogoDesc}` : '',
+            customization.frontRightLogoText ? `Front Right Logo: ${customization.frontRightLogoText}` : '',
+            customization.frontMidSponsorText ? `Front Mid Sponsor: ${customization.frontMidSponsorText}` : '',
+            customization.backLeftBottomText ? `Back Bottom Text: ${customization.backLeftBottomText}` : '',
             customization.quantity ? `Qty: ${customization.quantity}` : '',
             'Please share MOQ, pricing, and timeline.',
         ].filter(Boolean);
@@ -441,6 +480,169 @@ export default function ProductCustomizeModal({ product, onClose }: ProductCusto
                                                 </motion.ul>
                                             )}
                                         </AnimatePresence>
+                                    </div>
+
+
+
+                                    {/* Team Members / Player List */}
+                                    <div className="space-y-3">
+                                        <div className="flex items-center justify-between">
+                                            <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest">
+                                                Team Members List
+                                            </label>
+                                                <button
+                                                    type="button"
+                                                    onClick={() => setCustomization((c) => ({
+                                                        ...c,
+                                                        roster: [...c.roster, { name: '', number: '', size: 'M' }]
+                                                    }))}
+                                                    className="px-3 py-1.5 bg-cyan-50 hover:bg-cyan-100/80 text-cyan-600 rounded-lg text-[9px] font-black uppercase tracking-widest transition-colors flex items-center gap-1"
+                                                >
+                                                    + Add Player
+                                                </button>
+                                        </div>
+
+                                        <div className="space-y-2 max-h-[220px] overflow-y-auto pr-1">
+                                            {customization.roster.map((player, idx) => (
+                                                <div key={idx} className="flex items-center gap-2">
+                                                    <span className="text-[10px] font-black text-slate-400 w-4 text-center">
+                                                        {idx + 1}
+                                                    </span>
+                                                    <input
+                                                        type="text"
+                                                        placeholder="Player Name"
+                                                        value={player.name}
+                                                        onChange={(e) => {
+                                                            const newRoster = [...customization.roster];
+                                                            newRoster[idx].name = e.target.value;
+                                                            setCustomization((c) => ({ ...c, roster: newRoster }));
+                                                        }}
+                                                        className="flex-1 min-w-0 px-3 py-2 bg-slate-50 border border-slate-100 rounded-xl text-xs font-bold focus:ring-1 focus:ring-cyan-500 outline-none"
+                                                    />
+                                                    <input
+                                                        type="text"
+                                                        placeholder="e.g. 7"
+                                                        value={player.number}
+                                                        onChange={(e) => {
+                                                            const newRoster = [...customization.roster];
+                                                            newRoster[idx].number = e.target.value;
+                                                            setCustomization((c) => ({ ...c, roster: newRoster }));
+                                                        }}
+                                                        className="w-16 px-3 py-2 bg-slate-50 border border-slate-100 rounded-xl text-xs font-bold focus:ring-1 focus:ring-cyan-500 outline-none text-center"
+                                                    />
+                                                    <select
+                                                        value={player.size}
+                                                        onChange={(e) => {
+                                                            const newRoster = [...customization.roster];
+                                                            newRoster[idx].size = e.target.value;
+                                                            setCustomization((c) => ({ ...c, roster: newRoster }));
+                                                        }}
+                                                        className="px-2 py-2 bg-slate-50 border border-slate-100 rounded-xl text-xs font-bold focus:ring-1 focus:ring-cyan-500 outline-none"
+                                                    >
+                                                        {['S', 'M', 'L', 'XL', 'XXL', '3XL'].map(sz => (
+                                                            <option key={sz} value={sz}>{sz}</option>
+                                                        ))}
+                                                    </select>
+                                                    {customization.roster.length > 1 && (
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => setCustomization((c) => ({
+                                                                ...c,
+                                                                roster: c.roster.filter((_, rIdx) => rIdx !== idx)
+                                                            }))}
+                                                            className="p-2 text-slate-400 hover:text-red-500 rounded-lg"
+                                                        >
+                                                            <X size={14} />
+                                                        </button>
+                                                    )}
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    {/* Sleeve Customization */}
+                                    <div className="space-y-3 pt-2 border-t border-slate-100">
+                                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest block">
+                                            Sleeve Customization
+                                        </label>
+                                        <div className="grid grid-cols-2 gap-3">
+                                            <div>
+                                                <span className="text-[8px] font-black text-slate-500 uppercase tracking-widest mb-1.5 block">Left Sleeve Text</span>
+                                                <input
+                                                    type="text"
+                                                    placeholder="e.g. ACADEMY"
+                                                    value={customization.leftSleeveText}
+                                                    onChange={(e) => setCustomization((c) => ({ ...c, leftSleeveText: e.target.value }))}
+                                                    className="w-full px-4 py-2.5 bg-slate-50 border border-slate-100 rounded-xl text-xs font-bold focus:ring-1 focus:ring-cyan-500 outline-none"
+                                                />
+                                            </div>
+                                            <div>
+                                                <span className="text-[8px] font-black text-slate-500 uppercase tracking-widest mb-1.5 block">Right Sleeve Text</span>
+                                                <input
+                                                    type="text"
+                                                    placeholder="e.g. INDIA"
+                                                    value={customization.rightSleeveText}
+                                                    onChange={(e) => setCustomization((c) => ({ ...c, rightSleeveText: e.target.value }))}
+                                                    className="w-full px-4 py-2.5 bg-slate-50 border border-slate-100 rounded-xl text-xs font-bold focus:ring-1 focus:ring-cyan-500 outline-none"
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Front Chest & Mid Prints */}
+                                    <div className="space-y-3 pt-2 border-t border-slate-100">
+                                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest block">
+                                            Front Chest & Mid Prints
+                                        </label>
+                                        <div className="grid grid-cols-2 gap-3">
+                                            <div>
+                                                <span className="text-[8px] font-black text-slate-500 uppercase tracking-widest mb-1.5 block">Front Left (Logo Description)</span>
+                                                <input
+                                                    type="text"
+                                                    placeholder="e.g. Club Crest"
+                                                    value={customization.frontLeftLogoDesc}
+                                                    onChange={(e) => setCustomization((c) => ({ ...c, frontLeftLogoDesc: e.target.value }))}
+                                                    className="w-full px-4 py-2.5 bg-slate-50 border border-slate-100 rounded-xl text-xs font-bold focus:ring-1 focus:ring-cyan-500 outline-none"
+                                                />
+                                            </div>
+                                            <div>
+                                                <span className="text-[8px] font-black text-slate-500 uppercase tracking-widest mb-1.5 block">Front Right (Text/Logo)</span>
+                                                <input
+                                                    type="text"
+                                                    placeholder="e.g. Brand Logo"
+                                                    value={customization.frontRightLogoText}
+                                                    onChange={(e) => setCustomization((c) => ({ ...c, frontRightLogoText: e.target.value }))}
+                                                    className="w-full px-4 py-2.5 bg-slate-50 border border-slate-100 rounded-xl text-xs font-bold focus:ring-1 focus:ring-cyan-500 outline-none"
+                                                />
+                                            </div>
+                                            <div className="col-span-2">
+                                                <span className="text-[8px] font-black text-slate-500 uppercase tracking-widest mb-1.5 block">Front Middle (Sponsor/Text)</span>
+                                                <input
+                                                    type="text"
+                                                    placeholder="e.g. FORCE SPORTS"
+                                                    value={customization.frontMidSponsorText}
+                                                    onChange={(e) => setCustomization((c) => ({ ...c, frontMidSponsorText: e.target.value }))}
+                                                    className="w-full px-4 py-2.5 bg-slate-50 border border-slate-100 rounded-xl text-xs font-bold focus:ring-1 focus:ring-cyan-500 outline-none"
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Other Placements */}
+                                    <div className="space-y-3 pt-2 border-t border-slate-100">
+                                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest block">
+                                            Other Placements
+                                        </label>
+                                        <div>
+                                            <span className="text-[8px] font-black text-slate-500 uppercase tracking-widest mb-1.5 block">Back Left Bottom Text</span>
+                                            <input
+                                                type="text"
+                                                placeholder="e.g. EST. 2026"
+                                                value={customization.backLeftBottomText}
+                                                onChange={(e) => setCustomization((c) => ({ ...c, backLeftBottomText: e.target.value }))}
+                                                className="w-full px-4 py-2.5 bg-slate-50 border border-slate-100 rounded-xl text-xs font-bold focus:ring-1 focus:ring-cyan-500 outline-none"
+                                            />
+                                        </div>
                                     </div>
                                 </motion.div>
                             )}

@@ -1,7 +1,8 @@
 "use client";
 import React from 'react';
-import { Mail, Phone, MapPin, Instagram, Facebook } from 'lucide-react';
+import { Mail, Phone, MapPin, Instagram, Facebook, ShoppingBag } from 'lucide-react';
 import { BRAND_DETAILS } from '../../data/brandData';
+import { getCDNUrl } from '../../utils/cdnUtils';
 
 const Footer = () => {
     return (
@@ -12,7 +13,7 @@ const Footer = () => {
                         <div className="flex items-center gap-4 mb-8">
                             <span className="h-12 w-12 md:h-14 md:w-14 shrink-0 rounded-[1.25rem] bg-white flex items-center justify-center shadow-[0_8px_24px_rgba(0,0,0,0.2)] border border-white/10 p-2">
                                 <img
-                                    src={BRAND_DETAILS.logo}
+                                    src={getCDNUrl(BRAND_DETAILS.logo)}
                                     alt={BRAND_DETAILS.logoAlt ?? BRAND_DETAILS.name}
                                     width={56}
                                     height={56}
@@ -32,6 +33,9 @@ const Footer = () => {
                             </a>
                             <a href={BRAND_DETAILS.social.facebook} target="_blank" rel="noopener noreferrer" title="Facebook" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-cyan-500 cursor-pointer transition-all border border-white/5 hover:border-cyan-400 shadow-lg">
                                 <Facebook size={18} />
+                            </a>
+                            <a href={BRAND_DETAILS.social.indiamart} target="_blank" rel="noopener noreferrer" title="IndiaMart Store" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-cyan-500 cursor-pointer transition-all border border-white/5 hover:border-cyan-400 shadow-lg text-[10px] font-black">
+                                <ShoppingBag size={17} />
                             </a>
                         </div>
                         
@@ -85,6 +89,7 @@ const Footer = () => {
                             <li><a href="/faq" className="hover:text-cyan-400 transition-colors">FAQ</a></li>
                         </ul>
                     </div>
+
                 </div>
                 <div className="pt-10 flex flex-col md:flex-row justify-between items-center gap-6 text-slate-500 text-[10px] font-bold uppercase tracking-widest text-center md:text-left">
                     <p>&copy; {new Date().getFullYear()} {BRAND_DETAILS.name}. All Rights Reserved.</p>

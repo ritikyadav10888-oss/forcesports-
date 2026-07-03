@@ -3,7 +3,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CATALOG_DATA } from '../../data/catalogData';
 import { PRODUCTS } from '../../data/products';
-import { ChevronLeft, ChevronRight, Maximize2, X, BookOpen, Download, LayoutGrid } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Maximize2, X, BookOpen, Download, LayoutGrid, Loader2 } from 'lucide-react';
 import { getCDNUrl } from '../../utils/cdnUtils';
 const CatalogPage = () => {
     const catalogKeys = Object.keys(CATALOG_DATA) as (keyof typeof CATALOG_DATA)[];
@@ -12,18 +12,32 @@ const CatalogPage = () => {
     const [viewMode, setViewMode] = useState<'grid' | 'reader'>('reader');
     const [fullscreenImage, setFullscreenImage] = useState<string | null>(null);
     const [selectedColor, setSelectedColor] = useState<string | null>(null);
+    const [catalogs, setCatalogs] = useState<any>(CATALOG_DATA);
+    const [loading, setLoading] = useState(true);
 
-    const currentCatalog = CATALOG_DATA[selectedCatalog];
-    const totalPages = currentCatalog.pages.length;
+    const currentCatalog = catalogs[selectedCatalog] || catalogs[catalogKeys[0]];
+    const totalPages = currentCatalog?.pages?.length || 0;
 
     const getPageSrc = (page: any, colorFile?: string | null) => {
-        let path = '';
-        if (typeof page === 'string') path = page;
-        else if (colorFile) path = `${page.folder}/${colorFile}`;
-        else path = page.master;
-        
-        return getCDNUrl(path, { width: 1200 });
+        if (typeof page === 'string') {
+            return getCDNUrl(page, { width: 1200 });
+        }
+        if (colorFile) {
+            if (colorFile.startsWith('http://') || colorFile.startsWith('https://')) {
+                return colorFile;
+            }
+            if (colorFile.startsWith('/')) {
+                return getCDNUrl(colorFile, { width: 1200 });
+            }
+            return getCDNUrl(`${page.folder}/${colorFile}`, { width: 1200 });
+        }
+        return getCDNUrl(page.master, { width: 1200 });
     };
+
+    useEffect(() => {
+        setCatalogs(CATALOG_DATA);
+        setLoading(false);
+    }, []);
 
     const nextPage = useCallback(() => {
         setCurrentPage((prev) => (prev + 1) % totalPages);
@@ -37,6 +51,7 @@ const CatalogPage = () => {
 
     // Preload neighbors
     useEffect(() => {
+        if (totalPages === 0) return;
         const preload = (pageIdx: number) => {
             if (pageIdx >= 0 && pageIdx < totalPages) {
                 const img = new Image();
@@ -59,6 +74,15 @@ const CatalogPage = () => {
         window.addEventListener('keydown', handleKeyDown);
         return () => window.removeEventListener('keydown', handleKeyDown);
     }, [nextPage, prevPage, fullscreenImage]);
+
+    if (loading) {
+        return (
+            <div className="min-h-screen flex flex-col items-center justify-center bg-[#050B14] px-6">
+                <Loader2 className="animate-spin text-cyan-500 mb-4" size={32} />
+                <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Loading catalogs…</p>
+            </div>
+        );
+    }
 
     return (
         <div className="bg-[#050B14] min-h-screen pt-24 pb-16 text-white overflow-hidden relative">
@@ -135,7 +159,7 @@ const CatalogPage = () => {
                         {(currentCatalog as any).downloadUrl && (
                             <a
                                 href={(currentCatalog as any).downloadUrl}
-                                download
+                                download={`${currentCatalog.title}.pdf`}
                                 className="flex items-center gap-2 px-4 py-2 md:px-5 md:py-3 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white rounded-full text-[9px] md:text-[10px] font-black uppercase tracking-widest transition-all shadow-lg shadow-cyan-900/40 hover:shadow-cyan-500/50 hover:-translate-y-0.5"
                             >
                                 <Download size={14} /> <span className="hidden sm:inline">Download PDF</span>
@@ -200,15 +224,23 @@ const CatalogPage = () => {
                                                     const prod = PRODUCTS.find((p: any) => p.productCode === `#3D-INV-${(currentPage + 1).toString().padStart(2, '0')}`);
                                                     const gallery = prod?.gallery || [];
                                                     return gallery.map((item: string, idx: number) => {
-                                                        const filename = item.split('/').pop() || '';
+                                                        const isSelected = selectedColor === item;
+                                                        let cleanFilename = '';
+                                                        try {
+                                                            const decoded = decodeURIComponent(item);
+                                                            const urlPath = decoded.split('?')[0];
+                                                            cleanFilename = urlPath.split('/').pop() || '';
+                                                        } catch (e) {
+                                                            cleanFilename = item.split('/').pop() || '';
+                                                        }
                                                         return (
                                                             <button
-                                                                key={filename}
-                                                                onClick={() => setSelectedColor(filename)}
-                                                                className={`shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-full border-2 transition-transform hover:scale-110 overflow-hidden bg-slate-500/50 ${selectedColor === filename ? 'border-cyan-400 scale-110' : 'border-slate-500/50'}`}
-                                                                title={`Variant ${idx + 1}`}
+                                                                key={item}
+                                                                onClick={() => setSelectedColor(item)}
+                                                                className={`shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-full border-2 transition-transform hover:scale-110 overflow-hidden bg-slate-500/50 ${isSelected ? 'border-cyan-400 scale-110' : 'border-slate-500/50'}`}
+                                                                title={cleanFilename || `Variant ${idx + 1}`}
                                                             >
-                                                                <img src={getCDNUrl(item, { width: 80 })} alt={`Variant ${idx + 1}`} className="w-full h-full object-cover bg-slate-100" />
+                                                                <img src={getCDNUrl(item, { width: 80 })} alt={cleanFilename || `Variant ${idx + 1}`} className="w-full h-full object-cover bg-slate-100" />
                                                             </button>
                                                         );
                                                     });
@@ -219,7 +251,7 @@ const CatalogPage = () => {
                                     
                                     {/* Thumbnail Strip */}
                                     <div className="flex gap-2 md:gap-3 mt-6 md:mt-8 overflow-x-auto pb-4 md:pb-6 px-2 md:px-4 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
-                                        {currentCatalog.pages.map((page, idx) => (
+                                        {currentCatalog.pages.map((page: any, idx: number) => (
                                             <button
                                                 key={idx}
                                                 onClick={() => setCurrentPage(idx)}
@@ -246,7 +278,7 @@ const CatalogPage = () => {
                                 exit={{ opacity: 0 }}
                                 className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6"
                             >
-                                {currentCatalog.pages.map((page, idx) => (
+                                {currentCatalog.pages.map((page: any, idx: number) => (
                                     <motion.div
                                         key={idx}
                                         whileHover={{ y: -8, scale: 1.02 }}

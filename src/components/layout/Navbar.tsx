@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { BRAND_DETAILS } from '../../data/brandData';
+import { getCDNUrl } from '../../utils/cdnUtils';
 
 const Navbar = () => {
     const location = usePathname();
@@ -31,7 +32,7 @@ const Navbar = () => {
                 >
                     <span className="h-9 w-9 sm:h-10 sm:w-10 lg:h-12 lg:w-12 shrink-0 rounded-[1.1rem] bg-white flex items-center justify-center shadow-[0_4px_14px_rgba(15,23,42,0.12)] border border-slate-200 p-1.5 transition-transform group-hover:scale-105">
                         <img
-                            src={BRAND_DETAILS.logo}
+                            src={getCDNUrl(BRAND_DETAILS.logo)}
                             alt={BRAND_DETAILS.logoAlt ?? BRAND_DETAILS.name}
                             width={48}
                             height={48}

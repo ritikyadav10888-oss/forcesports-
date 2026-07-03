@@ -23,27 +23,8 @@ const UniformDetailPage = () => {
     const [isSizeChartOpen, setIsSizeChartOpen] = useState(false);
 
     useEffect(() => {
-        const fetchProduct = async () => {
-            try {
-                const { db } = await import('../../lib/firebase');
-                const { doc, getDoc } = await import('firebase/firestore');
-                
-                const queryPromise = getDoc(doc(db, 'uniforms', uniformId as string));
-                const timeoutPromise = new Promise<never>((_, reject) =>
-                    setTimeout(() => reject(new Error('Firestore query timed out')), 4000)
-                );
-                
-                const docSnap = await Promise.race([queryPromise, timeoutPromise]);
-                if (docSnap.exists()) {
-                    setProduct({ id: docSnap.id, ...docSnap.data() } as UniformProduct);
-                }
-            } catch (error) {
-                console.error("Error fetching uniform:", error);
-            } finally {
-                setLoading(false);
-            }
-        };
-        fetchProduct();
+        if (localProduct) setProduct(localProduct);
+        setLoading(false);
     }, [uniformId]);
 
     const images = product ? [
@@ -303,6 +284,11 @@ const UniformDetailPage = () => {
                     </Link>
                 </div>
             </section>
+
+            <SizeChartModal 
+                isOpen={isSizeChartOpen} 
+                onClose={() => setIsSizeChartOpen(false)} 
+            />
         </div>
     );
 };

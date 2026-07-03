@@ -16,6 +16,8 @@ export const BRAND_DETAILS = {
         "At Force Sports and Wears India, we don't just make apparel; we engineer performance. Based in the heart of Mumbai, we have spent over 18+ years perfecting the art of sports manufacturing and custom teamwear.",
     aboutMission:
         "From local clubs to international arenas, our mission has always been clear: to provide athletes with high-quality, customized gear that empowers them to push past their limits.",
+    aboutVision:
+        "Our vision is to position India as the global hub for premium custom sportswear manufacturing, delivering cutting-edge technical fabrics and innovative designs to teams worldwide.",
     established: 2007,
     proprietor: "Mr. Anand Sanghai",
     headquarters: "Goregaon West, Mumbai",
@@ -43,7 +45,8 @@ export const BRAND_DETAILS = {
     },
     social: {
         instagram: "https://www.instagram.com/forcesports_india?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
-        facebook: "https://www.facebook.com/ForceSportsandWearsIndia/"
+        facebook: "https://www.facebook.com/ForceSportsandWearsIndia/",
+        indiamart: "https://www.indiamart.com/forcesportswearindia/"
     },
     manufacturing: {
         type: "Vertically Integrated powerhouse",

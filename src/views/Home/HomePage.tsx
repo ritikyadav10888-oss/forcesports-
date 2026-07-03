@@ -16,10 +16,7 @@ import { getProductSportexFabric, fabricSlug } from '../../utils/fabricMatching'
 import SEO from '../../components/seo/SEO';
 import ProductCardDetails from '../../components/products/ProductCardDetails';
 
-const FEATURED_PRODUCT_IDS = ['force-3d-innov-01', 'force-stealth-joggers', 'force-plain-cap-black'];
-const FEATURED_FABRICS = SPORTEX_FABRICS.filter((f) =>
-    ['Dryfit', 'Dotknit', '4 Way Lycra', 'Jacquard', 'Super Softy', 'Honeycomb'].includes(f.name)
-);
+const FEATURED_PRODUCT_IDS = ['force-3d-inv-01', 'force-stealth-joggers', 'force-plain-cap-black'];
 
 const CUSTOMIZE_STEPS = [
     { step: '01', title: 'Pick your gear', desc: 'Jerseys, polos, track pants, caps, 3D kits & team uniforms.', icon: Shirt },
@@ -52,7 +49,7 @@ const CLIENTS = [
     { name: "DMART", logo: "/client logo/DMart-Logo-Vector.jpg", icon: ShoppingCart, color: "bg-green-700" },
 ] as const;
 
-const ClientMarqueeItem = ({ client, size = 'medium' }: { client: (typeof CLIENTS)[number]; size?: 'small' | 'large' | 'medium' }) => {
+const ClientMarqueeItem = ({ client, size = 'medium', logoMap = {} }: { client: (typeof CLIENTS)[number]; size?: 'small' | 'large' | 'medium'; logoMap?: Record<string, string> }) => {
     const [imageError, setImageError] = React.useState(false);
     const boxSize = size === 'large' ? 'w-16 h-16' : size === 'medium' ? 'w-14 h-14' : 'w-12 h-12';
     const iconSize = size === 'large' ? 26 : size === 'medium' ? 22 : 18;
@@ -63,6 +60,9 @@ const ClientMarqueeItem = ({ client, size = 'medium' }: { client: (typeof CLIENT
               ? 'text-base md:text-lg'
               : 'text-sm md:text-base';
 
+    const fileName = client.logo.split('/').pop() || '';
+    const resolvedLogo = logoMap[fileName] || getCDNUrl(client.logo);
+
     return (
         <div
             className={`${size === 'medium' ? 'mx-8 md:mx-12' : 'mx-10 md:mx-14'} flex items-center gap-4 md:gap-5 group/item shrink-0`}
@@ -70,9 +70,9 @@ const ClientMarqueeItem = ({ client, size = 'medium' }: { client: (typeof CLIENT
             <div
                 className={`${boxSize} shrink-0 rounded-full bg-white flex items-center justify-center shadow-[0_8px_24px_rgba(15,23,42,0.08)] border border-slate-100/90 transition-transform duration-300 group-hover/item:scale-[1.03] overflow-hidden p-2`}
             >
-                {client.logo && !imageError ? (
+                {resolvedLogo && !imageError ? (
                     <img
-                        src={client.logo}
+                        src={resolvedLogo}
                         alt={client.name}
                         loading="lazy"
                         referrerPolicy="no-referrer"
@@ -98,19 +98,37 @@ const ClientMarqueeItem = ({ client, size = 'medium' }: { client: (typeof CLIENT
 
 const HomePage = () => {
     const featuredProducts = PRODUCTS.filter((p) => FEATURED_PRODUCT_IDS.includes(p.id));
+    const [featuredFabrics, setFeaturedFabrics] = React.useState<any[]>([]);
+    const [logoMap, setLogoMap] = React.useState<Record<string, string>>({});
+
+    React.useEffect(() => {
+        setLogoMap({});
+    }, []);
+
+    React.useEffect(() => {
+        const fallback = SPORTEX_FABRICS.filter((f) =>
+            ['Dryfit', 'Dotknit', '4 Way Lycra', 'Jacquard', 'Super Softy', 'Honeycomb'].includes(f.name)
+        ).map(f => ({
+            name: f.name,
+            gsm: f.gsm,
+            file: `/Sportex Fabrics/${f.file}`
+        }));
+        setFeaturedFabrics(fallback);
+    }, []);
 
     return (
         <div className="bg-white overflow-x-hidden">
             <SEO
-                title="Force Sports and Wears India | Custom Sportswear Mumbai Since 2007"
-                description={`${BRAND_DETAILS.name} — premium custom jerseys, uniforms, and Sportex technical fabrics. ${BRAND_DETAILS.experience} of manufacturing in Mumbai.`}
+                title="Force Sports and Wears India | Global Bulk T-Shirt Manufacturer"
+                description={`Top-rated global manufacturer and exporter of custom sportswear, bulk t-shirts, and team uniforms. Based in India, shipping premium quality worldwide. Worldwide sportswear partner, top global bulk t-shirt and sportswear manufacturer, international shipping wholesale.`}
+                keywords="global export & shipping, worldwide sportswear partner, top global bulk t-shirt manufacturer, international shipping, wholesale orders worldwide, reliable sportswear exporter online, export premium apparel worldwide"
             />
 
             {/* Hero */}
             <section className="relative min-h-[92vh] flex items-center justify-center overflow-hidden bg-slate-900 pt-20">
                 <div className="absolute inset-0 z-0">
                     <img
-                        src="/hero-montage-2.jpg"
+                        src={getCDNUrl("/hero-montage-2.jpg")}
                         alt={BRAND_DETAILS.name}
                         className="w-full h-full object-cover opacity-60 scale-105 animate-[slow-zoom_20s_ease-in-out_infinite_alternate]"
                     />
@@ -313,11 +331,11 @@ const HomePage = () => {
                                     viewport={{ once: true }}
                                     className="bg-white rounded-[2rem] border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl flex flex-col"
                                 >
-                                    <div className="relative aspect-[4/5] bg-[radial-gradient(circle_at_top,rgba(6,182,212,0.08),transparent_60%)] p-6">
+                                    <div className="relative aspect-[4/5] bg-[radial-gradient(circle_at_top,rgba(6,182,212,0.08),transparent_60%)] py-10 px-6 sm:py-12 sm:px-8">
                                         <img
                                             src={getCDNUrl(product.image, { width: 600 })}
                                             alt={product.title}
-                                            className="w-full h-full object-contain"
+                                            className="w-full h-full object-contain mix-blend-darken"
                                         />
                                         {product.productCode && (
                                             <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-slate-900 text-white text-[9px] font-black uppercase">
@@ -443,7 +461,7 @@ const HomePage = () => {
                         </Link>
                     </div>
                     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                        {FEATURED_FABRICS.map((fabric) => (
+                        {featuredFabrics.map((fabric) => (
                             <Link
                                 key={fabric.name}
                                 href={`/fabrics#fabric-${fabricSlug(fabric.name)}`}
@@ -451,7 +469,7 @@ const HomePage = () => {
                             >
                                 <div className="aspect-square bg-white p-3 border-b border-slate-100">
                                     <img
-                                        src={getCDNUrl(`/Sportex Fabrics/${fabric.file}`)}
+                                        src={getCDNUrl(fabric.file)}
                                         alt={fabric.name}
                                         loading="lazy"
                                         className="w-full h-full object-contain group-hover:scale-105 transition-transform"
@@ -579,6 +597,8 @@ const HomePage = () => {
                 </div>
             </section>
 
+
+
             {/* Clients marquee */}
             <section className="py-14 md:py-16 bg-[#f4f6f8] overflow-hidden isolate">
                 <div className="max-w-7xl mx-auto px-6 mb-10 text-center">
@@ -590,7 +610,7 @@ const HomePage = () => {
                 <div className="flex overflow-hidden py-2">
                     <div className="flex animate-marquee items-center whitespace-nowrap [animation-duration:45s]">
                         {[...CLIENTS, ...CLIENTS].map((client, idx) => (
-                            <ClientMarqueeItem key={idx} client={client} size="medium" />
+                            <ClientMarqueeItem key={idx} client={client} size="medium" logoMap={logoMap} />
                         ))}
                     </div>
                 </div>

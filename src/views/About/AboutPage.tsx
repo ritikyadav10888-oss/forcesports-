@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Shield, Target, Award, Users, ChevronRight } from 'lucide-react';
 import { BRAND_DETAILS } from '../../data/brandData';
 import Link from 'next/link';
+import { getCDNUrl } from '../../utils/cdnUtils';
 
 import SEO from '../../components/seo/SEO';
 const AboutPage = () => {
@@ -17,7 +18,7 @@ const AboutPage = () => {
             <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-slate-900 pt-20 pb-16">
                 <div className="absolute inset-0 z-0">
                     <img
-                        src="/about-hero.png"
+                        src={getCDNUrl("/about-hero.png")}
                         alt={`${BRAND_DETAILS.name} — custom sportswear manufacturing in Mumbai`}
                         className="w-full h-full object-cover object-center opacity-45"
                     />
@@ -72,9 +73,16 @@ const AboutPage = () => {
                         <p className="text-slate-600 text-lg md:text-xl leading-relaxed mb-6">
                             {BRAND_DETAILS.aboutIntro}
                         </p>
-                        <p className="text-slate-600 text-lg md:text-xl leading-relaxed mb-10">
-                            {BRAND_DETAILS.aboutMission}
-                        </p>
+                        <div className="mb-10">
+                            <h3 className="text-sm font-bold uppercase tracking-widest text-cyan-600 mb-2">Our Mission</h3>
+                            <p className="text-slate-600 text-lg md:text-xl leading-relaxed mb-6">
+                                {BRAND_DETAILS.aboutMission}
+                            </p>
+                            <h3 className="text-sm font-bold uppercase tracking-widest text-cyan-600 mb-2 mt-8">Our Vision</h3>
+                            <p className="text-slate-600 text-lg md:text-xl leading-relaxed">
+                                {BRAND_DETAILS.aboutVision}
+                            </p>
+                        </div>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 p-8 bg-slate-50 rounded-2xl border border-slate-100">
                             <div>
@@ -215,7 +223,7 @@ const AboutPage = () => {
                             className="relative"
                         >
                             <img
-                                src="/manufacturing-detail.png"
+                                src={getCDNUrl("/manufacturing-detail.png")}
                                 alt="Production Detail"
                                 className="rounded-3xl shadow-2xl"
                             />
@@ -245,7 +253,7 @@ const AboutPage = () => {
                             <div key={idx} className="p-8 bg-white rounded-3xl shadow-sm border border-slate-100 hover:border-cyan-500 hover:shadow-xl transition-all group flex flex-col justify-center items-center text-center">
                                 {company.logo && (
                                     <div className="flex-1 flex items-center justify-center mb-4 min-h-[80px]">
-                                        <img src={company.logo} alt="Company Logo" className="max-h-20 max-w-full object-contain group-hover:scale-105 transition-transform" />
+                                        <img src={getCDNUrl(company.logo)} alt="Company Logo" className="max-h-20 max-w-full object-contain group-hover:scale-105 transition-transform" />
                                     </div>
                                 )}
                                 <h4 className="text-lg md:text-xl font-black text-slate-900 mb-3 uppercase group-hover:text-cyan-600 transition-colors tracking-tight leading-tight flex items-center">{company.name}</h4>

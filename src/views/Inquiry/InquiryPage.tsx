@@ -132,58 +132,30 @@ const InquiryPage = () => {
         setStatusMsg('Sending your inquiry...');
 
         try {
-            const { db, storage } = await import('../../lib/firebase');
-            const { collection, addDoc, serverTimestamp } = await import('firebase/firestore');
-            const { ref, uploadBytes, getDownloadURL } = await import('firebase/storage');
+            let imageUrl = imagePreview || '';
 
-            let imageUrl = '';
-            if (image) {
-                const imageRef = ref(storage, `inquiries/${Date.now()}_${image.name}`);
-                await uploadBytes(imageRef, image);
-                imageUrl = await getDownloadURL(imageRef);
-            }
-
-            await addDoc(collection(db, 'inquiries'), {
-                fullName: formData.fullName,
-                email: formData.email,
-                phone: formData.phone,
-                quantity: formData.quantity,
-                productType: formData.productType,
-                message: formData.message,
-                imageUrl: imageUrl,
-                // Context from Customize button
-                product: prefilledProduct || null,
-                productCode: prefilledCode || null,
-                fabric: prefilledFabric || null,
-                placement: prefilledPlacement || null,
-                logoSize: prefilledSize || null,
-                createdAt: serverTimestamp(),
-                status: 'new'
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    fullName: formData.fullName,
+                    email: formData.email,
+                    phone: formData.phone,
+                    quantity: formData.quantity,
+                    productType: formData.productType,
+                    message: formData.message,
+                    imageUrl: imageUrl,
+                    product: prefilledProduct || null,
+                    productCode: prefilledCode || null,
+                    fabric: prefilledFabric || null,
+                    placement: prefilledPlacement || null,
+                    logoSize: prefilledSize || null,
+                    source: prefilledProduct ? 'Customize Button' : 'Main Contact Form'
+                })
             });
 
-            // Trigger Email Notification
-            try {
-                await fetch('/api/contact', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        fullName: formData.fullName,
-                        email: formData.email,
-                        phone: formData.phone,
-                        quantity: formData.quantity,
-                        productType: formData.productType,
-                        message: formData.message,
-                        // Pass customize context for rich email
-                        product: prefilledProduct || null,
-                        productCode: prefilledCode || null,
-                        fabric: prefilledFabric || null,
-                        placement: prefilledPlacement || null,
-                        logoSize: prefilledSize || null,
-                        source: prefilledProduct ? 'Customize Button' : 'Main Contact Form'
-                    })
-                });
-            } catch (emailErr) {
-                console.error("Failed to send email notification, but lead was saved:", emailErr);
+            if (!response.ok) {
+                throw new Error('Failed to send inquiry email');
             }
 
             // Pick a random thank-you message
@@ -197,7 +169,7 @@ const InquiryPage = () => {
         } catch (error) {
             console.error('Submission error:', error);
             setStatus('error');
-            setStatusMsg('Could not save your inquiry. Please try again later.');
+            setStatusMsg('Could not send your inquiry. Please try again later.');
         }
     };
 

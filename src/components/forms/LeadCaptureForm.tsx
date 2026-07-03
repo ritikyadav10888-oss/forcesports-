@@ -2,8 +2,6 @@
 
 import React, { useState } from 'react';
 import { Send, CheckCircle2, Loader2 } from 'lucide-react';
-import { db } from '../../lib/firebase';
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { BRAND_DETAILS } from '../../data/brandData';
 import Link from 'next/link';
 
@@ -20,33 +18,22 @@ export default function LeadCaptureForm() {
         setStatus('submitting');
 
         try {
-            // 1. Save to Firebase Admin Inbox
-            await addDoc(collection(db, 'inquiries'), {
-                fullName: formData.fullName,
-                email: formData.email,
-                phone: formData.phone,
-                productType: 'Lead Capture Form',
-                message: 'Customer requested contact via the inline lead capture section.',
-                createdAt: serverTimestamp(),
-                status: 'new'
+            // Trigger Email Notification directly without saving to Firestore
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    fullName: formData.fullName,
+                    email: formData.email,
+                    phone: formData.phone,
+                    productType: 'Lead Capture Form',
+                    message: 'Customer requested contact via the inline lead capture section.',
+                    source: 'Inline Lead Capture Section'
+                })
             });
 
-            // 2. Trigger Email Notification
-            try {
-                await fetch('/api/contact', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        fullName: formData.fullName,
-                        email: formData.email,
-                        phone: formData.phone,
-                        productType: 'Lead Capture Form',
-                        message: 'Customer requested contact via the inline lead capture section.',
-                        source: 'Inline Lead Capture Section'
-                    })
-                });
-            } catch (emailErr) {
-                console.error("Email notification failed, but lead saved:", emailErr);
+            if (!response.ok) {
+                throw new Error('Failed to send lead email');
             }
 
             setStatus('success');

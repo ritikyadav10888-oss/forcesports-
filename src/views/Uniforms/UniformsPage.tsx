@@ -20,28 +20,8 @@ const UniformsPage = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchLiveUniforms = async () => {
-            try {
-                const { db } = await import('../../lib/firebase');
-                const { collection, getDocs } = await import('firebase/firestore');
-                
-                const queryPromise = getDocs(collection(db, 'uniforms'));
-                const timeoutPromise = new Promise<never>((_, reject) =>
-                    setTimeout(() => reject(new Error('Firestore query timed out')), 4000)
-                );
-                
-                const snapshot = await Promise.race([queryPromise, timeoutPromise]);
-                if (!snapshot.empty) {
-                    const fetchedUniforms = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })) as UniformProduct[];
-                    setLiveUniforms(fetchedUniforms);
-                }
-            } catch (error) {
-                console.error("Error fetching live uniforms:", error);
-            } finally {
-                setLoading(false);
-            }
-        };
-        fetchLiveUniforms();
+        setLiveUniforms(UNIFORMS);
+        setLoading(false);
     }, []);
 
     const filteredUniforms = liveUniforms.filter(u => {
@@ -51,10 +31,7 @@ const UniformsPage = () => {
         const subcategoryMatch = selectedSubcategories.length === 0 || (u.subcategory && selectedSubcategories.includes(u.subcategory));
         
         if (categoryMatch) {
-            if (u.category === 'School /colleges') {
-                return subcategoryMatch;
-            }
-            return true;
+            return subcategoryMatch;
         }
         
         return false;
@@ -135,8 +112,8 @@ const UniformsPage = () => {
                                                 <div className="space-y-4">
                                                     {UniformCategories.map(cat => {
                                                         const isSelected = selectedCategories.includes(cat);
-                                                        const showSubcategories = cat === 'School /colleges' && isSelected;
-                                                        const subcategories = cat === 'School /colleges' ? ['T-shirt', 'Trackpant', 'Shorts', 'Caps'] : [];
+                                                        const showSubcategories = isSelected;
+                                                        const subcategories = ['T-shirt', 'Shorts', 'Bags', 'Caps', 'Trackpant'];
 
                                                         return (
                                                             <div key={cat} className="space-y-3">
@@ -148,10 +125,11 @@ const UniformsPage = () => {
                                                                         onChange={() => {
                                                                             setSelectedCategories(prev => {
                                                                                 const isRemoving = prev.includes(cat);
-                                                                                if (isRemoving && cat === 'School /colleges') {
-                                                                                    setSelectedSubcategories([]); // Reset subcategories when unchecking School
+                                                                                const newCats = isRemoving ? prev.filter(c => c !== cat) : [...prev, cat];
+                                                                                if (newCats.length === 0) {
+                                                                                    setSelectedSubcategories([]);
                                                                                 }
-                                                                                return isRemoving ? prev.filter(c => c !== cat) : [...prev, cat];
+                                                                                return newCats;
                                                                             });
                                                                         }}
                                                                     />

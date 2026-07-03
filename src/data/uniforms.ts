@@ -16,462 +16,1600 @@ export interface UniformProduct {
 }
 
 export const UNIFORMS: UniformProduct[] = [
-    // SCHOOL
     {
-        id: 'uni-sch-polo',
-        title: 'Modern School Polo T-Shirt',
-        category: 'School /colleges',
-        subcategory: 'T-shirt',
-        description: 'Premium pique cotton-blend polo with reinforced collar and vibrant school colors.',
-        longDescription: 'Our Modern School Polo is engineered for the rigorous demands of daily school life. Crafted from a high-quality pique cotton blend, it offers the perfect balance of breathability and structure. The reinforced collar and cuffs maintain their shape wash after wash, while our double-dye process ensures school colors remain vibrant through the entire academic year.',
-        image: '/uniforms/school_polo.png',
-        features: ['Anti-Pilling Fabric', 'Breathable Blend', 'Superior Color Hold', 'Reinforced Side Slits'],
-        specs: {
-            'Fabric': '60% Cotton, 40% Polyester Pique',
-            'Weight': '220 - 240 GSM',
-            'Fit': 'Regular School Fit',
-            'Durability': 'High - Lab Tested for 50+ Washes',
-            'Ironing': 'Low-crease technology'
+        "id": "school-colleges-image-copy-2-png",
+        "title": "School Premium Trackpant",
+        "category": "School /colleges",
+        "subcategory": "Trackpant",
+        "description": "Premium trackpant designed for School /colleges. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our School /colleges uniform range offers high-quality apparel tailored for your industry. This School Premium Trackpant features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/school uniforms/image copy 2.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
         },
-        customization: ['School Logo Embroidery', 'Pocket Printing', 'House Color Tipping'],
-        sizeCharts: {
-            unifrom: {
-                label: 'Uniform Sizes (In Inches)',
-                values: [
-                    { size: '24', chest: '26', length: '18' },
-                    { size: '26', chest: '28', length: '19' },
-                    { size: '28', chest: '30', length: '20' },
-                    { size: '30', chest: '32', length: '22' },
-                    { size: '32', chest: '34', length: '24' },
-                    { size: '34', chest: '36', length: '25' },
-                    { size: '36', chest: '38', length: '26' }
-                ]
-            }
-        }
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/school uniforms/image copy 2.png"
+        ]
     },
     {
-        id: 'uni-sch-raglan',
-        title: 'Sporty Raglan School T-Shirt',
-        category: 'School /colleges',
-        subcategory: 'T-shirt',
-        description: 'Dynamic raglan-style t-shirt with contrasting sleeves, perfect for a modern school look.',
-        longDescription: 'The Sporty Raglan is a favorite for schools looking for a contemporary athletic aesthetic. The raglan sleeve construction eliminates shoulder seams, allowing for maximum arm movement during sports and play. Made with ultra-soft combed cotton, it provides "all-day comfort" that students love.',
-        image: '/uniforms/school_raglan_tshirt.png',
-        features: ['Contrasting Raglan Sleeves', 'Soft-Touch Cotton', 'Reinforced Neckline', 'Tagless for Comfort'],
-        specs: {
-            'Fabric': '100% Combed Cotton / Poly-Cotton',
-            'Weight': '180 - 200 GSM',
-            'Fit': 'Modern Athletic Fit',
-            'Durability': 'High Color Retention'
+        "id": "school-colleges-image-copy-3-png",
+        "title": "School Premium Trackpant",
+        "category": "School /colleges",
+        "subcategory": "Trackpant",
+        "description": "Premium trackpant designed for School /colleges. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our School /colleges uniform range offers high-quality apparel tailored for your industry. This School Premium Trackpant features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/school uniforms/image copy 3.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
         },
-        customization: ['Sleeve Logo Printing', 'Chest Graphic', 'ID Label Stitching'],
-        sizeCharts: {
-            tshirt: {
-                label: 'T-Shirt Sizes (In Inches)',
-                values: [
-                    { size: '28', chest: '30', length: '20' },
-                    { size: '30', chest: '32', length: '22' },
-                    { size: '32', chest: '34', length: '24' },
-                    { size: '34', chest: '36', length: '25' },
-                    { size: '36', chest: '38', length: '26' }
-                ]
-            }
-        }
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/school uniforms/image copy 3.png"
+        ]
     },
     {
-        id: 'uni-sch-house',
-        title: 'Vibrant House Sports T-Shirt',
-        category: 'School /colleges',
-        subcategory: 'T-shirt',
-        description: 'Breathable and moisture-wicking t-shirts designed for school sports houses and team events.',
-        longDescription: 'Designed specifically for Inter-House competitions, our Sports T-Shirts utilize advanced moisture-wicking technology. The interlock knit polyester is incredibly lightweight and dries almost instantly. Available in all standard house colors (Red, Blue, Green, Yellow) with high-definition sublimation options.',
-        image: '/uniforms/school_house_tshirt.png',
-        features: ['Moisture-Wicking Tech', 'Vibrant Sublimation', 'Interlock Knit', 'Quick-Dry Finish'],
-        specs: {
-            'Fabric': '100% Micro Polyester (Dry-Fit)',
-            'Weight': '160 GSM',
-            'Fit': 'Athletic Performance Fit',
-            'Durability': 'Snag-Resistant'
+        "id": "school-colleges-image-copy-4-png",
+        "title": "School Premium Trackpant",
+        "category": "School /colleges",
+        "subcategory": "Trackpant",
+        "description": "Premium trackpant designed for School /colleges. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our School /colleges uniform range offers high-quality apparel tailored for your industry. This School Premium Trackpant features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/school uniforms/image copy 4.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
         },
-        customization: ['House Name Printing', 'Student Numbering', 'Sponsor Logo Area'],
-        sizeCharts: {
-            tshirt: {
-                label: 'Sports Tee Sizes (In Inches)',
-                values: [
-                    { size: '28', chest: '30', length: '20' },
-                    { size: '30', chest: '32', length: '22' },
-                    { size: '32', chest: '34', length: '24' },
-                    { size: '34', chest: '36', length: '25' },
-                    { size: '36', chest: '38', length: '26' }
-                ]
-            }
-        }
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/school uniforms/image copy 4.png"
+        ]
     },
     {
-        id: 'uni-sch-event',
-        title: 'Custom School Event T-Shirt',
-        category: 'School /colleges',
-        subcategory: 'T-shirt',
-        description: 'Premium quality cotton t-shirts designed for school anniversaries, trips, and special events.',
-        longDescription: 'Our Event T-Shirts are crafted from the highest quality bio-washed cotton to provide a premium feel for those special milestones. Whether it is a batch trip or a 50th-anniversary celebration, these shirts are designed to be kept as cherished souvenirs for years to come.',
-        image: '/uniforms/school_event_tshirt.png',
-        features: ['Bio-Washed Cotton', 'Eco-Friendly Inks', 'Seamless Side Stitch', 'Premium Hand-feel'],
-        specs: {
-            'Fabric': '100% Organic / Bio-Wash Cotton',
-            'Weight': '180 GSM',
-            'Fit': 'Regular Comfort Fit',
-            'Durability': 'Safe for Multiple Event Washes'
+        "id": "school-colleges-image-copy-5-png",
+        "title": "School Premium Trackpant",
+        "category": "School /colleges",
+        "subcategory": "Trackpant",
+        "description": "Premium trackpant designed for School /colleges. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our School /colleges uniform range offers high-quality apparel tailored for your industry. This School Premium Trackpant features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/school uniforms/image copy 5.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
         },
-        customization: ['Commemorative Logo', 'Event Date Printing', 'Bulk Packaging'],
-        sizeCharts: {
-            tshirt: {
-                label: 'Event Tee Sizes (In Inches)',
-                values: [
-                    { size: 'S', chest: '38', length: '27' },
-                    { size: 'M', chest: '40', length: '28' },
-                    { size: 'L', chest: '42', length: '29' },
-                    { size: 'XL', chest: '44', length: '30' }
-                ]
-            }
-        }
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/school uniforms/image copy 5.png"
+        ]
     },
     {
-        id: 'uni-sch-trackpant',
-        title: 'Performance School Trackpant',
-        category: 'School /colleges',
-        subcategory: 'Trackpant',
-        description: 'Durable and flexible trackpants designed for active school days and sports.',
-        longDescription: 'Our school trackpants are built for endless movement. Using a specialized Super Poly blend with NS Lycra, we achieve 4-way stretch that does not lose its shape. Reinforced knees ensure longevity through active playground sessions.',
-        image: '/uniforms/school_trackpant.png',
-        features: ['Reinforced Knees', 'Elasticized Waist', 'Quick-Dry Tech', 'Deep Side Pockets'],
-        specs: {
-            'Fabric': 'Super Poly / NS Lycra Blend',
-            'Weight': '200 - 220 GSM',
-            'Fit': 'Athletic Tapered Fit',
-            'Durability': 'Anti-Abrasion Material'
+        "id": "school-colleges-image-copy-6-png",
+        "title": "School Premium Trackpant",
+        "category": "School /colleges",
+        "subcategory": "Trackpant",
+        "description": "Premium trackpant designed for School /colleges. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our School /colleges uniform range offers high-quality apparel tailored for your industry. This School Premium Trackpant features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/school uniforms/image copy 6.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
         },
-        customization: ['Side Stripe Branding', 'Logo Vinyl Print', 'Zipped Pockets'],
-        sizeCharts: {
-            trackpant: {
-                label: 'Trackpant Sizes (In Inches)',
-                values: [
-                    { size: '24', waist: '22-24', length: '30' },
-                    { size: '26', waist: '24-26', length: '32' },
-                    { size: '28', waist: '26-28', length: '34' },
-                    { size: '30', waist: '28-30', length: '36' },
-                    { size: '32', waist: '30-32', length: '38' }
-                ]
-            }
-        }
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/school uniforms/image copy 6.png"
+        ]
     },
     {
-        id: 'uni-sch-shorts',
-        title: 'Classic School Shorts',
-        category: 'School /colleges',
-        subcategory: 'Shorts',
-        description: 'Comfortable and rugged school shorts, perfect for summer schedules.',
-        longDescription: 'Our classic school shorts are made from heavy-duty cotton drill, designed specifically for comfort in warmer climates. Featuring traditional multi-pocket styling and double-stitched seams for extra durability.',
-        image: '/uniforms/school_shorts.png',
-        features: ['Tear-Resistant', 'Easy-Iron Fabric', 'Multiple Pockets', 'Bartack Reinforcement'],
-        specs: {
-            'Fabric': 'Cotton Drill / Twill',
-            'Weight': '180 - 200 GSM',
-            'Fit': 'Relaxed Comfort Fit',
-            'Durability': 'Reinforced Stitching'
+        "id": "school-colleges-image-copy-7-png",
+        "title": "School Premium Trackpant",
+        "category": "School /colleges",
+        "subcategory": "Trackpant",
+        "description": "Premium trackpant designed for School /colleges. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our School /colleges uniform range offers high-quality apparel tailored for your industry. This School Premium Trackpant features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/school uniforms/image copy 7.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
         },
-        customization: ['School Crest Embroidery', 'Internal Name Tags']
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/school uniforms/image copy 7.png"
+        ]
     },
     {
-        id: 'uni-sch-cap',
-        title: 'School Identity Cap',
-        category: 'School /colleges',
-        subcategory: 'Caps',
-        description: 'Structured 6-panel cap featuring school colors and protection from the sun.',
-        longDescription: 'Complete the school uniform with our identity series caps. These structured 6-panel caps provide excellent sun protection while maintaining a unified school brand. The adjustable strap ensures a one-size-fits-all solution for growing students.',
-        image: '/uniforms/school_cap.png',
-        features: ['Cotton Twill', 'Adjustable Strap', 'UV Shield', 'Ventilation Eyelets'],
-        specs: {
-            'Fabric': '100% Cotton Twill',
-            'Weight': 'Structured 6-Panel',
-            'Fit': 'One Size (Adjustable)',
-            'Durability': 'Color Fast Material'
+        "id": "school-colleges-image-copy-8-png",
+        "title": "School Premium Trackpant",
+        "category": "School /colleges",
+        "subcategory": "Trackpant",
+        "description": "Premium trackpant designed for School /colleges. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our School /colleges uniform range offers high-quality apparel tailored for your industry. This School Premium Trackpant features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/school uniforms/image copy 8.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
         },
-        customization: ['3D Logo Embroidery', 'Contrast Sandwich Peak']
-    },
-
-    // CORPORATE
-    {
-        id: 'uni-corp-polo',
-        title: 'Executive Style Polo',
-        category: 'Corporate staff',
-        subcategory: 'T-shirt',
-        description: 'Elite corporate polo for a sharp, professional boardroom presence.',
-        longDescription: 'Our Executive Polo uses the highest grade of mercerized cotton to provide a subtle silken sheen and unparalleled softness. Designed for the modern professional, it maintains a crisp look all day, making it perfect for office-to-dinner transitions.',
-        image: '/uniforms/corporate_polo.png',
-        features: ['Premium Mercerized Cotton', 'Wrinkle-Free', 'Tailored Fit', 'Silky Handfeel'],
-        specs: {
-            'Fabric': '100% Mercerized Pique Cotton',
-            'Weight': '240 - 260 GSM',
-            'Fit': 'Slim / Professional Fit',
-            'Durability': 'Anti-Shrink & Anti-Fade'
-        },
-        customization: ['Subtle Chest Embroidery', 'Nape Branding', 'Logo Engraved Buttons'],
-        sizeCharts: {
-            polo: {
-                label: 'Executive Polo Sizes (In Inches)',
-                values: [
-                    { size: 'S', chest: '38', length: '27' },
-                    { size: 'M', chest: '40', length: '28' },
-                    { size: 'L', chest: '42', length: '29' },
-                    { size: 'XL', chest: '44', length: '30' },
-                    { size: '2XL', chest: '46', length: '31' }
-                ]
-            }
-        }
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/school uniforms/image copy 8.png"
+        ]
     },
     {
-        id: 'uni-corp-tshirt',
-        title: 'Staff Event T-Shirt',
-        category: 'Corporate staff',
-        subcategory: 'T-shirt',
-        description: 'High-quality cotton t-shirts designed for corporate team-building and events.',
-        longDescription: 'Boost team morale with our premium event t-shirts. We use bio-washed 100% combed cotton to ensure comfort during long activities. Our high-definition printing processes can handle complex corporate logos and event graphics with precision.',
-        image: '/uniforms/corporate_tshirt.png',
-        features: ['100% Bio-Wash Cotton', 'Pre-Shrunk', 'Vibrant Sublimation', 'Interlock Stitching'],
-        specs: {
-            'Fabric': '100% Combed Cotton (Bio-Washed)',
-            'Weight': '180 GSM',
-            'Fit': 'Modern Unisex Fit',
-            'Durability': 'Soft Touch Feel'
+        "id": "school-colleges-image-copy-png",
+        "title": "School Premium Trackpant",
+        "category": "School /colleges",
+        "subcategory": "Trackpant",
+        "description": "Premium trackpant designed for School /colleges. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our School /colleges uniform range offers high-quality apparel tailored for your industry. This School Premium Trackpant features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/school uniforms/image copy.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
         },
-        customization: ['Large Back Printing', 'Sleeve Branding', 'Photo-Realistic Prints']
-    },
-    // PERFORMANCE CORPORATE
-    {
-        id: 'uni-corp-polo-perf',
-        title: 'Performance Pique Corporate Polo',
-        category: 'Corporate staff',
-        subcategory: 'T-shirt',
-        description: 'Advanced moisture-wicking polo for active corporate staff and sales teams.',
-        longDescription: 'For staff who are constantly on the move, our Performance Polo is a game-changer. Using advanced moisture-wicking technology, it moves sweat away from the body to keep the wearer cool and dry. The anti-microbial finish prevents odors, ensuring freshness all day.',
-        image: '/uniforms/corporate_performance_polo.png',
-        features: ['Moisture-Wicking Fabric', 'Anti-Microbial Finish', 'UPF 30+ Protection', 'Stay-Flat Collar'],
-        specs: {
-            'Fabric': '100% Performance Micro-Pique',
-            'Weight': '170 GSM',
-            'Fit': 'Professional Athletic Fit',
-            'Durability': 'No-Fade Vivid Colors'
-        },
-        customization: ['Cool-Max Branded Sleeves', 'Digital Sublimation Logo', 'Silicon Grip Hem'],
-        sizeCharts: {
-            polo: {
-                label: 'Performance Polo Sizes (In Inches)',
-                values: [
-                    { size: 'S', chest: '38', length: '27' },
-                    { size: 'M', chest: '40', length: '28' },
-                    { size: 'L', chest: '42', length: '29' },
-                    { size: 'XL', chest: '44', length: '30' }
-                ]
-            }
-        }
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/school uniforms/image copy.png"
+        ]
     },
     {
-        id: 'uni-corp-crew-tee',
-        title: 'Premium Combed Cotton Crew Tee',
-        category: 'Corporate staff',
-        subcategory: 'T-shirt',
-        description: 'The ultimate luxury base layer or smart-casual basic for the modern office.',
-        longDescription: 'Not all t-shirts are created equal. Our Premium Crew is crafted from ultra-fine combed cotton with a bio-wash finish for a silk-like handfeel. Designed with a structured neckline that does not sag, it is the perfect undercover layer or a clean standalone piece.',
-        image: '/uniforms/corporate_premium_tee.png',
-        features: ['Super-Fine Combed Cotton', 'Bio-Washed Finish', 'Lycra-Reinforced Neck', 'Side-Seamed Construction'],
-        specs: {
-            'Fabric': '100% Luxury Combed Cotton',
-            'Weight': '190 GSM',
-            'Fit': 'Tailored Luxury Fit',
-            'Durability': 'Zero-Torque Stability'
+        "id": "school-colleges-image-png",
+        "title": "School Premium Trackpant",
+        "category": "School /colleges",
+        "subcategory": "Trackpant",
+        "description": "Premium trackpant designed for School /colleges. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our School /colleges uniform range offers high-quality apparel tailored for your industry. This School Premium Trackpant features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/school uniforms/image.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
         },
-        customization: ['High-Density Print', 'Suede-Touch Branded Neck Tape', 'Custom Hem Tags']
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/school uniforms/image.png"
+        ]
     },
     {
-        id: 'uni-corp-trackpant',
-        title: 'Staff Performance Trackpant',
-        category: 'Corporate staff',
-        subcategory: 'Trackpant',
-        description: 'Premium technical trackpants for corporate sports events and staff travel.',
-        longDescription: 'Our Staff Performance Trackpants are designed for ultimate comfort and professional team appearance. Featuring high-stretch technical fabric, moisture-wicking properties, and a sleek modern fit that complements our corporate polo range.',
-        image: '/uniforms/corporate_trackpant.png',
-        features: ['4-Way Stretch Tech', 'Zippered Pockets', 'Tapered Modern Fit', 'Moisture-Wicking'],
-        specs: {
-            'Fabric': 'NS Lycra Premium Blend',
-            'Fit': 'Modern Tapered',
-            'Usage': 'Travel / Sports Event'
+        "id": "school-colleges-school-uniform-shorts-black-1781781238872-png",
+        "title": "School School Uniform Shorts Black 1781781238872",
+        "category": "School /colleges",
+        "subcategory": "Shorts",
+        "description": "Premium shorts designed for School /colleges. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our School /colleges uniform range offers high-quality apparel tailored for your industry. This School School Uniform Shorts Black 1781781238872 features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/school uniforms/school_uniform_shorts_black_1781781238872.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
         },
-        customization: ['Team Logo Embroidery', 'Side Stripe Printing'],
-        sizeCharts: {
-            trackpant: {
-                label: 'Staff Trackpant Sizes (In Inches)',
-                values: [
-                    { size: 'M', waist: '30-32', length: '39' },
-                    { size: 'L', waist: '32-34', length: '40' },
-                    { size: 'XL', waist: '34-36', length: '41' }
-                ]
-            }
-        }
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/school uniforms/school_uniform_shorts_black_1781781238872.png"
+        ]
     },
     {
-        id: 'uni-corp-shorts',
-        title: 'Corporate Team Shorts',
-        category: 'Corporate staff',
-        subcategory: 'Shorts',
-        description: 'Technical sports shorts for corporate team-building activities.',
-        longDescription: 'Lightweight and durable, these shorts are perfect for corporate tournaments and recreational staff use. Breathable side panels and a comfort-first waistband ensure performance on the field.',
-        image: '/uniforms/corporate_shorts.png',
-        features: ['Breathable Mesh Panels', 'Reinforced Stitching', 'Adjustable Drawcord', 'Quick-Dry'],
-        specs: {
-            'Fabric': 'Dobby Polyester',
-            'Fit': 'Athletic Relaxed',
-            'Length': '7" Inseam'
+        "id": "school-colleges-school-uniform-shorts-default-1781781225312-png",
+        "title": "School School Uniform Shorts Default 1781781225312",
+        "category": "School /colleges",
+        "subcategory": "Shorts",
+        "description": "Premium shorts designed for School /colleges. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our School /colleges uniform range offers high-quality apparel tailored for your industry. This School School Uniform Shorts Default 1781781225312 features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/school uniforms/school_uniform_shorts_default_1781781225312.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
         },
-        customization: ['Logo Vinyl Print', 'Squad Numbering']
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/school uniforms/school_uniform_shorts_default_1781781225312.png"
+        ]
     },
     {
-        id: 'uni-corp-cap',
-        title: 'Executive Branding Cap',
-        category: 'Corporate staff',
-        subcategory: 'Caps',
-        description: 'Premium 6-panel structured cap for corporate identity and summer events.',
-        longDescription: 'A high-profile structured cap that provides a premium canvas for your corporate logo. Made with breathable heavy cotton and a comfortable moisture-wicking sweatband.',
-        image: '/uniforms/corporate_cap.png',
-        features: ['Structured 6-Panel', 'Anti-Sweat Band', 'Premium Metal Buckle', 'Breathable Twill'],
-        specs: {
-            'Material': 'Heavy Cotton Twill',
-            'Style': 'Executive Structured'
+        "id": "school-colleges-school-uniform-shorts-green-1781781251012-png",
+        "title": "School School Uniform Shorts Green 1781781251012",
+        "category": "School /colleges",
+        "subcategory": "Shorts",
+        "description": "Premium shorts designed for School /colleges. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our School /colleges uniform range offers high-quality apparel tailored for your industry. This School School Uniform Shorts Green 1781781251012 features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/school uniforms/school_uniform_shorts_green_1781781251012.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
         },
-        customization: ['3D Embroidery', 'Sandwich Peak Branding']
-    },
-
-    // FAST FOOD
-    {
-        id: 'uni-ff-service-tshirt',
-        title: 'Floor Services T-Shirt',
-        category: 'Fast Food floor staff',
-        subcategory: 'T-shirt',
-        description: 'Stain-resistant and comfortable t-shirt designed for high-paced food service environments.',
-        longDescription: 'Engineered for the heat and rush of the food industry. Our floor service shirts feature a specialized Teflon coating that repels oils and spills, keeping staff looking clean throughout their shift. Built-in odor control keeps the team fresh through long hours.',
-        image: '/uniforms/fast_food_tshirt.png',
-        features: ['Oil-Repellent', 'Ultra-Durable', 'Odor-Control', 'Sweat-Absorption'],
-        specs: {
-            'Fabric': 'Teflon-Coated Polyester Blend',
-            'Weight': '190 GSM',
-            'Fit': 'Active Work Fit',
-            'Durability': 'Industrial Wash Grade'
-        },
-        customization: ['Employee Name Tags', 'Chef Coat Style Printing']
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/school uniforms/school_uniform_shorts_green_1781781251012.png"
+        ]
     },
     {
-        id: 'uni-ff-cap',
-        title: 'Service Crew Cap',
-        category: 'Fast Food floor staff',
-        subcategory: 'Caps',
-        description: 'Professional hygiene-focused cap for kitchen and floor staff.',
-        longDescription: 'Ensure maximum hygiene without sacrificing comfort. Our service caps feature a mesh-back design for maximum ventilation in hot kitchen environments. The washable fabric makes it easy to maintain high professional standards.',
-        image: '/uniforms/fast_food_cap.png',
-        features: ['Washable Mesh', 'Hair Control', 'Breathable', 'Lightweight'],
-        specs: {
-            'Fabric': 'Poly-Cotton with Mesh Back',
-            'Weight': 'Lightweight Hygiene Grade',
-            'Fit': 'Velcro Adjustable',
-            'Durability': 'Highly Breathable'
+        "id": "school-colleges-school-uniform-shorts-grey-1781781262382-png",
+        "title": "School School Uniform Shorts Grey 1781781262382",
+        "category": "School /colleges",
+        "subcategory": "Shorts",
+        "description": "Premium shorts designed for School /colleges. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our School /colleges uniform range offers high-quality apparel tailored for your industry. This School School Uniform Shorts Grey 1781781262382 features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/school uniforms/school_uniform_shorts_grey_1781781262382.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
         },
-        customization: ['Front Logo Embroidery', 'Side Ventilation']
-    },
-
-    // INDUSTRIAL
-    {
-        id: 'uni-ind-workwear',
-        title: 'Industrial Heavy T-Shirt',
-        category: 'Industrial',
-        subcategory: 'T-shirt',
-        description: 'Rugged, high-GSM industrial t-shirt built to withstand factory wear and tear.',
-        longDescription: 'Built for the toughest job sites, our Industrial Heavy T-Shirt uses 300 GSM open-end cotton for maximum abrasion resistance. Double-stitched seams and reinforced stress points ensure this shirt survives the most demanding shifts.',
-        image: '/uniforms/industrial_tshirt.png',
-        features: ['Double-Stitched Seams', 'Industrial Grade Cotton', 'Fade-Proof', 'Heavyweight Construction'],
-        specs: {
-            'Fabric': 'Heavy Duty 100% Open-End Cotton',
-            'Weight': '280 - 300 GSM',
-            'Fit': 'Loose / Functional Fit',
-            'Durability': 'Tear-Resistant Construction'
-        },
-        customization: ['Reflective Tape Stitched', 'Heavy Duty Screen Print']
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/school uniforms/school_uniform_shorts_grey_1781781262382.png"
+        ]
     },
     {
-        id: 'uni-ind-cargo',
-        title: 'Industrial Cargo Shorts',
-        category: 'Industrial',
-        subcategory: 'Shorts',
-        description: 'Heavy-duty cargo shorts with multiple utility pockets for industrial workers.',
-        longDescription: 'Our industrial cargo shorts provide the ultimate utility in the field. Using a Ripstop canvas blend, they are virtually tear-proof. Multiple reinforced pockets and hammer loops provide essential storage for tools and equipment.',
-        image: '/uniforms/industrial_shorts.png',
-        features: ['Reinforced Pockets', 'Tear-Stop Fabric', 'Worker Comfort Fit', 'High-Stress Bartacking'],
-        specs: {
-            'Fabric': 'Ripstop / Canvas Blend',
-            'Weight': '260 GSM',
-            'Fit': 'Multi-Pocket Utility Fit',
-            'Durability': 'Safety Grade Fabric'
+        "id": "school-colleges-school-uniform-tshirt-1781780870372-png",
+        "title": "School School Uniform Tshirt 1781780870372",
+        "category": "School /colleges",
+        "subcategory": "T-shirt",
+        "description": "Premium t-shirt designed for School /colleges. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our School /colleges uniform range offers high-quality apparel tailored for your industry. This School School Uniform Tshirt 1781780870372 features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/school uniforms/school_uniform_tshirt_1781780870372.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
         },
-        customization: ['Knee Pad Slots', 'Hammer Loops branding']
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/school uniforms/school_uniform_tshirt_1781780870372.png"
+        ]
     },
     {
-        id: 'uni-ind-safecap',
-        title: 'Safety Industry Cap',
-        category: 'Industrial',
-        subcategory: 'Caps',
-        description: 'High-visibility industrial cap for site safety and staff identification.',
-        longDescription: 'Maximize site safety with our high-visibility identity series. These caps feature fluorescent fabrics and reflective details to ensure staff remain visible in all lighting conditions. Built-in sweat-wicking bands keep workers comfortable during physically demanding work.',
-        image: '/uniforms/industrial_cap.png',
-        features: ['Sweat-Wicking Band', 'Durable Construction', 'High-Vis Details', 'Reflective Accents'],
-        specs: {
-            'Fabric': 'Fluorescent Polyester',
-            'Weight': 'Reinforced 5-Panel',
-            'Fit': 'Bumper Cap Option',
-            'Durability': 'Site Safety Compliant'
+        "id": "school-colleges-school-uniform-tshirt-black-1781781069751-png",
+        "title": "School School Uniform Tshirt Black 1781781069751",
+        "category": "School /colleges",
+        "subcategory": "T-shirt",
+        "description": "Premium t-shirt designed for School /colleges. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our School /colleges uniform range offers high-quality apparel tailored for your industry. This School School Uniform Tshirt Black 1781781069751 features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/school uniforms/school_uniform_tshirt_black_1781781069751.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
         },
-        customization: ['Reflective Print', 'ID Badge Holder']
-    },
-
-    // QUICK DELIVERY
-    {
-        id: 'uni-qds-rider-jersey',
-        title: 'Delivery Rider T-Shirt',
-        category: 'Quick Delivery services',
-        subcategory: 'T-shirt',
-        description: 'Performance jersey with high-visibility accents for delivery professionals.',
-        longDescription: 'Engineered for those who spend their day on the move. Our rider jerseys use a specialized 4-way stretch micro-polyester that provides maximum mobility. Integrated UV protection and moisture-wicking technology keep riders cool and protected during long hours on the road.',
-        image: '/uniforms/qds_jersey.png',
-        features: ['Reflective Tech', 'UV Protection', '4-Way Stretch', 'Hyper-Breathable'],
-        specs: {
-            'Fabric': 'Dry-Fit Micro Polyester',
-            'Weight': '150 - 170 GSM',
-            'Fit': 'Tapered Rider Fit',
-            'Durability': 'Sweat-Wicking & Anti-Static'
-        },
-        customization: ['Full Sublimation Print', 'Night-Reflective Accents']
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/school uniforms/school_uniform_tshirt_black_1781781069751.png"
+        ]
     },
     {
-        id: 'uni-qds-safecap',
-        title: 'Rider Safety Cap',
-        category: 'Quick Delivery services',
-        subcategory: 'Caps',
-        description: 'Lightweight delivery cap designed for long hours on the road.',
-        longDescription: 'Designed to fit comfortably under helmets or as a standalone piece. Our rider safety caps use ultralight ripstop nylon that is water-resistant. Reflective side panels and trims ensure 360-degree visibility for nighttime deliveries.',
-        image: '/uniforms/qds_cap.png',
-        features: ['Reflective Trim', 'Airflow Mesh', 'Comfort Lining', 'Water-Resistant Shell'],
-        specs: {
-            'Fabric': 'Ultralight Ripstop Nylon',
-            'Weight': 'Featherlight',
-            'Fit': 'Draw-String Adjustable',
-            'Durability': 'Water-Resistant'
+        "id": "school-colleges-school-uniform-tshirt-green-1781781012390-png",
+        "title": "School School Uniform Tshirt Green 1781781012390",
+        "category": "School /colleges",
+        "subcategory": "T-shirt",
+        "description": "Premium t-shirt designed for School /colleges. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our School /colleges uniform range offers high-quality apparel tailored for your industry. This School School Uniform Tshirt Green 1781781012390 features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/school uniforms/school_uniform_tshirt_green_1781781012390.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
         },
-        customization: ['Brand Logo Print', 'Reflective Side Panels']
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/school uniforms/school_uniform_tshirt_green_1781781012390.png"
+        ]
+    },
+    {
+        "id": "school-colleges-school-uniform-tshirt-grey-1781781046054-png",
+        "title": "School School Uniform Tshirt Grey 1781781046054",
+        "category": "School /colleges",
+        "subcategory": "T-shirt",
+        "description": "Premium t-shirt designed for School /colleges. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our School /colleges uniform range offers high-quality apparel tailored for your industry. This School School Uniform Tshirt Grey 1781781046054 features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/school uniforms/school_uniform_tshirt_grey_1781781046054.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
+        },
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/school uniforms/school_uniform_tshirt_grey_1781781046054.png"
+        ]
+    },
+    {
+        "id": "school-colleges-school-uniform-tshirt-lightblue-1781781081549-png",
+        "title": "School School Uniform Tshirt Lightblue 1781781081549",
+        "category": "School /colleges",
+        "subcategory": "T-shirt",
+        "description": "Premium t-shirt designed for School /colleges. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our School /colleges uniform range offers high-quality apparel tailored for your industry. This School School Uniform Tshirt Lightblue 1781781081549 features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/school uniforms/school_uniform_tshirt_lightblue_1781781081549.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
+        },
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/school uniforms/school_uniform_tshirt_lightblue_1781781081549.png"
+        ]
+    },
+    {
+        "id": "school-colleges-school-uniform-tshirt-maroon-1781781001344-png",
+        "title": "School School Uniform Tshirt Maroon 1781781001344",
+        "category": "School /colleges",
+        "subcategory": "T-shirt",
+        "description": "Premium t-shirt designed for School /colleges. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our School /colleges uniform range offers high-quality apparel tailored for your industry. This School School Uniform Tshirt Maroon 1781781001344 features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/school uniforms/school_uniform_tshirt_maroon_1781781001344.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
+        },
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/school uniforms/school_uniform_tshirt_maroon_1781781001344.png"
+        ]
+    },
+    {
+        "id": "school-colleges-school-uniform-tshirt-navy-1781780990100-png",
+        "title": "School School Uniform Tshirt Navy 1781780990100",
+        "category": "School /colleges",
+        "subcategory": "T-shirt",
+        "description": "Premium t-shirt designed for School /colleges. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our School /colleges uniform range offers high-quality apparel tailored for your industry. This School School Uniform Tshirt Navy 1781780990100 features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/school uniforms/school_uniform_tshirt_navy_1781780990100.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
+        },
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/school uniforms/school_uniform_tshirt_navy_1781780990100.png"
+        ]
+    },
+    {
+        "id": "school-colleges-school-uniform-tshirt-orange-1781781102848-png",
+        "title": "School School Uniform Tshirt Orange 1781781102848",
+        "category": "School /colleges",
+        "subcategory": "T-shirt",
+        "description": "Premium t-shirt designed for School /colleges. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our School /colleges uniform range offers high-quality apparel tailored for your industry. This School School Uniform Tshirt Orange 1781781102848 features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/school uniforms/school_uniform_tshirt_orange_1781781102848.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
+        },
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/school uniforms/school_uniform_tshirt_orange_1781781102848.png"
+        ]
+    },
+    {
+        "id": "school-colleges-school-uniform-tshirt-purple-1781781091043-png",
+        "title": "School School Uniform Tshirt Purple 1781781091043",
+        "category": "School /colleges",
+        "subcategory": "T-shirt",
+        "description": "Premium t-shirt designed for School /colleges. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our School /colleges uniform range offers high-quality apparel tailored for your industry. This School School Uniform Tshirt Purple 1781781091043 features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/school uniforms/school_uniform_tshirt_purple_1781781091043.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
+        },
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/school uniforms/school_uniform_tshirt_purple_1781781091043.png"
+        ]
+    },
+    {
+        "id": "school-colleges-school-uniform-tshirt-red-1781781033648-png",
+        "title": "School School Uniform Tshirt Red 1781781033648",
+        "category": "School /colleges",
+        "subcategory": "T-shirt",
+        "description": "Premium t-shirt designed for School /colleges. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our School /colleges uniform range offers high-quality apparel tailored for your industry. This School School Uniform Tshirt Red 1781781033648 features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/school uniforms/school_uniform_tshirt_red_1781781033648.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
+        },
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/school uniforms/school_uniform_tshirt_red_1781781033648.png"
+        ]
+    },
+    {
+        "id": "school-colleges-school-uniform-tshirt-royal-1781781023051-png",
+        "title": "School School Uniform Tshirt Royal 1781781023051",
+        "category": "School /colleges",
+        "subcategory": "T-shirt",
+        "description": "Premium t-shirt designed for School /colleges. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our School /colleges uniform range offers high-quality apparel tailored for your industry. This School School Uniform Tshirt Royal 1781781023051 features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/school uniforms/school_uniform_tshirt_royal_1781781023051.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
+        },
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/school uniforms/school_uniform_tshirt_royal_1781781023051.png"
+        ]
+    },
+    {
+        "id": "school-colleges-school-uniform-tshirt-yellow-1781781057603-png",
+        "title": "School School Uniform Tshirt Yellow 1781781057603",
+        "category": "School /colleges",
+        "subcategory": "T-shirt",
+        "description": "Premium t-shirt designed for School /colleges. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our School /colleges uniform range offers high-quality apparel tailored for your industry. This School School Uniform Tshirt Yellow 1781781057603 features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/school uniforms/school_uniform_tshirt_yellow_1781781057603.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
+        },
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/school uniforms/school_uniform_tshirt_yellow_1781781057603.png"
+        ]
+    },
+    {
+        "id": "corporate-staff-image-copy-2-png",
+        "title": "Corporate Premium Uniform",
+        "category": "Corporate staff",
+        "subcategory": "T-shirt",
+        "description": "Premium t-shirt designed for Corporate staff. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our Corporate staff uniform range offers high-quality apparel tailored for your industry. This Corporate Premium Uniform features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/corporate staff/image copy 2.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
+        },
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/corporate staff/image copy 2.png"
+        ]
+    },
+    {
+        "id": "corporate-staff-image-copy-3-png",
+        "title": "Corporate Premium Uniform",
+        "category": "Corporate staff",
+        "subcategory": "T-shirt",
+        "description": "Premium t-shirt designed for Corporate staff. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our Corporate staff uniform range offers high-quality apparel tailored for your industry. This Corporate Premium Uniform features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/corporate staff/image copy 3.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
+        },
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/corporate staff/image copy 3.png"
+        ]
+    },
+    {
+        "id": "corporate-staff-image-copy-4-png",
+        "title": "Corporate Premium Uniform",
+        "category": "Corporate staff",
+        "subcategory": "T-shirt",
+        "description": "Premium t-shirt designed for Corporate staff. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our Corporate staff uniform range offers high-quality apparel tailored for your industry. This Corporate Premium Uniform features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/corporate staff/image copy 4.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
+        },
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/corporate staff/image copy 4.png"
+        ]
+    },
+    {
+        "id": "corporate-staff-image-copy-png",
+        "title": "Corporate Premium Uniform",
+        "category": "Corporate staff",
+        "subcategory": "T-shirt",
+        "description": "Premium t-shirt designed for Corporate staff. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our Corporate staff uniform range offers high-quality apparel tailored for your industry. This Corporate Premium Uniform features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/corporate staff/image copy.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
+        },
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/corporate staff/image copy.png"
+        ]
+    },
+    {
+        "id": "corporate-staff-image-png",
+        "title": "Corporate Premium Uniform",
+        "category": "Corporate staff",
+        "subcategory": "T-shirt",
+        "description": "Premium t-shirt designed for Corporate staff. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our Corporate staff uniform range offers high-quality apparel tailored for your industry. This Corporate Premium Uniform features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/corporate staff/image.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
+        },
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/corporate staff/image.png"
+        ]
+    },
+    {
+        "id": "fast-food-floor-staff-fast-food-staff-cap-mockup-1-png",
+        "title": "Fast Fast Food Staff Cap Mockup 1",
+        "category": "Fast Food floor staff",
+        "subcategory": "Caps",
+        "description": "Premium caps designed for Fast Food floor staff. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our Fast Food floor staff uniform range offers high-quality apparel tailored for your industry. This Fast Fast Food Staff Cap Mockup 1 features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/FAST FOOD FLOOR STAFF/fast_food_staff_cap_mockup_1.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
+        },
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/FAST FOOD FLOOR STAFF/fast_food_staff_cap_mockup_1.png"
+        ]
+    },
+    {
+        "id": "fast-food-floor-staff-fast-food-staff-cap-mockup-3-png",
+        "title": "Fast Fast Food Staff Cap Mockup 3",
+        "category": "Fast Food floor staff",
+        "subcategory": "Caps",
+        "description": "Premium caps designed for Fast Food floor staff. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our Fast Food floor staff uniform range offers high-quality apparel tailored for your industry. This Fast Fast Food Staff Cap Mockup 3 features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/FAST FOOD FLOOR STAFF/fast_food_staff_cap_mockup_3.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
+        },
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/FAST FOOD FLOOR STAFF/fast_food_staff_cap_mockup_3.png"
+        ]
+    },
+    {
+        "id": "fast-food-floor-staff-fast-food-staff-cap-mockup-4-png",
+        "title": "Fast Fast Food Staff Cap Mockup 4",
+        "category": "Fast Food floor staff",
+        "subcategory": "Caps",
+        "description": "Premium caps designed for Fast Food floor staff. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our Fast Food floor staff uniform range offers high-quality apparel tailored for your industry. This Fast Fast Food Staff Cap Mockup 4 features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/FAST FOOD FLOOR STAFF/fast_food_staff_cap_mockup_4.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
+        },
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/FAST FOOD FLOOR STAFF/fast_food_staff_cap_mockup_4.png"
+        ]
+    },
+    {
+        "id": "fast-food-floor-staff-fast-food-staff-cap-mockup-5-png",
+        "title": "Fast Fast Food Staff Cap Mockup 5",
+        "category": "Fast Food floor staff",
+        "subcategory": "Caps",
+        "description": "Premium caps designed for Fast Food floor staff. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our Fast Food floor staff uniform range offers high-quality apparel tailored for your industry. This Fast Fast Food Staff Cap Mockup 5 features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/FAST FOOD FLOOR STAFF/fast_food_staff_cap_mockup_5.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
+        },
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/FAST FOOD FLOOR STAFF/fast_food_staff_cap_mockup_5.png"
+        ]
+    },
+    {
+        "id": "fast-food-floor-staff-fast-food-uniform-mockup-png",
+        "title": "Fast Fast Food Uniform Mockup",
+        "category": "Fast Food floor staff",
+        "subcategory": "T-shirt",
+        "description": "Premium t-shirt designed for Fast Food floor staff. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our Fast Food floor staff uniform range offers high-quality apparel tailored for your industry. This Fast Fast Food Uniform Mockup features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/FAST FOOD FLOOR STAFF/fast_food_uniform_mockup.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
+        },
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/FAST FOOD FLOOR STAFF/fast_food_uniform_mockup.png"
+        ]
+    },
+    {
+        "id": "industrial-industrial-cap-black-png",
+        "title": "Industrial Cap Black",
+        "category": "Industrial",
+        "subcategory": "Caps",
+        "description": "Premium caps designed for Industrial. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our Industrial uniform range offers high-quality apparel tailored for your industry. This Industrial Cap Black features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/Industrial/industrial_cap_black.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
+        },
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/Industrial/industrial_cap_black.png"
+        ]
+    },
+    {
+        "id": "industrial-industrial-cap-grey-png",
+        "title": "Industrial Cap Grey",
+        "category": "Industrial",
+        "subcategory": "Caps",
+        "description": "Premium caps designed for Industrial. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our Industrial uniform range offers high-quality apparel tailored for your industry. This Industrial Cap Grey features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/Industrial/industrial_cap_grey.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
+        },
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/Industrial/industrial_cap_grey.png"
+        ]
+    },
+    {
+        "id": "industrial-industrial-cap-navy-png",
+        "title": "Industrial Cap Navy",
+        "category": "Industrial",
+        "subcategory": "Caps",
+        "description": "Premium caps designed for Industrial. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our Industrial uniform range offers high-quality apparel tailored for your industry. This Industrial Cap Navy features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/Industrial/industrial_cap_navy.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
+        },
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/Industrial/industrial_cap_navy.png"
+        ]
+    },
+    {
+        "id": "industrial-industrial-cap-orange-png",
+        "title": "Industrial Cap Orange",
+        "category": "Industrial",
+        "subcategory": "Caps",
+        "description": "Premium caps designed for Industrial. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our Industrial uniform range offers high-quality apparel tailored for your industry. This Industrial Cap Orange features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/Industrial/industrial_cap_orange.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
+        },
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/Industrial/industrial_cap_orange.png"
+        ]
+    },
+    {
+        "id": "industrial-industrial-cap-yellow-png",
+        "title": "Industrial Cap Yellow",
+        "category": "Industrial",
+        "subcategory": "Caps",
+        "description": "Premium caps designed for Industrial. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our Industrial uniform range offers high-quality apparel tailored for your industry. This Industrial Cap Yellow features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/Industrial/industrial_cap_yellow.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
+        },
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/Industrial/industrial_cap_yellow.png"
+        ]
+    },
+    {
+        "id": "industrial-industrial-tshirt-black-png",
+        "title": "Industrial Tshirt Black",
+        "category": "Industrial",
+        "subcategory": "T-shirt",
+        "description": "Premium t-shirt designed for Industrial. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our Industrial uniform range offers high-quality apparel tailored for your industry. This Industrial Tshirt Black features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/Industrial/industrial_tshirt_black.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
+        },
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/Industrial/industrial_tshirt_black.png"
+        ]
+    },
+    {
+        "id": "industrial-industrial-tshirt-grey-png",
+        "title": "Industrial Tshirt Grey",
+        "category": "Industrial",
+        "subcategory": "T-shirt",
+        "description": "Premium t-shirt designed for Industrial. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our Industrial uniform range offers high-quality apparel tailored for your industry. This Industrial Tshirt Grey features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/Industrial/industrial_tshirt_grey.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
+        },
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/Industrial/industrial_tshirt_grey.png"
+        ]
+    },
+    {
+        "id": "industrial-industrial-tshirt-navy-png",
+        "title": "Industrial Tshirt Navy",
+        "category": "Industrial",
+        "subcategory": "T-shirt",
+        "description": "Premium t-shirt designed for Industrial. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our Industrial uniform range offers high-quality apparel tailored for your industry. This Industrial Tshirt Navy features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/Industrial/industrial_tshirt_navy.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
+        },
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/Industrial/industrial_tshirt_navy.png"
+        ]
+    },
+    {
+        "id": "industrial-industrial-tshirt-orange-png",
+        "title": "Industrial Tshirt Orange",
+        "category": "Industrial",
+        "subcategory": "T-shirt",
+        "description": "Premium t-shirt designed for Industrial. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our Industrial uniform range offers high-quality apparel tailored for your industry. This Industrial Tshirt Orange features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/Industrial/industrial_tshirt_orange.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
+        },
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/Industrial/industrial_tshirt_orange.png"
+        ]
+    },
+    {
+        "id": "industrial-industrial-tshirt-yellow-png",
+        "title": "Industrial Tshirt Yellow",
+        "category": "Industrial",
+        "subcategory": "T-shirt",
+        "description": "Premium t-shirt designed for Industrial. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our Industrial uniform range offers high-quality apparel tailored for your industry. This Industrial Tshirt Yellow features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/Industrial/industrial_tshirt_yellow.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
+        },
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/Industrial/industrial_tshirt_yellow.png"
+        ]
+    },
+    {
+        "id": "quick-delivery-services-image-copy-10-png",
+        "title": "Quick Premium Uniform",
+        "category": "Quick Delivery services",
+        "subcategory": "T-shirt",
+        "description": "Premium t-shirt designed for Quick Delivery services. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our Quick Delivery services uniform range offers high-quality apparel tailored for your industry. This Quick Premium Uniform features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/quick delivery services/image copy 10.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
+        },
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/quick delivery services/image copy 10.png"
+        ]
+    },
+    {
+        "id": "quick-delivery-services-image-copy-11-png",
+        "title": "Quick Premium Uniform",
+        "category": "Quick Delivery services",
+        "subcategory": "T-shirt",
+        "description": "Premium t-shirt designed for Quick Delivery services. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our Quick Delivery services uniform range offers high-quality apparel tailored for your industry. This Quick Premium Uniform features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/quick delivery services/image copy 11.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
+        },
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/quick delivery services/image copy 11.png"
+        ]
+    },
+    {
+        "id": "quick-delivery-services-image-copy-2-png",
+        "title": "Quick Premium Uniform",
+        "category": "Quick Delivery services",
+        "subcategory": "T-shirt",
+        "description": "Premium t-shirt designed for Quick Delivery services. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our Quick Delivery services uniform range offers high-quality apparel tailored for your industry. This Quick Premium Uniform features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/quick delivery services/image copy 2.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
+        },
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/quick delivery services/image copy 2.png"
+        ]
+    },
+    {
+        "id": "quick-delivery-services-image-copy-3-png",
+        "title": "Quick Premium Uniform",
+        "category": "Quick Delivery services",
+        "subcategory": "T-shirt",
+        "description": "Premium t-shirt designed for Quick Delivery services. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our Quick Delivery services uniform range offers high-quality apparel tailored for your industry. This Quick Premium Uniform features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/quick delivery services/image copy 3.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
+        },
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/quick delivery services/image copy 3.png"
+        ]
+    },
+    {
+        "id": "quick-delivery-services-image-copy-4-png",
+        "title": "Quick Premium Uniform",
+        "category": "Quick Delivery services",
+        "subcategory": "T-shirt",
+        "description": "Premium t-shirt designed for Quick Delivery services. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our Quick Delivery services uniform range offers high-quality apparel tailored for your industry. This Quick Premium Uniform features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/quick delivery services/image copy 4.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
+        },
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/quick delivery services/image copy 4.png"
+        ]
+    },
+    {
+        "id": "quick-delivery-services-image-copy-5-png",
+        "title": "Quick Premium Uniform",
+        "category": "Quick Delivery services",
+        "subcategory": "T-shirt",
+        "description": "Premium t-shirt designed for Quick Delivery services. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our Quick Delivery services uniform range offers high-quality apparel tailored for your industry. This Quick Premium Uniform features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/quick delivery services/image copy 5.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
+        },
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/quick delivery services/image copy 5.png"
+        ]
+    },
+    {
+        "id": "quick-delivery-services-image-copy-6-png",
+        "title": "Quick Premium Uniform",
+        "category": "Quick Delivery services",
+        "subcategory": "T-shirt",
+        "description": "Premium t-shirt designed for Quick Delivery services. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our Quick Delivery services uniform range offers high-quality apparel tailored for your industry. This Quick Premium Uniform features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/quick delivery services/image copy 6.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
+        },
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/quick delivery services/image copy 6.png"
+        ]
+    },
+    {
+        "id": "quick-delivery-services-image-copy-7-png",
+        "title": "Quick Premium Uniform",
+        "category": "Quick Delivery services",
+        "subcategory": "T-shirt",
+        "description": "Premium t-shirt designed for Quick Delivery services. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our Quick Delivery services uniform range offers high-quality apparel tailored for your industry. This Quick Premium Uniform features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/quick delivery services/image copy 7.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
+        },
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/quick delivery services/image copy 7.png"
+        ]
+    },
+    {
+        "id": "quick-delivery-services-image-copy-8-png",
+        "title": "Quick Premium Uniform",
+        "category": "Quick Delivery services",
+        "subcategory": "T-shirt",
+        "description": "Premium t-shirt designed for Quick Delivery services. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our Quick Delivery services uniform range offers high-quality apparel tailored for your industry. This Quick Premium Uniform features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/quick delivery services/image copy 8.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
+        },
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/quick delivery services/image copy 8.png"
+        ]
+    },
+    {
+        "id": "quick-delivery-services-image-copy-9-png",
+        "title": "Quick Premium Uniform",
+        "category": "Quick Delivery services",
+        "subcategory": "T-shirt",
+        "description": "Premium t-shirt designed for Quick Delivery services. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our Quick Delivery services uniform range offers high-quality apparel tailored for your industry. This Quick Premium Uniform features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/quick delivery services/image copy 9.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
+        },
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/quick delivery services/image copy 9.png"
+        ]
+    },
+    {
+        "id": "quick-delivery-services-image-copy-png",
+        "title": "Quick Premium Uniform",
+        "category": "Quick Delivery services",
+        "subcategory": "T-shirt",
+        "description": "Premium t-shirt designed for Quick Delivery services. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our Quick Delivery services uniform range offers high-quality apparel tailored for your industry. This Quick Premium Uniform features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/quick delivery services/image copy.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
+        },
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/quick delivery services/image copy.png"
+        ]
+    },
+    {
+        "id": "quick-delivery-services-image-png",
+        "title": "Quick Premium Uniform",
+        "category": "Quick Delivery services",
+        "subcategory": "T-shirt",
+        "description": "Premium t-shirt designed for Quick Delivery services. Engineered for durability, comfort, and professional appearance.",
+        "longDescription": "Our Quick Delivery services uniform range offers high-quality apparel tailored for your industry. This Quick Premium Uniform features advanced fabric technology for all-day comfort.",
+        "image": "/uniforms/quick delivery services/image.png",
+        "features": [
+            "Premium Durable Fabric",
+            "Professional Fit & Finish",
+            "Comfortable for Long Shifts",
+            "Fade & Shrink Resistant"
+        ],
+        "specs": {
+            "Material": "Industry-grade Poly-Cotton Blend",
+            "Fit": "Regular/Comfort Fit",
+            "WashCare": "Machine Washable"
+        },
+        "customization": [
+            "Company Logo Embroidery",
+            "Custom Name Printing",
+            "Color Matching"
+        ],
+        "gallery": [
+            "/uniforms/quick delivery services/image.png"
+        ]
     }
 ];

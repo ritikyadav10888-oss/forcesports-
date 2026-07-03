@@ -1,4 +1,4 @@
-import { localImageMap } from './localImageMap';
+
 
 /**
  * Resolve image/asset URLs for dev and Firebase App Hosting.
@@ -12,34 +12,22 @@ export const getCDNUrl = (
 
   const path = localPath.trim();
 
-  // Intercept Firebase Storage URLs that might fail due to payment/Spark plan limits
-  if (path.includes('firebasestorage.googleapis.com')) {
-    try {
-      const parts = path.split('/o/');
-      if (parts.length > 1) {
-        const encodedPath = parts[1].split('?')[0];
-        const decodedPath = decodeURIComponent(encodedPath);
-        const filename = decodedPath.substring(decodedPath.lastIndexOf('/') + 1);
-        
-        // Strip timestamp prefix (e.g. 1779429973735_)
-        const cleanFilename = filename.replace(/^\d+_/, '');
-        
-        // Look up in localImageMap
-        const mapped = localImageMap[cleanFilename] || localImageMap[cleanFilename.toLowerCase()];
-        if (mapped) {
-          return encodeURI(mapped);
-        }
-      }
-    } catch (e) {
-      console.error('Failed to parse and map Firebase Storage URL, falling back to original URL', e);
-    }
-  }
-
+  // If it's already a firebase storage URL or data URI, return as-is
   if (path.startsWith('http://') || path.startsWith('https://') || path.startsWith('data:')) {
     return path;
   }
 
   const normalized = path.startsWith('/') ? path : `/${path}`;
+  const cleanPath = path.startsWith('/') ? path.substring(1) : path;
+  
+  const ext = cleanPath.split('.').pop()?.toLowerCase() || '';
+  const isAsset = ['png', 'jpg', 'jpeg', 'svg', 'webp', 'gif', 'pdf'].includes(ext);
+
+  if (isAsset) {
+    return `https://firebasestorage.googleapis.com/v0/b/force-sports-and-wears-i-a38aa.firebasestorage.app/o/${encodeURIComponent(cleanPath)}?alt=media`;
+  }
+
   return encodeURI(normalized);
 };
+
 

@@ -17,10 +17,21 @@ const Categories = ['T-Shirts', 'Track Pants', 'Shorts', 'Jackets', 'Bags', 'Cap
 const Sports = ['Badminton', 'Cricket', 'Football', 'Volleyball', 'Kabaddi', 'Pickleball', 'Tennis'] as const;
 const UsageTypes = ['T20', 'Practice', 'Travel', 'Coaches', 'Officials'] as const;
 
-const ProductPage = () => {
+interface ProductPageProps {
+    initialSport?: string;
+}
+
+const ProductPage = ({ initialSport }: ProductPageProps = {}) => {
     const [isMobileFiltersOpen, setIsMobileFiltersOpen] = useState(false);
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-    const [selectedSports, setSelectedSports] = useState<string[]>([]);
+    const [selectedSports, setSelectedSports] = useState<string[]>(() => {
+        if (initialSport) {
+            // Find case-insensitive match in Sports array
+            const matchedSport = Sports.find(s => s.toLowerCase() === initialSport.toLowerCase());
+            return matchedSport ? [matchedSport] : [];
+        }
+        return [];
+    });
     const [selectedUsages, setSelectedUsages] = useState<string[]>([]);
     const [searchQuery, setSearchQuery] = useState('');
     const [customizingProduct, setCustomizingProduct] = useState<Product | null>(null);
@@ -30,47 +41,33 @@ const ProductPage = () => {
         PRODUCTS.map((p) => mergeProductWithLocal(p))
     );
     const [loading, setLoading] = useState(true);
-
     useEffect(() => {
-        const fetchLiveProducts = async () => {
-            try {
-                const { db } = await import('../../lib/firebase');
-                const { collection, getDocs } = await import('firebase/firestore');
-                
-                const queryPromise = getDocs(collection(db, 'products'));
-                const timeoutPromise = new Promise<never>((_, reject) =>
-                    setTimeout(() => reject(new Error('Firestore query timed out')), 4000)
-                );
-                
-                const snapshot = await Promise.race([queryPromise, timeoutPromise]);
-                if (!snapshot.empty) {
-                    const fetchedProducts = snapshot.docs.map((doc) =>
-                        mergeProductWithLocal({ id: doc.id, ...doc.data() } as Product)
-                    );
-                    setLiveProducts(fetchedProducts);
-                } else {
-                    setLiveProducts(PRODUCTS.map((p) => mergeProductWithLocal(p)));
-                }
-            } catch (error) {
-                console.error("Error fetching live products:", error);
-                setLiveProducts(PRODUCTS.map((p) => mergeProductWithLocal(p)));
-            } finally {
-                setLoading(false);
-            }
-        };
-        fetchLiveProducts();
+        setLiveProducts(PRODUCTS.map((p) => mergeProductWithLocal(p)));
+        setLoading(false);
     }, []);
-
     const filteredProducts = liveProducts.filter(p => {
-        const categoryMatch = selectedCategories.length === 0 || selectedCategories.includes(p.category);
-        const sportMatch = selectedSports.length === 0 || (p.sport && selectedSports.includes(p.sport));
+        const isSportKit = p.category === 'T-Shirts' && p.sport && [
+            'Cricket', 'Football', 'Volleyball', 'Kabaddi', 'Pickleball', 'Tennis', 'Badminton', 'Table Tennis'
+        ].includes(p.sport);
+
+        const categoryMatch = selectedCategories.length === 0 || 
+            selectedCategories.includes(p.category);
+
+        const sportMatch = selectedSports.length === 0 || 
+            (p.sport && (selectedSports.includes(p.sport) || p.sport === 'All')) || 
+            (p.category === 'Bags' && p.sport === 'Other') ||
+            (p.category === 'Caps') ||
+            (p.category === 'Track Pants') ||
+            (p.category === 'Shorts') ||
+            (p.category === '3D Innovations');
         const usageMatch = selectedUsages.length === 0 || (p.usageType && selectedUsages.includes(p.usageType));
         const textMatch = searchQuery === '' || p.title.toLowerCase().includes(searchQuery.toLowerCase()) || (p.productCode && p.productCode.toLowerCase().includes(searchQuery.toLowerCase()));
         return categoryMatch && sportMatch && usageMatch && textMatch;
     });
 
-    const openWhatsApp = (product: Product) => {
-        const message = `Hi! I am interested in ${product.title} (${product.productCode || 'N/A'}).\n\nCategory: ${product.category}\n\nPlease share bulk pricing, MOQ, and delivery timeline.`;
+    const openWhatsApp = (product: Product, displayCategory?: string) => {
+        const cat = displayCategory || product.category;
+        const message = `Hi! I am interested in ${product.title} (${product.productCode || 'N/A'}).\n\nCategory: ${cat}\n\nPlease share bulk pricing, MOQ, and delivery timeline.`;
         const encoded = encodeURIComponent(message);
         window.open(`${BRAND_DETAILS.contacts.whatsappLink}&text=${encoded}`, '_blank');
     };
@@ -114,7 +111,7 @@ const ProductPage = () => {
                         className={`
                             fixed inset-y-0 right-0 w-[280px] bg-white z-[60] p-8 shadow-2xl border-l border-slate-100 flex flex-col transition-transform duration-300 ease-in-out
                             ${isMobileFiltersOpen ? 'translate-x-0' : 'translate-x-full'}
-                            lg:translate-x-0 lg:sticky lg:top-32 lg:w-72 lg:p-0 lg:shadow-none lg:border-none lg:bg-transparent lg:z-auto lg:h-fit
+                            lg:translate-x-0 lg:sticky lg:top-32 lg:w-72 lg:p-0 lg:shadow-none lg:border-none lg:bg-transparent lg:z-auto lg:max-h-[calc(100vh-10rem)]
                         `}
                     >
                                 <div className="lg:hidden flex items-center justify-between mb-8">
@@ -310,6 +307,19 @@ const ProductPage = () => {
                                         product.specs
                                     );
                                     const sportexGsm = SPORTEX_FABRICS.find((f) => f.name === sportexFabric)?.gsm;
+                                    
+                                    const isProductSportKit = product.category === 'T-Shirts' && product.sport && [
+                                        'Cricket', 'Football', 'Volleyball', 'Kabaddi', 'Pickleball', 'Tennis', 'Badminton', 'Table Tennis'
+                                    ].includes(product.sport);
+                                    const displayCategory = (() => {
+                                        if (isProductSportKit) {
+                                            if (selectedCategories.includes('Shorts')) return 'Shorts';
+                                            if (selectedCategories.includes('Track Pants')) return 'Track Pants';
+                                            return 'T-Shirts';
+                                        }
+                                        return product.category;
+                                    })();
+
                                     return (
                                     <motion.div
                                         key={product.id}
@@ -320,14 +330,18 @@ const ProductPage = () => {
                                     >
                                         <div className="relative aspect-[4/5] bg-[radial-gradient(circle_at_top,rgba(6,182,212,0.08),transparent_60%)] flex items-center justify-center overflow-hidden p-5 sm:p-6 group/img">
                                             <div className="absolute inset-0 bg-gradient-to-b from-white via-white/40 to-slate-50" />
-                                            <img
-                                                src={getCDNUrl(product.image, { width: 600 })}
-                                                alt={product.title}
-                                                loading="lazy"
-                                                className={`relative z-10 max-w-full max-h-full object-contain transition-all duration-700 drop-shadow-[0_20px_30px_rgba(15,23,42,0.10)]
-                                                    ${product.imageBack ? 'group-hover/img:opacity-0 group-hover/img:scale-110' : 'group-hover/img:scale-110'}`}
-                                            />
-                                            {product.imageBack && (
+                                            {product.image ? (
+                                                <img
+                                                    src={getCDNUrl(product.image, { width: 600 })}
+                                                    alt={product.title}
+                                                    loading="lazy"
+                                                    className={`relative z-10 max-w-full max-h-full object-contain transition-all duration-700 drop-shadow-[0_20px_30px_rgba(15,23,42,0.10)]
+                                                        ${product.imageBack ? 'group-hover/img:opacity-0 group-hover/img:scale-110' : 'group-hover/img:scale-110'}`}
+                                                />
+                                            ) : (
+                                                <div className="relative z-10 text-[10px] font-black text-slate-300 uppercase tracking-widest">No Preview</div>
+                                            )}
+                                            {product.imageBack && product.image && (
                                                 <img 
                                                     src={getCDNUrl(product.imageBack, { width: 600 })} 
                                                     alt={`${product.title} - Back View`}
@@ -363,7 +377,7 @@ const ProductPage = () => {
                                                 <div className="flex items-start justify-between gap-4">
                                                     <div>
                                                         <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-2 block">
-                                                            {product.category}
+                                                            {displayCategory}
                                                             {product.sport && !['Other', 'Activity', 'General', 'All'].includes(product.sport) && ` • ${product.sport}`}
                                                             {product.usageType && product.usageType !== 'General' && ` • ${product.usageType}`}
                                                         </span>
@@ -382,7 +396,7 @@ const ProductPage = () => {
                                                         </span>
                                                     )}
                                                     <span className="text-[9px] font-black text-slate-500 uppercase tracking-widest">
-                                                        {product.category}
+                                                        {displayCategory}
                                                     </span>
                                                 </div>
                                             </div>
@@ -413,7 +427,7 @@ const ProductPage = () => {
 
                                             <button
                                                 type="button"
-                                                onClick={() => openWhatsApp(product)}
+                                                onClick={() => openWhatsApp(product, displayCategory)}
                                                 className="mt-3 w-full py-3 rounded-2xl bg-[#25D366]/10 border border-[#25D366]/20 text-[#128C7E] text-[10px] font-black uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-[#25D366] hover:text-white transition-all"
                                             >
                                                 <MessageCircle size={16} /> WhatsApp Quote

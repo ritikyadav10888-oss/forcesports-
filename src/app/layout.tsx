@@ -22,8 +22,8 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Force Sports & Wears India",
-  description: "Leading manufacturer and supplier of customized sports apparel.",
+  title: "Force Sports & Wears India | Global Bulk T-Shirt & Custom Sportswear Manufacturer",
+  description: "Leading global manufacturer and wholesale exporter of customized sports apparel, bulk t-shirts, and team uniforms. Based in India, shipping worldwide.",
   icons: {
     icon: "/brand-logo.png",
     apple: "/brand-logo.png",

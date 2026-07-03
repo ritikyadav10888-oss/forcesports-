@@ -11,17 +11,21 @@ const Schema = () => {
         'description': 'Premium manufacturer of customized sports jerseys and athletic apparel in Mumbai.',
         'founder': 'Anand Sanghai',
         'foundingDate': '2007',
+        'slogan': 'Fueling Champions Since 2007',
+        'knowsAbout': ['Custom Sportswear Manufacturing', 'Bulk T-Shirts', 'Corporate Uniforms', 'Team Jerseys', 'Sportex Fabrics'],
         'sameAs': [
             'https://www.facebook.com/forcesportsindia',
             'https://www.instagram.com/forcesports_india',
-            'https://www.indiamart.com/forcesports-wearsindia'
+            'https://www.indiamart.com/forcesportswearindia/'
         ]
     };
 
     const localBusinessSchema = {
         '@context': 'https://schema.org',
-        '@type': 'SportsStore',
+        '@type': ['SportsStore', 'Manufacturer', 'WholesaleStore'],
         'name': 'Force Sports & Wears India',
+        'areaServed': 'Worldwide',
+        'description': 'Global Exporter and Top Bulk T-Shirt & Custom Sportswear Manufacturer. Based in India, supplying worldwide.',
         'image': 'https://www.forcesportsindia.com/og-image.jpg',
         '@id': 'https://www.forcesportsindia.com',
         'url': 'https://www.forcesportsindia.com',

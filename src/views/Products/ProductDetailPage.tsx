@@ -5,7 +5,7 @@ import { useParams, useRouter } from 'next/navigation';
 
 import { motion, AnimatePresence } from 'framer-motion';
 import ProductCustomizeModal from '../../components/products/ProductCustomizeModal';
-import { ArrowLeft, ChevronRight, Zap, CheckCircle2, MessageCircle, Maximize2, X, Loader2, Layers, Palette } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ChevronRight, Zap, CheckCircle2, MessageCircle, Maximize2, X, Loader2, Layers, Palette } from 'lucide-react';
 import { PRODUCTS, Product } from '../../data/products';
 import { BRAND_DETAILS } from '../../data/brandData';
 import { getProductSportexFabric, fabricSlug } from '../../utils/fabricMatching';
@@ -15,6 +15,68 @@ import { getCDNUrl } from '../../utils/cdnUtils';
 import SEO from '../../components/seo/SEO';
 import SizeChartModal from '../../components/SizeChartModal';
 import { Ruler } from 'lucide-react';
+
+const DEFAULT_SIZE_CHARTS: Record<string, { label: string; values: Record<string, string>[] }[]> = {
+    tshirt: [
+        {
+            label: "T-Shirt Sizes",
+            values: [
+                { "Size": "SMALL", "Full Chest": "38", "Body Length": "27" },
+                { "Size": "MEDIUM", "Full Chest": "40", "Body Length": "28" },
+                { "Size": "LARGE", "Full Chest": "42", "Body Length": "29" },
+                { "Size": "EXTRA LARGE", "Full Chest": "44", "Body Length": "30" },
+                { "Size": "2X LARGE", "Full Chest": "46", "Body Length": "31" },
+                { "Size": "3X LARGE", "Full Chest": "48", "Body Length": "32" },
+                { "Size": "4X LARGE", "Full Chest": "50", "Body Length": "33" },
+                { "Size": "5X LARGE", "Full Chest": "52", "Body Length": "34" },
+                { "Size": "6X LARGE", "Full Chest": "54", "Body Length": "35" },
+            ]
+        },
+        {
+            label: "Kids Sizes",
+            values: [
+                { "Age / Size": "1 TO 2 YEARS", "Chest": "22" },
+                { "Age / Size": "3 TO 4 YEARS", "Chest": "24" },
+                { "Age / Size": "5 TO 6 YEARS", "Chest": "26" },
+                { "Age / Size": "7 TO 8 YEARS", "Chest": "28" },
+                { "Age / Size": "9 TO 10 YEARS", "Chest": "30" },
+                { "Age / Size": "11 TO 12 YEARS", "Chest": "32" },
+                { "Age / Size": "13 TO 14 YEARS", "Chest": "34" },
+                { "Age / Size": "15 TO 16 YEARS", "Chest": "36" },
+            ]
+        }
+    ],
+    trackpants: [
+        {
+            label: "Track Pant Sizes",
+            values: [
+                { "Size": "MEDIUM", "Waist": "30-32", "Length": "39" },
+                { "Size": "LARGE", "Waist": "32-34", "Length": "40" },
+                { "Size": "EXTRA LARGE", "Waist": "34-36", "Length": "41" },
+                { "Size": "2x LARGE", "Waist": "36-38", "Length": "42" },
+            ]
+        }
+    ],
+    shorts: [
+        {
+            label: "Short Pant Sizes",
+            values: [
+                { "Size": "MEDIUM", "Waist": "30-32", "Length": "20" },
+                { "Size": "LARGE", "Waist": "32-34", "Length": "21" },
+                { "Size": "EXTRA LARGE", "Waist": "34-36", "Length": "22" },
+                { "Size": "2x LARGE", "Waist": "36-38", "Length": "23" },
+            ]
+        }
+    ]
+};
+
+const getDefaultChartsForCategory = (category: string) => {
+    const cat = category.toLowerCase();
+    if (cat.includes('pant')) return DEFAULT_SIZE_CHARTS.trackpants;
+    if (cat.includes('short')) return DEFAULT_SIZE_CHARTS.shorts;
+    if (cat.includes('bag') || cat.includes('cap')) return null;
+    return DEFAULT_SIZE_CHARTS.tshirt;
+};
 
 const ProductDetailPage = () => {
     const { productId } = useParams();
@@ -31,47 +93,55 @@ const ProductDetailPage = () => {
     const [isZoomOpen, setIsZoomOpen] = useState(false);
     const [isSizeChartOpen, setIsSizeChartOpen] = useState(false);
     const [showCustomize, setShowCustomize] = useState(false);
+    const [fabricDetails, setFabricDetails] = useState<any>(null);
+
+    const sportexFabric = product ? getProductSportexFabric(
+        product.id,
+        product.title,
+        product.description,
+        product.longDescription,
+        product.features,
+        product.specs
+    ) : '';
+
+    useEffect(() => {
+        if (!sportexFabric) {
+            setFabricDetails(null);
+            return;
+        }
+
+        const fetchFabricDetails = async () => {
+            const staticFabric = SPORTEX_FABRICS.find(
+                (f) => f.name.toLowerCase().trim() === sportexFabric.toLowerCase().trim()
+            );
+            const fallbackObj = staticFabric ? {
+                id: `static-${staticFabric.name}`,
+                name: staticFabric.name,
+                gsm: staticFabric.gsm,
+                desc: staticFabric.desc,
+                use: staticFabric.use || '',
+                printing: staticFabric.printing,
+                file: `/Sportex Fabrics/${staticFabric.file}`,
+            } : null;
+
+            setFabricDetails(fallbackObj);
+        };
+
+        fetchFabricDetails();
+    }, [sportexFabric]);
+
 
     useEffect(() => {
         const local = PRODUCTS.find((p) => p.id === productId);
         if (local) setProduct(mergeProductWithLocal(local));
-
-        const fetchProduct = async () => {
-            try {
-                const { db } = await import('../../lib/firebase');
-                const { doc, getDoc } = await import('firebase/firestore');
-                
-                const queryPromise = getDoc(doc(db, 'products', productId as string));
-                const timeoutPromise = new Promise<never>((_, reject) =>
-                    setTimeout(() => reject(new Error('Firestore query timed out')), 4000)
-                );
-                
-                const docSnap = await Promise.race([queryPromise, timeoutPromise]);
-                if (docSnap.exists()) {
-                    setProduct(
-                        mergeProductWithLocal({ id: docSnap.id, ...docSnap.data() } as Product)
-                    );
-                } else if (local) {
-                    setProduct(mergeProductWithLocal(local));
-                } else {
-                    setProduct(undefined);
-                }
-            } catch (error) {
-                console.error("Error fetching product:", error);
-                if (local) setProduct(mergeProductWithLocal(local));
-                else setProduct(undefined);
-            } finally {
-                setLoading(false);
-            }
-        };
-        setLoading(true);
-        fetchProduct();
+        else setProduct(undefined);
+        setLoading(false);
     }, [productId]);
 
     useEffect(() => {
         if (!product) return;
         const front = product.image;
-        const back = product.imageBack;
+        const back = (product.category === 'Caps' || product.category === 'Bags') ? undefined : product.imageBack;
         const gallery = product.gallery ?? [];
         const uniq: string[] = [];
         const push = (src?: string) => {
@@ -115,16 +185,8 @@ const ProductDetailPage = () => {
     }
 
     const activeImage = getCDNUrl(images[activeImageIndex] || product.image);
-    const isBackView = Boolean(product.imageBack && activeImage === product.imageBack);
-    const sportexFabric = getProductSportexFabric(
-        product.id,
-        product.title,
-        product.description,
-        product.longDescription,
-        product.features,
-        product.specs
-    );
-    const sportexGsm = SPORTEX_FABRICS.find((f) => f.name === sportexFabric)?.gsm;
+    const isBackView = Boolean(product.category !== 'Caps' && product.category !== 'Bags' && product.imageBack && activeImage === product.imageBack);
+    const sportexGsm = fabricDetails?.gsm || SPORTEX_FABRICS.find((f) => f.name.toLowerCase().trim() === sportexFabric.toLowerCase().trim())?.gsm;
 
     const openWhatsApp = () => {
         const message = `Hi! I am interested in ${product.title} (${product.productCode || 'N/A'}) from ${product.category}.\n\nPlease share bulk pricing, MOQ, and delivery timeline.`;
@@ -167,7 +229,7 @@ const ProductDetailPage = () => {
                                 title="Open image zoom"
                             />
                             <img src={activeImage} alt={product.title} className="w-full h-full object-contain" />
-                            {product.imageBack && (
+                            {product.category !== 'Caps' && product.category !== 'Bags' && product.imageBack && (
                                 <div
                                     data-testid="view-badge"
                                     className="absolute top-6 left-6 z-20 px-3 py-1 rounded-full bg-slate-900/90 text-white text-[10px] font-black uppercase tracking-widest"
@@ -187,18 +249,18 @@ const ProductDetailPage = () => {
                                 </button>
                             </div>
                         </div>
-                            <div className="flex flex-wrap gap-2 md:gap-3 mt-4">
+                            <div className="flex overflow-x-auto gap-2.5 md:gap-3 mt-4 pb-2 scrollbar-none">
                                 {images.map((img, idx) => (
                                     <button
                                         key={idx}
                                         onClick={() => setActiveImageIndex(idx)}
-                                        className={`relative flex-1 rounded-2xl overflow-hidden aspect-square border-2 transition-all p-2 bg-slate-50 ${activeImageIndex === idx ? 'border-cyan-500 shadow-lg shadow-cyan-100' : 'border-transparent opacity-60 hover:opacity-100'
+                                        className={`relative w-12 h-12 md:w-14 md:h-14 rounded-lg flex-shrink-0 overflow-hidden border-2 transition-all p-1 bg-slate-50 ${activeImageIndex === idx ? 'border-cyan-500 shadow-lg shadow-cyan-100' : 'border-transparent opacity-60 hover:opacity-100'
                                             }`}
                                     >
-                                        {product.imageBack && (
+                                        {product.category !== 'Caps' && product.category !== 'Bags' && product.imageBack && (
                                             <span
                                                 data-testid={img === product.imageBack ? 'thumb-badge-back' : 'thumb-badge-front'}
-                                                className={`absolute top-2 left-2 z-10 px-2 py-0.5 rounded-full text-[9px] font-black uppercase tracking-widest ${
+                                                className={`absolute bottom-1 left-1/2 -translate-x-1/2 z-10 px-1.5 py-0.5 rounded-full text-[7px] font-black uppercase tracking-wider shadow-sm ${
                                                 img === product.imageBack ? 'bg-slate-900 text-white' : 'bg-white text-slate-700 border border-slate-200'
                                             }`}>
                                                 {img === product.imageBack ? 'Back' : 'Front'}
@@ -335,13 +397,6 @@ const ProductDetailPage = () => {
                             )}
                         </div>
 
-                        <button
-                            onClick={() => setIsSizeChartOpen(true)}
-                            className="flex items-center gap-3 px-5 py-3 mb-10 bg-slate-100 hover:bg-slate-200 text-slate-900 rounded-xl font-bold uppercase tracking-widest text-xs transition-colors border border-slate-200"
-                        >
-                            <Ruler size={16} className="text-cyan-600" />
-                            View Size Chart & Fit Guide
-                        </button>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <button
@@ -428,12 +483,12 @@ const ProductDetailPage = () => {
                 <div className="max-w-7xl mx-auto">
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
                         {/* Specs */}
-                        <div className="lg:col-span-1">
+                        <div className={product.category === 'Bags' ? "lg:col-span-3 max-w-3xl mx-auto w-full" : "lg:col-span-1"}>
                             <div className="mb-10">
                                 <span className="text-slate-400 font-bold uppercase tracking-widest text-[10px] mb-2 block">Technical Deep Dive</span>
                                 <h2 className="text-3xl font-black uppercase tracking-tighter text-slate-900">Specifications</h2>
                             </div>
-                            <div className="space-y-3">
+                            <div className={product.category === 'Bags' ? "grid grid-cols-1 md:grid-cols-2 gap-4" : "space-y-3"}>
                                 <div className="flex justify-between items-center p-5 bg-cyan-50 rounded-2xl border border-cyan-200 shadow-sm">
                                     <span className="text-[10px] font-black uppercase tracking-widest text-cyan-700">Sportex Fabric</span>
                                     <Link
@@ -456,47 +511,132 @@ const ProductDetailPage = () => {
                                     </p>
                                 )}
                             </div>
+
+                            {fabricDetails && (
+                                <div className="mt-8">
+                                    <span className="text-slate-400 font-bold uppercase tracking-widest text-[10px] mb-4 block">Fabric Details</span>
+                                    <div
+                                        id={`fabric-${fabricSlug(fabricDetails.name)}`}
+                                        className="group flex flex-col rounded-2xl overflow-hidden bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-cyan-200 transition-all scroll-mt-28"
+                                    >
+                                        <div className="relative aspect-[4/3] overflow-hidden bg-white border-b border-slate-100 p-4 sm:p-6">
+                                            <img
+                                                src={getCDNUrl(fabricDetails.file)}
+                                                alt={fabricDetails.name}
+                                                loading="lazy"
+                                                className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
+                                            />
+                                            <div className="absolute top-3 right-3 z-10">
+                                                <span className="inline-block px-2.5 py-1 rounded-full bg-cyan-600 text-white text-[10px] font-black uppercase tracking-wider shadow-sm">
+                                                    {/\d/.test(fabricDetails.gsm) ? `${fabricDetails.gsm} GSM` : fabricDetails.gsm}
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div className="p-5 flex flex-col flex-1 bg-white">
+                                            <h2 className="text-slate-900 font-black uppercase text-base tracking-tight mb-0.5">
+                                                {fabricDetails.name}
+                                            </h2>
+                                            {fabricDetails.use && (
+                                                <p className="text-slate-500 text-[9px] font-bold uppercase tracking-widest mb-1">
+                                                    {fabricDetails.use}
+                                                </p>
+                                            )}
+                                            {fabricDetails.printing && (
+                                                <p className="text-amber-700 text-[9px] font-bold uppercase tracking-widest mb-2">
+                                                    {fabricDetails.printing}
+                                                </p>
+                                            )}
+                                            <p className="text-slate-600 text-xs font-medium leading-relaxed mb-4 flex-1">
+                                                {fabricDetails.desc}
+                                            </p>
+                                            <div className="flex flex-wrap gap-2 pt-3 border-t border-slate-100 items-center">
+                                                <Link
+                                                    href={`/products?fabric=${encodeURIComponent(fabricDetails.name)}`}
+                                                    className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-slate-50 hover:bg-cyan-50 border border-slate-200 hover:border-cyan-300 text-[9px] font-black uppercase tracking-widest text-slate-600 hover:text-cyan-700 transition-all"
+                                                >
+                                                    Products <ArrowRight size={8} />
+                                                </Link>
+                                                <Link
+                                                    href={`/uniforms?fabric=${encodeURIComponent(fabricDetails.name)}`}
+                                                    className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-slate-50 hover:bg-cyan-50 border border-slate-200 hover:border-cyan-300 text-[9px] font-black uppercase tracking-widest text-slate-600 hover:text-cyan-700 transition-all"
+                                                >
+                                                    Uniforms <ArrowRight size={8} />
+                                                </Link>
+                                                <Link
+                                                    href={`/inquiry?fabric=${encodeURIComponent(fabricDetails.name)}`}
+                                                    className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-cyan-600 hover:bg-cyan-700 text-[9px] font-black uppercase tracking-widest text-white transition-all ml-auto"
+                                                >
+                                                    Inquire <ArrowRight size={8} />
+                                                </Link>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
                         </div>
 
                         {/* Size Charts */}
-                        {product.sizeCharts && (
-                            <div className="lg:col-span-2">
-                                <div className="mb-10">
-                                    <span className="text-slate-400 font-bold uppercase tracking-widest text-[10px] mb-2 block">Fit Guide</span>
-                                    <h2 className="text-3xl font-black uppercase tracking-tighter text-slate-900">Size Charts</h2>
-                                </div>
-                                <div className="space-y-8">
-                                                    {Object.entries(product.sizeCharts).map(([, chart]: [string, any], idx) => (
-                                                        <div key={idx} className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm">
-                                                            <div className="px-8 py-4 bg-slate-900 flex justify-between items-center">
-                                                                <h4 className="text-white font-black uppercase tracking-widest text-[10px]">{chart.label}</h4>
-                                                                <span className="text-slate-400 text-[10px] font-bold">IN INCHES</span>
-                                                            </div>
-                                                            <div className="overflow-x-auto">
-                                                                <table className="w-full text-left">
-                                                                    <thead>
-                                                                        <tr className="border-b border-slate-100 bg-slate-50">
-                                                                            {Object.keys(chart.values[0]).map((header, hIdx) => (
-                                                                                <th key={hIdx} className="px-8 py-4 text-[10px] font-black uppercase tracking-widest text-slate-400">{header}</th>
-                                                                            ))}
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        {chart.values.map((row: any, rIdx: number) => (
-                                                                            <tr key={rIdx} className="border-b border-slate-50 last:border-0 hover:bg-slate-50 transition-colors">
-                                                                                {Object.values(row).map((val: any, vIdx) => (
-                                                                                    <td key={vIdx} className="px-8 py-4 text-xs font-bold text-slate-700 uppercase tracking-tight">{val}</td>
-                                                                                ))}
-                                                                            </tr>
+                        {(() => {
+                            if (product.category === 'Bags') return null;
+                            const rawCharts = product.sizeCharts || getDefaultChartsForCategory(product.category);
+                            const chartsToRender = rawCharts
+                                ? (Array.isArray(rawCharts) ? rawCharts : Object.values(rawCharts))
+                                : null;
+
+                            if (chartsToRender && chartsToRender.length > 0) {
+                                return (
+                                    <div className="lg:col-span-2">
+                                        <div className="mb-10">
+                                            <span className="text-slate-400 font-bold uppercase tracking-widest text-[10px] mb-2 block">Fit Guide</span>
+                                            <h2 className="text-3xl font-black uppercase tracking-tighter text-slate-900">Size Charts</h2>
+                                        </div>
+                                        <div className="space-y-8">
+                                            {chartsToRender.map((chart: any, idx: number) => (
+                                                <div key={idx} className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm">
+                                                    <div className="px-8 py-4 bg-slate-900 flex justify-between items-center">
+                                                        <h4 className="text-white font-black uppercase tracking-widest text-[10px]">{chart.label}</h4>
+                                                        <span className="text-slate-400 text-[10px] font-bold">IN INCHES</span>
+                                                    </div>
+                                                    <div className="overflow-x-auto">
+                                                        <table className="w-full text-left">
+                                                            <thead>
+                                                                <tr className="border-b border-slate-100 bg-slate-50">
+                                                                    {Object.keys(chart.values[0]).map((header, hIdx) => (
+                                                                        <th key={hIdx} className="px-8 py-4 text-[10px] font-black uppercase tracking-widest text-slate-400">{header}</th>
+                                                                    ))}
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                {chart.values.map((row: any, rIdx: number) => (
+                                                                    <tr key={rIdx} className="border-b border-slate-50 last:border-0 hover:bg-slate-50 transition-colors">
+                                                                        {Object.values(row).map((val: any, vIdx) => (
+                                                                            <td key={vIdx} className="px-8 py-4 text-xs font-bold text-slate-700 uppercase tracking-tight">{val}</td>
                                                                         ))}
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
-                                                        </div>
-                                                    ))}
-                                </div>
-                            </div>
-                        )}
+                                                                    </tr>
+                                                                ))}
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                );
+                            } else {
+                                return (
+                                    <div className="lg:col-span-2">
+                                        <div className="bg-slate-900 rounded-[3rem] p-12 text-center h-full flex flex-col items-center justify-center">
+                                            <Ruler size={48} className="text-cyan-500 mb-6 mx-auto" />
+                                            <h3 className="text-2xl font-black text-white uppercase mb-4">Sizing Details</h3>
+                                            <p className="text-slate-400 text-sm max-w-md mx-auto">
+                                                This product is available in standard sizes. Please inquire for specific dimensions or custom specifications.
+                                            </p>
+                                        </div>
+                                    </div>
+                                );
+                            }
+                        })()}
                     </div>
                 </div>
             </section>

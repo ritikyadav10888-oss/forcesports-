@@ -8,13 +8,15 @@ interface SEOProps {
     description?: string;
     image?: string;
     article?: boolean;
+    keywords?: string;
 }
 
 const SEO: React.FC<SEOProps> = ({ 
     title, 
     description, 
     image = 'https://www.forcesportsindia.com/og-image.jpg', 
-    article = false 
+    article = false,
+    keywords
 }) => {
     const pathname = usePathname();
     
@@ -51,6 +53,9 @@ const SEO: React.FC<SEOProps> = ({
         // Standard Meta Tags
         updateMetaTag('name', 'description', seo.description);
         updateMetaTag('name', 'robots', 'index,follow');
+        if (keywords) {
+            updateMetaTag('name', 'keywords', keywords);
+        }
 
         // Open Graph / Facebook
         updateMetaTag('property', 'og:type', article ? 'article' : 'website');

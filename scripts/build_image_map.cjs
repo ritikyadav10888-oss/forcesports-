@@ -15,6 +15,9 @@ function getFiles(dir, allFiles = []) {
 }
 
 const publicDir = path.join(__dirname, '..', 'public');
+if (!fs.existsSync(publicDir)) {
+  fs.mkdirSync(publicDir, { recursive: true });
+}
 const files = getFiles(publicDir);
 const map = {};
 

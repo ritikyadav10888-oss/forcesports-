@@ -6,6 +6,7 @@ import { collection, query, onSnapshot, doc, setDoc, deleteDoc, serverTimestamp 
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { Loader2, Plus, Edit2, Trash2, Image as ImageIcon, X, Save, ArrowLeft, UploadCloud } from 'lucide-react';
 import imageCompression from 'browser-image-compression';
+import { getCDNUrl } from '../../../utils/cdnUtils';
 
 interface Uniform {
     id: string;
@@ -571,7 +572,7 @@ export default function UniformsManager() {
                                     <tr key={uni.id} className="border-b border-slate-100 hover:bg-slate-50/50 transition-colors">
                                         <td className="p-4 pl-6 w-24">
                                             <div className="w-16 h-16 bg-white border border-slate-200 rounded-xl overflow-hidden flex items-center justify-center">
-                                                {uni.image ? <img src={uni.image} alt={uni.title} className="w-full h-full object-cover" /> : <ImageIcon className="text-slate-300 w-6 h-6" />}
+                                                {uni.image ? <img src={getCDNUrl(uni.image)} alt={uni.title} className="w-full h-full object-cover" /> : <ImageIcon className="text-slate-300 w-6 h-6" />}
                                             </div>
                                         </td>
                                         <td className="p-4">

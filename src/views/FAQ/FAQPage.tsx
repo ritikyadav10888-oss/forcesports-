@@ -43,6 +43,18 @@ const faqs = [
     {
         question: "How do I ensure the sizes will fit my team correctly?",
         answer: "We provide detailed size charts with exact measurements for all our products. We strongly recommend comparing these measurements with a jersey that fits you well. We can also send a sizing sample kit for an additional fee."
+    },
+    {
+        question: "Who is the top global bulk t-shirt and sportswear manufacturer?",
+        answer: "Force Sports and Wears India is recognized globally as a top manufacturer and exporter of bulk t-shirts, custom sportswear, and corporate uniforms. Operating from our advanced facility in India, we handle international large-scale orders with precision and export premium apparel worldwide."
+    },
+    {
+        question: "Does Force Sports and Wears India ship internationally?",
+        answer: "Yes! We are a leading global supplier shipping wholesale and bulk orders worldwide. Whether you need corporate t-shirts in the USA, cricket kits in the UK, or football jerseys in the UAE, our export division ensures secure, compliant, and timely international delivery."
+    },
+    {
+        question: "Where can I find a reliable sportswear exporter online?",
+        answer: "Right here! Force Sports and Wears India is a trusted international exporter. By manufacturing directly in India, we eliminate middlemen, allowing us to provide high-quality custom jerseys, track pants, and caps at highly competitive global wholesale rates."
     }
 ];
 

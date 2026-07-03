@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, useRef } from 'react';
 import { db, storage } from '../../../lib/firebase';
-import { collection, query, onSnapshot, doc, setDoc, deleteDoc, serverTimestamp } from 'firebase/firestore';
+import { collection, query, onSnapshot, doc, setDoc, deleteDoc, serverTimestamp, getDocs } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { Loader2, Plus, Edit2, Trash2, Image as ImageIcon, X, Save, ArrowLeft, UploadCloud, Database } from 'lucide-react';
 import imageCompression from 'browser-image-compression';
@@ -124,23 +124,57 @@ export default function FabricsManager() {
     };
 
     const migrateExistingFabrics = async () => {
-        if (!confirm('This will copy the static SPORTEX_FABRICS into Firebase. Are you sure?')) return;
+        if (!confirm('This will copy SPORTEX_FABRICS using Firebase Storage image URLs into Firestore and delete incomplete legacy entries. Are you sure?')) return;
         setSaving(true);
+        const failed: string[] = [];
         try {
+            // First, clean up legacy fabrics without 'fab-' prefix
+            const fabricsSnapshot = await getDocs(collection(db, 'fabrics'));
+            let cleanedCount = 0;
+            for (const document of fabricsSnapshot.docs) {
+                if (!document.id.startsWith('fab-')) {
+                    await deleteDoc(doc(db, 'fabrics', document.id));
+                    cleanedCount++;
+                }
+            }
+            console.log(`Cleaned up ${cleanedCount} legacy fabric documents.`);
+
             for (const fabric of SPORTEX_FABRICS) {
                 const docId = `fab-${fabric.name.toLowerCase().replace(/[^a-z0-9]/g, '-')}`;
+                let fileUrl = '';
+                
+                try {
+                    // Try to fetch download URL from Firebase Storage in 'Fabrics/' folder
+                    const storageRef = ref(storage, `Fabrics/${fabric.file}`);
+                    fileUrl = await getDownloadURL(storageRef);
+                } catch (err) {
+                    console.warn(`Could not find Fabrics/${fabric.file} in storage. Trying lowercase...`, err);
+                    try {
+                        const storageRefLower = ref(storage, `Fabrics/${fabric.file.toLowerCase()}`);
+                        fileUrl = await getDownloadURL(storageRefLower);
+                    } catch (err2) {
+                        console.error(`Failed to find ${fabric.file} in Firebase Storage. Falling back to local path.`, err2);
+                        failed.push(fabric.name);
+                        fileUrl = `/Sportex Fabrics/${fabric.file}`;
+                    }
+                }
+
                 const payload = {
                     name: fabric.name,
                     gsm: fabric.gsm,
                     desc: fabric.desc,
                     use: fabric.use || '',
                     printing: fabric.printing || '',
-                    file: fabric.file.startsWith('/') ? fabric.file : `/Sportex Fabrics/${fabric.file}`,
+                    file: fileUrl,
                     createdAt: serverTimestamp()
                 };
                 await setDoc(doc(db, 'fabrics', docId), payload);
             }
-            alert('Migration complete!');
+            if (failed.length > 0) {
+                alert(`Migration completed! Deleted ${cleanedCount} duplicate entries. Note: some local fallbacks were used (files not found in Firebase Storage under 'Fabrics/'):\n${failed.join(', ')}`);
+            } else {
+                alert(`Migration complete! Deleted ${cleanedCount} duplicate entries. All fabric images resolved from Firebase Storage.`);
+            }
         } catch (error) {
             console.error('Migration error:', error);
             alert('Migration failed.');
@@ -297,11 +331,9 @@ export default function FabricsManager() {
                     <p className="text-slate-500 mt-1">Manage textile swatches and technical data</p>
                 </div>
                 <div className="flex gap-4">
-                    {fabrics.length === 0 && (
-                        <button onClick={migrateExistingFabrics} disabled={saving} className="bg-slate-900 text-white px-6 py-3 rounded-xl font-black text-sm uppercase tracking-wider hover:bg-slate-800 transition-colors flex items-center gap-2">
-                            <Database className="w-4 h-4" /> Migrate Data
-                        </button>
-                    )}
+                    <button onClick={migrateExistingFabrics} disabled={saving} className="bg-slate-900 text-white px-6 py-3 rounded-xl font-black text-sm uppercase tracking-wider hover:bg-slate-800 transition-colors flex items-center gap-2">
+                        <Database className="w-4 h-4" /> Migrate Data
+                    </button>
                     <button onClick={() => setView('form')} className="bg-amber-500 text-white px-6 py-3 rounded-xl font-black text-sm uppercase tracking-wider hover:bg-amber-600 transition-colors flex items-center gap-2">
                         <Plus className="w-4 h-4" /> Add Fabric
                     </button>
